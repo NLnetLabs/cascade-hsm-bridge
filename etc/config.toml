@@ -1,5 +1,5 @@
-# Configuring kmip2pkcs11
-# =======================
+# Configuring cascade-hsm-bridge
+# ==============================
 #
 # This is a template file.  Uncommented lines demonstrate the default settings.
 # You can copy this and customize it to your liking, or write a configuration
@@ -9,7 +9,7 @@
 #
 # This is required.  All other settings, and their defaults, are associated
 # with this version number.  More versions may be added in the future and
-# kmip2pkcs11 may drop support for older versions over time.
+# cascade-hsm-bridge may drop support for older versions over time.
 # 
 # - 'v1': This format.
 version = "v1"
@@ -19,12 +19,13 @@ version = "v1"
 [pkcs11]
 
 # The PKCS#11 module to use to communicate with an HSM.
-# TODO: Uncomment and set this to the actual path to the PKCS#11 module to use.
+# TODO: Uncomment and set this to the actual path to the PKCS#11 module to
+# use.
 #lib-path = "/path/to/your/pkcs11/module.so"
 
 
-# Settings related to the KMIP TCP+TLS interface offered by kmip2pkcs11 to
-# clients.
+# Settings related to the KMIP TCP+TLS interface offered by cascade-hsm-bridge
+# to clients.
 #[server]
 
 # The network address and port to listen on for incoming KMIP requests.
@@ -48,7 +49,7 @@ version = "v1"
 # - 'debug': Something occurred that may be relevant to debugging.
 # - 'info': Things are proceeding as expected.
 # - 'warning': Something does not appear to be correct.
-# - 'error': Something went wrong (but kmip2pkcs11 can recover).
+# - 'error': Something went wrong (but cascade-hsm-bridge can recover).
 #log-level = "info"
 
 # The location the daemon writes logs to.
@@ -65,12 +66,12 @@ version = "v1"
 #
 #   This option is only supported on UNIX systems.
 #
-# NOTE: When using systemd, 'syslog' and 'stderr' are the most reliable options.
-# systemd environments are often heavily isolated, making file-based logging
-# difficult.
+# NOTE: When using systemd, 'syslog' and 'stderr' are the most reliable
+# options. systemd environments are often heavily isolated, making file-based
+# logging difficult.
 #log-target = { type = "stderr" }
 #log-target = { type = "syslog" }
-#log-target = { type = "file", path = "/var/log/kmip2pkcs11.log" }
+#log-target = { type = "file", path = "/var/log/cascade-hsm-bridge.log" }
 
 # Whether to apply internal daemonization.
 #
@@ -80,34 +81,37 @@ version = "v1"
 # - Binding privileged ports (below 1024) as configured
 # - Dropping administrator privileges
 #
-# These features may be provided by an external system service manager, such as
-# systemd.  If no such service manager is being used, kmip2pkcs11 can provide such
-# features itself, by setting this option to 'true'.  This will also enable the
-# 'pid-file' and 'identity' settings (although they remain optional).
+# These features may be provided by an external system service manager, such
+# as systemd.  If no such service manager is being used, cascade-hsm-bridge
+# can provide such features itself, by setting this option to 'true'.  This
+# will also enable the 'pid-file' and 'identity' settings (although they
+# remain optional).
 #
-# TODO: Link to a dedicated systemd / daemonization guide for kmip2pkcs11.
+# TODO: Link to a dedicated systemd / daemonization guide for
+# cascade-hsm-bridge.
 #daemonize = false
 
 # The path to a PID file to maintain, if any.
 #
-# If specified, kmip2pkcs11 will maintain a PID file at this location; it will be a
-# simple plain-text file containing the PID number of the daemon process.  This
-# option is only supported if 'daemonize' is true.
-#pid-file = "/var/run/kmip2pkcs11.pid"
+# If specified, cascade-hsm-bridge will maintain a PID file at this location;
+# it will be a simple plain-text file containing the PID number of the daemon
+# process.  This option is only supported if 'daemonize' is true.
+#pid-file = "/var/run/cascade-hsm-bridge.pid"
 
 # An identity (user and group) to assume after startup.
 #
 # If not specified the identity will be that of the launching user, i.e. will
 # not be changed.
 #
-# kmip2pkcs11 will assume the specified identity after initialization.  Note that
-# this will fail if kmip2pkcs11 is started without administrator privileges.  This
-# option is only supported if 'daemonize' is 'true'.
+# cascade-hsm-bridge will assume the specified identity after initialization.
+# Note that this will fail if cascade-hsm-bridge is started without
+# administrator privileges.  This option is only supported if 'daemonize'
+# is 'true'.
 #
 # The identity can be specified as '<user>:<group>' or just '<user>'; in the
 # latter case, the identically named group will be used.  Numeric IDs are not
 # supported; only names can be used.
 #
 # NOTE: When using systemd, you should rely on its 'User=' and 'Group=' options
-#   instead.  See <https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html#User=>.
-#identity = "kmip2pkcs11:kmip2pkcs11"
+# instead.  See <https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html#User=>.
+#identity = "cascade-hsm-bridge:cascade-hsm-bridge"

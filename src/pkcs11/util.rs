@@ -7,7 +7,7 @@ use cryptoki::context::{CInitializeArgs, CInitializeFlags, Function, Pkcs11};
 use cryptoki::object::{Attribute, ObjectClass, ObjectHandle};
 use cryptoki::slot::Slot;
 use kmip::types::common::UniqueIdentifier;
-use kmip2pkcs11_cfg::v1::Config;
+use cascade_hsm_bridge_cfg::v1::Config;
 use rand::RngCore;
 use tracing::info;
 

@@ -1,5 +1,5 @@
 [package]
-name = "kmip2pkcs11-cfg"
+name = "cascade-hsm-bridge-cfg"
 authors.workspace = true
 repository.workspace = true
 license.workspace = true

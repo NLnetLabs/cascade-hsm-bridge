@@ -2,7 +2,7 @@
 # Continuous Integration: making sure the codebase works
 # ======================================================
 #
-# This workflow tests modifications to 'kmip2pkcs11', ensuring that the daemon
+# This workflow tests modifications to 'cascade-hsm-bridge', ensuring that the daemon
 # can be used by others successfully. It verifies certain aspects of the
 # codebase, such as the formatting and feature flag combinations, and runs the
 # full test suite. It runs on Ubuntu.
@@ -84,7 +84,7 @@ jobs:
   # Determine MSRV
   # --------------
   #
-  # The MSRV needs to be determined as we will test 'kmip2pkcs11' against the
+  # The MSRV needs to be determined as we will test 'cascade-hsm-bridge' against the
   # Rust compiler at that version.
   determine-msrv:
     name: Determine MSRV
@@ -101,7 +101,7 @@ jobs:
     - name: Determine MSRV
       id: determine-msrv
       run: |
-        msrv=`cargo metadata --no-deps --format-version 1 | jq -r '.packages[]|select(.name=="kmip2pkcs11")|.rust_version'`
+        msrv=`cargo metadata --no-deps --format-version 1 | jq -r '.packages[]|select(.name=="cascade-hsm-bridge")|.rust_version'`
         echo "msrv=$msrv" >> "$GITHUB_OUTPUT"
 
   # Check Feature Flags
@@ -134,8 +134,8 @@ jobs:
   # Check Minimal Versions
   # ----------------------
   #
-  # Ensure that 'kmip2pkcs11' compiles with the oldest compatible versions of
-  # all packages, even those 'kmip2pkcs11' depends upon indirectly.
+  # Ensure that 'cascade-hsm-bridge' compiles with the oldest compatible versions of
+  # all packages, even those 'cascade-hsm-bridge' depends upon indirectly.
   check-minimal-versions:
     name: Check minimal versions
     runs-on: ubuntu-latest
@@ -159,7 +159,7 @@ jobs:
     - name: Lock dependencies to minimal versions
       run: cargo +nightly update -Z minimal-versions
 
-    # Check that 'kmip2pkcs11' compiles.
+    # Check that 'cascade-hsm-bridge' compiles.
     - name: Check
       run: cargo check --all-targets --all-features --locked
 
@@ -199,7 +199,7 @@ jobs:
   # Test
   # ----
   #
-  # Ensure that 'kmip2pkcs11' compiles and its test suite passes, on a large
+  # Ensure that 'cascade-hsm-bridge' compiles and its test suite passes, on a large
   # number of operating systems and Rust versions.
   test:
     name: Test

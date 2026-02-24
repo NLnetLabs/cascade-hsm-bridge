@@ -21,7 +21,7 @@ pub struct Args {
     /// The target of log messages.
     pub log_target: Option<LogTarget>,
 
-    /// Whether kmip2pkcs11 should fork on startup.
+    /// Whether cascade-hsm-bridge should fork on startup.
     pub daemonize: bool,
 }
 
@@ -52,7 +52,7 @@ impl Args {
                 .short('d')
                 .long("daemonize")
                 .action(clap::ArgAction::SetTrue)
-                .help("Whether kmip2pkcs11 should fork on startup"),
+                .help("Whether cascade-hsm-bridge should fork on startup"),
         ])
     }
 

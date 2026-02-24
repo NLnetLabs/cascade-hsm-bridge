@@ -1,13 +1,13 @@
 Configuration File Format
 =========================
 
-:program:`kmip2pkcs11` uses the TOML format for its configuration file. The provided
+:program:`cascade-hsm-bridge` uses the TOML format for its configuration file. The provided
 values to the options below are the default values and are serving as a hint to
 the option's format.
 
 .. Note::
 
-   **kmip2pkcs11** must be restarted for config file changes to take effect.
+   **cascade-hsm-bridge** must be restarted for config file changes to take effect.
 
 Example
 -------
@@ -20,8 +20,8 @@ Example
     log-level = "info"
     log-target = { type = "syslog" }
     daemonize = true
-    pid-file = "/var/run/kmip2pkcs11.pid"
-    identity = "kmip2pkcs11:kmip2pkcs11"
+    pid-file = "/var/run/cascade-hsm-bridge.pid"
+    identity = "cascade-hsm-bridge:cascade-hsm-bridge"
 
     [pkcs11]
     lib-path = "/path/to/your/pkcs11.so"
@@ -66,7 +66,7 @@ The ``[daemon]`` section.
 
 .. option:: log-target = { type = "stderr" }
 .. option:: log-target = { type = "syslog" }
-.. option:: log-target = { type = "file", path = "kmip2pkcs11.log" }
+.. option:: log-target = { type = "file", path = "cascade-hsm-bridge.log" }
 
    The location the daemon writes logs to.
 
@@ -99,7 +99,7 @@ The ``[daemon]`` section.
    - Dropping administrator privileges
 
    These features may be provided by an external system service manager, such
-   as systemd.  If no such service manager is being used, **kmip2pkcs11** can
+   as systemd.  If no such service manager is being used, **cascade-hsm-bridge** can
    provide such features itself, by setting this option to ``true``.  This
    will also enable the ``pid-file`` and ``identity`` settings (although they
    remain optional).
@@ -109,22 +109,22 @@ The ``[daemon]`` section.
    where files are looked for. Use absolute path names in configuration
    to avoid ambiguities.
 
-.. TODO: Link to a dedicated systemd / daemonization guide for **kmip2pkcs11**.
+.. TODO: Link to a dedicated systemd / daemonization guide for **cascade-hsm-bridge**.
 
-.. option:: pid-file = "/var/run/kmip2pkcs11.pid"
+.. option:: pid-file = "/var/run/cascade-hsm-bridge.pid"
 
    The path to a PID file to maintain, if any.
 
-   If specified, kmip2pkcs11 will maintain a PID file at this location; it
+   If specified, cascade-hsm-bridge will maintain a PID file at this location; it
    will be a simple plain-text file containing the PID number of the daemon
    process. This option is only supported if ``daemonize`` is true.
 
-.. option:: identity = "kmip2pkcs11:kmip2pkcs11"
+.. option:: identity = "cascade-hsm-bridge:cascade-hsm-bridge"
 
    An identity (user and group) to assume after startup.
 
-   **kmip2pkcs11** will assume the specified identity after initialization.
-   Note that this will fail if kmip2pkcs11 is started without administrator
+   **cascade-hsm-bridge** will assume the specified identity after initialization.
+   Note that this will fail if cascade-hsm-bridge is started without administrator
    privileges.  This option is only supported if ``daemonize`` is ``true``.
 
    The identity must be specified as ``<user>:<group>``. Numeric IDs are also
@@ -172,15 +172,15 @@ The ``[server.identity]`` section.
 Files
 -----
 
-/etc/kmip2pkcs11/config.toml
-    Default **kmip2pkcs11** config file.
+/etc/cascade-hsm-bridge/config.toml
+    Default **cascade-hsm-bridge** config file.
 
 
 See Also
 --------
 
-https://cascade.docs.nlnetlabs.nl/projects/kmip2pkcs11/
-    **kmip2pkcs11** online documentation.
+https://cascade.docs.nlnetlabs.nl/projects/cascade-hsm-bridge/
+    **cascade-hsm-bridge** online documentation.
 
-**kmip2pkcs11**\ (1)
-    :doc:`kmip2pkcs11`
+**cascade-hsm-bridge**\ (1)
+    :doc:`cascade-hsm-bridge`

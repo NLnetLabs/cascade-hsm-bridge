@@ -8,7 +8,7 @@ use kmip::types::common::Operation;
 use kmip::types::request::RequestMessage;
 use kmip::types::response::{BatchItem, ResultReason};
 use kmip_ttlv::PrettyPrinter;
-use kmip2pkcs11_cfg::v1::Config;
+use cascade_hsm_bridge_cfg::v1::Config;
 use moka::sync::Cache;
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tokio::net::TcpStream;

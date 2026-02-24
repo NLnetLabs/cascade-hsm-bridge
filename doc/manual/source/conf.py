@@ -29,7 +29,7 @@ except ModuleNotFoundError:
 
 # -- Project information -----------------------------------------------------
 
-project = 'kmip2pkcs11'
+project = 'cascade-hsm-bridge'
 year = datetime.datetime.now().year
 copyright = f'2025–{year}, NLnet Labs'
 author = 'NLnet Labs <cascade@nlnetlabs.nl>'
@@ -41,7 +41,7 @@ version = semver.get('workspace').get('package').get('version')
 
 try:
     response_versions = requests.get(
-        f"https://readthedocs.org/api/v2/version/?project__slug=kmip2pkcs11&active=true",
+        f"https://readthedocs.org/api/v2/version/?project__slug=cascade-hsm-bridge&active=true",
         timeout=2,
     ).json()
     versions = [
@@ -179,14 +179,14 @@ html_context = {
         # "downloads": downloads,
         # "subprojects": subprojects,
 
-        'slug': "kmip2pkcs11",
+        'slug': "cascade-hsm-bridge",
         'rtd_language': language,
         'canonical_url': html_baseurl,
 
         'conf_py_path': "/doc/manual/source/",
 
         'github_user': "NLnetLabs",
-        'github_repo': "kmip2pkcs11",
+        'github_repo': "cascade-hsm-bridge",
         'github_version': os.environ.get("READTHEDOCS_GIT_IDENTIFIER", "main"),
         'display_github': True,
         'READTHEDOCS': True,
@@ -199,7 +199,7 @@ html_context = {
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'kmip2pkcs11UserManualdoc'
+htmlhelp_basename = 'cascade-hsm-bridgeUserManualdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -226,7 +226,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'kmip2pkcs11UserManual.tex', 'kmip2pkcs11 User Manual', author, 'manual'),
+    (master_doc, 'cascade-hsm-bridgeUserManual.tex', 'cascade-hsm-bridge User Manual', author, 'manual'),
 ]
 
 
@@ -235,8 +235,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('man/kmip2pkcs11', 'kmip2pkcs11', 'A KMIP to PKCS#11 relay', author, 1),
-    ('man/kmip2pkcs11-config.toml', 'kmip2pkcs11-config.toml', 'kmip2pkcs11 configuration file', author, 5),
+    ('man/cascade-hsm-bridge', 'cascade-hsm-bridge', 'A KMIP to PKCS#11 relay', author, 1),
+    ('man/cascade-hsm-bridge-config.toml', 'cascade-hsm-bridge-config.toml', 'cascade-hsm-bridge configuration file', author, 5),
 ]
 
 
@@ -246,8 +246,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'kmip2pkcs11UserManual', 'kmip2pkcs11 User Manual',
-     author, 'kmip2pkcs11UserManual', 'One line description of project.',
+    (master_doc, 'cascade-hsm-bridgeUserManual', 'cascade-hsm-bridge User Manual',
+     author, 'cascade-hsm-bridgeUserManual', 'One line description of project.',
      'Miscellaneous'),
 ]
 

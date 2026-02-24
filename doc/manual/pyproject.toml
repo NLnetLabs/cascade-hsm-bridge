@@ -1,7 +1,7 @@
 [project]
-name = "kmip2pkcs11-manual"
+name = "cascade-hsm-bridge-manual"
 version = "0.1.0"
-description = "Building the kmip2pkcs11 manual"
+description = "Building the cascade-hsm-bridge manual"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [

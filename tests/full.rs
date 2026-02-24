@@ -1,17 +1,18 @@
 //! Test the full path between KMIP clients and PKCS#11 HSM.
 //!
-//! This is a full-system test: it initializes `kmip2pkcs11` with [SoftHSMv2]
-//! and queries it from a KMIP client. The full breadth of supported KMIP
-//! operations is tested.
+//! This is a full-system test: it initializes `cascade-hsm-bridge` with
+//! [SoftHSMv2] and queries it from a KMIP client. The full breadth of
+//! supported KMIP operations is tested.
 //!
 //! [SoftHSMv2]: https://github.com/softhsm/SoftHSMv2
 //!
 //! # Process
 //!
-//! A single `kmip2pkcs11` server is initialized using [SoftHSMv2]. It is
-//! configured to store all filesystem state in a temporary directory, so that
-//! distinct invocations do not affect each other. Multiple tests are executed
-//! against that server. If any of them fail, they can be run in isolation.
+//! A single `cascade-hsm-bridge` server is initialized using [SoftHSMv2]. It
+//! is configured to store all filesystem state in a temporary directory, so
+//! that distinct invocations do not affect each other. Multiple tests are
+//! executed against that server. If any of them fail, they can be run in
+//! isolation.
 
 // Only available on Unix machines.
 #![cfg(unix)]
@@ -32,7 +33,7 @@ use kmip::client::pool::SyncConnPool;
 
 use command_fds::{CommandFdExt, FdMapping};
 
-/// A running `kmip2pkcs11` daemon.
+/// A running `cascade-hsm-bridge` daemon.
 pub struct Daemon {
     /// The address of the KMIP server.
     address: SocketAddr,
@@ -107,7 +108,7 @@ log.level = DEBUG
         std::fs::create_dir_all(&tokens_path)?;
 
         // Initialize the HSM slot/token.
-        let label = String::from("kmip2pkcs11-test");
+        let label = String::from("cascade-hsm-bridge-test");
         let so_pin = String::from("123456");
         let pin = String::from("abcdef");
         if !Command::new("softhsm2-util")
@@ -132,16 +133,16 @@ log.level = DEBUG
         // Make sure the daemon binary is ready.
         let project_dir = std::env::current_dir()?;
         if !Command::new("cargo")
-            .args(["build", "--bin", "kmip2pkcs11"])
+            .args(["build", "--bin", "cascade-hsm-bridge"])
             .spawn()?
             .wait()?
             .success()
         {
-            return Err(io::Error::other("could not build 'kmip2pkcs11'"));
+            return Err(io::Error::other("could not build 'cascade-hsm-bridge'"));
         }
 
         // Launch the daemon.
-        let daemon_path = project_dir.join("target/debug/kmip2pkcs11");
+        let daemon_path = project_dir.join("target/debug/cascade-hsm-bridge");
         let proc = Command::new(&daemon_path)
             .arg("--config")
             .arg(&config_path)
@@ -173,7 +174,7 @@ impl Drop for Daemon {
         if std::thread::panicking() {
             // Try to provide the daemon log file.
             if let Ok(log) = std::fs::read_to_string(self.tempdir.path().join("log")) {
-                eprintln!("kmip2pkcs11 log:\n{log}");
+                eprintln!("cascade-hsm-bridge log:\n{log}");
             }
         }
     }

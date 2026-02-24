@@ -1,22 +1,22 @@
-kmip2pkcs11 Daemon
+cascade-hsm-bridge Daemon
 ==================
 
 Synopsis
 --------
 
-:program:`kmip2pkcs11` ``[OPTIONS]``
+:program:`cascade-hsm-bridge` ``[OPTIONS]``
 
 Description
 -----------
 
 .. only:: html
 
-    **kmip2pkcs11** is a KMIP to PKCS#11 relay used primarily by `Cascade
+    **cascade-hsm-bridge** is a KMIP to PKCS#11 relay used primarily by `Cascade
     <https://cascade.docs.nlnetlabs.nl>`_ to access PKCS#11 compatible HSMs.
 
 .. only:: man or text or latex or epub
 
-    **kmip2pkcs11** is a KMIP to PKCS#11 relay used primarily by **cascaded**\
+    **cascade-hsm-bridge** is a KMIP to PKCS#11 relay used primarily by **cascaded**\
     (1) to access PKCS#11 compatible HSMs.
 
 For more information about Cascade, please refer to the Cascade documentation
@@ -33,7 +33,7 @@ Options
 .. option:: -c, --config <PATH>
 
           The configuration file to load. Defaults to
-          ``/etc/kmip2pkcs11/config.toml``.
+          ``/etc/cascade-hsm-bridge/config.toml``.
 
 .. option:: --log-level <LEVEL>
 
@@ -49,7 +49,7 @@ Options
 
 .. option:: -d, --daemonize
 
-          Whether **kmip2pkcs11** should fork on startup. This option changes
+          Whether **cascade-hsm-bridge** should fork on startup. This option changes
           the working directory to the root directory and as such influences
           where files are looked for. Use absolute path names in configuration
           to avoid ambiguities.
@@ -67,18 +67,18 @@ Options
 Files
 -----
 
-/etc/kmip2pkcs11/config.toml
-    Default kmip2pkcs11 config file
+/etc/cascade-hsm-bridge/config.toml
+    Default cascade-hsm-bridge config file
 
 
 See Also
 --------
 
-https://cascade.docs.nlnetlabs.nl/projects/kmip2pkcs11/
-    **kmip2pkcs11** online documentation.
+https://cascade.docs.nlnetlabs.nl/projects/cascade-hsm-bridge/
+    **cascade-hsm-bridge** online documentation.
 
-**kmip2pkcs11-config.toml**\ (5)
-    :doc:`kmip2pkcs11-config.toml`
+**cascade-hsm-bridge-config.toml**\ (5)
+    :doc:`cascade-hsm-bridge-config.toml`
 
 https://cascade.docs.nlnetlabs.nl
     Cascade online documentation.

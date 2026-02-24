@@ -1,3 +1,4 @@
+use cascade_hsm_bridge_cfg::v1::Config;
 use kmip::types::{
     common::{ObjectType, Operation},
     request::{BatchItem, QueryFunction, RequestPayload},
@@ -6,7 +7,6 @@ use kmip::types::{
         ResultStatus, ServerInformation,
     },
 };
-use cascade_hsm_bridge_cfg::v1::Config;
 
 use crate::pkcs11::{pool::Pkcs11Pool, util::get_pkcs11_info};
 
@@ -51,7 +51,8 @@ pub fn op(
                         "Internal error: PKCS#11 info not available".to_string(),
                     ));
                 };
-                vendor_identification = Some(format!("cascade-hsm-bridge {self_ver} using {pkcs11_info}"));
+                vendor_identification =
+                    Some(format!("cascade-hsm-bridge {self_ver} using {pkcs11_info}"));
                 server_information = Some(ServerInformation);
             }
             _ => { /* Ignore */ }

@@ -4,6 +4,8 @@ mod pkcs11;
 
 use std::sync::Arc;
 
+use cascade_hsm_bridge_cfg::args::Args;
+use cascade_hsm_bridge_cfg::v1::{Config, LogLevel, LogTarget, ServerIdentity};
 use clap::{Command, crate_authors, crate_description, crate_version};
 use cryptoki::context::{Function, Pkcs11};
 use cryptoki::error::Error as CryptokiError;
@@ -11,8 +13,6 @@ use cryptoki::error::RvError;
 use daemonbase::error::{ExitError, Failed};
 use daemonbase::logging::{Facility, Logger, Target};
 use daemonbase::process::Process;
-use cascade_hsm_bridge_cfg::args::Args;
-use cascade_hsm_bridge_cfg::v1::{Config, LogLevel, LogTarget, ServerIdentity};
 use rcgen::{CertifiedKey, generate_simple_self_signed};
 use rustls::pki_types::pem::PemObject;
 use rustls::pki_types::{CertificateDer, PrivateKeyDer};

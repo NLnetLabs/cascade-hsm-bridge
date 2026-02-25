@@ -1,5 +1,5 @@
 cascade-hsm-bridge Daemon
-==================
+=========================
 
 Synopsis
 --------

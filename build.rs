@@ -49,7 +49,7 @@ fn main() -> Result<(), ()> {
         //"other" => PathBuf::from("../../.jj").exists(),
         // This build script is only run for the package `cascade-hsm-bridge`.
         // If we link the build.rs file to other packages too, we need to add
-		// them to the match arm above.
+        // them to the match arm above.
         _ => unreachable!(),
     };
 

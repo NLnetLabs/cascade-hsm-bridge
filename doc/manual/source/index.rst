@@ -5,9 +5,9 @@ A KMIP to PKCS#11 Relay
 
    |lastupdated| |mastodon|
 
-   .. |lastupdated| image:: https://img.shields.io/github/last-commit/NLnetLabs/kmip2pkcs11?path=%2Fdoc%2Fmanual&label=last%20updated
+   .. |lastupdated| image:: https://img.shields.io/github/last-commit/NLnetLabs/cascade-hsm-bridge?path=%2Fdoc%2Fmanual&label=last%20updated
       :alt: Last docs update
-      :target: https://github.com/NLnetLabs/kmip2pkcs11/commits/main/doc/manual/source
+      :target: https://github.com/NLnetLabs/cascade-hsm-bridge/commits/main/doc/manual/source
 
    .. |mastodon| image:: https://img.shields.io/mastodon/follow/114692612288811644?domain=social.nlnetlabs.nl&style=social
       :alt: Mastodon
@@ -29,7 +29,7 @@ format and executes them against a loaded PKCS#11 library.
 Installing or building
 ----------------------
 
-As the KMIP to PKCS#11 relay (:program:`kmip2pkcs11`) is currently only intended for use
+As the KMIP to PKCS#11 relay (:program:`cascade-hsm-bridge`) is currently only intended for use
 with `Cascade`_, please refer to the
 installation or building instructions of Cascade `here
 <https://cascade.docs.nlnetlabs.nl/en/latest/installation.html>`_.
@@ -122,5 +122,5 @@ Supported operations
    :caption: Manual Pages
    :name: toc-manual-pages
 
-   man/kmip2pkcs11
-   man/kmip2pkcs11-config.toml
+   man/cascade-hsm-bridge
+   man/cascade-hsm-bridge-config.toml

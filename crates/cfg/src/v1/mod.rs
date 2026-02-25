@@ -1,10 +1,10 @@
-//! Configuring kmip2pkcs11.
+//! Configuring cascade-hsm-bridge.
 //!
 //! This module defines configuration data types that match as closely as
-//! possible the types and related TOML syntax used by Cascade, as kmip2pkcs11
-//! is provided as a companion tool to Cascade and it is thus of benefit to
-//! users of Cascade if the configuration interface offered by the two tools
-//! is as similar as we can make it.
+//! possible the types and related TOML syntax used by Cascade, as
+//! cascade-hsm-bridge is provided as a companion tool to Cascade and it is
+//! thus of benefit to users of Cascade if the configuration interface offered
+//! by the two tools is as similar as we can make it.
 //!
 //! Code re-use from Cascade is currently limited, instead types have been
 //! reproduced in similar form here. Partly this difference is because the two
@@ -25,7 +25,7 @@ use tracing::level_filters::LevelFilter;
 
 //-------- Config ------------------------------------------------------------
 
-/// Configuration for kmip2pkcs11.
+/// Configuration for cascade-hsm-bridge.
 // Based on https://github.com/NLnetLabs/cascade/blob/v0.1.0-alpha5/src/config/mod.rs#L27
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(rename_all = "kebab-case", deny_unknown_fields)]
@@ -44,7 +44,7 @@ pub struct Config {
 
 //-------- LoggingConfig -----------------------------------------------------
 
-/// Logging configuration for kmip2pkcs11.
+/// Logging configuration for cascade-hsm-bridge.
 // Based on https://github.com/NLnetLabs/cascade/blob/v0.1.0-alpha5/src/config/mod.rs#L193
 #[derive(Clone, Debug, Default, Deserialize, Serialize)]
 #[serde(rename_all = "kebab-case", deny_unknown_fields)]
@@ -101,10 +101,10 @@ pub enum LogLevel {
     /// Something does not appear to be correct.
     Warning,
 
-    /// Something is wrong (but kmip2pkcs11 can recover).
+    /// Something is wrong (but cascade-hsm-bridge can recover).
     Error,
     // Not suppported as daemonbase logging doesn't support the critical level.
-    // /// Something is wrong and kmip2pkcs11 can't function at all.
+    // /// Something is wrong and cascade-hsm-bridge can't function at all.
     // Critical,
 }
 
@@ -123,8 +123,8 @@ impl From<LogLevel> for LevelFilter {
 
 //-------- Pkcs11Config ------------------------------------------------------
 
-/// Configuration settings required for kmip2pkcs11 to be able to load and use
-/// a user supplied PKCS#11 module.
+/// Configuration settings required for cascade-hsm-bridge to be able to load
+/// and use a user supplied PKCS#11 module.
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(rename_all = "kebab-case", deny_unknown_fields)]
 pub struct Pkcs11Config {
@@ -134,7 +134,7 @@ pub struct Pkcs11Config {
 
 //-------- DaemonConfig ------------------------------------------------------
 
-/// Daemon-related configuration for kmip2pkcs11.
+/// Daemon-related configuration for cascade-hsm-bridge.
 // Based on https://github.com/NLnetLabs/cascade/blob/v0.1.0-alpha5/src/config/mod.rs#L152
 #[derive(Clone, Debug, Default, Deserialize, Serialize)]
 #[serde(rename_all = "kebab-case", deny_unknown_fields)]
@@ -143,7 +143,7 @@ pub struct DaemonConfig {
     #[serde(flatten)]
     pub log: LoggingConfig,
 
-    /// Whether kmip2pkcs11 should fork on startup.
+    /// Whether cascade-hsm-bridge should fork on startup.
     #[serde(default)]
     pub daemonize: bool,
 

@@ -1,7 +1,7 @@
-# kmip2pkcs11 User Manual
+# cascade-hsm-bridge User Manual
 
-The Official kmip2pkcs11 User Manual, published at
-[kmip2pkcs11.docs.nlnetlabs.nl](https://kmip2pkcs11.docs.nlnetlabs.nl)
+The Official cascade-hsm-bridge User Manual, published at
+[cascade-hsm-bridge.docs.nlnetlabs.nl](https://cascade-hsm-bridge.docs.nlnetlabs.nl)
 
 ## Style Guide
 

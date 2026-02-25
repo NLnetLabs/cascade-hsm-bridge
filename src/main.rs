@@ -4,6 +4,8 @@ mod pkcs11;
 
 use std::sync::Arc;
 
+use cascade_hsm_bridge_cfg::args::Args;
+use cascade_hsm_bridge_cfg::v1::{Config, LogLevel, LogTarget, ServerIdentity};
 use clap::{Command, crate_authors, crate_description, crate_version};
 use cryptoki::context::{Function, Pkcs11};
 use cryptoki::error::Error as CryptokiError;
@@ -11,8 +13,6 @@ use cryptoki::error::RvError;
 use daemonbase::error::{ExitError, Failed};
 use daemonbase::logging::{Facility, Logger, Target};
 use daemonbase::process::Process;
-use kmip2pkcs11_cfg::args::Args;
-use kmip2pkcs11_cfg::v1::{Config, LogLevel, LogTarget, ServerIdentity};
 use rcgen::{CertifiedKey, generate_simple_self_signed};
 use rustls::pki_types::pem::PemObject;
 use rustls::pki_types::{CertificateDer, PrivateKeyDer};
@@ -35,7 +35,7 @@ fn main() -> Result<(), ExitError> {
     Logger::init_logging()?;
 
     // Parse command-line arguments.
-    let app = Command::new("kmip2pkcs11")
+    let app = Command::new("cascade-hsm-bridge")
         .version(crate_version!())
         .author(crate_authors!())
         .about(crate_description!())
@@ -53,7 +53,7 @@ fn main() -> Result<(), ExitError> {
     let args = Args::process(&matches);
 
     // Load the config file.
-    let mut config = kmip2pkcs11_cfg::Config::from_file(&args.config)
+    let mut config = cascade_hsm_bridge_cfg::Config::from_file(&args.config)
         .inspect_err(|err| error!("Invalid configuration file: {err}"))
         .map_err(|_| Failed)?;
 
@@ -66,7 +66,7 @@ fn main() -> Result<(), ExitError> {
     args.merge(&mut config);
 
     match config {
-        kmip2pkcs11_cfg::Config::V1(mut config) => {
+        cascade_hsm_bridge_cfg::Config::V1(mut config) => {
             let level_filter = match &config.daemon.log.level {
                 LogLevel::Trace => daemonbase::logging::LevelFilter::Trace,
                 LogLevel::Debug => daemonbase::logging::LevelFilter::Debug,
@@ -123,7 +123,7 @@ fn main() -> Result<(), ExitError> {
 
             let runtime = tokio::runtime::Builder::new_multi_thread()
                 .enable_all()
-                .thread_name("kmip2pkcs11-worker")
+                .thread_name("cascade-hsm-bridge-worker")
                 .build()
                 .unwrap();
 

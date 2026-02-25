@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-USER_ID="kmip2pkcs11"
+USER_ID="cascade-hsm-bridge"
 
 create_user() {
     if id ${USER_ID} > /dev/null 2>&1; then return; fi

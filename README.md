@@ -4,13 +4,16 @@
 
 > (!) _This project is at an experimental stage and is very much a work-in-progress. It should not be used in production deployments at this time. Furthermore the functionality and interfaces offered should be considered unstable._
 
-# A KMIP to PKCS#11 Relay
+# A KMIP to PKCS#11 bridge for Cascade
 
-`kmip2pkcs11` is a Rust application that accepts [KMIP](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=39d0c648-0a66-4f46-b343-018dc7d3f19c) requests, converts them to [PKCS#11](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=922ef643-1e10-4d65-a5ea-018dc7d3f0a4) format and executes them against a loaded PKCS#11 library.
+`cascade-hsm-bridge` is a Rust application that accepts [KMIP](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=39d0c648-0a66-4f46-b343-018dc7d3f19c)
+requests, converts them to [PKCS#11](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=922ef643-1e10-4d65-a5ea-018dc7d3f0a4)
+format and executes them against a loaded PKCS#11 library. It was created for
+use with the [Cascade](https://cascade.nlnetlabs.nl/) project.
 
 ## Documentation
 
-Documentation is available as part of the Cascade project [here](https://cascade.docs.nlnetlabs.nl/projects/kmip2pkcs11/).
+Documentation is available as part of the Cascade project [here](https://cascade.docs.nlnetlabs.nl/projects/cascade-hsm-bridge/).
 
 ## Building
 

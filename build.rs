@@ -65,8 +65,7 @@ fn main() -> Result<(), ()> {
                 "cargo::warning=A .jj directory exists, but {msg}. Unable to determine git revision..."
             );
             match package {
-                "cascaded" => println!("cargo::rerun-if-changed=.jj"),
-                "cascade" => println!("cargo::rerun-if-changed=../../.jj"),
+                "cascade-hsm-bridge" => println!("cargo::rerun-if-changed=.jj"),
                 _ => {}
             }
         }).ok()

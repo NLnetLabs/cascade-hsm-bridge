@@ -80,8 +80,7 @@ fn main() -> Result<(), ()> {
                 };
                 println!("cargo::warning={msg}. Unable to determine git revision...");
                 match package {
-                    "cascaded" => println!("cargo::rerun-if-changed=.git"),
-                    "cascade" => println!("cargo::rerun-if-changed=../../.git"),
+                    "cascade-hsm-bridge" => println!("cargo::rerun-if-changed=.git"),
                     _ => {}
                 }
             })

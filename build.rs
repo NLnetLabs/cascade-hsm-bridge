@@ -1,3 +1,6 @@
+// Based on https://raw.githubusercontent.com/NLnetLabs/cascade/302143ff193fe0cb605c135d4a8912699492f44b/build.rs
+// See the original script for more documentation.
+//
 // Note to developers extending/debugging this file: When this file throws
 // errors or warnings, `cargo -vv build` does not show the output of the
 // `println!`s of this file. Resolve all warning first, trigger a re-build

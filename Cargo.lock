@@ -395,7 +395,7 @@ dependencies = [
 [[package]]
 name = "domain"
 version = "0.11.1"
-source = "git+https://github.com/NLnetLabs/domain.git?branch=main#80ca8b57d8b7d551b4cf5fea020674e694eeecd3"
+source = "git+https://github.com/NLnetLabs/domain.git?branch=main#f1c7ed2ad5875fc7469ba4c56c5ae0cae0c67086"
 dependencies = [
  "bumpalo",
  "bytes",
@@ -412,7 +412,7 @@ dependencies = [
 [[package]]
 name = "domain-kmip"
 version = "0.0.1"
-source = "git+https://github.com/NLnetLabs/domain-kmip.git?branch=main#bcfb1ed481fc2ff0e4b36e484c4ff19cf1dc3edd"
+source = "git+https://github.com/NLnetLabs/domain-kmip.git?branch=main#e8fac24cdb4399de67304d02c3b551e65f45055a"
 dependencies = [
  "bcder",
  "domain",
@@ -425,7 +425,7 @@ dependencies = [
 [[package]]
 name = "domain-macros"
 version = "0.11.1"
-source = "git+https://github.com/NLnetLabs/domain.git?branch=main#80ca8b57d8b7d551b4cf5fea020674e694eeecd3"
+source = "git+https://github.com/NLnetLabs/domain.git?branch=main#f1c7ed2ad5875fc7469ba4c56c5ae0cae0c67086"
 dependencies = [
  "proc-macro2",
  "quote",

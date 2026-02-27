@@ -103,10 +103,8 @@ fn get_public_key_details(
 
     for attr in attrs {
         match attr {
-            Attribute::Class(class) => {
-                if class != ObjectClass::PUBLIC_KEY {
-                    return Err(Error::unsupported_object_class(class));
-                }
+            Attribute::Class(class) if class != ObjectClass::PUBLIC_KEY => {
+                return Err(Error::unsupported_object_class(class));
             }
 
             Attribute::KeyType(key_type) => match key_type {

@@ -64,9 +64,8 @@ fn main() -> Result<(), ()> {
             println!(
                 "cargo::warning=A .jj directory exists, but {msg}. Unable to determine git revision..."
             );
-            match package {
-                "cascade-hsm-bridge" => println!("cargo::rerun-if-changed=.jj"),
-                _ => {}
+            if package == "cascade-hsm-bridge" {
+                println!("cargo::rerun-if-changed=.jj");
             }
         }).ok()
     } else {
@@ -79,9 +78,8 @@ fn main() -> Result<(), ()> {
                     _ => "unknown error occured while attempting to run git",
                 };
                 println!("cargo::warning={msg}. Unable to determine git revision...");
-                match package {
-                    "cascade-hsm-bridge" => println!("cargo::rerun-if-changed=.git"),
-                    _ => {}
+                if package == "cascade-hsm-bridge" {
+                    println!("cargo::rerun-if-changed=.git");
                 }
             })
             .ok()

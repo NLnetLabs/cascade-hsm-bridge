@@ -102,13 +102,7 @@ fn main() -> Result<(), ()> {
         // If a file does not exist, cargo will always rerun the build script.
         generate_project_rerun_with_prefix(
             &git_root,
-            vec![
-                "Cargo.lock",
-                "Cargo.toml",
-                "build.rs",
-                "etc/",
-                "src/",
-            ],
+            vec!["Cargo.lock", "Cargo.toml", "build.rs", "etc/", "src/"],
         );
 
         // Monitor files related to commit changes

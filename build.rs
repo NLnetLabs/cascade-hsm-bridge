@@ -106,7 +106,6 @@ fn main() -> Result<(), ()> {
                 "Cargo.lock",
                 "Cargo.toml",
                 "build.rs",
-                "crates/",
                 "etc/",
                 "src/",
             ],

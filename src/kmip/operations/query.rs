@@ -53,7 +53,7 @@ pub fn op(
                 };
                 vendor_identification =
                     Some(format!("cascade-hsm-bridge {self_ver} using {pkcs11_info}"));
-                server_information = Some(ServerInformation);
+                server_information = Some(ServerInformation {});
             }
             _ => { /* Ignore */ }
         }

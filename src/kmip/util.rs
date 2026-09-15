@@ -34,6 +34,13 @@ pub fn mk_response(batch_items: Vec<ResBatchItem>) -> Vec<u8> {
             protocol_version: ProtocolVersion { major: 1, minor: 2 },
             timestamp: epoch_time_now,
             batch_count: batch_items.len().try_into().unwrap(),
+            nonce: None,
+            attestation_type: None,
+            // TODO: we should take advantage of the ability to use values of
+            // our own choosing to correlate issues between the Cascade and
+            // Cascade-HSM-Bridge logs.
+            client_correlation_value: None,
+            server_correlation_value: None,
         },
         batch_items,
     };

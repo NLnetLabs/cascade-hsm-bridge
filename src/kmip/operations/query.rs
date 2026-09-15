@@ -34,9 +34,11 @@ pub fn op(
                 operations = Some(vec![
                     Operation::Activate,
                     Operation::CreateKeyPair,
+                    Operation::Destroy,
                     Operation::DiscoverVersions,
                     Operation::Get,
                     Operation::Query,
+                    Operation::Revoke,
                     Operation::Sign,
                 ])
             }

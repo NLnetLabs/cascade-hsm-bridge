@@ -1,8 +1,10 @@
 pub mod activate;
 pub mod create_key_pair;
+pub mod destroy;
 pub mod discover_versions;
 pub mod get;
 pub mod modify_attribute;
 pub mod query;
+pub mod revoke;
 pub mod sign;
 pub mod unknown;

@@ -25,13 +25,12 @@ use std::{
     time::Duration,
 };
 
+use command_fds::{CommandFdExt, FdMapping};
 use domain::crypto::{
     ring,
     sign::{GenerateParams, SignRaw},
 };
-use kmip::client::pool::SyncConnPool;
-
-use command_fds::{CommandFdExt, FdMapping};
+use domain_kmip::SyncConnPool;
 
 /// A running `cascade-hsm-bridge` daemon.
 pub struct Daemon {
@@ -196,6 +195,7 @@ fn main() {
         insecure: true,
         client_cert: None,
         server_cert: None,
+        server_name: None,
         ca_cert: None,
         connect_timeout: Some(Duration::from_secs(5)),
         read_timeout: Some(Duration::from_secs(5)),
@@ -231,9 +231,8 @@ fn test_keygen_signing(pool: &SyncConnPool, key_params: GenerateParams) {
     let algorithm = key_params.algorithm();
 
     // Generate a new key.
-    let key =
-        domain_kmip::sign::generate("A-pub".into(), "A-priv".into(), key_params, 0, pool.clone())
-            .unwrap();
+    let key = domain_kmip::generate("A-pub".into(), "A-priv".into(), key_params, 0, pool.clone())
+        .unwrap();
 
     // Retrive the public key, for local use.
     let dnskey = key.dnskey();

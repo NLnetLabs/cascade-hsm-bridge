@@ -35,16 +35,14 @@ bcder = "0.7.5"
 clap = { workspace = true }
 cryptoki = "^0.12.0"
 daemonbase = { workspace = true }
-domain = { version = "0.12.1", features = [
-  "unstable-crypto-sign",
-] }
+domain = { version = "0.12.2", features = ["unstable-crypto"] } # for utils::base16 and crypto::DigestBuilder
 hex = "0.4"
 kmip-ttlv = { git = "https://github.com/NLnetLabs/kmip-ttlv", branch = "next", version = "0.4.0", default-features = false, features = [
   "sync",
   "high-level",
 ] }
-kmip = { git = "https://github.com/NLnetLabs/kmip-protocol", branch = "next", package = "kmip-protocol", version = "0.5", default-features = false, features = [
-] }
+#kmip = { git = "https://github.com/NLnetLabs/kmip-protocol", branch = "next", package = "kmip-protocol", version = "0.5", default-features = false }
+kmip = { path = "../kmip-protocol2", package = "kmip-protocol", default-features = false }
 cascade-hsm-bridge-cfg = { path = "crates/cfg" }
 listenfd = "1.0.2"
 tracing = { workspace = true }
@@ -76,8 +74,9 @@ default-features = false
 #   It is maintained by us (NLnet Labs).
 [target.'cfg(unix)'.dev-dependencies.domain-kmip]
 version = "0.0.1"
-git = "https://github.com/NLnetLabs/domain-kmip.git"
-branch = "main"
+#git = "https://github.com/NLnetLabs/domain-kmip.git"
+#branch = "main"
+path = "../domain-kmip"
 
 # When spawning the daemon for testing, a temporary directory is needed to hold
 # configuration and state files (including those of the HSM).

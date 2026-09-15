@@ -222,7 +222,6 @@ fn process_request(
         //   - Check
         //   - Get Attributes
         //   - Add Attribute
-        //   - Modify Attribute
         //   - Delete Attribute
         //   - Revoke
         //   - Destroy (TODO: We will need to support this)

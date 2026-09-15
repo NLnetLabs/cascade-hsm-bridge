@@ -37,6 +37,7 @@ pub fn op(
                     Operation::DiscoverVersions,
                     Operation::Get,
                     Operation::Query,
+                    Operation::ModifyAttribute,
                     Operation::Sign,
                 ])
             }

@@ -1,6 +1,6 @@
 use kmip::types::{
     common::{AttributeValue, NameType},
-    request::{BatchItem, RequestPayload},
+    request::{self, BatchItem, RequestPayload},
     response::{
         BatchItem as ResBatchItem, CreateKeyPairResponsePayload, ResponsePayload, ResultReason,
         ResultStatus,
@@ -85,17 +85,17 @@ pub fn op(
                     }
                 }
             } else if attr.name() == "Cryptographic Length"
-                && let AttributeValue::Integer(key_size) = attr.value()
+                && let AttributeValue::CryptographicLength(key_size) = attr.value()
             {
                 // TODO: SAFETY!
-                modulus = Some(*key_size);
+                modulus = Some(key_size.0);
             }
         }
 
         if let Some(attrs) = pub_key_attrs {
             for attr in attrs.attributes() {
                 if attr.name() == "Name"
-                    && let AttributeValue::Name(name, name_type) = attr.value()
+                    && let AttributeValue::Name(request::Name(name, name_type)) = attr.value()
                 {
                     match name_type {
                         NameType::UninterpretedTextString => {
@@ -116,7 +116,7 @@ pub fn op(
         if let Some(attrs) = priv_key_attrs {
             for attr in attrs.attributes() {
                 if attr.name() == "Name"
-                    && let AttributeValue::Name(name, name_type) = attr.value()
+                    && let AttributeValue::Name(request::Name(name, name_type)) = attr.value()
                 {
                     match name_type {
                         NameType::UninterpretedTextString => {

@@ -35,7 +35,7 @@ bcder = "0.7.5"
 clap = { workspace = true }
 cryptoki = "^0.12.0"
 daemonbase = { workspace = true }
-domain = { version = "0.12.2", features = ["unstable-crypto"] } # for utils::base16 and crypto::DigestBuilder
+domain = { version = "0.12.3", features = ["unstable-crypto"] } # for utils::base16 and crypto::DigestBuilder
 hex = "0.4"
 kmip = { git = "https://github.com/NLnetLabs/kmip-protocol", package = "kmip-protocol", branch = "support-sni-name", version = "0.5.1-dev", default-features = false, features = ["tls-with-tokio-rustls", "ring"] }
 cascade-hsm-bridge-cfg = { path = "crates/cfg" }

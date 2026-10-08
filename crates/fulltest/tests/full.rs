@@ -204,6 +204,7 @@ fn main() {
         insecure: true,
         client_cert: None,
         server_cert: None,
+        server_name: None,
         ca_cert: None,
         connect_timeout: Some(Duration::from_secs(5)),
         read_timeout: Some(Duration::from_secs(5)),

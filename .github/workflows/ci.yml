@@ -196,6 +196,44 @@ jobs:
     - name: Check Clippy
       run: cargo +nightly clippy --all-targets --all-features
 
+  # Documentation
+  # -------------
+  #
+  # When writing documentation, it's easy to create broken documentation links;
+  # 'cargo check' / 'cargo clippy' (run manually or by LSP) will not check for
+  # them. This job builds Cascade-HSM-Bridges 's documentation and ensures no
+  # warnings are emitted.
+  #
+  # Even with '--no-deps', 'cargo doc' will process some dependencies,
+  # presumably due to proc macros. This processing could be reused from a
+  # previous 'cargo clippy' / 'cargo build'.
+  doc:
+    name: Documentation
+    runs-on: ubuntu-latest
+    env:
+      RUSTFLAGS: "-D warnings"
+      RUSTDOCFLAGS: "-D warnings"
+    steps:
+
+    # Load the repository.
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # Set up the Rust toolchain.
+    - name: Set up Rust nightly
+      id: setup-rust
+      uses: actions-rust-lang/setup-rust-toolchain@v1
+      with:
+        toolchain: nightly
+        components: clippy
+        cache: false
+
+    # TODO: Restore a cache of dependencies and 'target'.
+
+    # Do the actual documentation check.
+    - name: Check documentation
+      run: cargo +nightly doc --no-deps --document-private-items --workspace --locked
+
   # Test
   # ----
   #
@@ -224,14 +262,42 @@ jobs:
         toolchain: ${{ matrix.rust }}
         cache: false
 
+    # Build and run the test suite.
+    - name: Test
+      run: cargo test --all-targets --locked
+
+  # Integration test
+  # ----------------
+  #
+  # Ensure that Cascade-HSM-Bridge works end-to-end when integrated with a
+  # PKCS#11 modue and a KMIP client.
+  test:
+    name: Integration Test
+    needs: determine-msrv
+    strategy:
+      matrix:
+        rust: ["${{ needs.determine-msrv.outputs.msrv }}", stable, nightly]
+    runs-on: ubuntu-latest
+    env:
+      RUSTFLAGS: "-D warnings"
+    steps:
+
+    # Load the repository.
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # Set up the Rust toolchain.
+    - name: Set up Rust ${{ matrix.rust }}
+      id: setup-rust
+      uses: actions-rust-lang/setup-rust-toolchain@v1
+      with:
+        toolchain: ${{ matrix.rust }}
+        cache: false
+
     # Install SoftHSMv2 (used for some tests).
     - name: Install SoftHSMv2
       run: sudo apt-get install -y libsofthsm2
 
     # Build and run the test suite.
     - name: Test
-      run: cargo test --all-targets 
-
-    # Test docs.
-    - name: Test docs
-      run: cargo test --doc
+      run: cargo test --package fulltest --all-targets --locked

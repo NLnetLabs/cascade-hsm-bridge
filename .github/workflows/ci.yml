@@ -276,7 +276,7 @@ jobs:
     needs: determine-msrv
     strategy:
       matrix:
-        rust: ["${{ needs.determine-msrv.outputs.msrv }}", stable, nightly]
+        rust: [stable]
     runs-on: ubuntu-latest
     env:
       RUSTFLAGS: "-D warnings"

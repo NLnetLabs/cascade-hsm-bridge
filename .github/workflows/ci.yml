@@ -271,7 +271,7 @@ jobs:
   #
   # Ensure that Cascade-HSM-Bridge works end-to-end when integrated with a
   # PKCS#11 modue and a KMIP client.
-  test:
+  integration-test:
     name: Integration Test
     needs: determine-msrv
     strategy:

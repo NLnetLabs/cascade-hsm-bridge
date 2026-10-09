@@ -1,123 +1,50 @@
 use core::net::SocketAddr;
 
 use cascade_hsm_bridge_cfg::v1::Config;
+
 use cryptoki::object::ObjectHandle;
 use cryptoki::types::AuthPin;
 use daemonbase::error::{ExitError, Failed};
-use kmip::ttlv::FastScanner;
 use kmip::types::common::Operation;
 use kmip::types::request::RequestMessage;
 use kmip::types::response::{BatchItem, ResultReason};
-use kmip_ttlv::PrettyPrinter;
 use moka::sync::Cache;
-use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tokio::net::TcpStream;
 use tokio_rustls::server::TlsStream;
-use tracing::{Level, debug, enabled, error, info, warn};
+use tracing::{debug, info, warn};
 
 use crate::kmip::operations::{
-    activate, create_key_pair, discover_versions, get, modify_attribute, query, sign, unknown,
+    activate, create_key_pair, destroy, discover_versions, get, modify_attribute, query, revoke,
+    sign, unknown,
 };
-use crate::kmip::util::{mk_err_batch_item, mk_kmip_hex_dump, mk_response};
+use crate::kmip::util::mk_err_batch_item;
 use crate::pkcs11::util::Pkcs11Pools;
 
 pub type HandleCache = Cache<String, ObjectHandle>;
 
 pub async fn handle_client_requests(
-    mut stream: TlsStream<TcpStream>,
+    stream: TlsStream<TcpStream>,
     peer_addr: SocketAddr,
     mut config: Config,
     mut pkcs11_pools: Pkcs11Pools,
 ) -> Result<(), ExitError> {
-    let tag_map = kmip::tag_map::make_kmip_tag_map();
-    let enum_map = kmip::tag_map::make_kmip_enum_map();
-    let pp = PrettyPrinter::new()
-        .with_tag_prefix("4200".into())
-        .with_tag_map(tag_map)
-        .with_enum_map(enum_map);
-
-    // A buffer accumulating data read thus far.
-    //
-    // TODO: Use a more efficient buffer type, that can avoid shifting the data
-    // every time a request message is consumed.
-    let mut buffer = Vec::with_capacity(8192);
+    // Note: We don't call ServerBuilder::with_credentials() because we
+    // don't know the credentials used by the loaded PKCS#11 module, we just
+    // pass the received KMIP credentials on to the PKCS#11 module for
+    // verification.
+    let mut server = kmip::net::ServerBuilder::new(stream).build();
 
     loop {
-        // Try parsing a request message from buffered data.
-        let (request, request_bytes) = loop {
-            // Try reading from the buffer.
-            let available = buffer.len() - buffer.len() % 8;
-            let mut scanner = FastScanner::new(&buffer[..available])
-                .expect("the provided buffer has a multiple of 8 bytes");
-            if scanner.have_next() {
-                // A complete TTLV element is available. Try to parse it.
-                let request = RequestMessage::fast_scan(&mut scanner);
-                let consumed = available - scanner.remaining().as_flattened().len();
-                break (request, &buffer[..consumed]);
-            }
-
-            // 'buffer' did not contain enough data. Try to add to it.
-            if buffer.len() >= 8192 {
-                // The message being received is concerningly large.
-                warn!("Client {peer_addr} tried sending a >8KiB message");
-                return Ok(());
-            }
-            let start = buffer.len();
-            buffer.resize(8192, 0u8);
-
-            match stream.read(&mut buffer[start..8192]).await {
-                // The client has closed the connection.
-                Ok(0) => {
-                    if !buffer.is_empty() {
-                        warn!(
-                            "Client {peer_addr} closed connection with a partial request received"
-                        );
-                    }
-                    return Ok(());
-                }
-
-                // Some data was received successfully.
-                Ok(amt) => buffer.truncate(start + amt),
-
-                // An unexpected error has occurred.
-                Err(err) => {
-                    // TODO: Categorize the various std::io::ErrorKinds into
-                    // fatal and non-fatal variants and only abort on fatal
-                    // errors.
-                    warn!("Closing connection with client {peer_addr} due to error: {err}");
-                    return Ok(());
-                }
-            };
-        };
-
-        let mut res_batch_items = vec![];
-
-        match request {
-            Ok(request) if !is_supported_protocol_version(&request) => {
+        let batch = match server.receive_request().await {
+            Ok(req) if !is_supported_protocol_version(&req) => {
                 // https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613599
-                // 11 Error Handling
-                // 11.1 General
-                //   Error Definition:
-                //     "Protocol major version mismatch"
-                //   Action:
-                //     "Response message containing a header and a Batch Item
-                //      without Operation, but with the Result Status field set to
-                //      Operation Failed"
-                res_batch_items.push(mk_err_batch_item(
-                    ResultReason::GeneralFailure,
-                    "Only KMIP protocol version <= 1.2 are supported".to_string(),
-                ));
+                let msg = "Only KMIP protocol version <= 1.2 are supported".to_string();
+                vec![mk_err_batch_item(ResultReason::GeneralFailure, msg)]
             }
 
-            Ok(request) => {
-                if enabled!(Level::DEBUG) {
-                    let req_hex = mk_kmip_hex_dump(request_bytes);
-                    let req_human = pp.to_string(request_bytes);
-                    debug!("Request hex:\n{req_hex}\nRequest dump:\n{req_human}\n");
-                }
-
+            Ok(req) => {
                 let (res, c, p) = tokio::task::spawn_blocking(move || {
-                    let r = process_request(&config, &pkcs11_pools, peer_addr, request);
+                    let r = process_request(&config, &pkcs11_pools, peer_addr, req);
                     (r, config, pkcs11_pools)
                 })
                 .await
@@ -125,44 +52,29 @@ pub async fn handle_client_requests(
 
                 config = c;
                 pkcs11_pools = p;
-
-                res_batch_items.append(&mut res?);
+                res?
             }
 
-            Err(error) => {
-                let req_hex = mk_kmip_hex_dump(request_bytes);
-                let req_human = pp.to_string(request_bytes);
-
-                error!(
-                    "Error while parsing KMIP request from client {peer_addr}: {error}.\nRequest hex:\n{req_hex}\nRequest dump:\n{req_human}\n",
-                );
-
-                // https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613599
-                // 11 Error Handling
-                // 11.1 General
-                //   Error Definition:
-                //     "Message cannot be parsed"
-                //   Action:
-                //     "Response message containing a header and a Batch Item
-                //      without Operation, but with the Result Status field set to
-                //      Operation Failed"
-                res_batch_items.push(mk_err_batch_item(
-                    ResultReason::GeneralFailure,
-                    format!("Unable to parse KMIP TTLV request: {error}"),
-                ));
-            }
+            Err(err) => match err {
+                kmip::net::NetError::AuthenticationError => {
+                    vec![mk_err_batch_item(
+                        ResultReason::AuthenticationNotSuccessful,
+                        err.to_string(),
+                    )]
+                }
+                err => {
+                    warn!("Error receiving request: {err}");
+                    vec![mk_err_batch_item(
+                        ResultReason::GeneralFailure,
+                        err.to_string(),
+                    )]
+                }
+            },
         };
 
-        buffer.drain(..request_bytes.len());
-        let res_bytes = mk_response(res_batch_items);
-
-        if enabled!(Level::DEBUG) {
-            let res_hex = mk_kmip_hex_dump(&res_bytes);
-            let res_human = pp.to_string(&res_bytes);
-            debug!("Response hex:\n{res_hex}\nResponse dump:\n{res_human}\n");
+        if let Err(err) = server.send_response_batch(batch).await {
+            warn!("Failed to send response to client {peer_addr}: {err}");
         }
-
-        stream.write_all(&res_bytes).await.unwrap();
     }
 }
 
@@ -224,8 +136,6 @@ fn process_request(
         //   - Add Attribute
         //   - Modify Attribute
         //   - Delete Attribute
-        //   - Revoke
-        //   - Destroy (TODO: We will need to support this)
         // [1]: https://docs.oasis-open.org/kmip/profiles/v1.2/os/kmip-profiles-v1.2-os.html#_Toc409613184
         let res = match batch_item.operation() {
             Operation::Query => query::op(&pool, config, batch_item),
@@ -239,10 +149,12 @@ fn process_request(
                     match batch_item.operation() {
                         Operation::Activate => activate::op(pkcs11conn, batch_item),
                         Operation::CreateKeyPair => create_key_pair::op(pkcs11conn, batch_item),
+                        Operation::Destroy => destroy::op(pkcs11conn, batch_item),
                         Operation::DiscoverVersions => discover_versions::op(batch_item),
                         Operation::Get => get::op(pkcs11conn, batch_item),
                         Operation::ModifyAttribute => modify_attribute::op(pkcs11conn, batch_item),
                         Operation::Sign => sign::op(pkcs11conn, batch_item),
+                        Operation::Revoke => revoke::op(pkcs11conn, batch_item),
                         _ => unknown::op(batch_item),
                     }
                 }

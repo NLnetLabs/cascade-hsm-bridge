@@ -25,13 +25,13 @@ use std::{
     time::Duration,
 };
 
-use domain::crypto::{
+use command_fds::{CommandFdExt, FdMapping};
+use domain_kmip::dep::domain::crypto::{
     ring,
     sign::{GenerateParams, SignRaw},
 };
-use kmip::client::pool::SyncConnPool;
-
-use command_fds::{CommandFdExt, FdMapping};
+use domain_kmip::dep::kmip_protocol::net::{ConnectionSettings, sync_pool::ConnPool};
+use tracing_subscriber::{EnvFilter, fmt};
 
 /// A running `cascade-hsm-bridge` daemon.
 pub struct Daemon {
@@ -133,7 +133,13 @@ log.level = DEBUG
         // Make sure the daemon binary is ready.
         let project_dir = std::env::current_dir()?;
         if !Command::new("cargo")
-            .args(["build", "--bin", "cascade-hsm-bridge"])
+            .args([
+                "build",
+                "--package",
+                "cascade-hsm-bridge",
+                "--bin",
+                "cascade-hsm-bridge",
+            ])
             .spawn()?
             .wait()?
             .success()
@@ -142,7 +148,7 @@ log.level = DEBUG
         }
 
         // Launch the daemon.
-        let daemon_path = project_dir.join("target/debug/cascade-hsm-bridge");
+        let daemon_path = project_dir.join("../../target/debug/cascade-hsm-bridge");
         let proc = Command::new(&daemon_path)
             .arg("--config")
             .arg(&config_path)
@@ -181,6 +187,8 @@ impl Drop for Daemon {
 }
 
 fn main() {
+    fmt().with_env_filter(EnvFilter::from_default_env()).init();
+
     // Launch the daemon.
     let daemon = Daemon::launch().unwrap_or_else(|err| {
         eprintln!("Could not launch the daemon: {err}");
@@ -188,7 +196,7 @@ fn main() {
     });
 
     // Establish a connection pool for talking to the daemon.
-    let conn_settings = Arc::new(domain_kmip::ConnectionSettings {
+    let conn_settings = Arc::new(ConnectionSettings {
         host: daemon.address.ip().to_string(),
         port: daemon.address.port(),
         username: Some(daemon.slot.0.clone()),
@@ -196,13 +204,14 @@ fn main() {
         insecure: true,
         client_cert: None,
         server_cert: None,
+        server_name: None,
         ca_cert: None,
         connect_timeout: Some(Duration::from_secs(5)),
         read_timeout: Some(Duration::from_secs(5)),
         write_timeout: Some(Duration::from_secs(5)),
         max_response_bytes: Some(4096),
     });
-    let conn_pool = SyncConnPool::new(
+    let conn_pool = ConnPool::new(
         daemon.address.to_string(),
         conn_settings,
         32,
@@ -227,13 +236,12 @@ fn main() {
 /// A new key will be generated (using the given parameters) and used for
 /// signing. The public key will be retrieved and used to locally verify the
 /// signature.
-fn test_keygen_signing(pool: &SyncConnPool, key_params: GenerateParams) {
+fn test_keygen_signing(pool: &ConnPool, key_params: GenerateParams) {
     let algorithm = key_params.algorithm();
 
     // Generate a new key.
-    let key =
-        domain_kmip::sign::generate("A-pub".into(), "A-priv".into(), key_params, 0, pool.clone())
-            .unwrap();
+    let key = domain_kmip::generate("A-pub".into(), "A-priv".into(), key_params, 0, pool.clone())
+        .unwrap();
 
     // Retrive the public key, for local use.
     let dnskey = key.dnskey();

@@ -220,13 +220,14 @@ fn main() {
     )
     .unwrap();
 
-    print!("test_keygen_signing(RsaSha256 {{ bits: 1024 }})...");
     test_keygen_signing(&conn_pool, GenerateParams::RsaSha256 { bits: 1024 });
-    println!("ok");
-
-    print!("test_keygen_signing(EcdsaP256Sha256)...");
+    test_keygen_signing(&conn_pool, GenerateParams::RsaSha256 { bits: 2048 }); // Cascade default bits
+    test_keygen_signing(&conn_pool, GenerateParams::RsaSha512 { bits: 1024 });
+    test_keygen_signing(&conn_pool, GenerateParams::RsaSha512 { bits: 2048 }); // Cascade default bits
     test_keygen_signing(&conn_pool, GenerateParams::EcdsaP256Sha256);
-    println!("ok");
+    test_keygen_signing(&conn_pool, GenerateParams::EcdsaP384Sha384);
+    test_keygen_signing(&conn_pool, GenerateParams::Ed25519);
+    test_keygen_signing(&conn_pool, GenerateParams::Ed448);
 
     // TODO: 'test_keygen_signing()' with more algorithms.
 }
@@ -237,6 +238,8 @@ fn main() {
 /// signing. The public key will be retrieved and used to locally verify the
 /// signature.
 fn test_keygen_signing(pool: &ConnPool, key_params: GenerateParams) {
+    print!("test_keygen_signing({:?})...", key_params);
+
     let algorithm = key_params.algorithm();
 
     // Generate a new key.
@@ -258,4 +261,6 @@ fn test_keygen_signing(pool: &ConnPool, key_params: GenerateParams) {
     // TODO: Delete the key? Does the public part need deletion?
     //domain_kmip::sign::destroy("A-pub", pool.clone()).unwrap();
     //domain_kmip::sign::destroy("A-priv", pool.clone()).unwrap();
+
+    println!("ok");
 }

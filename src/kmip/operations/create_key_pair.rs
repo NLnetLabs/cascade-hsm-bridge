@@ -1,5 +1,5 @@
 use kmip::types::{
-    common::{AttributeValue, NameType},
+    common::{AttributeValue, CryptographicAlgorithm, NameType},
     request::{self, BatchItem, RequestPayload},
     response::{
         BatchItem as ResBatchItem, CreateKeyPairResponsePayload, ResponsePayload, ResultReason,
@@ -29,14 +29,14 @@ pub fn op(
     let mut pub_attrs = vec![];
     let mut priv_attrs = vec![]; // TODO: Optionally include Attribute::Extractable(true)?
     let mut mechanism: Option<Mechanism> = None;
-    let mut modulus = None;
+    let mut crypto_len = None;
 
     if let Some(common_attrs) = common_attrs {
         for attr in common_attrs.attributes() {
             if attr.name() == "Cryptographic Algorithm" {
                 if let AttributeValue::CryptographicAlgorithm(alg) = attr.value() {
                     match alg {
-                        kmip::types::common::CryptographicAlgorithm::ECDSA => {
+                        CryptographicAlgorithm::ECDSA => {
                             // Defined at
                             // https://docs.oasis-open.org/kmip/ug/v1.2/cn01/kmip-ug-v1.2-cn01.html#_Toc407027131.
                             // Also matches the OID value used by OpenDNSSEC
@@ -60,20 +60,32 @@ pub fn op(
                             //         https://docs.oasis-open.org/kmip/ug/v1.2/cn01/kmip-ug-v1.2-cn01.html#_Toc407027131
                             //         defines as algorithm P-256 aka
                             //         SECP256R1.
-                            let oid_p256: Vec<u8> =
-                                vec![0x06, 0x08, 0x2A, 0x86, 0x48, 0xCE, 0x3D, 0x03, 0x01, 0x07];
-                            pub_attrs.push(Attribute::EcParams(oid_p256));
                             pub_attrs.push(Attribute::KeyType(KeyType::EC));
                             priv_attrs.push(Attribute::KeyType(KeyType::EC));
                             mechanism = Some(Mechanism::EccKeyPairGen);
                         }
 
-                        kmip::types::common::CryptographicAlgorithm::RSA => {
+                        CryptographicAlgorithm::RSA => {
                             // TODO: Document where [1, 0, 1] comes from.
                             pub_attrs.push(Attribute::PublicExponent(vec![1, 0, 1]));
                             pub_attrs.push(Attribute::KeyType(KeyType::RSA));
                             priv_attrs.push(Attribute::KeyType(KeyType::RSA));
                             mechanism = Some(Mechanism::RsaPkcsKeyPairGen);
+                        }
+
+                        CryptographicAlgorithm::Ed448 | CryptographicAlgorithm::Ed25519 => {
+                            // Based on OpenDNSSEC code.
+                            pub_attrs.push(Attribute::KeyType(KeyType::EC_EDWARDS));
+                            priv_attrs.push(Attribute::KeyType(KeyType::EC_EDWARDS));
+                            mechanism = Some(Mechanism::EccEdwardsKeyPairGen);
+                            let curve_oid = match alg {
+                                CryptographicAlgorithm::Ed448 => vec![0x06, 0x03, 0x2B, 0x65, 0x71],
+                                CryptographicAlgorithm::Ed25519 => {
+                                    vec![0x06, 0x03, 0x2B, 0x65, 0x70]
+                                }
+                                _ => unreachable!(),
+                            };
+                            pub_attrs.push(Attribute::EcParams(curve_oid));
                         }
 
                         _ => {
@@ -88,7 +100,7 @@ pub fn op(
                 && let AttributeValue::CryptographicLength(key_size) = attr.value()
             {
                 // TODO: SAFETY!
-                modulus = Some(key_size.0);
+                crypto_len = Some(key_size.0);
             }
         }
 
@@ -142,13 +154,29 @@ pub fn op(
         ));
     };
 
-    if matches!(mechanism, Mechanism::RsaPkcsKeyPairGen)
-        && let Some(modulus) = modulus
-    {
-        pub_attrs.push(Attribute::ModulusBits(
-            (modulus as usize).try_into().unwrap(),
-        ));
+    if let Some(crypto_len) = crypto_len {
+        match mechanism {
+            Mechanism::RsaPkcsKeyPairGen => {
+                pub_attrs.push(Attribute::ModulusBits(
+                    (crypto_len as usize).try_into().unwrap(),
+                ));
+            }
+            Mechanism::EccKeyPairGen => {
+                let curve_oid = match crypto_len {
+                    256 => Some(vec![
+                        0x06, 0x08, 0x2A, 0x86, 0x48, 0xCE, 0x3D, 0x03, 0x01, 0x07,
+                    ]),
+                    384 => Some(vec![0x06, 0x05, 0x2B, 0x81, 0x04, 0x00, 0x22]),
+                    _ => None,
+                };
+                if let Some(curve_oid) = curve_oid {
+                    pub_attrs.push(Attribute::EcParams(curve_oid));
+                }
+            }
+            _ => { /* Nothing to do */ }
+        }
     }
+
     // TODO: Detect sign mask in the above and push it as an attr.
 
     // TODO: Verify that no other key already has this name. Return Illegal

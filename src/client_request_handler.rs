@@ -1,4 +1,5 @@
 use core::net::SocketAddr;
+use std::io::ErrorKind;
 
 use cascade_hsm_bridge_cfg::v1::Config;
 
@@ -61,6 +62,11 @@ pub async fn handle_client_requests(
                         ResultReason::AuthenticationNotSuccessful,
                         err.to_string(),
                     )]
+                }
+                kmip::net::NetError::IoError(err) if err.kind() == ErrorKind::UnexpectedEof => {
+                    // Client has disconnected.
+                    debug!("Client disconnected: {err}");
+                    return Ok(());
                 }
                 err => {
                     warn!("Error receiving request: {err}");
@@ -127,9 +133,8 @@ fn process_request(
 
         let start = std::time::Instant::now();
 
-        // Note: we are NOT compliant with the KMIP 1.2 Baseline
-        // Server profile [1] because we lack support for the
-        // following KMIP operations:
+        // Note: we are NOT compliant with the KMIP 1.2 Baseline Server profile
+        // [1] because we lack support for the following KMIP operations:
         //   - Locate
         //   - Check
         //   - Get Attributes

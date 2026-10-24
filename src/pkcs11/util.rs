@@ -9,7 +9,7 @@ use cryptoki::object::{Attribute, ObjectClass, ObjectHandle};
 use cryptoki::slot::Slot;
 use kmip::types::common::UniqueIdentifier;
 use rand::RngCore;
-use tracing::info;
+use tracing::debug;
 
 use crate::pkcs11::error::Error;
 use crate::pkcs11::pool::{Pkcs11Connection, Pkcs11Pool};
@@ -153,44 +153,47 @@ pub fn pkcs11_cka_id_to_kmip_unique_identifier(cka_id: &[u8], private: bool) -> 
     })
 }
 
-pub fn kmip_unique_identifier_to_pkcs11_cka_id(id: &UniqueIdentifier) -> Vec<u8> {
-    let id_len = match id.ends_with("_priv") {
-        true => id.len() - 5,  // subtract _priv
-        false => id.len() - 4, // subtract _pub
+pub fn kmip_unique_identifier_to_pkcs11_cka_id(id: &UniqueIdentifier) -> Result<Vec<u8>, String> {
+    let id_len = match id.rsplit_once("_") {
+        Some((base_id, "priv")) => base_id.len(),
+        Some((base_id, "pub")) => base_id.len(),
+        _ => {
+            return Err("Invalid Cascade-HSM-Bridge key ID: must end in _pub or _priv".to_string());
+        }
     };
-    // The hex encoding in the UniqueIdentifier takes twice as many bytes as
-    // the decoded form, so divide by two, e.g. "FF" is two bytes but
+
+    // The hex encoding in the UniqueIdentifier takes twice as many bytes
+    // as the decoded form, so divide by two, e.g. "FF" is two bytes but
     // represents the single byte value 0xFF aka 0b1111_1111 aka 255.
     let mut cka_id = Vec::with_capacity(id_len / 2);
-    cka_id.append(&mut hex::decode(&id.0[..id_len]).unwrap());
-    cka_id
+    cka_id.append(&mut hex::decode(&id.0[..id_len]).map_err(|err| err.to_string())?);
+    Ok(cka_id)
 }
 
 pub fn get_cached_handle_for_key(
     pkcs11conn: &Pkcs11Connection,
     id: &UniqueIdentifier,
-) -> Option<ObjectHandle> {
-    pkcs11conn
+) -> Result<Option<ObjectHandle>, String> {
+    let cka_id = kmip_unique_identifier_to_pkcs11_cka_id(id)?;
+    let res = pkcs11conn
         .handle_cache()
         .optionally_get_with_by_ref(&id.0, || {
-            let cka_id = kmip_unique_identifier_to_pkcs11_cka_id(id);
             let object_class = match id.ends_with("_priv") {
                 true => ObjectClass::PRIVATE_KEY,
                 false => ObjectClass::PUBLIC_KEY,
             };
-            info!("Finding objects for key... {}", hex::encode(&cka_id));
+            debug!("Finding object for key... {}", hex::encode(&cka_id));
             if let Ok(res) = pkcs11conn
                 .session()
                 .find_objects(&[Attribute::Id(cka_id), Attribute::Class(object_class)])
                 && res.len() == 1
             {
-                info!("Found");
                 return Some(res[0]);
             }
 
-            info!("Missing or more than one match");
             None
-        })
+        });
+    Ok(res)
 }
 
 pub fn get_pkcs11_info(pkcs11pool: &Pkcs11Pool, cfg: &Config) -> Result<String, Error> {

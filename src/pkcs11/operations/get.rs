@@ -8,7 +8,7 @@ use kmip::types::common::{
     CryptographicAlgorithm, KeyFormatType, KeyMaterial, TransparentRSAPublicKey, UniqueIdentifier,
 };
 use kmip::types::response::{KeyBlock, KeyValue};
-use tracing::{debug, info, trace};
+use tracing::{debug, info};
 
 use crate::pkcs11::error::Error;
 use crate::pkcs11::pool::Pkcs11Connection;
@@ -24,11 +24,17 @@ const EC_PUBLIC_KEY_OID: ConstOid = Oid(&[42, 134, 72, 206, 61, 2, 1]);
 /// Identifies the P-256 curve for elliptic curve cryptography.
 pub const SECP256R1_OID: ConstOid = Oid(&[42, 134, 72, 206, 61, 3, 1, 7]);
 
+/// [RFC 5480](https://tools.ietf.org/html/rfc5480) `secp384r1`.
+///
+/// Identifies the P-384 curve for elliptic curve cryptography.
+pub const SECP384R1_OID: ConstOid = Oid(&[43, 129, 4, 0, 34]);
+
 pub fn get_public_key(
     pkcs11conn: Pkcs11Connection,
     id: &UniqueIdentifier,
 ) -> Result<Option<KeyBlock>, Error> {
-    let key_handle = get_cached_handle_for_key(&pkcs11conn, id);
+    let key_handle =
+        get_cached_handle_for_key(&pkcs11conn, id).map_err(Error::MalformedDataReceived)?;
 
     if let Some(key_handle) = key_handle {
         info!(
@@ -51,6 +57,7 @@ fn get_public_key_details(
     let mut modulus_bits: Option<usize> = None;
     let mut public_exponent: Option<Vec<u8>> = None;
     let mut ec_point: Option<Vec<u8>> = None;
+    let mut is_edwards: bool = false;
 
     let mut request_attrs = vec![
         AttributeType::Class,
@@ -58,8 +65,8 @@ fn get_public_key_details(
         AttributeType::ModulusBits,    // For RSA keys
         AttributeType::PublicExponent, // For RSA keys
         AttributeType::KeyType,
-        AttributeType::EcPoint, // For ECDSA keys, DER encoded
         AttributeType::KeyGenMechanism,
+        AttributeType::EcPoint, // For ECDSA keys, DER encoded
     ];
 
     let attrs = loop {
@@ -79,8 +86,10 @@ fn get_public_key_details(
         let attrs = res?;
 
         if attrs.is_empty() {
+            debug!("C_GetAttributeValue failed: key handle {key_handle} not found");
             return Err(Error::not_found("Key", "ObjectHandle", key_handle));
         } else {
+            debug!("C_GetAttributeValue: key handle={key_handle}, attributes: {attrs:?}");
             break attrs;
         }
     };
@@ -99,8 +108,9 @@ fn get_public_key_details(
     // https://datatracker.ietf.org/doc/html/rfc3110#section-2. The
     // application implementing RFC 3110, i.e. Cascade, should do that, not
     // us.
-    trace!("Returned PKCS#11 attributes: {attrs:?}");
+    debug!("Returned PKCS#11 attributes: {attrs:?}");
 
+    // Parse the returned attribute data.
     for attr in attrs {
         match attr {
             Attribute::Class(class) if class != ObjectClass::PUBLIC_KEY => {
@@ -110,6 +120,7 @@ fn get_public_key_details(
             Attribute::KeyType(key_type) => match key_type {
                 KeyType::RSA => cryptographic_algorithm = Some(CryptographicAlgorithm::RSA),
                 KeyType::EC => cryptographic_algorithm = Some(CryptographicAlgorithm::ECDSA),
+                KeyType::EC_EDWARDS => is_edwards = true,
                 _ => {
                     return Err(Error::unsupported_key_type(key_type));
                 }
@@ -125,6 +136,8 @@ fn get_public_key_details(
                     // YubiHSM returns ECDSA.
                     // SoftHSMv2 returns CKM_EC_KEY_PAIR_GEN.
                     cryptographic_algorithm = Some(CryptographicAlgorithm::ECDSA);
+                } else if mechanism_type == MechanismType::ECC_EDWARDS_KEY_PAIR_GEN {
+                    is_edwards = true;
                 } else {
                     return Err(Error::unsupported_mechanism_type(mechanism_type));
                 }
@@ -142,7 +155,7 @@ fn get_public_key_details(
                 public_exponent = Some(bytes);
             }
 
-            Attribute::EcPoint(der_octet_string) => {
+            Attribute::EcPoint(octets) => {
                 // The KMIP client expects to receive an ASN.1 DER encoded
                 // SubjectPublicKeyInfo response like so, but we receive an
                 // ASN.1 DER OCTET STRING.
@@ -166,20 +179,14 @@ fn get_public_key_details(
                 //       -- Details for SpecifiedECDomain can be found in [X9.62].
                 //       -- Any future additions to this CHOICE should be coordinated
                 //       -- with ANSI X9.
-                trace!(
+                debug!(
                     "Received {} bytes of EcPoint: {}",
-                    der_octet_string.len(),
-                    base16::encode_display(&der_octet_string)
+                    octets.len(),
+                    base16::encode_display(&octets)
                 );
 
-                let algorithm = bcder::encode::Choice2::<Nothing, _>::Two(bcder::encode::sequence(
-                    (EC_PUBLIC_KEY_OID.encode(), SECP256R1_OID.encode()),
-                ));
-
                 let inner_bytes = bcder::Mode::Der
-                    .decode(der_octet_string.into_source(), |cons| {
-                        OctetString::take_from(cons)
-                    })
+                    .decode(octets.into_source(), |cons| OctetString::take_from(cons))
                     .map_err(|err| {
                         Error::MalformedDataReceived(format!(
                             "Failed to parse CKA_EC_POINT value as a DER OCTET STRING: {err}"
@@ -187,18 +194,72 @@ fn get_public_key_details(
                     })?
                     .into_bytes();
 
-                trace!(
-                    "Converted EcPoint to {} bytes: {}",
+                debug!(
+                    "Converted EcPoint to {} bytes (is_edwards={is_edwards}): {}",
                     inner_bytes.len(),
                     base16::encode_display(&inner_bytes)
                 );
-                let subject_public_key = BitString::new(0, inner_bytes);
 
-                let bytes = bcder::encode::sequence((algorithm, subject_public_key.encode()))
-                    .to_captured(Mode::Der)
-                    .to_vec();
+                if is_edwards {
+                    match inner_bytes.len() {
+                        32 => {
+                            cryptographic_algorithm = Some(CryptographicAlgorithm::Ed25519);
+                        }
+                        57 => {
+                            cryptographic_algorithm = Some(CryptographicAlgorithm::Ed448);
+                        }
+                        _ => { /* Unrecognised, ignore */ }
+                    }
+                }
 
-                ec_point = Some(bytes);
+                match cryptographic_algorithm {
+                    Some(CryptographicAlgorithm::ECDSA) => {
+                        // ECDSAP256 has two coordinates, x and y, each 256-bit,
+                        // i.e. 256/8=32 byte, with a leading compression type
+                        // byte, i.e. 1+32+32=65 bytes.
+                        //
+                        // ECDSAP384 has two coordinates, x and y, each 384-bit,
+                        // i.e. 384/8=48 byte, with a leading compression type
+                        // byte, i.e. 1+48+48=97 bytes.
+                        //
+                        // We use these byte lengths to determine whether we
+                        // have a ECDSAP256 or ECDSAP384 curve value.
+                        let curve_oid = match inner_bytes.len() {
+                            65 => SECP256R1_OID,
+                            97 => SECP384R1_OID,
+                            n => {
+                                return Err(Error::MalformedDataReceived(format!(
+                                    "Unsupportd ECDSA curve byte length of CKA_EC_POINT decoded DER octet value: {n}"
+                                )));
+                            }
+                        };
+                        let subject_public_key = BitString::new(0, inner_bytes);
+
+                        debug!("Using OID {curve_oid}");
+                        let algorithm =
+                            bcder::encode::Choice2::<Nothing, _>::Two(bcder::encode::sequence((
+                                EC_PUBLIC_KEY_OID.encode(),
+                                curve_oid.encode(),
+                            )));
+
+                        let bytes =
+                            bcder::encode::sequence((algorithm, subject_public_key.encode()))
+                                .to_captured(Mode::Der)
+                                .to_vec();
+
+                        ec_point = Some(bytes);
+                    }
+
+                    Some(CryptographicAlgorithm::Ed448) | Some(CryptographicAlgorithm::Ed25519) => {
+                        ec_point = Some(inner_bytes.to_vec());
+                    }
+
+                    _ => {
+                        // Some other sort of elliptic curve based algorithm,
+                        // ignore as we don't know how to interpret the byte
+                        // data.
+                    }
+                }
             }
 
             _ => {
@@ -207,6 +268,7 @@ fn get_public_key_details(
         }
     }
 
+    // Use the parsed attribute data.
     let (key_format_type, key_material) = match cryptographic_algorithm {
         Some(CryptographicAlgorithm::RSA) => {
             let Some(modulus_bits) = modulus_bits else {
@@ -242,7 +304,20 @@ fn get_public_key_details(
                 KeyMaterial::TransparentRSAPublicKey(key),
             )
         }
+
         Some(CryptographicAlgorithm::ECDSA) => {
+            let Some(ec_point) = ec_point else {
+                return Err(Error::not_found(
+                    "Attribute::EcPoint",
+                    "ObjectHandle",
+                    key_handle,
+                ));
+            };
+
+            (KeyFormatType::X509, KeyMaterial::Bytes(ec_point))
+        }
+
+        Some(CryptographicAlgorithm::Ed448) | Some(CryptographicAlgorithm::Ed25519) => {
             let Some(ec_point) = ec_point else {
                 return Err(Error::not_found(
                     "Attribute::EcPoint",
@@ -253,7 +328,10 @@ fn get_public_key_details(
 
             (KeyFormatType::Raw, KeyMaterial::Bytes(ec_point))
         }
+
         _ => {
+            // We didn't find the attributes that we need to be able to determine the algorithm type
+            // and extract
             return Err(Error::not_found(
                 "Attribute::CryptographicAlgorithm",
                 "ObjectHandle",

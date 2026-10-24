@@ -27,7 +27,7 @@ use std::{
 
 use command_fds::{CommandFdExt, FdMapping};
 use domain_kmip::dep::domain::crypto::{
-    ring,
+    openssl,
     sign::{GenerateParams, SignRaw},
 };
 use domain_kmip::dep::kmip_protocol::net::{ConnectionSettings, sync_pool::ConnPool};
@@ -84,7 +84,7 @@ impl Daemon {
                 r#"
 version = "v1"
 pkcs11.lib-path = {lib_path:?}
-daemon.log-level = "debug"
+daemon.log-level = "trace"
 daemon.log-target = {{ type = "file", path = {log_path:?} }}
 "#
             ),
@@ -129,6 +129,7 @@ log.level = DEBUG
         {
             return Err(io::Error::other("could not initialize SoftHSMv2"));
         }
+        println!("SOFTHSM2_CONF={}", hsm_config_path.display());
 
         // Make sure the daemon binary is ready.
         let project_dir = std::env::current_dir()?;
@@ -226,8 +227,8 @@ fn main() {
     test_keygen_signing(&conn_pool, GenerateParams::RsaSha512 { bits: 2048 }); // Cascade default bits
     test_keygen_signing(&conn_pool, GenerateParams::EcdsaP256Sha256);
     test_keygen_signing(&conn_pool, GenerateParams::EcdsaP384Sha384);
-    test_keygen_signing(&conn_pool, GenerateParams::Ed25519);
     test_keygen_signing(&conn_pool, GenerateParams::Ed448);
+    test_keygen_signing(&conn_pool, GenerateParams::Ed25519);
 
     // TODO: 'test_keygen_signing()' with more algorithms.
 }
@@ -242,13 +243,15 @@ fn test_keygen_signing(pool: &ConnPool, key_params: GenerateParams) {
 
     let algorithm = key_params.algorithm();
 
-    // Generate a new key.
-    let key = domain_kmip::generate("A-pub".into(), "A-priv".into(), key_params, 0, pool.clone())
-        .unwrap();
+    // Generate a new key. Note that the labels are NOT the IDs of the
+    // generated key parts, those are returned by generate().
+    let pub_label = "some-public-key-label";
+    let pri_label = "smoe-private-key-label";
+    let key = domain_kmip::generate(pub_label, pri_label, key_params, 0, pool.clone()).unwrap();
 
     // Retrive the public key, for local use.
     let dnskey = key.dnskey();
-    let pubkey = ring::PublicKey::from_dnskey(&dnskey).unwrap();
+    let pubkey = openssl::PublicKey::from_dnskey(&dnskey).unwrap();
 
     // Sign data with this key.
     let data = b"Hello World!";
@@ -258,9 +261,8 @@ fn test_keygen_signing(pool: &ConnPool, key_params: GenerateParams) {
     assert_eq!(algorithm, sig.algorithm());
     pubkey.verify(data, sig.as_ref()).unwrap();
 
-    // TODO: Delete the key? Does the public part need deletion?
-    //domain_kmip::sign::destroy("A-pub", pool.clone()).unwrap();
-    //domain_kmip::sign::destroy("A-priv", pool.clone()).unwrap();
+    domain_kmip::destroy(key.public_key_id(), pool.clone()).unwrap();
+    domain_kmip::destroy(key.private_key_id(), pool.clone()).unwrap();
 
     println!("ok");
 }

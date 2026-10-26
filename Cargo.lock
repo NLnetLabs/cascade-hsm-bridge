@@ -202,9 +202,9 @@ dependencies = [
  "clap",
  "cryptoki",
  "daemonbase",
- "domain 0.12.3 (registry+https://github.com/rust-lang/crates.io-index)",
+ "domain",
  "hex",
- "kmip-protocol 0.5.1-dev (git+https://github.com/NLnetLabs/kmip-protocol?branch=support-sni-name)",
+ "kmip-protocol",
  "listenfd",
  "moka",
  "r2d2",
@@ -483,28 +483,11 @@ dependencies = [
 [[package]]
 name = "domain"
 version = "0.12.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5b68712c02bff2348323c1441ab2e8528e32af4f8f9edf29356356290328c8e6"
+source = "git+https://github.com/NLnetLabs/domain?branch=add-sha-512-digest-support#38b37b6d579a1cc86199588530e2375b5c15d403"
 dependencies = [
  "bumpalo",
  "bytes",
- "domain-macros 0.12.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "hashbrown",
- "jiff",
- "octseq",
- "rand 0.10.3",
- "ring",
- "serde",
-]
-
-[[package]]
-name = "domain"
-version = "0.12.3"
-source = "git+https://github.com/NLnetLabs/domain.git?branch=add-sha-512-digest-support#38b37b6d579a1cc86199588530e2375b5c15d403"
-dependencies = [
- "bumpalo",
- "bytes",
- "domain-macros 0.12.3 (git+https://github.com/NLnetLabs/domain.git?branch=add-sha-512-digest-support)",
+ "domain-macros",
  "hashbrown",
  "jiff",
  "octseq",
@@ -520,8 +503,8 @@ version = "0.0.1"
 source = "git+https://github.com/NLnetLabs/domain-kmip.git?branch=more-algorithm-support-and-fixes-and-cleanup#045538049db82dd582148528daaab796b6ff8952"
 dependencies = [
  "bcder",
- "domain 0.12.3 (git+https://github.com/NLnetLabs/domain.git?branch=add-sha-512-digest-support)",
- "kmip-protocol 0.5.1-dev (git+https://github.com/NLnetLabs/kmip-protocol.git?branch=bump-dependencies)",
+ "domain",
+ "kmip-protocol",
  "maybe-async",
  "tracing",
  "url",
@@ -531,18 +514,7 @@ dependencies = [
 [[package]]
 name = "domain-macros"
 version = "0.12.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4fba8fbc4580c745dfeab102232dcb729f030ac3e2c9ff5374a9dfd6dc9ddf8e"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 2.0.119",
-]
-
-[[package]]
-name = "domain-macros"
-version = "0.12.3"
-source = "git+https://github.com/NLnetLabs/domain.git?branch=add-sha-512-digest-support#38b37b6d579a1cc86199588530e2375b5c15d403"
+source = "git+https://github.com/NLnetLabs/domain?branch=add-sha-512-digest-support#38b37b6d579a1cc86199588530e2375b5c15d403"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -940,28 +912,7 @@ dependencies = [
 [[package]]
 name = "kmip-protocol"
 version = "0.5.1-dev"
-source = "git+https://github.com/NLnetLabs/kmip-protocol.git?branch=bump-dependencies#1625b323f0b5fd432a26116307b17d6822ead3be"
-dependencies = [
- "async-trait",
- "bitflags 2.13.2",
- "cfg-if",
- "enum-ordinalize",
- "hex",
- "log",
- "maybe-async",
- "r2d2",
- "rustls",
- "rustls-pemfile",
- "tokio-rustls",
- "tracing",
- "webpki",
- "webpki-roots",
-]
-
-[[package]]
-name = "kmip-protocol"
-version = "0.5.1-dev"
-source = "git+https://github.com/NLnetLabs/kmip-protocol?branch=support-sni-name#c50d6ef4a07a90ff07e855d926436e426f35ac97"
+source = "git+https://github.com/NLnetLabs/kmip-protocol?branch=bump-dependencies#1625b323f0b5fd432a26116307b17d6822ead3be"
 dependencies = [
  "async-trait",
  "bb8",
@@ -971,11 +922,13 @@ dependencies = [
  "hex",
  "log",
  "maybe-async",
+ "r2d2",
  "rustls",
  "rustls-pemfile",
  "tokio",
  "tokio-rustls",
  "tracing",
+ "webpki",
  "webpki-roots",
 ]
 

@@ -298,6 +298,7 @@ jobs:
     - name: Install SoftHSMv2
       run: sudo apt-get install -y libsofthsm2
 
-    # Build and run the test suite.
+    # Build and run the test suite. Enable trace logging to see the KMIP
+    # messages exchanged.
     - name: Test
-      run: cargo test --package fulltest --all-targets --locked
+      run: RUST_LOG=trace cargo test --package fulltest --all-targets --locked

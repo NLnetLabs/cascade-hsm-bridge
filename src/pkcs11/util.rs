@@ -219,13 +219,13 @@ mod tests {
         let cka_id = generate_cka_id();
         let kmip_id = pkcs11_cka_id_to_kmip_unique_identifier(&cka_id, false);
         assert!(kmip_id.ends_with("_pub"));
-        let round_trip_cka_id = kmip_unique_identifier_to_pkcs11_cka_id(&kmip_id);
+        let round_trip_cka_id = kmip_unique_identifier_to_pkcs11_cka_id(&kmip_id).unwrap();
         assert_eq!(cka_id.as_slice(), round_trip_cka_id.as_slice());
 
         let cka_id = generate_cka_id();
         let kmip_id = pkcs11_cka_id_to_kmip_unique_identifier(&cka_id, true);
         assert!(kmip_id.ends_with("_priv"));
-        let round_trip_cka_id = kmip_unique_identifier_to_pkcs11_cka_id(&kmip_id);
+        let round_trip_cka_id = kmip_unique_identifier_to_pkcs11_cka_id(&kmip_id).unwrap();
         assert_eq!(cka_id.as_slice(), round_trip_cka_id.as_slice());
     }
 
@@ -234,13 +234,13 @@ mod tests {
         let cka_id = generate_cka_id();
         let kmip_id = pkcs11_cka_id_to_kmip_unique_identifier(&cka_id, false);
         assert!(kmip_id.ends_with("_pub"));
-        let round_trip_cka_id = kmip_unique_identifier_to_pkcs11_cka_id(&kmip_id);
+        let round_trip_cka_id = kmip_unique_identifier_to_pkcs11_cka_id(&kmip_id).unwrap();
         assert_eq!(cka_id.as_slice(), round_trip_cka_id.as_slice());
 
         let cka_id = generate_cka_id();
         let kmip_id = pkcs11_cka_id_to_kmip_unique_identifier(&cka_id, true);
         assert!(kmip_id.ends_with("_priv"));
-        let round_trip_cka_id = kmip_unique_identifier_to_pkcs11_cka_id(&kmip_id);
+        let round_trip_cka_id = kmip_unique_identifier_to_pkcs11_cka_id(&kmip_id).unwrap();
         assert_eq!(cka_id.as_slice(), round_trip_cka_id.as_slice());
     }
 }

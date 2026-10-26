@@ -186,7 +186,7 @@ fn get_public_key_details(
                 );
 
                 let inner_bytes = bcder::Mode::Der
-                    .decode(octets.into_source(), |cons| OctetString::take_from(cons))
+                    .decode(octets.into_source(), OctetString::take_from)
                     .map_err(|err| {
                         Error::MalformedDataReceived(format!(
                             "Failed to parse CKA_EC_POINT value as a DER OCTET STRING: {err}"

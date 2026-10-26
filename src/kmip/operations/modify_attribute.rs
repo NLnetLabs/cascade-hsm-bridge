@@ -53,7 +53,9 @@ pub fn op(
         ));
     };
 
-    let Some(key_handle) = get_cached_handle_for_key(&pkcs11conn, id) else {
+    let Some(key_handle) = get_cached_handle_for_key(&pkcs11conn, id)
+        .map_err(|err| (ResultReason::ItemNotFound, err))?
+    else {
         return Err((
             ResultReason::ItemNotFound,
             format!("Key with id {} not found", id.0),

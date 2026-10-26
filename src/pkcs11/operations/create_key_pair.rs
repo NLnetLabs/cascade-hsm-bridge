@@ -162,12 +162,20 @@ pub fn create_key_pair(
     // error goes away. That is completely not obvious from this error
     // message.
 
+    debug!(
+        "Invoking PKCS#11 C_GenerateKeyPair with mechanism '{mechanism:?}', public key template {pub_key_template:?} and private key template {priv_key_template:?}."
+    );
     pkcs11conn
         .session()
         .generate_key_pair(&mechanism, &pub_key_template, &priv_key_template)?;
 
     let public_key_id = pkcs11_cka_id_to_kmip_unique_identifier(&id, false);
     let private_key_id = pkcs11_cka_id_to_kmip_unique_identifier(&id, true);
+
+    debug!(
+        "Generated key IDs: public '{}' and private '{}'.",
+        public_key_id.0, private_key_id.0
+    );
 
     Ok(CreatedKeyPair {
         public_key_id,

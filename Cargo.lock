@@ -202,7 +202,7 @@ dependencies = [
  "clap",
  "cryptoki",
  "daemonbase",
- "domain 0.12.3 (git+https://github.com/NLnetLabs/domain?branch=main)",
+ "domain",
  "hex",
  "kmip-protocol",
  "listenfd",
@@ -487,7 +487,7 @@ source = "git+https://github.com/NLnetLabs/domain?branch=main#f4ca391238d5d80eea
 dependencies = [
  "bumpalo",
  "bytes",
- "domain-macros 0.12.3 (git+https://github.com/NLnetLabs/domain?branch=add-sha-512-digest-support)",
+ "domain-macros",
  "hashbrown",
  "jiff",
  "octseq",
@@ -498,43 +498,17 @@ dependencies = [
 ]
 
 [[package]]
-name = "domain"
-version = "0.12.3"
-source = "git+https://github.com/NLnetLabs/domain?branch=main#f4ca391238d5d80eeaafc140f38ecdf4488903e5"
-dependencies = [
- "bumpalo",
- "bytes",
- "domain-macros 0.12.3 (git+https://github.com/NLnetLabs/domain?branch=main)",
- "hashbrown",
- "jiff",
- "octseq",
- "openssl",
- "rand 0.10.3",
- "serde",
-]
-
-[[package]]
 name = "domain-kmip"
 version = "0.0.1"
 source = "git+https://github.com/NLnetLabs/domain-kmip.git?branch=more-algorithm-support-and-fixes-and-cleanup#0d8535adbfb7de9f2bd91213e1e4b48589fe6c19"
 dependencies = [
  "bcder",
- "domain 0.12.3 (git+https://github.com/NLnetLabs/domain?branch=add-sha-512-digest-support)",
+ "domain",
  "kmip-protocol",
  "maybe-async",
  "tracing",
  "url",
  "uuid",
-]
-
-[[package]]
-name = "domain-macros"
-version = "0.12.3"
-source = "git+https://github.com/NLnetLabs/domain?branch=main#f4ca391238d5d80eeaafc140f38ecdf4488903e5"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 2.0.119",
 ]
 
 [[package]]

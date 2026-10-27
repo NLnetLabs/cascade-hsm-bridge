@@ -2,8 +2,6 @@
 [![Mastodon Follow](https://img.shields.io/mastodon/follow/114692612288811644?domain=social.nlnetlabs.nl&style=social)](https://social.nlnetlabs.nl/@nlnetlabs)
 
 
-> (!) _This project is at an experimental stage and is very much a work-in-progress. It should not be used in production deployments at this time. Furthermore the functionality and interfaces offered should be considered unstable._
-
 # A KMIP to PKCS#11 bridge for Cascade
 
 `cascade-hsm-bridge` is a Rust application that accepts [KMIP](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=39d0c648-0a66-4f46-b343-018dc7d3f19c)
@@ -53,6 +51,23 @@ This application is possible thanks to the following foundational Rust crates on
 
 - [cryptoki](https://crates.io/crates/cryptoki)
 - [kmip-protocol](https://crates.io/crates/kmip-protocol)
-- [kmip-ttlv](https://crates.io/crates/kmip-ttlv)
 - [rustls](https://crates.io/crates/rustls)
 - [tokio](https://crates.io/crates/tokio)
+
+## Testing
+
+In `crates/fulltest` an integration test is provided. It uses:
+- a [`domain-kmip`](https://github.com/NLnetLabs/domain-kmip) based client,
+- the SoftHSMv2 PKCS#11 module as backing HSM to be loaded by
+  Cascade-HSM-Bridge.
+- the [`ring`](https://crates.io/crates/ring) library to verify the generated
+  signatures.
+
+To run the test (requires SoftHSMv2 to be installed) do:
+
+```sh
+cargo test --package fulltest
+```
+
+The test creates signing keys using different algorithms and verifies
+that using Cascade-HSM-Bridge to sign with them yields valid signatures.

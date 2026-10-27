@@ -35,10 +35,7 @@ bcder = "0.7.5"
 clap = { workspace = true }
 cryptoki = "^0.12.0"
 daemonbase = { workspace = true }
-# Use a git branch of domain until https://github.com/NLnetLabs/domain/pull/762 is merged and released.
-# domain = { version = "0.12.4", features = ["unstable-crypto-backend", "ring"] } # for utils::base16 and crypto::DigestBuilder
-# Use openssl instead of ring for consistency with Cascade.
-domain = { git = "https://github.com/NLnetLabs/domain", branch = "add-sha-512-digest-support", version = "0.12.3", features = ["unstable-crypto-backend", "openssl"] } # for utils::base16 and crypto::DigestBuilder
+domain = { git = "https://github.com/NLnetLabs/domain", branch = "main", version = "0.12.3", features = ["unstable-crypto-backend", "openssl"] } # for utils::base16 and crypto::DigestBuilder
 hex = "0.4"
 kmip = { git = "https://github.com/NLnetLabs/kmip-protocol", package = "kmip-protocol", branch = "bump-dependencies", version = "0.5.1-dev", default-features = false, features = ["tls-with-tokio-rustls", "ring"] }
 cascade-hsm-bridge-cfg = { path = "crates/cfg" }

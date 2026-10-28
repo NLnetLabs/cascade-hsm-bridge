@@ -165,6 +165,10 @@ to the hexadecimal form of the CKA_ID to construct the private key ID, and by
 appending `_pub` to the hexadecimal form of the CKA_ID to construct the public
 key ID.
 
+Other requests that take a KMIP unique identifier as input will strip and use
+the `_priv` or `_pub` suffix to know whether the request targets the private or
+public key respectively.
+
 
 .. toctree::
    :maxdepth: 2

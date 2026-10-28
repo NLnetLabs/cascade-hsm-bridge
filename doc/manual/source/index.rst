@@ -89,11 +89,12 @@ on which it builds:
 Supported protocols
 -------------------
 
-This application currently only supports a subset of KMIP 1.2 via the
-TCP+TLS+TTLV transport. There is no support for the HTTPS+XML or HTTPS+JSON
-transports defined by the KMIP profiles specification.
+This application currently only supports a subset of `KMIP 1.2 <https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html>`_
+via the TCP+TLS+TTLV transport. There is no support for the HTTPS+XML or
+HTTPS+JSON transports defined by the KMIP profiles specification.
 
-The loaded PKCS#11 module should conform to the PKCS#11 v2.40 specification.
+The loaded PKCS#11 module should conform to the `PKCS#11 v2.40 <https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html>`_
+specification.
 
 Supported operations
 --------------------

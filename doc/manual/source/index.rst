@@ -135,6 +135,34 @@ Supported operations
 .. _C_Sign: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024144
 .. _C_SignFinal: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024146
 
+Supported Algorithms
+--------------------
+
+- CryptographicAlgorithm::RSA
+- CryptographicAlgorithm::ECDSA
+
+Key ID Mapping
+--------------
+
+In PKCS#11 a public and private key pair can both be identified by the same
+CKA_ID but different object class.
+
+KMIP treats the public and private key pairs as separate objects which must
+each have their own unique identifier.
+
+When a Generate Key Pair request is received the Name attributes will be used
+as CKA_LABEL values for the generated keys and a random 20 byte CKA_ID will be
+generated. (20 bytes because the CKA_ID field was originally intended to X.509
+Key Identifier values which :rfc:5280 defines as being 160 bits long i.e.
+20 bytes).
+
+On successful key pair generation the CKA_ID will be used to construct KMIP
+compatible Unique Identifiers to return to the client, by appending `_priv`
+to the hexadecimal form of the CKA_ID to construct the private key ID, and by
+appending `_pub` to the hexadecimal form of the CKA_ID to construct the public
+key ID.
+
+
 .. toctree::
    :maxdepth: 2
    :hidden:

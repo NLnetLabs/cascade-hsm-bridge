@@ -14,7 +14,7 @@ A KMIP to PKCS#11 Bridge
       :target: https://social.nlnetlabs.nl/@nlnetlabs
 
 This application provides a bridge between HSM clients and servers that
-communicte using the different industry standard protocols `KMIP
+communicate using the different industry standard protocols `KMIP
 <https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=39d0c648-0a66-4f46-b343-018dc7d3f19c>`_
 and `PKCS#11
 <https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=922ef643-1e10-4d65-a5ea-018dc7d3f0a4>`_.

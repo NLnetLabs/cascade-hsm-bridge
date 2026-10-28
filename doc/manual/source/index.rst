@@ -138,8 +138,10 @@ Supported operations
 Supported Algorithms
 --------------------
 
-- CryptographicAlgorithm::RSA
-- CryptographicAlgorithm::ECDSA
+- `CryptographicAlgorithm`_::RSA
+- `CryptographicAlgorithm`_::ECDSA
+
+.. _CryptographicAlgorithm: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613485
 
 Key ID Mapping
 --------------

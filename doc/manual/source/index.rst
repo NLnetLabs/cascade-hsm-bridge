@@ -263,7 +263,7 @@ appear in the KMIP 2.0 specification. As stated above currently
 Cascade-HSM-Bridge only supports KMIP 1.2.
 
 How then can a client request generation of an Ed448 or Ed25519 key if KMIP
-1.2 is the only supported protocol version which does not support those
+1.2 is the only supported protocol version and which does not support those
 algorithms?
 
 From a binary protocol perspective the KMIP `CryptographicAlgorithm`_
@@ -289,9 +289,15 @@ the server reports an extension via the `Query`_ operation to clients that
 `Query` for ``Query Extension List``. In the response the client will receive
 the following `ExtensionInformation`_:
 
++----------------+-------------------------------------------------+
+| KMIP Field     | Field Value                                     |
++================+=================================================+
 | Extension Name | Cascade-HSM-Bridge Ed448/25519 KMIP 1.x Support |
-| Extension Tag | None |
-| Extension Type | None |
++----------------+-------------------------------------------------+
+| Extension Tag  | None                                            |
++----------------+-------------------------------------------------+
+| Extension Type | None                                            |
++----------------+-------------------------------------------------+
 
 .. _Query: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613552
 .. _ExtensionInformation: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc395776390

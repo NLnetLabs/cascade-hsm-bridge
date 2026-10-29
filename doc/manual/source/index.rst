@@ -96,6 +96,8 @@ HTTPS+JSON transports defined by the KMIP profiles specification.
 The loaded PKCS#11 module should conform to the `PKCS#11 v2.40 <https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html>`_
 specification.
 
+.. note:: Ed448 and Ed25519 require a `PKCS#11 v3.0 <https://docs.oasis-open.org/pkcs11/pkcs11-curr/v3.0/cos01/pkcs11-curr-v3.0-cos01.html>`_ compatible HSM.
+
 Supported operations
 --------------------
 

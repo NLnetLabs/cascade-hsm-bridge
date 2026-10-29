@@ -133,26 +133,85 @@ Supported operations
 .. _Query: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613552
 .. _Revoke: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613547
 .. _Sign: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613558
-.. _C_DestroyObject: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024123
-.. _C_FindObjectsInit: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323610889
-.. _C_FindObjects: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323205461
-.. _C_FindObjectsFinal: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc385057926
+.. _C_DestroyObject: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024123
+.. _C_FindObjectsInit: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323610889
+.. _C_FindObjects: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323205461
+.. _C_FindObjectsFinal: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc385057926
 .. _C_GenerateKeyPair: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc235002392
-.. _C_GetAttributeValue: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024125
-.. _C_GetSlotInfo: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024106
-.. _C_GetTokenInfo: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024107
-.. _C_SetAttributeValue: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024126
-.. _C_SignInit: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024143
-.. _C_Sign: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024144
-.. _C_SignFinal: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024146
+.. _C_GetAttributeValue: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024125
+.. _C_GetSlotInfo: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024106
+.. _C_GetTokenInfo: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024107
+.. _C_SetAttributeValue: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024126
+.. _C_SignInit: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024143
+.. _C_Sign: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024144
+.. _C_SignFinal: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024146
 
 Supported Algorithms
 --------------------
 
-- `CryptographicAlgorithm`_::RSA
-- `CryptographicAlgorithm`_::ECDSA
++------------------------------------+----------------------------+------------------------------------+-----------------------------------+
+| KMIP `CryptographicAlgorithm`      | KMIP `CryptographicLength` | PKCS#11 Mechanism                  | PKCS#11 Additional Key Attributes |
++====================================+============================+====================================+===================================+
+| `CryptographicAlgorithm`_::RSA     | Used as the modulus.       | `CKM_RSA_PKCS_KEY_PAIR_GEN`_       | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_RSA`_, `CKA_PUBLIC_EXPONENT`_,  `CKA_MODULUS_BITS`_ |
++------------------------------------+----------------------------+------------------------------------+-----------------------------------+
+| `CryptographicAlgorithm`_::ECDSA   | Used to select the curve.  | `CKM_EC_KEY_PAIR_GEN`_             | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_EC`_ |
++------------------------------------+----------------------------+------------------------------------+-----------------------------------+
+| `CryptographicAlgorithm`_::Ed448   | N/A                        | `CKM_EC_EDWARDS_KEY_PAIR_GEN`_ [2] | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_EC_EDWARDS`_, `CKA_EC_PARAMS`_ |
++------------------------------------+----------------------------+------------------------------------+-----------------------------------+
+| `CryptographicAlgorithm`_::Ed25519 | N/A                        | `CKM_EC_EDWARDS_KEY_PAIR_GEN`_ [2] | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_EC_EDWARDS`_, `CKA_EC_PARAMS`_ |
++------------------------------------+----------------------------+------------------------------------+-----------------------------------+
+
+.. [2] `CMK_EC_EDWARDS_KEY_PAIR_GEN` is only available for HSM supporting the
+       PKCS#11 v3.0 specification. The `CKA_EC_PARAMS`_ select the elliptic
+       curve to be used via :rfc:8410 OID, either id-Ed448 or id-Ed25519.
 
 .. _CryptographicAlgorithm: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613485
+.. _CKA_EC_PARAMS: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v3.0/cos01/pkcs11-curr-v3.0-cos01.html#_Toc30061182
+.. _CKA_KEY_TYPE: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959717
+.. _CKA_LABEL: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959705
+.. _CKA_MODULUS_BITS: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226889
+.. _CKA_PUBLIC_EXPONENT: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959720
+.. _CKK_RSA: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226888
+.. _CKK_EC: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226931
+.. _CKK_EC_EDWARDS: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v3.0/cos01/pkcs11-curr-v3.0-cos01.html#_Toc30061182
+.. _CKM_RSA_PKCS_KEY_PAIR_GEN: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226891
+
+Key Attributes
+--------------
+
+Keys are created with the following PKCS#11 attributes:
+
++------------------------------+-------------------------------+
+| Public Key                   | Private Key                   |
++==============================+===============================+
+| `CKA_CLASS`_: CKO_PUBLIC_KEY | `CKA_CLASS`_: CKO_PRIVATE_KEY |
++------------------------------+-------------------------------+
+| `CKA_ID`_: [3]               | `CKA_ID`_: [3]                |
++------------------------------+-------------------------------+
+| `CKA_VERIFY`_: CK_TRUE       | `CKA_SIGN`_: CKA_TRUE         |
++------------------------------+-------------------------------+
+| `CKA_ENCRYPT`_: CK_FALSE     | `CKA_DECRYPT`_: CKA_FALSE     |
++------------------------------+-------------------------------+
+| `CKA_TOKEN`_: CK_TRUE        | `CKA_TOKEN`_: CKA_TRUE        |
++------------------------------+-------------------------------+
+| `CKA_WRAP`_: CK_FALSE        | `CKA_PRIVATE`_: CKA_TRUE      |
++------------------------------+-------------------------------+
+|                              | `CKA_SENSITIVE`_: CKA_TRUE    |
++------------------------------+-------------------------------+
+
+.. [3] See :ref:`key-id-mapping`.
+.. _CKA_CLASS: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959698
+.. _CKA_DECRYPT: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959719
+.. _CKA_ENCRYPT: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959718
+.. _CKA_ID: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959717
+.. _CKA_PRIVATE: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959705
+.. _CKA_SENSITIVE: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959719
+.. _CKA_SIGN: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959719
+.. _CKA_TOKEN: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959705
+.. _CKA_VERIFY: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959718
+.. _CKA_WRAP: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959718
+
+.. _key-id-mapping:
 
 Key ID Mapping
 --------------

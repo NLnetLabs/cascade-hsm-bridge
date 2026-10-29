@@ -37,29 +37,6 @@ pub fn op(
                 if let AttributeValue::CryptographicAlgorithm(alg) = attr.value() {
                     match alg {
                         CryptographicAlgorithm::ECDSA => {
-                            // Defined at
-                            // https://docs.oasis-open.org/kmip/ug/v1.2/cn01/kmip-ug-v1.2-cn01.html#_Toc407027131.
-                            // Also matches the OID value used by OpenDNSSEC
-                            // 2.1.14.
-                            // The OID is X.690 DER encoded.
-                            //   0x06 - identifier octet:
-                            //            00000110
-                            //            ^^ Class
-                            //              ^ P/C: 0 = Primitive, 1 = Constructed
-                            //               ^^^^^ ASN.1 tag number
-                            //          where ASN.1 tag number 0x06 denotes an
-                            //          Object Identifier (aka OID) as defined
-                            //          by X.690 section 8.19 "Encoding of an
-                            //          object identifier value".
-                            //  0x08 - the number of bytes that follow, 8 in this case.
-                            //  0x2A.. DER (Distinguished Encoding Rules)
-                            //         encoded value equivalent to
-                            //         1.2.840.10045.3.1.7 (see
-                            //         https://lapo.it/asn1js/#BggqhkjOPQMBBw)
-                            //         which
-                            //         https://docs.oasis-open.org/kmip/ug/v1.2/cn01/kmip-ug-v1.2-cn01.html#_Toc407027131
-                            //         defines as algorithm P-256 aka
-                            //         SECP256R1.
                             pub_attrs.push(Attribute::KeyType(KeyType::EC));
                             priv_attrs.push(Attribute::KeyType(KeyType::EC));
                             mechanism = Some(Mechanism::EccKeyPairGen);
@@ -178,6 +155,30 @@ pub fn op(
                 ));
             }
             Mechanism::EccKeyPairGen => {
+                // The elliptic curve OID byte values below match those used
+                // by OpenDNSSEC 2.1.14.
+                //
+                // They are equivalent to the dotted forms:
+                //   - 1.2.840.10045.3.1.7 - P-256 aka SECP256R1
+                //   - 1.3.132.0.34 - P-384 aka SECP384R1
+                //
+                // They can be broken down like so:
+                //   0x06 - identifier octet:
+                //            00000110
+                //            ^^ Class
+                //              ^ P/C: 0 = Primitive, 1 = Constructed
+                //               ^^^^^ ASN.1 tag number
+                //          where ASN.1 tag number 0x06 denotes an Object
+                //          Identifier (aka OID) as defined by X.690 section
+                //          8.19 "Encoding of an object identifier value".
+                //  0x08 - the number of bytes that follow, 8 in this case.
+                //  0x2A.. DER (Distinguished Encoding Rules) encoded value
+                //         equivalent to 1.2.840.10045.3.1.7
+                //
+                // See:
+                //   - https://lapo.it/asn1js/#BggqhkjOPQMBBw
+                //   - https://docs.oasis-open.org/kmip/ug/v1.2/cn01/kmip-ug-v1.2-cn01.html#_Toc407027131
+                //   - https://github.com/opendnssec/opendnssec/blob/2.1.14/libhsm/src/lib/libhsm.c#L2880
                 let curve_oid = match crypto_len {
                     256 => Some(vec![
                         0x06, 0x08, 0x2A, 0x86, 0x48, 0xCE, 0x3D, 0x03, 0x01, 0x07,

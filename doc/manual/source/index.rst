@@ -228,9 +228,9 @@ each have their own unique identifier.
 
 When a Generate Key Pair request is received the Name attributes will be used
 as CKA_LABEL values for the generated keys and a random 20 byte CKA_ID will be
-generated. (20 bytes because the CKA_ID field was originally intended to X.509
-Key Identifier values which :rfc:`5280` defines as being 160 bits long i.e.
-20 bytes).
+generated. (20 bytes because the CKA_ID field was originally intended to store
+an X.509 Key Identifier value which :rfc:`5280` defines as being 160 bits long
+i.e. 20 bytes).
 
 On successful key pair generation the CKA_ID will be used to construct KMIP
 compatible Unique Identifiers to return to the client, by appending `_priv`

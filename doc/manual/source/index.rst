@@ -102,28 +102,38 @@ Supported operations
 +----------------------+----------------------------------------------------------------------------------------------------------+
 | KMIP Operation       | Maps To PKCS#11 Function(s)                                                                              |
 +======================+==========================================================================================================+
-| `Activate`_          | N/A                                                                                                      |
+| `Activate`_          | `C_FindObjectsInit`_, `C_FindObjects`_ & `C_FindObjectsFinal`_ [1]_                                      |
 +----------------------+----------------------------------------------------------------------------------------------------------+
 | `Create Key Pair`_   | `C_GenerateKeyPair`_                                                                                     |
++----------------------+----------------------------------------------------------------------------------------------------------+
+| `Destroy`_           | `C_FindObjectsInit`_, `C_FindObjects`_, `C_FindObjectsFinal`_ & `C_DestroyObject`_                       |
 +----------------------+----------------------------------------------------------------------------------------------------------+
 | `Discover Versions`_ | N/A                                                                                                      |
 +----------------------+----------------------------------------------------------------------------------------------------------+
 | `Get`_               | `C_FindObjectsInit`_, `C_FindObjects`_, `C_FindObjectsFinal`_ & `C_GetAttributeValue`_                   |
 +----------------------+----------------------------------------------------------------------------------------------------------+
-| `Modify Attribute`_  | `C_SetAttributeValue`_                                                                                   |
+| `Modify Attribute`_  | `C_FindObjectsInit`_, `C_FindObjects`_, `C_FindObjectsFinal`_ & `C_SetAttributeValue`_                   |
 +----------------------+----------------------------------------------------------------------------------------------------------+
 | `Query`_             | `C_GetSlotInfo`_, `C_GetTokenInfo`_                                                                      |
++----------------------+----------------------------------------------------------------------------------------------------------+
+| `Revoke`_            | `C_FindObjectsInit`_, `C_FindObjects`_ & `C_FindObjectsFinal`_ [1]_                                      |
 +----------------------+----------------------------------------------------------------------------------------------------------+
 | `Sign`_              | `C_FindObjectsInit`_, `C_FindObjects`_, `C_FindObjectsFinal`_, `C_SignInit`_, `C_Sign`_ & `C_SignFinal`_ |
 +----------------------+----------------------------------------------------------------------------------------------------------+
 
+.. [1] The `Activate` and `Revoke` KMIP operations have no equivalent in
+       PKCS#11. These operations thus only check that the key exists.
+
 .. _Activate: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613546
 .. _Create Key Pair: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613529
+.. _Destroy: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613548
 .. _Discover Versions: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613553
 .. _Get: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613538
 .. _Modify Attribute: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613542
 .. _Query: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613552
+.. _Revoke: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613547
 .. _Sign: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613558
+.. _C_DestroyObject: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024123
 .. _C_FindObjectsInit: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323610889
 .. _C_FindObjects: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323205461
 .. _C_FindObjectsFinal: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc385057926
@@ -168,6 +178,16 @@ key ID.
 Other requests that take a KMIP unique identifier as input will strip and use
 the `_priv` or `_pub` suffix to know whether the request targets the private or
 public key respectively.
+
+Object Handle Caching
+---------------------
+
+As can be noted from the table above, many operations require finding the
+PKCS#11 object before it can be acted upon. This is because the PKCS#11
+functions that need to be invoked to do the actual work take an object handle
+as input, not a `CKA_ID`. To avoid having to keep going back to the PKCS#11
+library to determine the object handle for a given CKA_ID, Cascade-HSM-Bridge
+caches the `CKA_ID` to object handle mappings in memory.
 
 
 .. toctree::

@@ -34,9 +34,11 @@ pub fn op(
                 operations = Some(vec![
                     Operation::Activate,
                     Operation::CreateKeyPair,
+                    Operation::Destroy,
                     Operation::DiscoverVersions,
                     Operation::Get,
                     Operation::Query,
+                    Operation::Revoke,
                     Operation::Sign,
                 ])
             }
@@ -53,7 +55,7 @@ pub fn op(
                 };
                 vendor_identification =
                     Some(format!("cascade-hsm-bridge {self_ver} using {pkcs11_info}"));
-                server_information = Some(ServerInformation);
+                server_information = Some(ServerInformation {});
             }
             _ => { /* Ignore */ }
         }

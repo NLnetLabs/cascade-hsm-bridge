@@ -173,6 +173,7 @@ be supported by Cascade-HSM-Bridge.
        id-Ed25519. See also :ref:`kmip-extension`.
 
 .. _CryptographicAlgorithm: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613485
+.. _CryptographicLength: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613486
 .. _CKA_EC_PARAMS: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v3.0/cos01/pkcs11-curr-v3.0-cos01.html#_Toc30061182
 .. _CKA_KEY_TYPE: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959717
 .. _CKA_LABEL: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959705

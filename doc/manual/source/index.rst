@@ -275,10 +275,9 @@ is that KMIP 2.0 also changed how KMIP attributes should be encoded to binary
 when sent over the network.
 
 Cascade-HSM-Bridge doesn't support the KMIP 2.x encoding of attributes because
-the underlying KMIP library used by both it and Cascade does not yet support it.
-
-Cascade-HSM-Bridge will however happily accept the enumeration values for Ed448
-(38) and Ed25519 (37) in a `Create Key Pair`_ request.
+the underlying KMIP library used by both it and Cascade does not yet support
+it. Cascade-HSM-Bridge will however happily accept the enumeration values for
+Ed448 (38) and Ed25519 (37) in a `Create Key Pair`_ request.
 
 But how can Cascade know if it is safe to send such a request? It only knows
 when talking to Cascade-HSM-Bridge that it is talking to a KMIP 1.x server.

@@ -60,13 +60,13 @@ pub fn op(
             }
             QueryFunction::QueryExtensionList => {
                 extension_information = Some(vec![ExtensionInformation {
-                    extension_name: "Cascade-HSM-Bridge ED448/25519 KMIP 1.x Support".to_string(),
+                    extension_name: "Cascade-HSM-Bridge Ed448/25519 KMIP 1.x Support".to_string(),
                     extension_tag: None,
                     extension_type: None,
                     extension_enumeration: None,
                     extension_attribute: None,
                     extension_parent_tag: None,
-                    extension_description: Some("Allow use of the ED448 and ED25519 Cryptographic Algorithm enumeration values via KMIP 1.x style attributes rather than KMIP 2.x style attributes".to_string()),
+                    extension_description: Some("Allow use of the Ed448 and Ed25519 Cryptographic Algorithm enumeration values via KMIP 1.x style attributes rather than KMIP 2.x style attributes".to_string()),
                 }]);
             }
             _ => { /* Ignore */ }

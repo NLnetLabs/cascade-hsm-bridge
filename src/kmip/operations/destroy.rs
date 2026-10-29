@@ -34,7 +34,7 @@ pub fn op(
                         format!("Failed to destroy object handle {object_handle}: {err}"),
                     )
                 })?;
-            // Nothing more to do as PKCS#11 doesn't support revocaton.
+
             Ok(ResBatchItem {
                 operation: Some(*batch_item.operation()),
                 unique_batch_item_id: batch_item.unique_batch_item_id().cloned(),

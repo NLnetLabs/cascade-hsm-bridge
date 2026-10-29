@@ -163,7 +163,7 @@ Supported Algorithms
 | `CryptographicAlgorithm`_::Ed25519 | N/A                        | `CKM_EC_EDWARDS_KEY_PAIR_GEN`_ [2]_ | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_EC_EDWARDS`_, `CKA_EC_PARAMS`_                      |
 +------------------------------------+----------------------------+-------------------------------------+-----------------------------------------------------------------------------------------+
 
-.. [2] `CMK_EC_EDWARDS_KEY_PAIR_GEN` is only available for HSM supporting the
+.. [2] `CMK_EC_EDWARDS_KEY_PAIR_GEN` is only available for HSMs supporting the
        PKCS#11 v3.0 specification. The `CKA_EC_PARAMS`_ select the elliptic
        curve to be used via :rfc:8410 OID, either id-Ed448 or id-Ed25519.
 

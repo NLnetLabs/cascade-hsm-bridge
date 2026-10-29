@@ -66,7 +66,12 @@ pub fn op(
                         }
 
                         CryptographicAlgorithm::RSA => {
-                            // TODO: Document where [1, 0, 1] comes from.
+                            // Public exponent 1, 0, 1 is the ASN.1 INTEGER
+                            // (RFC 8018 A.1.1) encoding of 65537. 65537 is
+                            // also used by OpenDNSSEC. Why 65537? See:
+                            //   - https://www.rfc-editor.org/rfc/rfc1423.html#section-4.1.1 "RSA keys"
+                            //   - https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=934860 section 6.3.4.4 "Having a Small Constant e"
+                            //   - https://github.com/opendnssec/opendnssec/blob/1f1bea259f55ccf3841184b3ba504a5d1f4639b8/libhsm/src/lib/libhsm.c#L2582
                             pub_attrs.push(Attribute::PublicExponent(vec![1, 0, 1]));
                             pub_attrs.push(Attribute::KeyType(KeyType::RSA));
                             priv_attrs.push(Attribute::KeyType(KeyType::RSA));
@@ -78,6 +83,17 @@ pub fn op(
                             pub_attrs.push(Attribute::KeyType(KeyType::EC_EDWARDS));
                             priv_attrs.push(Attribute::KeyType(KeyType::EC_EDWARDS));
                             mechanism = Some(Mechanism::EccEdwardsKeyPairGen);
+
+                            // These OID byte values used below were taken
+                            // from OpenDNSSEC code. They are the BER encoded
+                            // equivalents of the dotted OID values:
+                            //
+                            // 1.3.101.112 - id-Ed25519 from RFC 8410
+                            // 1.3.101.113 - id-Ed448 from RFC 8410
+                            //
+                            // See:
+                            //   - https://www.rfc-editor.org/info/rfc8410/#section-3
+                            //   - https://github.com/opendnssec/opendnssec/blob/1f1bea259f55ccf3841184b3ba504a5d1f4639b8/libhsm/src/lib/libhsm.c#L2976
                             let curve_oid = match alg {
                                 CryptographicAlgorithm::Ed448 => vec![0x06, 0x03, 0x2B, 0x65, 0x71],
                                 CryptographicAlgorithm::Ed25519 => {

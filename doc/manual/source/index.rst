@@ -149,17 +149,17 @@ Supported operations
 Supported Algorithms
 --------------------
 
-+------------------------------------+----------------------------+------------------------------------+-----------------------------------+
-| KMIP `CryptographicAlgorithm`      | KMIP `CryptographicLength` | PKCS#11 Mechanism                  | PKCS#11 Additional Key Attributes |
-+====================================+============================+====================================+===================================+
-| `CryptographicAlgorithm`_::RSA     | Used as the modulus.       | `CKM_RSA_PKCS_KEY_PAIR_GEN`_       | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_RSA`_, `CKA_PUBLIC_EXPONENT`_,  `CKA_MODULUS_BITS`_ |
-+------------------------------------+----------------------------+------------------------------------+-----------------------------------+
-| `CryptographicAlgorithm`_::ECDSA   | Used to select the curve.  | `CKM_EC_KEY_PAIR_GEN`_             | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_EC`_ |
-+------------------------------------+----------------------------+------------------------------------+-----------------------------------+
-| `CryptographicAlgorithm`_::Ed448   | N/A                        | `CKM_EC_EDWARDS_KEY_PAIR_GEN`_ [2] | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_EC_EDWARDS`_, `CKA_EC_PARAMS`_ |
-+------------------------------------+----------------------------+------------------------------------+-----------------------------------+
-| `CryptographicAlgorithm`_::Ed25519 | N/A                        | `CKM_EC_EDWARDS_KEY_PAIR_GEN`_ [2] | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_EC_EDWARDS`_, `CKA_EC_PARAMS`_ |
-+------------------------------------+----------------------------+------------------------------------+-----------------------------------+
++------------------------------------+----------------------------+-------------------------------------+-----------------------------------+
+| KMIP `CryptographicAlgorithm`      | KMIP `CryptographicLength` | PKCS#11 Mechanism                   | PKCS#11 Additional Key Attributes |
++====================================+============================+=====================================+===================================+
+| `CryptographicAlgorithm`_::RSA     | Used as the modulus.       | `CKM_RSA_PKCS_KEY_PAIR_GEN`_        | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_RSA`_, `CKA_PUBLIC_EXPONENT`_,  `CKA_MODULUS_BITS`_ |
++------------------------------------+----------------------------+-------------------------------------+-----------------------------------+
+| `CryptographicAlgorithm`_::ECDSA   | Used to select the curve.  | `CKM_EC_KEY_PAIR_GEN`_              | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_EC`_ |
++------------------------------------+----------------------------+-------------------------------------+-----------------------------------+
+| `CryptographicAlgorithm`_::Ed448   | N/A                        | `CKM_EC_EDWARDS_KEY_PAIR_GEN`_ [2]_ | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_EC_EDWARDS`_, `CKA_EC_PARAMS`_ |
++------------------------------------+----------------------------+-------------------------------------+-----------------------------------+
+| `CryptographicAlgorithm`_::Ed25519 | N/A                        | `CKM_EC_EDWARDS_KEY_PAIR_GEN`_ [2]_ | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_EC_EDWARDS`_, `CKA_EC_PARAMS`_ |
++------------------------------------+----------------------------+-------------------------------------+-----------------------------------+
 
 .. [2] `CMK_EC_EDWARDS_KEY_PAIR_GEN` is only available for HSM supporting the
        PKCS#11 v3.0 specification. The `CKA_EC_PARAMS`_ select the elliptic
@@ -186,7 +186,7 @@ Keys are created with the following PKCS#11 attributes:
 +==============================+===============================+
 | `CKA_CLASS`_: CKO_PUBLIC_KEY | `CKA_CLASS`_: CKO_PRIVATE_KEY |
 +------------------------------+-------------------------------+
-| `CKA_ID`_: [3]               | `CKA_ID`_: [3]                |
+| `CKA_ID`_: [3]_              | `CKA_ID`_: [3]_               |
 +------------------------------+-------------------------------+
 | `CKA_VERIFY`_: CK_TRUE       | `CKA_SIGN`_: CKA_TRUE         |
 +------------------------------+-------------------------------+

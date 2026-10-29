@@ -163,25 +163,30 @@ pub fn sign(
         //    hex 30 51 30 0d 06 09 60 86 48 01 65 03 04 02 03 05 00 04 40"
         if let Some(digest_type) = &digest_type {
             match digest_type {
-                DigestType::Sha1 => todo!(),
                 DigestType::Sha256 => {
                     new_data = vec![
                         0x30, 0x31, 0x30, 0x0d, 0x06, 0x09, 0x60, 0x86, 0x48, 0x01, 0x65, 0x03,
                         0x04, 0x02, 0x01, 0x05, 0x00, 0x04, 0x20,
                     ];
                 }
-                DigestType::Sha384 => todo!(),
                 DigestType::Sha512 => {
                     new_data = vec![
                         0x30, 0x51, 0x30, 0x0d, 0x06, 0x09, 0x60, 0x86, 0x48, 0x01, 0x65, 0x03,
                         0x04, 0x02, 0x03, 0x05, 0x00, 0x04, 0x40,
                     ];
                 }
+                _ => {
+                    return Err(Error::unsupported_cryptographic_parameters(format!(
+                        "RSA with {digest_type}"
+                    )));
+                }
             }
             new_data.extend_from_slice(data);
             data = &new_data;
         } else {
-            todo!()
+            return Err(Error::unsupported_cryptographic_parameters(
+                "RSA without a hash".to_string(),
+            ));
         }
     }
 
@@ -217,8 +222,8 @@ pub fn sign(
         // Where the two integer values are known as 'r' and 's'.
 
         let ranges = match signature_data.len() {
-            64 => (&signature_data[0..32], &signature_data[32..]),
-            96 => (&signature_data[0..48], &signature_data[48..]),
+            64 => signature_data.split_at(32),
+            96 => signature_data.split_at(48),
             _ => unreachable!(),
         };
         Ok(bcder::encode::sequence((

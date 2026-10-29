@@ -165,7 +165,7 @@ Supported Algorithms
 
 .. [2] `CMK_EC_EDWARDS_KEY_PAIR_GEN` is only available for HSMs supporting the
        PKCS#11 v3.0 specification. The `CKA_EC_PARAMS`_ select the elliptic
-       curve to be used via :rfc:8410 OID, either id-Ed448 or id-Ed25519.
+       curve to be used via :rfc:`8410` OID, either id-Ed448 or id-Ed25519.
 
 .. _CryptographicAlgorithm: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613485
 .. _CKA_EC_PARAMS: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v3.0/cos01/pkcs11-curr-v3.0-cos01.html#_Toc30061182
@@ -229,7 +229,7 @@ each have their own unique identifier.
 When a Generate Key Pair request is received the Name attributes will be used
 as CKA_LABEL values for the generated keys and a random 20 byte CKA_ID will be
 generated. (20 bytes because the CKA_ID field was originally intended to X.509
-Key Identifier values which :rfc:5280 defines as being 160 bits long i.e.
+Key Identifier values which :rfc:`5280` defines as being 160 bits long i.e.
 20 bytes).
 
 On successful key pair generation the CKA_ID will be used to construct KMIP

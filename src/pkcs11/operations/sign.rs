@@ -222,8 +222,8 @@ pub fn sign(
         // Where the two integer values are known as 'r' and 's'.
 
         let ranges = match signature_data.len() {
-            64 => (&signature_data[0..32], &signature_data[32..]),
-            96 => (&signature_data[0..48], &signature_data[48..]),
+            64 => signature_data.split_at(32),
+            96 => signature_data.split_at(48),
             _ => unreachable!(),
         };
         Ok(bcder::encode::sequence((

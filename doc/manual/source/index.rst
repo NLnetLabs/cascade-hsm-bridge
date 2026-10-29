@@ -283,7 +283,7 @@ But how can Cascade know if it is safe to send such a request? It only knows
 when talking to Cascade-HSM-Bridge that it is talking to a KMIP 1.x server.
 
 In order to allow Cascade to know whether it is talking to a KMIP server that
-_will_ accept Ed448 (38) and Ed25519 (37) `CryptographicAlgorithm`_ values
+*will* accept Ed448 (38) and Ed25519 (37) `CryptographicAlgorithm`_ values
 the server reports an extension via the `Query`_ operation to clients that
 `Query` for ``Query Extension List``. In the response the client will receive
 the following `ExtensionInformation`_:

@@ -187,7 +187,7 @@ dependencies = [
  "clap",
  "cryptoki",
  "daemonbase",
- "domain 0.12.3 (git+https://github.com/NLnetLabs/domain?branch=main)",
+ "domain",
  "hex",
  "kmip-protocol",
  "listenfd",
@@ -447,11 +447,11 @@ dependencies = [
 [[package]]
 name = "domain"
 version = "0.12.3"
-source = "git+https://github.com/NLnetLabs/domain?branch=add-sha-512-digest-support#38b37b6d579a1cc86199588530e2375b5c15d403"
+source = "git+https://github.com/NLnetLabs/domain?branch=main#f4ca391238d5d80eeaafc140f38ecdf4488903e5"
 dependencies = [
  "bumpalo",
  "bytes",
- "domain-macros 0.12.3 (git+https://github.com/NLnetLabs/domain?branch=add-sha-512-digest-support)",
+ "domain-macros",
  "hashbrown",
  "jiff",
  "octseq",
@@ -462,43 +462,17 @@ dependencies = [
 ]
 
 [[package]]
-name = "domain"
-version = "0.12.3"
-source = "git+https://github.com/NLnetLabs/domain?branch=main#f4ca391238d5d80eeaafc140f38ecdf4488903e5"
-dependencies = [
- "bumpalo",
- "bytes",
- "domain-macros 0.12.3 (git+https://github.com/NLnetLabs/domain?branch=main)",
- "hashbrown",
- "jiff",
- "octseq",
- "openssl",
- "rand 0.10.3",
- "serde",
-]
-
-[[package]]
 name = "domain-kmip"
 version = "0.0.1"
-source = "git+https://github.com/NLnetLabs/domain-kmip.git?branch=more-algorithm-support-and-fixes-and-cleanup#045538049db82dd582148528daaab796b6ff8952"
+source = "git+https://github.com/NLnetLabs/domain-kmip.git?branch=more-algorithm-support-and-fixes-and-cleanup#497601dbb255587294e382064427ff8d929b1fd6"
 dependencies = [
  "bcder",
- "domain 0.12.3 (git+https://github.com/NLnetLabs/domain?branch=add-sha-512-digest-support)",
+ "domain",
  "kmip-protocol",
  "maybe-async",
  "tracing",
  "url",
  "uuid",
-]
-
-[[package]]
-name = "domain-macros"
-version = "0.12.3"
-source = "git+https://github.com/NLnetLabs/domain?branch=add-sha-512-digest-support#38b37b6d579a1cc86199588530e2375b5c15d403"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 2.0.119",
 ]
 
 [[package]]
@@ -878,7 +852,7 @@ dependencies = [
 [[package]]
 name = "kmip-protocol"
 version = "0.5.1-dev"
-source = "git+https://github.com/NLnetLabs/kmip-protocol?branch=bump-dependencies#75ff118e5e1ff9eb80cf607ec0cacb173c89aa67"
+source = "git+https://github.com/NLnetLabs/kmip-protocol?branch=bump-dependencies#df7f69d1cdab61748b34b48236a3bfc7fb7d694d"
 dependencies = [
  "async-trait",
  "bb8",
@@ -1354,7 +1328,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8774e05a7d0de114588e6a28fe7e71694b82614ed569d86d8b389dfbc98b8ad8"
 dependencies = [
  "pem",
- "ring 0.17.14",
+ "ring",
  "rustls-pki-types",
  "time",
  "x509-parser",
@@ -1389,21 +1363,6 @@ checksum = "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4"
 
 [[package]]
 name = "ring"
-version = "0.16.20"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3053cf52e236a3ed746dfc745aa9cacf1b791d846bdaf412f60a8d7d6e17c8fc"
-dependencies = [
- "cc",
- "libc",
- "once_cell",
- "spin",
- "untrusted 0.7.1",
- "web-sys",
- "winapi",
-]
-
-[[package]]
-name = "ring"
 version = "0.17.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a4689e6c2294d81e88dc6261c768b63bc4fcdb852be6d1352498b114f61383b7"
@@ -1412,7 +1371,7 @@ dependencies = [
  "cfg-if",
  "getrandom 0.2.17",
  "libc",
- "untrusted 0.9.0",
+ "untrusted",
  "windows-sys 0.52.0",
 ]
 
@@ -1446,7 +1405,7 @@ checksum = "0d41d731c7d2f962d1ccc364cec258de3c0e93b38c2fb3ba97ac74513048d634"
 dependencies = [
  "log",
  "once_cell",
- "ring 0.17.14",
+ "ring",
  "rustls-pki-types",
  "rustls-webpki",
  "subtle",
@@ -1477,9 +1436,9 @@ version = "0.103.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f3c3cf1d8b1e7d4927e2d154c3fcb02979afb9939629c62cd9048d4f07b60ac2"
 dependencies = [
- "ring 0.17.14",
+ "ring",
  "rustls-pki-types",
- "untrusted 0.9.0",
+ "untrusted",
 ]
 
 [[package]]
@@ -1599,12 +1558,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "spin"
-version = "0.5.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6e63cff320ae2c57904679ba7cb63280a3dc4613885beafb148ee7bf9aa9042d"
-
-[[package]]
 name = "stable_deref_trait"
 version = "1.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1691,7 +1644,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
 dependencies = [
  "fastrand",
- "getrandom 0.4.3",
+ "getrandom 0.3.4",
  "once_cell",
  "rustix",
  "windows-sys 0.61.2",
@@ -1946,12 +1899,6 @@ checksum = "d245f478577f809a851594d02313b640fb437e0bb33866753cff937863096954"
 
 [[package]]
 name = "untrusted"
-version = "0.7.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a156c684c91ea7d62626509bce3cb4e1d9ed5c4d978f7b4352658f96a4c26b4a"
-
-[[package]]
-name = "untrusted"
 version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8ecb6da28b8a351d773b68d5825ac39017e680750f980f3a1a85cd8dd28a47c1"
@@ -2064,23 +2011,13 @@ dependencies = [
 ]
 
 [[package]]
-name = "web-sys"
-version = "0.3.106"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "88261b9deccee56594c11a3460c462c41f58d148598fe70ad77070126a68aba4"
-dependencies = [
- "js-sys",
- "wasm-bindgen",
-]
-
-[[package]]
 name = "webpki"
-version = "0.21.4"
+version = "0.22.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b8e38c0608262c46d4a56202ebabdeb094cef7e560ca7a226c6bf055188aa4ea"
+checksum = "ed63aea5ce73d0ff405984102c42de94fc55a6b75765d621c65262469b3c9b53"
 dependencies = [
- "ring 0.16.20",
- "untrusted 0.7.1",
+ "ring",
+ "untrusted",
 ]
 
 [[package]]
@@ -2241,7 +2178,7 @@ dependencies = [
  "lazy_static",
  "nom",
  "oid-registry",
- "ring 0.17.14",
+ "ring",
  "rusticata-macros",
  "thiserror",
  "time",

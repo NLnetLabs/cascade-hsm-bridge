@@ -174,6 +174,8 @@ Supported Algorithms
 .. _CKK_RSA: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226888
 .. _CKK_EC: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226931
 .. _CKK_EC_EDWARDS: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v3.0/cos01/pkcs11-curr-v3.0-cos01.html#_Toc30061182
+.. _CKM_EC_KEY_PAIR_GEN: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v3.0/cos01/pkcs11-curr-v3.0-cos01.html#_Toc30061186
+.. _CKM_EC_EDWARDS_KEY_PAIR_GEN: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v3.0/cos01/pkcs11-curr-v3.0-cos01.html#_Toc30061187
 .. _CKM_RSA_PKCS_KEY_PAIR_GEN: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226891
 
 Key Attributes

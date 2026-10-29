@@ -96,79 +96,215 @@ HTTPS+JSON transports defined by the KMIP profiles specification.
 The loaded PKCS#11 module should conform to the `PKCS#11 v2.40 <https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html>`_
 specification.
 
+.. note:: Ed448 and Ed25519 require a `PKCS#11 v3.0 <https://docs.oasis-open.org/pkcs11/pkcs11-curr/v3.0/cos01/pkcs11-curr-v3.0-cos01.html>`_ compatible HSM.
+
 Supported operations
 --------------------
 
 +----------------------+----------------------------------------------------------------------------------------------------------+
 | KMIP Operation       | Maps To PKCS#11 Function(s)                                                                              |
 +======================+==========================================================================================================+
-| `Activate`_          | N/A                                                                                                      |
+| `Activate`_          | `C_FindObjectsInit`_, `C_FindObjects`_ & `C_FindObjectsFinal`_ [1]_                                      |
 +----------------------+----------------------------------------------------------------------------------------------------------+
 | `Create Key Pair`_   | `C_GenerateKeyPair`_                                                                                     |
++----------------------+----------------------------------------------------------------------------------------------------------+
+| `Destroy`_           | `C_FindObjectsInit`_, `C_FindObjects`_, `C_FindObjectsFinal`_ & `C_DestroyObject`_                       |
 +----------------------+----------------------------------------------------------------------------------------------------------+
 | `Discover Versions`_ | N/A                                                                                                      |
 +----------------------+----------------------------------------------------------------------------------------------------------+
 | `Get`_               | `C_FindObjectsInit`_, `C_FindObjects`_, `C_FindObjectsFinal`_ & `C_GetAttributeValue`_                   |
 +----------------------+----------------------------------------------------------------------------------------------------------+
-| `Modify Attribute`_  | `C_SetAttributeValue`_                                                                                   |
+| `Modify Attribute`_  | `C_FindObjectsInit`_, `C_FindObjects`_, `C_FindObjectsFinal`_ & `C_SetAttributeValue`_                   |
 +----------------------+----------------------------------------------------------------------------------------------------------+
 | `Query`_             | `C_GetSlotInfo`_, `C_GetTokenInfo`_                                                                      |
++----------------------+----------------------------------------------------------------------------------------------------------+
+| `Revoke`_            | `C_FindObjectsInit`_, `C_FindObjects`_ & `C_FindObjectsFinal`_ [1]_                                      |
 +----------------------+----------------------------------------------------------------------------------------------------------+
 | `Sign`_              | `C_FindObjectsInit`_, `C_FindObjects`_, `C_FindObjectsFinal`_, `C_SignInit`_, `C_Sign`_ & `C_SignFinal`_ |
 +----------------------+----------------------------------------------------------------------------------------------------------+
 
+.. [1] The `Activate`_ and `Revoke`_ KMIP operations have no equivalent in
+       PKCS#11. These operations thus only check that the key exists.
+
 .. _Activate: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613546
 .. _Create Key Pair: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613529
+.. _Destroy: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613548
 .. _Discover Versions: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613553
 .. _Get: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613538
 .. _Modify Attribute: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613542
 .. _Query: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613552
+.. _Revoke: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613547
 .. _Sign: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613558
-.. _C_FindObjectsInit: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323610889
-.. _C_FindObjects: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323205461
-.. _C_FindObjectsFinal: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc385057926
+.. _C_DestroyObject: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024123
+.. _C_FindObjectsInit: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323610889
+.. _C_FindObjects: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323205461
+.. _C_FindObjectsFinal: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc385057926
 .. _C_GenerateKeyPair: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc235002392
-.. _C_GetAttributeValue: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024125
-.. _C_GetSlotInfo: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024106
-.. _C_GetTokenInfo: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024107
-.. _C_SetAttributeValue: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024126
-.. _C_SignInit: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024143
-.. _C_Sign: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024144
-.. _C_SignFinal: _https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024146
+.. _C_GetAttributeValue: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024125
+.. _C_GetSlotInfo: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024106
+.. _C_GetTokenInfo: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024107
+.. _C_SetAttributeValue: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024126
+.. _C_SignInit: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024143
+.. _C_Sign: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024144
+.. _C_SignFinal: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#Toc323024146
 
 Supported Algorithms
 --------------------
 
-- `CryptographicAlgorithm`_::RSA
-- `CryptographicAlgorithm`_::ECDSA
+The set of algorithms below corresponds to the subset of algorithms defined
+in :rfc:`9904` section 3 that are supported by Cascade, and thus also need to
+be supported by Cascade-HSM-Bridge.
+
++------------------------------------+-----------------------------+-------------------------------------+-----------------------------------------------------------------------------------------+
+| KMIP `CryptographicAlgorithm`_     | KMIP `CryptographicLength`_ | PKCS#11 Mechanism                   | PKCS#11 Additional Key Attributes                                                       |
++====================================+=============================+=====================================+=========================================================================================+
+| `CryptographicAlgorithm`_::RSA     | Used as the modulus.        | `CKM_RSA_PKCS_KEY_PAIR_GEN`_        | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_RSA`_, `CKA_PUBLIC_EXPONENT`_,  `CKA_MODULUS_BITS`_ |
++------------------------------------+-----------------------------+-------------------------------------+-----------------------------------------------------------------------------------------+
+| `CryptographicAlgorithm`_::ECDSA   | 256 or 384.                 | `CKM_EC_KEY_PAIR_GEN`_              | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_EC`_, `CKA_EC_PARAMS`_                              |
++------------------------------------+-----------------------------+-------------------------------------+-----------------------------------------------------------------------------------------+
+| `CryptographicAlgorithm`_::Ed448   | N/A                         | `CKM_EC_EDWARDS_KEY_PAIR_GEN`_ [2]_ | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_EC_EDWARDS`_, `CKA_EC_PARAMS`_                      |
++------------------------------------+-----------------------------+-------------------------------------+-----------------------------------------------------------------------------------------+
+| `CryptographicAlgorithm`_::Ed25519 | N/A                         | `CKM_EC_EDWARDS_KEY_PAIR_GEN`_ [2]_ | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_EC_EDWARDS`_, `CKA_EC_PARAMS`_                      |
++------------------------------------+-----------------------------+-------------------------------------+-----------------------------------------------------------------------------------------+
+
+.. [2] `CKM_EC_EDWARDS_KEY_PAIR_GEN`_ is only available for HSMs supporting
+       the PKCS#11 v3.0 specification. The `CKA_EC_PARAMS`_ select the
+       elliptic curve to be used via :rfc:`8410` OID, either id-Ed448 or
+       id-Ed25519. See also :ref:`kmip-extension`.
 
 .. _CryptographicAlgorithm: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613485
+.. _CryptographicLength: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613486
+.. _CKA_EC_PARAMS: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v3.0/cos01/pkcs11-curr-v3.0-cos01.html#_Toc30061182
+.. _CKA_KEY_TYPE: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959717
+.. _CKA_LABEL: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959705
+.. _CKA_MODULUS_BITS: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226889
+.. _CKA_PUBLIC_EXPONENT: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959720
+.. _CKK_RSA: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226888
+.. _CKK_EC: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226931
+.. _CKK_EC_EDWARDS: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v3.0/cos01/pkcs11-curr-v3.0-cos01.html#_Toc30061182
+.. _CKM_EC_KEY_PAIR_GEN: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v3.0/cos01/pkcs11-curr-v3.0-cos01.html#_Toc30061186
+.. _CKM_EC_EDWARDS_KEY_PAIR_GEN: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v3.0/cos01/pkcs11-curr-v3.0-cos01.html#_Toc30061187
+.. _CKM_RSA_PKCS_KEY_PAIR_GEN: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226891
+
+Key Attributes
+--------------
+
+Keys are created with the following PKCS#11 attributes:
+
++------------------------------+-------------------------------+
+| Public Key                   | Private Key                   |
++==============================+===============================+
+| `CKA_CLASS`_: CKO_PUBLIC_KEY | `CKA_CLASS`_: CKO_PRIVATE_KEY |
++------------------------------+-------------------------------+
+| `CKA_ID`_: [3]_              | `CKA_ID`_: [3]_               |
++------------------------------+-------------------------------+
+| `CKA_VERIFY`_: CK_TRUE       | `CKA_SIGN`_: CKA_TRUE         |
++------------------------------+-------------------------------+
+| `CKA_ENCRYPT`_: CK_FALSE     | `CKA_DECRYPT`_: CKA_FALSE     |
++------------------------------+-------------------------------+
+| `CKA_TOKEN`_: CK_TRUE        | `CKA_TOKEN`_: CKA_TRUE        |
++------------------------------+-------------------------------+
+| `CKA_WRAP`_: CK_FALSE        | `CKA_PRIVATE`_: CKA_TRUE      |
++------------------------------+-------------------------------+
+|                              | `CKA_SENSITIVE`_: CKA_TRUE    |
++------------------------------+-------------------------------+
+
+.. [3] See :ref:`key-id-mapping`.
+.. _CKA_CLASS: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959698
+.. _CKA_DECRYPT: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959719
+.. _CKA_ENCRYPT: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959718
+.. _CKA_ID: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959717
+.. _CKA_PRIVATE: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959705
+.. _CKA_SENSITIVE: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959719
+.. _CKA_SIGN: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959719
+.. _CKA_TOKEN: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959705
+.. _CKA_VERIFY: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959718
+.. _CKA_WRAP: https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959718
+
+.. _key-id-mapping:
 
 Key ID Mapping
 --------------
 
 In PKCS#11 a public and private key pair can both be identified by the same
-CKA_ID but different object class.
+`CKA_ID`_ but different object class.
 
 KMIP treats the public and private key pairs as separate objects which must
 each have their own unique identifier.
 
 When a Generate Key Pair request is received the Name attributes will be used
-as CKA_LABEL values for the generated keys and a random 20 byte CKA_ID will be
-generated. (20 bytes because the CKA_ID field was originally intended to X.509
-Key Identifier values which :rfc:5280 defines as being 160 bits long i.e.
-20 bytes).
+as `CKA_LABEL`_ values for the generated keys and a random 20 byte `CKA_ID`_
+will be generated. (20 bytes because the `CKA_ID`_ field was originally
+intended to store an X.509 Key Identifier value which :rfc:`5280` defines as
+being 160 bits long i.e. 20 bytes).
 
-On successful key pair generation the CKA_ID will be used to construct KMIP
+On successful key pair generation the `CKA_ID`_ will be used to construct KMIP
 compatible Unique Identifiers to return to the client, by appending `_priv`
-to the hexadecimal form of the CKA_ID to construct the private key ID, and by
-appending `_pub` to the hexadecimal form of the CKA_ID to construct the public
-key ID.
+to the hexadecimal form of the `CKA_ID`_ to construct the private key ID, and
+by appending `_pub` to the hexadecimal form of the `CKA_ID`_ to construct the
+public key ID.
 
 Other requests that take a KMIP unique identifier as input will strip and use
 the `_priv` or `_pub` suffix to know whether the request targets the private or
 public key respectively.
 
+Object Handle Caching
+---------------------
+
+As can be noted from the table above, many operations require finding the
+PKCS#11 object before it can be acted upon. This is because the PKCS#11
+functions that need to be invoked to do the actual work take an object
+handle as input, not a `CKA_ID`_. To avoid having to keep going back to
+the PKCS#11 library to determine the object handle for a given `CKA_ID`_,
+Cascade-HSM-Bridge caches the `CKA_ID`_ to object handle mappings in memory.
+
+.. _kmip-extension:
+
+KMIP Extension for Ed448/Ed2519 support
+---------------------------------------
+
+Ed448 and Ed25519 are NOT defined by the KMIP 1.x specifications. They first
+appear in the KMIP 2.0 specification. As stated above currently
+Cascade-HSM-Bridge only supports KMIP 1.2.
+
+How then can a client request generation of an Ed448 or Ed25519 key if KMIP
+1.2 is the only supported protocol version and which does not support those
+algorithms?
+
+From a binary protocol perspective the KMIP `CryptographicAlgorithm`_
+enumeration is just a number, and the additional values defined by KMIP 2.0
+for Ed448 (38) and Ed25519 (37) can be trivially sent by a KMIP 1.x client.
+
+A true KMIP 2.x compliant KMIP server will reject such a request. The reason
+is that KMIP 2.0 also changed how KMIP attributes should be encoded to binary
+when sent over the network.
+
+Cascade-HSM-Bridge doesn't support the KMIP 2.x encoding of attributes because
+the underlying KMIP library used by both it and Cascade does not yet support
+it. Cascade-HSM-Bridge will however happily accept the enumeration values for
+Ed448 (38) and Ed25519 (37) in a `Create Key Pair`_ request.
+
+When Cascade talks to Cascade-HSM-Bridge it only knows that it is talking to a
+KMIP 1.x server. So how can Cascade know if it is safe to send such a request?
+
+In order to allow Cascade to know whether it is talking to a KMIP server that
+*will* accept Ed448 (38) and Ed25519 (37) `CryptographicAlgorithm`_ values
+the server reports an extension via the `Query`_ operation to clients that
+query for ``Query Extension List``. In the response the client will receive
+the following `ExtensionInformation`_:
+
++----------------+-------------------------------------------------+
+| KMIP Field     | Field Value                                     |
++================+=================================================+
+| Extension Name | Cascade-HSM-Bridge Ed448/25519 KMIP 1.x Support |
++----------------+-------------------------------------------------+
+| Extension Tag  | None                                            |
++----------------+-------------------------------------------------+
+| Extension Type | None                                            |
++----------------+-------------------------------------------------+
+
+.. _Query: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613552
+.. _ExtensionInformation: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc395776390
 
 .. toctree::
    :maxdepth: 2

@@ -221,21 +221,21 @@ Key ID Mapping
 --------------
 
 In PKCS#11 a public and private key pair can both be identified by the same
-`CKA_ID` but different object class.
+`CKA_ID`_ but different object class.
 
 KMIP treats the public and private key pairs as separate objects which must
 each have their own unique identifier.
 
 When a Generate Key Pair request is received the Name attributes will be used
-as `CKA_LABEL` values for the generated keys and a random 20 byte `CKA_ID`
-will be generated. (20 bytes because the `CKA_ID` field was originally
+as `CKA_LABEL`_ values for the generated keys and a random 20 byte `CKA_ID`_
+will be generated. (20 bytes because the `CKA_ID`_ field was originally
 intended to store an X.509 Key Identifier value which :rfc:`5280` defines as
 being 160 bits long i.e. 20 bytes).
 
-On successful key pair generation the `CKA_ID` will be used to construct KMIP
+On successful key pair generation the `CKA_ID`_ will be used to construct KMIP
 compatible Unique Identifiers to return to the client, by appending `_priv`
-to the hexadecimal form of the `CKA_ID` to construct the private key ID, and
-by appending `_pub` to the hexadecimal form of the `CKA_ID` to construct the
+to the hexadecimal form of the `CKA_ID`_ to construct the private key ID, and
+by appending `_pub` to the hexadecimal form of the `CKA_ID`_ to construct the
 public key ID.
 
 Other requests that take a KMIP unique identifier as input will strip and use
@@ -248,9 +248,9 @@ Object Handle Caching
 As can be noted from the table above, many operations require finding the
 PKCS#11 object before it can be acted upon. This is because the PKCS#11
 functions that need to be invoked to do the actual work take an object
-handle as input, not a `CKA_ID`. To avoid having to keep going back to
-the PKCS#11 library to determine the object handle for a given `CKA_ID`,
-Cascade-HSM-Bridge caches the `CKA_ID` to object handle mappings in memory.
+handle as input, not a `CKA_ID`_. To avoid having to keep going back to
+the PKCS#11 library to determine the object handle for a given `CKA_ID`_,
+Cascade-HSM-Bridge caches the `CKA_ID`_ to object handle mappings in memory.
 
 
 .. toctree::

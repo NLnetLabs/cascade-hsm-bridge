@@ -166,7 +166,7 @@ Supported Algorithms
 .. [2] `CMK_EC_EDWARDS_KEY_PAIR_GEN`_ is only available for HSMs supporting
        the PKCS#11 v3.0 specification. The `CKA_EC_PARAMS`_ select the
        elliptic curve to be used via :rfc:`8410` OID, either id-Ed448 or
-       id-Ed25519. See also :ref:`kmip-vendor-extension`.
+       id-Ed25519. See also :ref:`kmip-extension`.
 
 .. _CryptographicAlgorithm: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613485
 .. _CKA_EC_PARAMS: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v3.0/cos01/pkcs11-curr-v3.0-cos01.html#_Toc30061182
@@ -253,10 +253,10 @@ handle as input, not a `CKA_ID`_. To avoid having to keep going back to
 the PKCS#11 library to determine the object handle for a given `CKA_ID`_,
 Cascade-HSM-Bridge caches the `CKA_ID`_ to object handle mappings in memory.
 
-.. _kmip-vendor-extension:
+.. _kmip-extension:
 
-KMIP Vendor Extension and Ed448/Ed2519 support
-----------------------------------------------
+KMIP Extension for Ed448/Ed2519 support
+---------------------------------------
 
 Ed448 and Ed25519 are NOT defined by the KMIP 1.x specifications. They first
 appear in the KMIP 2.0 specification. As stated above currently
@@ -284,19 +284,17 @@ But how can Cascade know if it is safe to send such a request? It only knows
 when talking to Cascade-HSM-Bridge that it is talking to a KMIP 1.x server.
 
 In order to allow Cascade to know whether it is talking to a KMIP server that
-_will_ accept Ed448 (38) and Ed25519 (37) `CryptographicAlgorithm`_ values the
-server reports a vendor extension via the `Query`_ operation to clients that
-request `QueryFunction::QueryList`. In the response the client will receive
-the following `ExtensionInformation`:
+_will_ accept Ed448 (38) and Ed25519 (37) `CryptographicAlgorithm`_ values
+the server reports an extension via the `Query`_ operation to clients that
+`Query` for ``Query Extension List``. In the response the client will receive
+the following `ExtensionInformation`_:
 
 | Extension Name | Cascade-HSM-Bridge Ed448/25519 KMIP 1.x Support |
 | Extension Tag | None |
 | Extension Type | None |
-| Extension Enumeration | None |
-| Extension Attribute | None |
-| Extension Parent Tag | None |
-| Extension Description | Allow use of the Ed448 and Ed25519 Cryptographic Algorithm enumeration values via KMIP 1.x style attributes rather than KMIP 2.x style attributes |
 
+.. _Query: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613552
+.. _ExtensionInformation: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc395776390
 
 .. toctree::
    :maxdepth: 2

@@ -285,7 +285,7 @@ KMIP 1.x server. So how can Cascade know if it is safe to send such a request?
 In order to allow Cascade to know whether it is talking to a KMIP server that
 *will* accept Ed448 (38) and Ed25519 (37) `CryptographicAlgorithm`_ values
 the server reports an extension via the `Query`_ operation to clients that
-`Query` for ``Query Extension List``. In the response the client will receive
+query for ``Query Extension List``. In the response the client will receive
 the following `ExtensionInformation`_:
 
 +----------------+-------------------------------------------------+

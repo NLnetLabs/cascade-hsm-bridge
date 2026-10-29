@@ -12,7 +12,7 @@ use crate::pkcs11::util::get_cached_handle_for_key;
 pub fn op(
     pkcs11conn: Pkcs11Connection,
     batch_item: &BatchItem,
-) -> Result<ResBatchItem, (ResultReason, std::string::String)> {
+) -> Result<ResBatchItem, (ResultReason, String)> {
     let RequestPayload::Revoke(Some(id), _, _) = batch_item.request_payload() else {
         return Err((
             ResultReason::InvalidMessage,
@@ -24,7 +24,9 @@ pub fn op(
     // key being revoked at least exists.
 
     // Make sure the key exists
-    match get_cached_handle_for_key(&pkcs11conn, id) {
+    match get_cached_handle_for_key(&pkcs11conn, id)
+        .map_err(|err| (ResultReason::ItemNotFound, err))?
+    {
         Some(_) => {
             // Nothing more to do as PKCS#11 doesn't support revocaton.
             Ok(ResBatchItem {

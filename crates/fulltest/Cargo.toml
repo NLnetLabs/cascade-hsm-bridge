@@ -21,6 +21,9 @@ harness = false
 version = "0.0.1"
 git = "https://github.com/NLnetLabs/domain-kmip.git"
 branch = "more-algorithm-support-and-fixes-and-cleanup"
+# Avoid a dependency on aws-lc-rs as used by default by Rustls which is used
+# by kmip-protocol, instead instruct domain-kmip to use the Ring support in
+# kmip-protocol instead.
 default-features = false
 features = ["ring"]
 

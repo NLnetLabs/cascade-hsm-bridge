@@ -1,5 +1,5 @@
 use kmip::types::{
-    common::{AttributeValue, NameType},
+    common::{AttributeValue, CryptographicAlgorithm, NameType},
     request::{self, BatchItem, RequestPayload},
     response::{
         BatchItem as ResBatchItem, CreateKeyPairResponsePayload, ResponsePayload, ResultReason,
@@ -29,51 +29,56 @@ pub fn op(
     let mut pub_attrs = vec![];
     let mut priv_attrs = vec![]; // TODO: Optionally include Attribute::Extractable(true)?
     let mut mechanism: Option<Mechanism> = None;
-    let mut modulus = None;
+    let mut crypto_len = None;
 
     if let Some(common_attrs) = common_attrs {
         for attr in common_attrs.attributes() {
             if attr.name() == "Cryptographic Algorithm" {
                 if let AttributeValue::CryptographicAlgorithm(alg) = attr.value() {
                     match alg {
-                        kmip::types::common::CryptographicAlgorithm::ECDSA => {
-                            // Defined at
-                            // https://docs.oasis-open.org/kmip/ug/v1.2/cn01/kmip-ug-v1.2-cn01.html#_Toc407027131.
-                            // Also matches the OID value used by OpenDNSSEC
-                            // 2.1.14.
-                            // The OID is X.690 DER encoded.
-                            //   0x06 - identifier octet:
-                            //            00000110
-                            //            ^^ Class
-                            //              ^ P/C: 0 = Primitive, 1 = Constructed
-                            //               ^^^^^ ASN.1 tag number
-                            //          where ASN.1 tag number 0x06 denotes an
-                            //          Object Identifier (aka OID) as defined
-                            //          by X.690 section 8.19 "Encoding of an
-                            //          object identifier value".
-                            //  0x08 - the number of bytes that follow, 8 in this case.
-                            //  0x2A.. DER (Distinguished Encoding Rules)
-                            //         encoded value equivalent to
-                            //         1.2.840.10045.3.1.7 (see
-                            //         https://lapo.it/asn1js/#BggqhkjOPQMBBw)
-                            //         which
-                            //         https://docs.oasis-open.org/kmip/ug/v1.2/cn01/kmip-ug-v1.2-cn01.html#_Toc407027131
-                            //         defines as algorithm P-256 aka
-                            //         SECP256R1.
-                            let oid_p256: Vec<u8> =
-                                vec![0x06, 0x08, 0x2A, 0x86, 0x48, 0xCE, 0x3D, 0x03, 0x01, 0x07];
-                            pub_attrs.push(Attribute::EcParams(oid_p256));
+                        CryptographicAlgorithm::ECDSA => {
                             pub_attrs.push(Attribute::KeyType(KeyType::EC));
                             priv_attrs.push(Attribute::KeyType(KeyType::EC));
                             mechanism = Some(Mechanism::EccKeyPairGen);
                         }
 
-                        kmip::types::common::CryptographicAlgorithm::RSA => {
-                            // TODO: Document where [1, 0, 1] comes from.
+                        CryptographicAlgorithm::RSA => {
+                            // Public exponent 1, 0, 1 is the ASN.1 INTEGER
+                            // (RFC 8018 A.1.1) encoding of 65537. 65537 is
+                            // also used by OpenDNSSEC. Why 65537? See:
+                            //   - https://www.rfc-editor.org/rfc/rfc1423.html#section-4.1.1 "RSA keys"
+                            //   - https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=934860 section 6.3.4.4 "Having a Small Constant e"
+                            //   - https://github.com/opendnssec/opendnssec/blob/1f1bea259f55ccf3841184b3ba504a5d1f4639b8/libhsm/src/lib/libhsm.c#L2582
                             pub_attrs.push(Attribute::PublicExponent(vec![1, 0, 1]));
                             pub_attrs.push(Attribute::KeyType(KeyType::RSA));
                             priv_attrs.push(Attribute::KeyType(KeyType::RSA));
                             mechanism = Some(Mechanism::RsaPkcsKeyPairGen);
+                        }
+
+                        CryptographicAlgorithm::Ed448 | CryptographicAlgorithm::Ed25519 => {
+                            // Based on OpenDNSSEC code.
+                            pub_attrs.push(Attribute::KeyType(KeyType::EC_EDWARDS));
+                            priv_attrs.push(Attribute::KeyType(KeyType::EC_EDWARDS));
+                            mechanism = Some(Mechanism::EccEdwardsKeyPairGen);
+
+                            // These OID byte values used below were taken
+                            // from OpenDNSSEC code. They are the BER encoded
+                            // equivalents of the dotted OID values:
+                            //
+                            // 1.3.101.112 - id-Ed25519 from RFC 8410
+                            // 1.3.101.113 - id-Ed448 from RFC 8410
+                            //
+                            // See:
+                            //   - https://www.rfc-editor.org/info/rfc8410/#section-3
+                            //   - https://github.com/opendnssec/opendnssec/blob/1f1bea259f55ccf3841184b3ba504a5d1f4639b8/libhsm/src/lib/libhsm.c#L2976
+                            let curve_oid = match alg {
+                                CryptographicAlgorithm::Ed448 => vec![0x06, 0x03, 0x2B, 0x65, 0x71],
+                                CryptographicAlgorithm::Ed25519 => {
+                                    vec![0x06, 0x03, 0x2B, 0x65, 0x70]
+                                }
+                                _ => unreachable!(),
+                            };
+                            pub_attrs.push(Attribute::EcParams(curve_oid));
                         }
 
                         _ => {
@@ -88,7 +93,7 @@ pub fn op(
                 && let AttributeValue::CryptographicLength(key_size) = attr.value()
             {
                 // TODO: SAFETY!
-                modulus = Some(key_size.0);
+                crypto_len = Some(key_size.0);
             }
         }
 
@@ -142,13 +147,53 @@ pub fn op(
         ));
     };
 
-    if matches!(mechanism, Mechanism::RsaPkcsKeyPairGen)
-        && let Some(modulus) = modulus
-    {
-        pub_attrs.push(Attribute::ModulusBits(
-            (modulus as usize).try_into().unwrap(),
-        ));
+    if let Some(crypto_len) = crypto_len {
+        match mechanism {
+            Mechanism::RsaPkcsKeyPairGen => {
+                pub_attrs.push(Attribute::ModulusBits(
+                    (crypto_len as usize).try_into().unwrap(),
+                ));
+            }
+            Mechanism::EccKeyPairGen => {
+                // The elliptic curve OID byte values below match those used
+                // by OpenDNSSEC 2.1.14.
+                //
+                // They are equivalent to the dotted forms:
+                //   - 1.2.840.10045.3.1.7 - P-256 aka SECP256R1
+                //   - 1.3.132.0.34 - P-384 aka SECP384R1
+                //
+                // They can be broken down like so:
+                //   0x06 - identifier octet:
+                //            00000110
+                //            ^^ Class
+                //              ^ P/C: 0 = Primitive, 1 = Constructed
+                //               ^^^^^ ASN.1 tag number
+                //          where ASN.1 tag number 0x06 denotes an Object
+                //          Identifier (aka OID) as defined by X.690 section
+                //          8.19 "Encoding of an object identifier value".
+                //  0x08 - the number of bytes that follow, 8 in this case.
+                //  0x2A.. DER (Distinguished Encoding Rules) encoded value
+                //         equivalent to 1.2.840.10045.3.1.7
+                //
+                // See:
+                //   - https://lapo.it/asn1js/#BggqhkjOPQMBBw
+                //   - https://docs.oasis-open.org/kmip/ug/v1.2/cn01/kmip-ug-v1.2-cn01.html#_Toc407027131
+                //   - https://github.com/opendnssec/opendnssec/blob/2.1.14/libhsm/src/lib/libhsm.c#L2880
+                let curve_oid = match crypto_len {
+                    256 => Some(vec![
+                        0x06, 0x08, 0x2A, 0x86, 0x48, 0xCE, 0x3D, 0x03, 0x01, 0x07,
+                    ]),
+                    384 => Some(vec![0x06, 0x05, 0x2B, 0x81, 0x04, 0x00, 0x22]),
+                    _ => None,
+                };
+                if let Some(curve_oid) = curve_oid {
+                    pub_attrs.push(Attribute::EcParams(curve_oid));
+                }
+            }
+            _ => { /* Nothing to do */ }
+        }
     }
+
     // TODO: Detect sign mask in the above and push it as an attr.
 
     // TODO: Verify that no other key already has this name. Return Illegal

@@ -123,7 +123,7 @@ Supported operations
 | `Sign`_              | `C_FindObjectsInit`_, `C_FindObjects`_, `C_FindObjectsFinal`_, `C_SignInit`_, `C_Sign`_ & `C_SignFinal`_ |
 +----------------------+----------------------------------------------------------------------------------------------------------+
 
-.. [1] The `Activate` and `Revoke` KMIP operations have no equivalent in
+.. [1] The `Activate`_ and `Revoke`_ KMIP operations have no equivalent in
        PKCS#11. These operations thus only check that the key exists.
 
 .. _Activate: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613546
@@ -151,21 +151,22 @@ Supported operations
 Supported Algorithms
 --------------------
 
-+------------------------------------+----------------------------+-------------------------------------+-----------------------------------------------------------------------------------------+
-| KMIP `CryptographicAlgorithm`      | KMIP `CryptographicLength` | PKCS#11 Mechanism                   | PKCS#11 Additional Key Attributes                                                       |
-+====================================+============================+=====================================+=========================================================================================+
-| `CryptographicAlgorithm`_::RSA     | Used as the modulus.       | `CKM_RSA_PKCS_KEY_PAIR_GEN`_        | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_RSA`_, `CKA_PUBLIC_EXPONENT`_,  `CKA_MODULUS_BITS`_ |
-+------------------------------------+----------------------------+-------------------------------------+-----------------------------------------------------------------------------------------+
-| `CryptographicAlgorithm`_::ECDSA   | 256 or 384.                | `CKM_EC_KEY_PAIR_GEN`_              | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_EC`_, `CKA_EC_PARAMS`_                              |
-+------------------------------------+----------------------------+-------------------------------------+-----------------------------------------------------------------------------------------+
-| `CryptographicAlgorithm`_::Ed448   | N/A                        | `CKM_EC_EDWARDS_KEY_PAIR_GEN`_ [2]_ | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_EC_EDWARDS`_, `CKA_EC_PARAMS`_                      |
-+------------------------------------+----------------------------+-------------------------------------+-----------------------------------------------------------------------------------------+
-| `CryptographicAlgorithm`_::Ed25519 | N/A                        | `CKM_EC_EDWARDS_KEY_PAIR_GEN`_ [2]_ | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_EC_EDWARDS`_, `CKA_EC_PARAMS`_                      |
-+------------------------------------+----------------------------+-------------------------------------+-----------------------------------------------------------------------------------------+
++------------------------------------+-----------------------------+-------------------------------------+-----------------------------------------------------------------------------------------+
+| KMIP `CryptographicAlgorithm`_     | KMIP `CryptographicLength`_ | PKCS#11 Mechanism                   | PKCS#11 Additional Key Attributes                                                       |
++====================================+=============================+=====================================+=========================================================================================+
+| `CryptographicAlgorithm`_::RSA     | Used as the modulus.        | `CKM_RSA_PKCS_KEY_PAIR_GEN`_        | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_RSA`_, `CKA_PUBLIC_EXPONENT`_,  `CKA_MODULUS_BITS`_ |
++------------------------------------+-----------------------------+-------------------------------------+-----------------------------------------------------------------------------------------+
+| `CryptographicAlgorithm`_::ECDSA   | 256 or 384.                 | `CKM_EC_KEY_PAIR_GEN`_              | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_EC`_, `CKA_EC_PARAMS`_                              |
++------------------------------------+-----------------------------+-------------------------------------+-----------------------------------------------------------------------------------------+
+| `CryptographicAlgorithm`_::Ed448   | N/A                         | `CKM_EC_EDWARDS_KEY_PAIR_GEN`_ [2]_ | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_EC_EDWARDS`_, `CKA_EC_PARAMS`_                      |
++------------------------------------+-----------------------------+-------------------------------------+-----------------------------------------------------------------------------------------+
+| `CryptographicAlgorithm`_::Ed25519 | N/A                         | `CKM_EC_EDWARDS_KEY_PAIR_GEN`_ [2]_ | `CKA_LABEL`_, `CKA_KEY_TYPE`_: `CKK_EC_EDWARDS`_, `CKA_EC_PARAMS`_                      |
++------------------------------------+-----------------------------+-------------------------------------+-----------------------------------------------------------------------------------------+
 
-.. [2] `CMK_EC_EDWARDS_KEY_PAIR_GEN` is only available for HSMs supporting the
-       PKCS#11 v3.0 specification. The `CKA_EC_PARAMS`_ select the elliptic
-       curve to be used via :rfc:`8410` OID, either id-Ed448 or id-Ed25519.
+.. [2] `CMK_EC_EDWARDS_KEY_PAIR_GEN`_ is only available for HSMs supporting
+       the PKCS#11 v3.0 specification. The `CKA_EC_PARAMS`_ select the
+       elliptic curve to be used via :rfc:`8410` OID, either id-Ed448 or
+       id-Ed25519. See also :ref:`kmip-vendor-extension`.
 
 .. _CryptographicAlgorithm: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613485
 .. _CKA_EC_PARAMS: https://docs.oasis-open.org/pkcs11/pkcs11-curr/v3.0/cos01/pkcs11-curr-v3.0-cos01.html#_Toc30061182
@@ -251,6 +252,50 @@ functions that need to be invoked to do the actual work take an object
 handle as input, not a `CKA_ID`_. To avoid having to keep going back to
 the PKCS#11 library to determine the object handle for a given `CKA_ID`_,
 Cascade-HSM-Bridge caches the `CKA_ID`_ to object handle mappings in memory.
+
+.. _kmip-vendor-extension:
+
+KMIP Vendor Extension and Ed448/Ed2519 support
+----------------------------------------------
+
+Ed448 and Ed25519 are NOT defined by the KMIP 1.x specifications. They first
+appear in the KMIP 2.0 specification. As stated above currently
+Cascade-HSM-Bridge only supports KMIP 1.2.
+
+How then can a client request generation of an Ed448 or Ed25519 key if KMIP
+1.2 is the only supported protocol version which does not support those
+algorithms?
+
+From a binary protocol perspective the KMIP `CryptographicAlgorithm`_
+enumeration is just a number, and the additional values defined by KMIP 2.0
+for Ed448 (38) and Ed25519 (37) can be trivially sent by a KMIP 1.x client.
+
+A true KMIP 2.x compliant KMIP server will reject such a request. The reason
+is that KMIP 2.0 also changed how KMIP attributes should be encoded to binary
+when sent over the network.
+
+Cascade-HSM-Bridge doesn't support the KMIP 2.x encoding of attributes because
+the underlying KMIP library used by both it and Cascade does not yet support it.
+
+Cascade-HSM-Bridge will however happily accept the enumeration values for Ed448
+(38) and Ed25519 (37) in a `Create Key Pair`_ request.
+
+But how can Cascade know if it is safe to send such a request? It only knows
+when talking to Cascade-HSM-Bridge that it is talking to a KMIP 1.x server.
+
+In order to allow Cascade to know whether it is talking to a KMIP server that
+_will_ accept Ed448 (38) and Ed25519 (37) `CryptographicAlgorithm`_ values the
+server reports a vendor extension via the `Query`_ operation to clients that
+request `QueryFunction::QueryList`. In the response the client will receive
+the following `ExtensionInformation`:
+
+| Extension Name | Cascade-HSM-Bridge Ed448/25519 KMIP 1.x Support |
+| Extension Tag | None |
+| Extension Type | None |
+| Extension Enumeration | None |
+| Extension Attribute | None |
+| Extension Parent Tag | None |
+| Extension Description | Allow use of the Ed448 and Ed25519 Cryptographic Algorithm enumeration values via KMIP 1.x style attributes rather than KMIP 2.x style attributes |
 
 
 .. toctree::

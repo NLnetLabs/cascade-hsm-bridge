@@ -151,6 +151,10 @@ Supported operations
 Supported Algorithms
 --------------------
 
+The subset of algorithms below corresponds to the subset of algorithms defined
+in :rfc:`9904` section 3 that are supported by Cascade, and thus also need to
+be supported by Cascade-HSM-Bridge.
+
 +------------------------------------+-----------------------------+-------------------------------------+-----------------------------------------------------------------------------------------+
 | KMIP `CryptographicAlgorithm`_     | KMIP `CryptographicLength`_ | PKCS#11 Mechanism                   | PKCS#11 Additional Key Attributes                                                       |
 +====================================+=============================+=====================================+=========================================================================================+

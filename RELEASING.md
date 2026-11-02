@@ -19,13 +19,8 @@
 
 # Merge and release
 - merge the release branch to main
-- git checkout main
-- cargo package (to test that it works)
-- git push
-- in GH UI invoke the packaging workklow on the release branch
 - git tag -a -m "Release vX.Y.Z[-xxx]`)
-- Verify that the release tag version is the same as the Cargo.toml version but with a `v` prefix
-- cargo publish
+- verify that the release tag version is the same as the Cargo.toml version but with a `v` prefix
 - publish binary (DEB, RPM) packages via packaging VM
 
 # Prepare for development

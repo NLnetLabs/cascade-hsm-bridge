@@ -225,8 +225,8 @@ impl Default for ServerConfig {
 /// as defined by the KMIP specification and registered with IANA.
 ///
 /// See:
-///   - http://docs.oasis-open.org/kmip/profiles/v1.2/kmip-profiles-v1.2.html#_Toc409613170
-///   - https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=kmip
+///   - <http://docs.oasis-open.org/kmip/profiles/v1.2/kmip-profiles-v1.2.html#_Toc409613170>
+///   - <https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=kmip>
 fn default_server_addr() -> SocketAddr {
     SocketAddr::new(IpAddr::V4(Ipv4Addr::new(127, 0, 0, 1)), 5696)
 }

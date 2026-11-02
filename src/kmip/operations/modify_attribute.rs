@@ -1,6 +1,6 @@
 use kmip::types::{
     common::{AttributeValue, NameType},
-    request::{BatchItem, RequestPayload},
+    request::{self, BatchItem, RequestPayload},
     response::{BatchItem as ResBatchItem, ResponsePayload, ResultReason, ResultStatus},
 };
 
@@ -36,7 +36,7 @@ pub fn op(
 
     let id = id.as_ref().unwrap();
 
-    let AttributeValue::Name(val, typ) = &attr.2 else {
+    let AttributeValue::Name(request::Name(val, typ)) = &attr.2 else {
         return Err((
             ResultReason::InvalidMessage,
             "Attribute Value payload is not a Name".to_string(),
@@ -53,7 +53,9 @@ pub fn op(
         ));
     };
 
-    let Some(key_handle) = get_cached_handle_for_key(&pkcs11conn, id) else {
+    let Some(key_handle) = get_cached_handle_for_key(&pkcs11conn, id)
+        .map_err(|err| (ResultReason::ItemNotFound, err))?
+    else {
         return Err((
             ResultReason::ItemNotFound,
             format!("Key with id {} not found", id.0),

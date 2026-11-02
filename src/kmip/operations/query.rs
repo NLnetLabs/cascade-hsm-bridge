@@ -3,8 +3,8 @@ use kmip::types::{
     common::{ObjectType, Operation},
     request::{BatchItem, QueryFunction, RequestPayload},
     response::{
-        BatchItem as ResBatchItem, QueryResponsePayload, ResponsePayload, ResultReason,
-        ResultStatus, ServerInformation,
+        BatchItem as ResBatchItem, ExtensionInformation, QueryResponsePayload, ResponsePayload,
+        ResultReason, ResultStatus, ServerInformation,
     },
 };
 
@@ -14,7 +14,7 @@ pub fn op(
     pkcs11pool: &Pkcs11Pool,
     cfg: &Config,
     batch_item: &BatchItem,
-) -> Result<ResBatchItem, (ResultReason, std::string::String)> {
+) -> Result<ResBatchItem, (ResultReason, String)> {
     let RequestPayload::Query(query_functions) = batch_item.request_payload() else {
         return Err((
             ResultReason::InvalidMessage,
@@ -26,6 +26,7 @@ pub fn op(
     let mut object_types = None;
     let mut vendor_identification = None;
     let mut server_information = None;
+    let mut extension_information = None;
 
     for query_function in query_functions {
         match query_function {
@@ -34,10 +35,12 @@ pub fn op(
                 operations = Some(vec![
                     Operation::Activate,
                     Operation::CreateKeyPair,
+                    Operation::Destroy,
                     Operation::DiscoverVersions,
                     Operation::Get,
                     Operation::Query,
                     Operation::ModifyAttribute,
+                    Operation::Revoke,
                     Operation::Sign,
                 ])
             }
@@ -54,7 +57,14 @@ pub fn op(
                 };
                 vendor_identification =
                     Some(format!("cascade-hsm-bridge {self_ver} using {pkcs11_info}"));
-                server_information = Some(ServerInformation);
+                server_information = Some(ServerInformation {});
+            }
+            QueryFunction::QueryExtensionList => {
+                extension_information = Some(vec![ExtensionInformation {
+                    extension_name: "Cascade-HSM-Bridge Ed448/25519 KMIP 1.x Support".to_string(),
+                    extension_tag: None,
+                    extension_type: None,
+                }]);
             }
             _ => { /* Ignore */ }
         }
@@ -71,6 +81,7 @@ pub fn op(
             object_types,
             vendor_identification,
             server_information,
+            extension_information,
         })),
         message_extension: None,
     })

@@ -13,7 +13,7 @@ use crate::pkcs11::pool::Pkcs11Connection;
 pub fn op(
     pkcs11conn: Pkcs11Connection,
     batch_item: &BatchItem,
-) -> Result<ResBatchItem, (ResultReason, std::string::String)> {
+) -> Result<ResBatchItem, (ResultReason, String)> {
     let RequestPayload::Get(Some(id), _, _, _) = batch_item.request_payload() else {
         return Err((
             ResultReason::InvalidMessage,

@@ -6,7 +6,7 @@ use kmip::types::{
     },
 };
 
-pub fn op(batch_item: &BatchItem) -> Result<ResBatchItem, (ResultReason, std::string::String)> {
+pub fn op(batch_item: &BatchItem) -> Result<ResBatchItem, (ResultReason, String)> {
     let RequestPayload::DiscoverVersions(client_versions) = batch_item.request_payload() else {
         return Err((
             ResultReason::InvalidMessage,

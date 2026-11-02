@@ -25,13 +25,13 @@ use std::{
     time::Duration,
 };
 
-use domain::crypto::{
-    ring,
+use command_fds::{CommandFdExt, FdMapping};
+use domain_kmip::dep::domain::crypto::{
+    openssl,
     sign::{GenerateParams, SignRaw},
 };
-use kmip::client::pool::SyncConnPool;
-
-use command_fds::{CommandFdExt, FdMapping};
+use domain_kmip::dep::kmip_protocol::net::{ConnectionSettings, sync_pool::ConnPool};
+use tracing_subscriber::{EnvFilter, fmt};
 
 /// A running `cascade-hsm-bridge` daemon.
 pub struct Daemon {
@@ -84,7 +84,7 @@ impl Daemon {
                 r#"
 version = "v1"
 pkcs11.lib-path = {lib_path:?}
-daemon.log-level = "debug"
+daemon.log-level = "trace"
 daemon.log-target = {{ type = "file", path = {log_path:?} }}
 "#
             ),
@@ -129,11 +129,18 @@ log.level = DEBUG
         {
             return Err(io::Error::other("could not initialize SoftHSMv2"));
         }
+        println!("SOFTHSM2_CONF={}", hsm_config_path.display());
 
         // Make sure the daemon binary is ready.
         let project_dir = std::env::current_dir()?;
         if !Command::new("cargo")
-            .args(["build", "--bin", "cascade-hsm-bridge"])
+            .args([
+                "build",
+                "--package",
+                "cascade-hsm-bridge",
+                "--bin",
+                "cascade-hsm-bridge",
+            ])
             .spawn()?
             .wait()?
             .success()
@@ -142,7 +149,7 @@ log.level = DEBUG
         }
 
         // Launch the daemon.
-        let daemon_path = project_dir.join("target/debug/cascade-hsm-bridge");
+        let daemon_path = project_dir.join("../../target/debug/cascade-hsm-bridge");
         let proc = Command::new(&daemon_path)
             .arg("--config")
             .arg(&config_path)
@@ -181,6 +188,8 @@ impl Drop for Daemon {
 }
 
 fn main() {
+    fmt().with_env_filter(EnvFilter::from_default_env()).init();
+
     // Launch the daemon.
     let daemon = Daemon::launch().unwrap_or_else(|err| {
         eprintln!("Could not launch the daemon: {err}");
@@ -188,7 +197,7 @@ fn main() {
     });
 
     // Establish a connection pool for talking to the daemon.
-    let conn_settings = Arc::new(domain_kmip::ConnectionSettings {
+    let conn_settings = Arc::new(ConnectionSettings {
         host: daemon.address.ip().to_string(),
         port: daemon.address.port(),
         username: Some(daemon.slot.0.clone()),
@@ -196,13 +205,14 @@ fn main() {
         insecure: true,
         client_cert: None,
         server_cert: None,
+        server_name: None,
         ca_cert: None,
         connect_timeout: Some(Duration::from_secs(5)),
         read_timeout: Some(Duration::from_secs(5)),
         write_timeout: Some(Duration::from_secs(5)),
         max_response_bytes: Some(4096),
     });
-    let conn_pool = SyncConnPool::new(
+    let conn_pool = ConnPool::new(
         daemon.address.to_string(),
         conn_settings,
         32,
@@ -211,13 +221,14 @@ fn main() {
     )
     .unwrap();
 
-    print!("test_keygen_signing(RsaSha256 {{ bits: 1024 }})...");
     test_keygen_signing(&conn_pool, GenerateParams::RsaSha256 { bits: 1024 });
-    println!("ok");
-
-    print!("test_keygen_signing(EcdsaP256Sha256)...");
+    test_keygen_signing(&conn_pool, GenerateParams::RsaSha256 { bits: 2048 }); // Cascade default bits
+    test_keygen_signing(&conn_pool, GenerateParams::RsaSha512 { bits: 1024 });
+    test_keygen_signing(&conn_pool, GenerateParams::RsaSha512 { bits: 2048 }); // Cascade default bits
     test_keygen_signing(&conn_pool, GenerateParams::EcdsaP256Sha256);
-    println!("ok");
+    test_keygen_signing(&conn_pool, GenerateParams::EcdsaP384Sha384);
+    test_keygen_signing(&conn_pool, GenerateParams::Ed448);
+    test_keygen_signing(&conn_pool, GenerateParams::Ed25519);
 
     // TODO: 'test_keygen_signing()' with more algorithms.
 }
@@ -227,17 +238,20 @@ fn main() {
 /// A new key will be generated (using the given parameters) and used for
 /// signing. The public key will be retrieved and used to locally verify the
 /// signature.
-fn test_keygen_signing(pool: &SyncConnPool, key_params: GenerateParams) {
+fn test_keygen_signing(pool: &ConnPool, key_params: GenerateParams) {
+    print!("test_keygen_signing({:?})...", key_params);
+
     let algorithm = key_params.algorithm();
 
-    // Generate a new key.
-    let key =
-        domain_kmip::sign::generate("A-pub".into(), "A-priv".into(), key_params, 0, pool.clone())
-            .unwrap();
+    // Generate a new key. Note that the labels are NOT the IDs of the
+    // generated key parts, those are returned by generate().
+    let pub_label = "some-public-key-label";
+    let pri_label = "smoe-private-key-label";
+    let key = domain_kmip::generate(pub_label, pri_label, key_params, 0, pool.clone()).unwrap();
 
     // Retrive the public key, for local use.
     let dnskey = key.dnskey();
-    let pubkey = ring::PublicKey::from_dnskey(&dnskey).unwrap();
+    let pubkey = openssl::PublicKey::from_dnskey(&dnskey).unwrap();
 
     // Sign data with this key.
     let data = b"Hello World!";
@@ -247,7 +261,8 @@ fn test_keygen_signing(pool: &SyncConnPool, key_params: GenerateParams) {
     assert_eq!(algorithm, sig.algorithm());
     pubkey.verify(data, sig.as_ref()).unwrap();
 
-    // TODO: Delete the key? Does the public part need deletion?
-    //domain_kmip::sign::destroy("A-pub", pool.clone()).unwrap();
-    //domain_kmip::sign::destroy("A-priv", pool.clone()).unwrap();
+    domain_kmip::destroy(key.public_key_id(), pool.clone()).unwrap();
+    domain_kmip::destroy(key.private_key_id(), pool.clone()).unwrap();
+
+    println!("ok");
 }

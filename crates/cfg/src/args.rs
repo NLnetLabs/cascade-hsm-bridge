@@ -90,7 +90,7 @@ impl Args {
         }
     }
 
-    /// Merge this into a [`Config`].
+    /// Merge this into a [`crate::Config`].
     pub fn merge(self, config: &mut crate::Config) {
         match config {
             crate::Config::V1(config) => {

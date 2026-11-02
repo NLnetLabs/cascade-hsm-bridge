@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "CASCADE-HSM-BRIDGE" "1" "Jun 01, 2026" "0.1.0-beta" "cascade-hsm-bridge"
+.TH "CASCADE-HSM-BRIDGE" "1" "Nov 02, 2026" "0.2.0-beta1" "cascade-hsm-bridge"
 .SH NAME
 cascade-hsm-bridge \- A KMIP to PKCS#11 bridge
 .SH SYNOPSIS
@@ -50,8 +50,11 @@ is valid, or code 1 if the configuration is invalid.
 .INDENT 0.0
 .TP
 .B \-c, \-\-config <PATH>
-The configuration file to load. Defaults to
-\fB/etc/cascade\-hsm\-bridge/config.toml\fP\&.
+.INDENT 7.0
+.TP
+.B The configuration file to load. Required unless \fB\-\-lib\-path\fP
+is specified.
+.UNINDENT
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -74,6 +77,25 @@ Whether \fBcascade\-hsm\-bridge\fP should fork on startup. This option changes
 the working directory to the root directory and as such influences
 where files are looked for. Use absolute path names in configuration
 to avoid ambiguities.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-lib\-path
+.INDENT 7.0
+.TP
+.B The PKCS#11 library file to load. If specified the \fB\-\-config\fP file
+argument can be omitted in which case the default configuration settings
+will be used with the exception that the PKCS#11 file to load will be
+taken from the value of this command line argument.
+.sp
+\fBNOTE:\fP
+.INDENT 7.0
+.INDENT 3.5
+You can also supply this command line argument value by seting
+the CASCADE_HSM_BRIDGE_PKCS11_LIB_PATH environment variable.\(ga
+.UNINDENT
+.UNINDENT
+.UNINDENT
 .UNINDENT
 .INDENT 0.0
 .TP

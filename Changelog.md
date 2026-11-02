@@ -18,6 +18,15 @@ Released yyyy-mm-dd.
 
 Released 2026-11-02.
 
+### Breaking changes
+
+- KMIP Response Message > Response Header > Time Stamp is now correctly
+  encoded as KMIP type Date-Time (0x09) rather than as Long Integer (0x03).
+  The underlying fix is in the updated KMIP wire protocol serializer ([#64]).
+  The new response is incompatible with Cascade 0.1.0-beta7 and dnst
+  0.2.0-alpha3 and earlier clients as they use the old deserializer which
+  expects the wrong KMIP type code in the response.
+
 ### New
 
 - Add `--lib-path` and `CASCADE_HSM_BRIDGE_PKCS11_LIB_PATH` support. ([#51] by
@@ -56,6 +65,13 @@ Released 2026-11-02.
 - Document KMIP extension for Ed448/Ed25519. ([#65] by @ximon18)
 - Fix broken RustDoc links. ([#70] by @ximon18)
 - Update the intro in the manual. ([#74] by @ximon18)
+
+### Known issues
+
+- This release depends on an unreleased branch of `kmip-protocol`. Building
+  Cascade-HSM-Bridge from 0.1.0-beta2 sources will fail once the dependend
+  upon `kmip-protocol` branch is merged and deleted. Final production ready
+  releases of Cascade-HSM-Bridge will not have this issue.
 
 ### Acknowledgements
 

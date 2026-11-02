@@ -5,30 +5,30 @@ set -x
 
 case $1 in
   post-install)
-    echo -e "\nKMIP2PKCS#11 VERSION:"
+    echo -e "\nCASCADE-HSM-BRIDGE VERSION:"
     cascade-hsm-bridge --version
 
-    echo -e "\nKMIP2PKCS#11 CONF:"
+    echo -e "\nCASCADE-HSM-BRIDGE CONF:"
     cat /etc/cascade-hsm-bridge/config.toml
 
-    echo -e "\nKMIP2PKCS#11 SERVICE STATUS:"
+    echo -e "\nCASCADE-HSM-BRIDGE SERVICE STATUS:"
     systemctl status cascade-hsm-bridge || true
 
-    #echo -e "\nKMIP2PKCS#11 MAN PAGE (first 20 lines only):"
-    #man -P cat cascade-hsm-bridge | head -n 20 || true
+    echo -e "\nCASCADE-HSM-BRIDGE MAN PAGE (first 20 lines only):"
+    man -P cat cascade-hsm-bridge | head -n 20 || true
     ;;
 
   post-upgrade)
-    echo -e "\nKMIP2PKCS#11 VERSION:"
+    echo -e "\nCASCADE-HSM-BRIDGE VERSION:"
     cascade-hsm-bridge --version
     
-    echo -e "\nKMIP2PKCS#11 CONF:"
+    echo -e "\nCASCADE-HSM-BRIDGE CONF:"
     cat /etc/cascade-hsm-bridge/config.toml
     
-    echo -e "\nKMIP2PKCS#11 SERVICE STATUS:"
+    echo -e "\nCASCADE-HSM-BRIDGE SERVICE STATUS:"
     systemctl status cascade-hsm-bridge || true
     
-    #echo -e "\nKMIP2PKCS#11 MAN PAGE:"
-    #man -P cat cascade-hsm-bridge
+    echo -e "\nCASCADE-HSM-BRIDGE MAN PAGE:"
+    man -P cat cascade-hsm-bridge
     ;;
 esac

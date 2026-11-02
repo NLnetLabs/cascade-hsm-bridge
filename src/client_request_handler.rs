@@ -139,7 +139,6 @@ fn process_request(
         //   - Check
         //   - Get Attributes
         //   - Add Attribute
-        //   - Modify Attribute
         //   - Delete Attribute
         // [1]: https://docs.oasis-open.org/kmip/profiles/v1.2/os/kmip-profiles-v1.2-os.html#_Toc409613184
         let res = match batch_item.operation() {

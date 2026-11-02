@@ -19,7 +19,7 @@
 
 # Merge and release
 - merge the release branch to main
-- git tag -a -m "Release vX.Y.Z[-xxx]`) vX.Y.Z[-xxx]
+- git tag -a -m "Release vX.Y.Z[-xxx]" vX.Y.Z[-xxx]
 - verify that the release tag version is the same as the Cargo.toml version but with a `v` prefix
 - publish binary (DEB, RPM) packages via packaging VM
 

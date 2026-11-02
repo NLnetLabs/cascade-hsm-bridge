@@ -14,7 +14,7 @@ Released yyyy-mm-dd.
 ### Acknowledgements
 -->
 
-## Release 0.1.0-beta2.
+## Release 0.2.0-beta1.
 
 Released 2026-11-02.
 

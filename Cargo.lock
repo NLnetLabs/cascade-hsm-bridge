@@ -180,7 +180,7 @@ checksum = "fc652a48c352aef3ea3aed32080501cf3ef6ed5da78602a020c991775b0aff04"
 
 [[package]]
 name = "cascade-hsm-bridge"
-version = "0.1.0-beta2"
+version = "0.2.0-beta1"
 dependencies = [
  "bcder",
  "cascade-hsm-bridge-cfg",
@@ -206,7 +206,7 @@ dependencies = [
 
 [[package]]
 name = "cascade-hsm-bridge-cfg"
-version = "0.1.0-beta2"
+version = "0.2.0-beta1"
 dependencies = [
  "clap",
  "daemonbase",
@@ -565,7 +565,7 @@ dependencies = [
 
 [[package]]
 name = "fulltest"
-version = "0.1.0-beta2"
+version = "0.2.0-beta1"
 dependencies = [
  "command-fds",
  "domain-kmip",

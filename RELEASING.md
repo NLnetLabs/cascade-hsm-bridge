@@ -20,8 +20,9 @@
 # Merge and release
 - merge the release branch to main
 - git tag -a -m "Release vX.Y.Z[-xxx]" vX.Y.Z[-xxx]
-- verify that the release tag version is the same as the Cargo.toml version but with a `v` prefix
-- publish binary (DEB, RPM) packages via packaging VM
+- git push --tags
+- create a GH release for the tag
+- publish binary (DEB, RPM) packages from GH actions packaging run via packaging VM
 
 # Prepare for development
 - git checkout -b prep-for-dev

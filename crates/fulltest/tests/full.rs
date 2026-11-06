@@ -202,15 +202,13 @@ fn main() {
         port: daemon.address.port(),
         username: Some(daemon.slot.0.clone()),
         password: Some(daemon.slot.1.clone()),
-        insecure: true,
-        client_cert: None,
-        server_cert: None,
-        server_name: None,
-        ca_cert: None,
         connect_timeout: Some(Duration::from_secs(5)),
         read_timeout: Some(Duration::from_secs(5)),
         write_timeout: Some(Duration::from_secs(5)),
         max_response_bytes: Some(4096),
+        tls_client_auth: None,
+        tls_server_auth: domain_kmip::dep::kmip_protocol::net::TlsServerAuth::None,
+        tls_server_name: None,
     });
     let conn_pool = ConnPool::new(
         daemon.address.to_string(),

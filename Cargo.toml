@@ -35,9 +35,10 @@ bcder = "0.7.5"
 clap = { workspace = true }
 cryptoki = "^0.12.0"
 daemonbase = { workspace = true }
-domain = { git = "https://github.com/NLnetLabs/domain", branch = "main", version = "0.12.3", features = ["unstable-crypto-backend", "openssl"] } # for utils::base16 and crypto::DigestBuilder
+# Pin domain to a version that includes https://github.com/NLnetLabs/domain/pull/762
+domain = { git = "https://github.com/NLnetLabs/domain", rev = "f4ca391", version = "0.12.3", features = ["unstable-crypto-backend", "openssl"] } # for utils::base16 and crypto::DigestBuilder
 hex = "0.4"
-kmip = { git = "https://github.com/NLnetLabs/kmip-protocol", package = "kmip-protocol", branch = "bump-dependencies", version = "0.5.1-dev", default-features = false, features = ["tls-with-tokio-rustls", "ring"] }
+kmip = { git = "https://github.com/NLnetLabs/kmip-protocol", package = "kmip-protocol", branch = "release-prep", version = "0.5.1", default-features = false, features = ["tls-with-tokio-rustls", "ring"] }
 cascade-hsm-bridge-cfg = { path = "crates/cfg" }
 listenfd = "1.0.2"
 tracing = { workspace = true }

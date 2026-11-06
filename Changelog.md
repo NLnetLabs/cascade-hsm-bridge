@@ -14,7 +14,16 @@ Released yyyy-mm-dd.
 ### Acknowledgements
 -->
 
-## Release 0.2.0-beta1.
+## Release 0.2.0-beta2
+
+Released 2026-11-06.
+
+This is a minor release to update the versions of `domain` and `kmip-protocol`
+used to take bug fixes and follow changes in how mTLS settings are passed to
+`domain-kmip` by the `fulltest` crate.
+
+
+## Release 0.2.0-beta1
 
 Released 2026-11-02.
 

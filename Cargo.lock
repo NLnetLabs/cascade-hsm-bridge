@@ -176,7 +176,7 @@ dependencies = [
  "clap",
  "cryptoki",
  "daemonbase",
- "domain 0.12.3 (git+https://github.com/NLnetLabs/domain?rev=f4ca391)",
+ "domain",
  "hex",
  "kmip-protocol",
  "listenfd",
@@ -436,11 +436,11 @@ dependencies = [
 [[package]]
 name = "domain"
 version = "0.12.3"
-source = "git+https://github.com/NLnetLabs/domain?tag=v0.12.3#f984e3fe637a79336530153777d0a834854cdcee"
+source = "git+https://github.com/NLnetLabs/domain?rev=f4ca391#f4ca391238d5d80eeaafc140f38ecdf4488903e5"
 dependencies = [
  "bumpalo",
  "bytes",
- "domain-macros 0.12.3 (git+https://github.com/NLnetLabs/domain?tag=v0.12.3)",
+ "domain-macros",
  "hashbrown",
  "jiff",
  "octseq",
@@ -451,43 +451,17 @@ dependencies = [
 ]
 
 [[package]]
-name = "domain"
-version = "0.12.3"
-source = "git+https://github.com/NLnetLabs/domain?rev=f4ca391#f4ca391238d5d80eeaafc140f38ecdf4488903e5"
-dependencies = [
- "bumpalo",
- "bytes",
- "domain-macros 0.12.3 (git+https://github.com/NLnetLabs/domain?rev=f4ca391)",
- "hashbrown",
- "jiff",
- "octseq",
- "openssl",
- "rand 0.10.3",
- "serde",
-]
-
-[[package]]
 name = "domain-kmip"
 version = "0.0.1"
-source = "git+https://github.com/NLnetLabs/domain-kmip.git?branch=more-algorithm-support-and-fixes-and-cleanup#a523989d8bb6158c6d41d880963af080b79cbbc1"
+source = "git+https://github.com/NLnetLabs/domain-kmip.git?branch=more-algorithm-support-and-fixes-and-cleanup#2ed01dab5f016bdb98bb6f689eacd82a7dc7e9b5"
 dependencies = [
  "bcder",
- "domain 0.12.3 (git+https://github.com/NLnetLabs/domain?tag=v0.12.3)",
+ "domain",
  "kmip-protocol",
  "maybe-async",
  "tracing",
  "url",
  "uuid",
-]
-
-[[package]]
-name = "domain-macros"
-version = "0.12.3"
-source = "git+https://github.com/NLnetLabs/domain?tag=v0.12.3#f984e3fe637a79336530153777d0a834854cdcee"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 2.0.119",
 ]
 
 [[package]]
@@ -867,7 +841,7 @@ dependencies = [
 [[package]]
 name = "kmip-protocol"
 version = "0.5.1"
-source = "git+https://github.com/NLnetLabs/kmip-protocol?branch=release-prep#1b066c5fed4d0ce70bea8f0f4b40d4c0f1823528"
+source = "git+https://github.com/NLnetLabs/kmip-protocol?branch=release-prep#25aec8ad38520d9898b23eb3ef210197afe508f3"
 dependencies = [
  "bb8",
  "bitflags 2.13.2",
@@ -1658,7 +1632,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
 dependencies = [
  "fastrand",
- "getrandom 0.4.3",
+ "getrandom 0.3.4",
  "once_cell",
  "rustix",
  "windows-sys 0.61.2",

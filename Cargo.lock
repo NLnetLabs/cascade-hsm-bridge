@@ -178,7 +178,7 @@ dependencies = [
  "daemonbase",
  "domain",
  "hex",
- "kmip-protocol 0.5.1 (git+https://github.com/NLnetLabs/kmip-protocol?tag=v0.5.1)",
+ "kmip-protocol",
  "listenfd",
  "moka",
  "r2d2",
@@ -453,11 +453,11 @@ dependencies = [
 [[package]]
 name = "domain-kmip"
 version = "0.0.1"
-source = "git+https://github.com/NLnetLabs/domain-kmip.git?branch=more-algorithm-support-and-fixes-and-cleanup#2ed01dab5f016bdb98bb6f689eacd82a7dc7e9b5"
+source = "git+https://github.com/NLnetLabs/domain-kmip.git?tag=v0.0.1#b5b66b112b17d5598de4b1e98f1d1f1f7dbc7751"
 dependencies = [
  "bcder",
  "domain",
- "kmip-protocol 0.5.1 (git+https://github.com/NLnetLabs/kmip-protocol?branch=release-prep)",
+ "kmip-protocol",
  "maybe-async",
  "tracing",
  "url",
@@ -850,28 +850,10 @@ dependencies = [
  "hex",
  "log",
  "maybe-async",
- "rustls",
- "rustls-pemfile",
- "tokio",
- "tokio-rustls",
- "tracing",
- "webpki-roots",
-]
-
-[[package]]
-name = "kmip-protocol"
-version = "0.5.1"
-source = "git+https://github.com/NLnetLabs/kmip-protocol?branch=release-prep#25aec8ad38520d9898b23eb3ef210197afe508f3"
-dependencies = [
- "bitflags 2.13.2",
- "cfg-if",
- "enum-ordinalize",
- "hex",
- "log",
- "maybe-async",
  "r2d2",
  "rustls",
  "rustls-pemfile",
+ "tokio",
  "tokio-rustls",
  "tracing",
  "webpki",

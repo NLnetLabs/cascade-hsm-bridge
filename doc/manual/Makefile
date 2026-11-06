@@ -7,7 +7,7 @@ SPHINXBUILD   = uv run sphinx-build
 SPHINXPROJ    = CascadeUserManual
 SOURCEDIR     = source
 BUILDDIR      = build
-BUILD_DATE    = "Nov 02, 2026"
+BUILD_DATE    = "Nov 06, 2026"
 
 SPHINXAUTOBUILD     = uv run sphinx-autobuild
 SPHINXAUTOBUILDOPTS =

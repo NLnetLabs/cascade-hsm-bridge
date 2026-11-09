@@ -3,7 +3,9 @@ use bcder::decode::IntoSource;
 use cryptoki::mechanism::MechanismType;
 use cryptoki::object::{Attribute, AttributeType, KeyType, ObjectClass, ObjectHandle};
 use domain::utils::base16;
-use kmip::types::common::{AttributeName, CryptographicAlgorithm, NameType};
+use kmip::types::common::{
+    AttributeName, AttributeValue, CryptographicAlgorithm, NameType, NameValue, ObjectType,
+};
 use kmip::types::request::Name;
 use tracing::debug;
 
@@ -15,16 +17,6 @@ pub fn get_attributes(
     key_handle: ObjectHandle,
     mut request_attrs: Vec<AttributeType>,
 ) -> Result<Vec<kmip::types::response::Attribute>, Error> {
-    #[allow(nonstandard_style)]
-    let OBJECT_TYPE: AttributeName = AttributeName("Object Type".to_string());
-    #[allow(nonstandard_style)]
-    let NAME: AttributeName = AttributeName("Name".to_string());
-    #[allow(nonstandard_style)]
-    let CRYPTOGRAPHIC_ALGORITHM: AttributeName =
-        AttributeName("Cryptographic Algorithm".to_string());
-    #[allow(nonstandard_style)]
-    let CRYPTOGRAPHIC_LENGTH: AttributeName = AttributeName("Cryptographic Length".to_string());
-
     let mut kmip_attrs: Vec<kmip::types::response::Attribute> = vec![];
     let mut is_edwards = false;
 
@@ -76,52 +68,32 @@ pub fn get_attributes(
         match attr {
             Attribute::Class(object_class) => {
                 if object_class == ObjectClass::PRIVATE_KEY {
-                    kmip_attrs.push(kmip::types::response::Attribute {
-                        name: OBJECT_TYPE.clone(),
-                        index: None,
-                        value: kmip::types::common::AttributeValue::ObjectType(
-                            kmip::types::common::ObjectType::PrivateKey,
-                        ),
-                    });
+                    kmip_attrs.push(value_to_attr(AttributeValue::ObjectType(
+                        ObjectType::PrivateKey,
+                    )));
                 } else if object_class == ObjectClass::PUBLIC_KEY {
-                    kmip_attrs.push(kmip::types::response::Attribute {
-                        name: OBJECT_TYPE.clone(),
-                        index: None,
-                        value: kmip::types::common::AttributeValue::ObjectType(
-                            kmip::types::common::ObjectType::PublicKey,
-                        ),
-                    });
+                    kmip_attrs.push(value_to_attr(AttributeValue::ObjectType(
+                        ObjectType::PublicKey,
+                    )));
                 } else {
                     return Err(Error::unsupported_object_class(object_class));
                 }
             }
 
             Attribute::Label(label) => {
-                kmip_attrs.push(kmip::types::response::Attribute {
-                    name: NAME.clone(),
-                    index: None,
-                    value: kmip::types::common::AttributeValue::Name(Name(
-                        kmip::types::common::NameValue(String::from_utf8_lossy(&label).to_string()),
-                        NameType::UninterpretedTextString,
-                    )),
-                });
+                kmip_attrs.push(value_to_attr(AttributeValue::Name(Name(
+                    NameValue(String::from_utf8_lossy(&label).to_string()),
+                    NameType::UninterpretedTextString,
+                ))));
             }
 
             Attribute::KeyType(key_type) => match key_type {
-                KeyType::RSA => kmip_attrs.push(kmip::types::response::Attribute {
-                    name: CRYPTOGRAPHIC_ALGORITHM.clone(),
-                    index: None,
-                    value: kmip::types::common::AttributeValue::CryptographicAlgorithm(
-                        CryptographicAlgorithm::RSA,
-                    ),
-                }),
-                KeyType::EC => kmip_attrs.push(kmip::types::response::Attribute {
-                    name: CRYPTOGRAPHIC_ALGORITHM.clone(),
-                    index: None,
-                    value: kmip::types::common::AttributeValue::CryptographicAlgorithm(
-                        CryptographicAlgorithm::ECDSA,
-                    ),
-                }),
+                KeyType::RSA => kmip_attrs.push(value_to_attr(
+                    AttributeValue::CryptographicAlgorithm(CryptographicAlgorithm::RSA),
+                )),
+                KeyType::EC => kmip_attrs.push(value_to_attr(
+                    AttributeValue::CryptographicAlgorithm(CryptographicAlgorithm::ECDSA),
+                )),
                 KeyType::EC_EDWARDS => is_edwards = true,
                 _ => {
                     return Err(Error::unsupported_key_type(key_type));
@@ -130,26 +102,18 @@ pub fn get_attributes(
 
             Attribute::KeyGenMechanism(mechanism_type) => {
                 if mechanism_type == MechanismType::RSA_PKCS_KEY_PAIR_GEN {
-                    kmip_attrs.push(kmip::types::response::Attribute {
-                        name: CRYPTOGRAPHIC_ALGORITHM.clone(),
-                        index: None,
-                        value: kmip::types::common::AttributeValue::CryptographicAlgorithm(
-                            CryptographicAlgorithm::RSA,
-                        ),
-                    });
+                    kmip_attrs.push(value_to_attr(AttributeValue::CryptographicAlgorithm(
+                        CryptographicAlgorithm::RSA,
+                    )));
                 } else if matches!(
                     mechanism_type,
                     MechanismType::ECDSA | MechanismType::ECC_KEY_PAIR_GEN
                 ) {
                     // YubiHSM returns ECDSA.
                     // SoftHSMv2 returns CKM_EC_KEY_PAIR_GEN.
-                    kmip_attrs.push(kmip::types::response::Attribute {
-                        name: CRYPTOGRAPHIC_ALGORITHM.clone(),
-                        index: None,
-                        value: kmip::types::common::AttributeValue::CryptographicAlgorithm(
-                            CryptographicAlgorithm::ECDSA,
-                        ),
-                    });
+                    kmip_attrs.push(value_to_attr(AttributeValue::CryptographicAlgorithm(
+                        CryptographicAlgorithm::ECDSA,
+                    )));
                 } else if mechanism_type == MechanismType::ECC_EDWARDS_KEY_PAIR_GEN {
                     is_edwards = true;
                 } else {
@@ -159,13 +123,9 @@ pub fn get_attributes(
 
             Attribute::ModulusBits(bits) => {
                 let v = u64::from(bits);
-                kmip_attrs.push(kmip::types::response::Attribute {
-                    name: CRYPTOGRAPHIC_LENGTH.clone(),
-                    index: None,
-                    value: kmip::types::common::AttributeValue::CryptographicLength(
-                        kmip::types::common::CryptographicLength(i32::try_from(v).unwrap()),
-                    ),
-                });
+                kmip_attrs.push(value_to_attr(AttributeValue::CryptographicLength(
+                    kmip::types::common::CryptographicLength(i32::try_from(v).unwrap()),
+                )));
             }
 
             Attribute::EcPoint(octets) => {
@@ -216,22 +176,14 @@ pub fn get_attributes(
                 if is_edwards {
                     match inner_bytes.len() {
                         32 => {
-                            kmip_attrs.push(kmip::types::response::Attribute {
-                                name: CRYPTOGRAPHIC_ALGORITHM.clone(),
-                                index: None,
-                                value: kmip::types::common::AttributeValue::CryptographicAlgorithm(
-                                    CryptographicAlgorithm::Ed25519,
-                                ),
-                            });
+                            kmip_attrs.push(value_to_attr(AttributeValue::CryptographicAlgorithm(
+                                CryptographicAlgorithm::Ed25519,
+                            )));
                         }
                         57 => {
-                            kmip_attrs.push(kmip::types::response::Attribute {
-                                name: CRYPTOGRAPHIC_ALGORITHM.clone(),
-                                index: None,
-                                value: kmip::types::common::AttributeValue::CryptographicAlgorithm(
-                                    CryptographicAlgorithm::Ed448,
-                                ),
-                            });
+                            kmip_attrs.push(value_to_attr(AttributeValue::CryptographicAlgorithm(
+                                CryptographicAlgorithm::Ed448,
+                            )));
                         }
                         _ => { /* Unrecognised, ignore */ }
                     }
@@ -245,4 +197,23 @@ pub fn get_attributes(
     }
 
     Ok(kmip_attrs)
+}
+
+fn value_to_attr(value: AttributeValue) -> kmip::types::response::Attribute {
+    let name = AttributeName(
+        match value {
+            AttributeValue::Name(_) => "Name",
+            AttributeValue::ObjectType(_) => "Object Type",
+            AttributeValue::CryptographicAlgorithm(_) => "Cryptographic Algorithm",
+            AttributeValue::CryptographicLength(_) => "Cryptographic Length",
+            _ => unimplemented!(),
+        }
+        .to_string(),
+    );
+
+    kmip::types::response::Attribute {
+        name,
+        index: None,
+        value,
+    }
 }

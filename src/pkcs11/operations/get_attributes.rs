@@ -20,6 +20,14 @@ pub fn get_attributes(
     let mut kmip_attrs: Vec<kmip::types::response::Attribute> = vec![];
     let mut is_edwards = false;
 
+    // If the caller wants to know the Key Type we can't determine that for
+    // Ed25519 and Ed448 keys without knowing the EC Point attribute value
+    // too, so add that into the set of attributes that we want to know from
+    // the PKCS#11 module.
+    if request_attrs.contains(&AttributeType::KeyType) {
+        request_attrs.push(AttributeType::EcPoint);
+    }
+
     let attrs = loop {
         let res = pkcs11conn
             .session()

@@ -18,9 +18,10 @@ harness = false
 #
 #   It is maintained by us (NLnet Labs).
 [target.'cfg(unix)'.dev-dependencies.domain-kmip]
-version = "0.0.1"
+version = "0.0.2-dev"
 git = "https://github.com/NLnetLabs/domain-kmip.git"
-tag = "v0.0.1"
+# tag = "v0.0.1"
+branch = "use-kmip-protocol-from-crates-io"
 # Avoid a dependency on aws-lc-rs as used by default by Rustls which is used
 # by kmip-protocol, instead instruct domain-kmip to use the Ring support in
 # kmip-protocol instead.

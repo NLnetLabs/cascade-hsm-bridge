@@ -452,8 +452,8 @@ dependencies = [
 
 [[package]]
 name = "domain-kmip"
-version = "0.0.1"
-source = "git+https://github.com/NLnetLabs/domain-kmip.git?tag=v0.0.1#b5b66b112b17d5598de4b1e98f1d1f1f7dbc7751"
+version = "0.0.2-dev"
+source = "git+https://github.com/NLnetLabs/domain-kmip.git?branch=use-kmip-protocol-from-crates-io#f5c6c27bc261ccaa68d876b80210bd9010678750"
 dependencies = [
  "bcder",
  "domain",
@@ -841,7 +841,8 @@ dependencies = [
 [[package]]
 name = "kmip-protocol"
 version = "0.5.1"
-source = "git+https://github.com/NLnetLabs/kmip-protocol?tag=v0.5.1#a5154c42f60c2646a3e332ce084d299581d67871"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "23be68beef44592c6eda0bdcc521b9dd015846ec10a3cc458bc4f4c97af894b5"
 dependencies = [
  "bb8",
  "bitflags 2.13.2",

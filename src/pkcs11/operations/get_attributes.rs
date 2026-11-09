@@ -1,0 +1,250 @@
+use bcder::OctetString;
+use bcder::decode::IntoSource;
+use cryptoki::mechanism::MechanismType;
+use cryptoki::object::{Attribute, AttributeType, KeyType, ObjectClass, ObjectHandle};
+use domain::utils::base16;
+use kmip::types::common::{AttributeName, CryptographicAlgorithm, NameType};
+use kmip::types::request::Name;
+use tracing::debug;
+
+use crate::pkcs11::error::Error;
+use crate::pkcs11::pool::Pkcs11Connection;
+
+pub fn get_attributes(
+    pkcs11conn: &Pkcs11Connection,
+    key_handle: ObjectHandle,
+    mut request_attrs: Vec<AttributeType>,
+) -> Result<Vec<kmip::types::response::Attribute>, Error> {
+    #[allow(nonstandard_style)]
+    let OBJECT_TYPE: AttributeName = AttributeName("Object Type".to_string());
+    #[allow(nonstandard_style)]
+    let NAME: AttributeName = AttributeName("Name".to_string());
+    #[allow(nonstandard_style)]
+    let CRYPTOGRAPHIC_ALGORITHM: AttributeName =
+        AttributeName("Cryptographic Algorithm".to_string());
+    #[allow(nonstandard_style)]
+    let CRYPTOGRAPHIC_LENGTH: AttributeName = AttributeName("Cryptographic Length".to_string());
+
+    let mut kmip_attrs: Vec<kmip::types::response::Attribute> = vec![];
+    let mut is_edwards = false;
+
+    let attrs = loop {
+        let res = pkcs11conn
+            .session()
+            .get_attributes(key_handle, &request_attrs);
+
+        if matches!(res, Err(cryptoki::error::Error::NotSupported)) {
+            // Retry without KeyGenMechanism attribute, as at least the
+            // Nitrokey NetHSM doesn't support it and we can also get the
+            // information we need from the KeyType attribute.
+            debug!("C_GetAttributeValue failed, re-trying without CKA_KEY_GEN_MECHANISM");
+            request_attrs = request_attrs
+                .iter()
+                .filter(|&p| p != &AttributeType::KeyGenMechanism)
+                .cloned()
+                .collect();
+            continue;
+        }
+
+        let attrs = res?;
+
+        if attrs.is_empty() {
+            debug!("C_GetAttributeValue failed: key handle {key_handle} not found");
+            return Err(Error::not_found("Key", "ObjectHandle", key_handle));
+        } else {
+            debug!("C_GetAttributeValue: key handle={key_handle}, attributes: {attrs:?}");
+            break attrs;
+        }
+    };
+
+    // https://docs.oasis-open.org/kmip/ug/v1.2/cn01/kmip-ug-v1.2-cn01.html#_Toc407027125
+    //   "“Raw” key format is intended to be applied to symmetric keys and not
+    //    asymmetric keys"
+    //
+    // As we deal in assymetric keys (RSA, ECDSA), not symmetric keys, we
+    // should not use KeyFormatType::Raw. However, Fortanix DSM returns
+    // KeyFormatType::Raw when fetching key data for an ECDSA public key.
+
+    // NOTE: When generating DNSKEY RDATA OpenDNSSEC queries the modulus and
+    // public exponent and trims leading zeros from their bytes by shifting
+    // the bytes left and truncating the length. It does this to conform to
+    // https://datatracker.ietf.org/doc/html/rfc3110#section-2. The
+    // application implementing RFC 3110, i.e. Cascade, should do that, not
+    // us.
+    debug!("Returned PKCS#11 attributes: {attrs:?}");
+
+    // Parse the returned attribute data.
+    for attr in attrs {
+        match attr {
+            Attribute::Class(object_class) => {
+                if object_class == ObjectClass::PRIVATE_KEY {
+                    kmip_attrs.push(kmip::types::response::Attribute {
+                        name: OBJECT_TYPE.clone(),
+                        index: None,
+                        value: kmip::types::common::AttributeValue::ObjectType(
+                            kmip::types::common::ObjectType::PrivateKey,
+                        ),
+                    });
+                } else if object_class == ObjectClass::PUBLIC_KEY {
+                    kmip_attrs.push(kmip::types::response::Attribute {
+                        name: OBJECT_TYPE.clone(),
+                        index: None,
+                        value: kmip::types::common::AttributeValue::ObjectType(
+                            kmip::types::common::ObjectType::PublicKey,
+                        ),
+                    });
+                } else {
+                    return Err(Error::unsupported_object_class(object_class));
+                }
+            }
+
+            Attribute::Label(label) => {
+                kmip_attrs.push(kmip::types::response::Attribute {
+                    name: NAME.clone(),
+                    index: None,
+                    value: kmip::types::common::AttributeValue::Name(Name(
+                        kmip::types::common::NameValue(String::from_utf8_lossy(&label).to_string()),
+                        NameType::UninterpretedTextString,
+                    )),
+                });
+            }
+
+            Attribute::KeyType(key_type) => match key_type {
+                KeyType::RSA => kmip_attrs.push(kmip::types::response::Attribute {
+                    name: CRYPTOGRAPHIC_ALGORITHM.clone(),
+                    index: None,
+                    value: kmip::types::common::AttributeValue::CryptographicAlgorithm(
+                        CryptographicAlgorithm::RSA,
+                    ),
+                }),
+                KeyType::EC => kmip_attrs.push(kmip::types::response::Attribute {
+                    name: CRYPTOGRAPHIC_ALGORITHM.clone(),
+                    index: None,
+                    value: kmip::types::common::AttributeValue::CryptographicAlgorithm(
+                        CryptographicAlgorithm::ECDSA,
+                    ),
+                }),
+                KeyType::EC_EDWARDS => is_edwards = true,
+                _ => {
+                    return Err(Error::unsupported_key_type(key_type));
+                }
+            },
+
+            Attribute::KeyGenMechanism(mechanism_type) => {
+                if mechanism_type == MechanismType::RSA_PKCS_KEY_PAIR_GEN {
+                    kmip_attrs.push(kmip::types::response::Attribute {
+                        name: CRYPTOGRAPHIC_ALGORITHM.clone(),
+                        index: None,
+                        value: kmip::types::common::AttributeValue::CryptographicAlgorithm(
+                            CryptographicAlgorithm::RSA,
+                        ),
+                    });
+                } else if matches!(
+                    mechanism_type,
+                    MechanismType::ECDSA | MechanismType::ECC_KEY_PAIR_GEN
+                ) {
+                    // YubiHSM returns ECDSA.
+                    // SoftHSMv2 returns CKM_EC_KEY_PAIR_GEN.
+                    kmip_attrs.push(kmip::types::response::Attribute {
+                        name: CRYPTOGRAPHIC_ALGORITHM.clone(),
+                        index: None,
+                        value: kmip::types::common::AttributeValue::CryptographicAlgorithm(
+                            CryptographicAlgorithm::ECDSA,
+                        ),
+                    });
+                } else if mechanism_type == MechanismType::ECC_EDWARDS_KEY_PAIR_GEN {
+                    is_edwards = true;
+                } else {
+                    return Err(Error::unsupported_mechanism_type(mechanism_type));
+                }
+            }
+
+            Attribute::ModulusBits(bits) => {
+                let v = u64::from(bits);
+                kmip_attrs.push(kmip::types::response::Attribute {
+                    name: CRYPTOGRAPHIC_LENGTH.clone(),
+                    index: None,
+                    value: kmip::types::common::AttributeValue::CryptographicLength(
+                        kmip::types::common::CryptographicLength(i32::try_from(v).unwrap()),
+                    ),
+                });
+            }
+
+            Attribute::EcPoint(octets) => {
+                // The KMIP client expects to receive an ASN.1 DER encoded
+                // SubjectPublicKeyInfo response like so, but we receive an
+                // ASN.1 DER OCTET STRING.
+                //
+                //   SubjectPublicKeyInfo SEQUENCE @0+89 (constructed): (2 elem)
+                //     algorithm AlgorithmIdentifier SEQUENCE @2+19 (constructed): (2 elem)
+                //       algorithm OBJECT_IDENTIFIER @4+7: 1.2.840.10045.2.1|ecPublicKey|ANSI X9.62 public key type
+                //       parameters ANY OBJECT_IDENTIFIER @13+8: 1.2.840.10045.3.1.7|prime256v1|ANSI X9.62 named elliptic curve
+                //     subjectPublicKey BIT_STRING @23+66: (520 bit)
+                //
+                // From: https://www.rfc-editor.org/rfc/rfc5480.html#section-2.1.1
+                //   The parameter for id-ecPublicKey is as follows and MUST always be
+                //   present:
+                //
+                //     ECParameters ::= CHOICE {
+                //       namedCurve         OBJECT IDENTIFIER
+                //       -- implicitCurve   NULL
+                //       -- specifiedCurve  SpecifiedECDomain
+                //     }
+                //       -- implicitCurve and specifiedCurve MUST NOT be used in PKIX.
+                //       -- Details for SpecifiedECDomain can be found in [X9.62].
+                //       -- Any future additions to this CHOICE should be coordinated
+                //       -- with ANSI X9.
+                debug!(
+                    "Received {} bytes of EcPoint: {}",
+                    octets.len(),
+                    base16::encode_display(&octets)
+                );
+
+                let inner_bytes = bcder::Mode::Der
+                    .decode(octets.into_source(), OctetString::take_from)
+                    .map_err(|err| {
+                        Error::MalformedDataReceived(format!(
+                            "Failed to parse CKA_EC_POINT value as a DER OCTET STRING: {err}"
+                        ))
+                    })?
+                    .into_bytes();
+
+                debug!(
+                    "Converted EcPoint to {} bytes (is_edwards={is_edwards}): {}",
+                    inner_bytes.len(),
+                    base16::encode_display(&inner_bytes)
+                );
+
+                if is_edwards {
+                    match inner_bytes.len() {
+                        32 => {
+                            kmip_attrs.push(kmip::types::response::Attribute {
+                                name: CRYPTOGRAPHIC_ALGORITHM.clone(),
+                                index: None,
+                                value: kmip::types::common::AttributeValue::CryptographicAlgorithm(
+                                    CryptographicAlgorithm::Ed25519,
+                                ),
+                            });
+                        }
+                        57 => {
+                            kmip_attrs.push(kmip::types::response::Attribute {
+                                name: CRYPTOGRAPHIC_ALGORITHM.clone(),
+                                index: None,
+                                value: kmip::types::common::AttributeValue::CryptographicAlgorithm(
+                                    CryptographicAlgorithm::Ed448,
+                                ),
+                            });
+                        }
+                        _ => { /* Unrecognised, ignore */ }
+                    }
+                }
+            }
+
+            _ => {
+                // ignore unexpected attributes
+            }
+        }
+    }
+
+    Ok(kmip_attrs)
+}

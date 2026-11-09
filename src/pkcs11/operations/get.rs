@@ -79,7 +79,11 @@ fn get_public_key_details(
             // Nitrokey NetHSM doesn't support it and we can also get the
             // information we need from the KeyType attribute.
             debug!("C_GetAttributeValue failed, re-trying without CKA_KEY_GEN_MECHANISM");
-            let _ = request_attrs.pop();
+            request_attrs = request_attrs
+                .iter()
+                .filter(|&p| p != &AttributeType::KeyGenMechanism)
+                .cloned()
+                .collect();
             continue;
         }
 

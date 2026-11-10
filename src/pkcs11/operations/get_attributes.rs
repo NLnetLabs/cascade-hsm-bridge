@@ -1,5 +1,7 @@
-use bcder::OctetString;
+use std::ops::{Deref, DerefMut};
+
 use bcder::decode::IntoSource;
+use bcder::{OctetString, Oid, PrintableString};
 use cryptoki::mechanism::MechanismType;
 use cryptoki::object::{Attribute, AttributeType, KeyType, ObjectClass, ObjectHandle};
 use domain::utils::base16;
@@ -10,6 +12,7 @@ use kmip::types::request::Name;
 use tracing::debug;
 
 use crate::pkcs11::error::Error;
+use crate::pkcs11::operations::get::{ED448_OID, ED25519_OID, SECP256R1_OID};
 use crate::pkcs11::pool::Pkcs11Connection;
 
 pub fn get_attributes(
@@ -17,7 +20,7 @@ pub fn get_attributes(
     key_handle: ObjectHandle,
     mut request_attrs: Vec<AttributeType>,
 ) -> Result<Vec<kmip::types::response::Attribute>, Error> {
-    let mut kmip_attrs: Vec<kmip::types::response::Attribute> = vec![];
+    let mut kmip_attrs = AttributeVec::new();
     let mut is_edwards = false;
 
     // If the caller wants to know the Key Type we can't determine that for
@@ -26,6 +29,7 @@ pub fn get_attributes(
     // the PKCS#11 module.
     if request_attrs.contains(&AttributeType::KeyType) {
         request_attrs.push(AttributeType::EcPoint);
+        request_attrs.push(AttributeType::EcParams);
     }
 
     let attrs = loop {
@@ -76,31 +80,27 @@ pub fn get_attributes(
         match attr {
             Attribute::Class(object_class) => {
                 if object_class == ObjectClass::PRIVATE_KEY {
-                    kmip_attrs.push(value_to_attr(AttributeValue::ObjectType(
-                        ObjectType::PrivateKey,
-                    )));
+                    kmip_attrs.insert(AttributeValue::ObjectType(ObjectType::PrivateKey));
                 } else if object_class == ObjectClass::PUBLIC_KEY {
-                    kmip_attrs.push(value_to_attr(AttributeValue::ObjectType(
-                        ObjectType::PublicKey,
-                    )));
+                    kmip_attrs.insert(AttributeValue::ObjectType(ObjectType::PublicKey));
                 } else {
                     return Err(Error::unsupported_object_class(object_class));
                 }
             }
 
             Attribute::Label(label) => {
-                kmip_attrs.push(value_to_attr(AttributeValue::Name(Name(
+                kmip_attrs.insert(AttributeValue::Name(Name(
                     NameValue(String::from_utf8_lossy(&label).to_string()),
                     NameType::UninterpretedTextString,
-                ))));
+                )));
             }
 
             Attribute::KeyType(key_type) => match key_type {
-                KeyType::RSA => kmip_attrs.push(value_to_attr(
-                    AttributeValue::CryptographicAlgorithm(CryptographicAlgorithm::RSA),
+                KeyType::RSA => kmip_attrs.insert(AttributeValue::CryptographicAlgorithm(
+                    CryptographicAlgorithm::RSA,
                 )),
-                KeyType::EC => kmip_attrs.push(value_to_attr(
-                    AttributeValue::CryptographicAlgorithm(CryptographicAlgorithm::ECDSA),
+                KeyType::EC => kmip_attrs.insert(AttributeValue::CryptographicAlgorithm(
+                    CryptographicAlgorithm::ECDSA,
                 )),
                 KeyType::EC_EDWARDS => is_edwards = true,
                 _ => {
@@ -110,18 +110,18 @@ pub fn get_attributes(
 
             Attribute::KeyGenMechanism(mechanism_type) => {
                 if mechanism_type == MechanismType::RSA_PKCS_KEY_PAIR_GEN {
-                    kmip_attrs.push(value_to_attr(AttributeValue::CryptographicAlgorithm(
+                    kmip_attrs.insert(AttributeValue::CryptographicAlgorithm(
                         CryptographicAlgorithm::RSA,
-                    )));
+                    ));
                 } else if matches!(
                     mechanism_type,
                     MechanismType::ECDSA | MechanismType::ECC_KEY_PAIR_GEN
                 ) {
                     // YubiHSM returns ECDSA.
                     // SoftHSMv2 returns CKM_EC_KEY_PAIR_GEN.
-                    kmip_attrs.push(value_to_attr(AttributeValue::CryptographicAlgorithm(
+                    kmip_attrs.insert(AttributeValue::CryptographicAlgorithm(
                         CryptographicAlgorithm::ECDSA,
-                    )));
+                    ));
                 } else if mechanism_type == MechanismType::ECC_EDWARDS_KEY_PAIR_GEN {
                     is_edwards = true;
                 } else {
@@ -131,9 +131,105 @@ pub fn get_attributes(
 
             Attribute::ModulusBits(bits) => {
                 let v = u64::from(bits);
-                kmip_attrs.push(value_to_attr(AttributeValue::CryptographicLength(
+                kmip_attrs.insert(AttributeValue::CryptographicLength(
                     kmip::types::common::CryptographicLength(i32::try_from(v).unwrap()),
-                )));
+                ));
+            }
+
+            Attribute::EcParams(params) => {
+                // https://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/pkcs11-curr-v2.40.html
+                // Attribute     | Data type  | Meaning
+                // --------------+------------+-------------------------------
+                // CKA_EC_PARAMS | Byte array | DER-encoding of an ANSI X9.62
+                //               |            | Parameters value
+                //
+                // Where:
+                //
+                // Parameters ::= CHOICE {
+                //   ecParameters   ECParameters,
+                //   oId           CURVES.&id({CurveNames}),
+                //   implicitlyCA   NULL,
+                //   curveName     PrintableString
+                // }
+                //
+                // And https://www.rfc-editor.org/info/rfc3279/#section-2.3.5 says:
+                //
+                // ECParameters ::= SEQUENCE {
+                //   version   ECPVer,          -- version is always 1
+                //   fieldID   FieldID,         -- identifies the finite field over
+                //                              -- which the curve is defined
+                //   curve     Curve,           -- coefficients a and b of the
+                //                              -- elliptic curve
+                //   base      ECPoint,         -- specifies the base point P
+                //                              -- on the elliptic curve
+                //   order     INTEGER,         -- the order n of the base point
+                //   cofactor  INTEGER OPTIONAL -- The integer h = #E(Fq)/n
+                // }
+                //
+                // A CHOICE is represented as one of the values in the choice,
+                // which one is determined by the DER "tag" that preceeds the
+                // data bytes. So we have to try taking either ECParameters (a
+                // sequence), or an OID, or a curve name.
+                let opt_oid = bcder::Mode::Der
+                    .decode(params.as_slice(), |cons| {
+                        if let Some(ec_parameters) = cons.take_opt_sequence(|_cons| {
+                            // The ECParameters SEQUENCE
+                            // We don't know how to parse this yet, ignore it
+                            // for now.
+                            Ok(())
+                        })? {
+                            // We have ECParameters.
+                            debug!("Ignoring ANSI X9.62 ECParameters: {ec_parameters:?}");
+                            Ok(None)
+                        } else if let Some(oid) = Oid::take_opt_from(cons)? {
+                            // We have a curve OID.
+                            Ok(Some(oid))
+                        } else if let Some(curve_name) = PrintableString::take_opt_from(cons)? {
+                            // We have a curve name.
+                            // We don't know how to match on curve names yet,
+                            // ignore it for now.
+                            debug!("Got ANSI X9.62 curve name: {curve_name}");
+                            match curve_name.to_string().as_str() {
+                                "edwards25519" => Ok(Some(Oid(ED25519_OID.0.into()))),
+                                "edwards448" => Ok(Some(Oid(ED448_OID.0.into()))),
+                                _ => Ok(None),
+                            }
+                        } else {
+                            // This isn't possible according to the PKCS#11
+                            // v2.40 spec.
+                            debug!("Ignoring unexpected field in ANSI X9.62 Parameters value");
+                            Ok(None)
+                        }
+                    })
+                    .map_err(|err| {
+                        Error::MalformedDataReceived(format!(
+                            "CKA_EC_PARAM DER decoding error: {err}"
+                        ))
+                    })?;
+
+                match opt_oid {
+                    Some(oid) if oid == SECP256R1_OID => {
+                        kmip_attrs.insert(AttributeValue::CryptographicAlgorithm(
+                            kmip::types::common::CryptographicAlgorithm::ECDSA,
+                        ));
+                    }
+                    Some(oid) if oid == ED25519_OID => {
+                        kmip_attrs.insert(AttributeValue::CryptographicAlgorithm(
+                            kmip::types::common::CryptographicAlgorithm::Ed25519,
+                        ));
+                    }
+                    Some(oid) if oid == ED448_OID => {
+                        kmip_attrs.insert(AttributeValue::CryptographicAlgorithm(
+                            kmip::types::common::CryptographicAlgorithm::Ed448,
+                        ));
+                    }
+                    Some(other_oid) => {
+                        debug!("Ignoring unknown OID {other_oid:?}");
+                    }
+                    None => {
+                        // Nothing to do
+                    }
+                }
             }
 
             Attribute::EcPoint(octets) => {
@@ -184,14 +280,14 @@ pub fn get_attributes(
                 if is_edwards {
                     match inner_bytes.len() {
                         32 => {
-                            kmip_attrs.push(value_to_attr(AttributeValue::CryptographicAlgorithm(
+                            kmip_attrs.insert(AttributeValue::CryptographicAlgorithm(
                                 CryptographicAlgorithm::Ed25519,
-                            )));
+                            ));
                         }
                         57 => {
-                            kmip_attrs.push(value_to_attr(AttributeValue::CryptographicAlgorithm(
+                            kmip_attrs.insert(AttributeValue::CryptographicAlgorithm(
                                 CryptographicAlgorithm::Ed448,
-                            )));
+                            ));
                         }
                         _ => { /* Unrecognised, ignore */ }
                     }
@@ -204,7 +300,7 @@ pub fn get_attributes(
         }
     }
 
-    Ok(kmip_attrs)
+    Ok(kmip_attrs.into())
 }
 
 fn value_to_attr(value: AttributeValue) -> kmip::types::response::Attribute {
@@ -223,5 +319,38 @@ fn value_to_attr(value: AttributeValue) -> kmip::types::response::Attribute {
         name,
         index: None,
         value,
+    }
+}
+
+struct AttributeVec(Vec<kmip::types::response::Attribute>);
+
+impl AttributeVec {
+    pub fn new() -> Self {
+        Self(vec![])
+    }
+
+    pub fn insert(&mut self, value: AttributeValue) {
+        let item = value_to_attr(value);
+        if !self.0.contains(&item) {
+            self.0.push(item);
+        }
+    }
+
+    pub fn into(self) -> Vec<kmip::types::response::Attribute> {
+        self.0
+    }
+}
+
+impl Deref for AttributeVec {
+    type Target = Vec<kmip::types::response::Attribute>;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+impl DerefMut for AttributeVec {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }

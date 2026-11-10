@@ -20,7 +20,7 @@ pub fn get_attributes(
     key_handle: ObjectHandle,
     mut request_attrs: Vec<AttributeType>,
 ) -> Result<Vec<kmip::types::response::Attribute>, Error> {
-    let mut kmip_attrs = AttributeVec::new();
+    let mut kmip_attrs = AttributeSet::new();
     let mut is_edwards = false;
 
     // If the caller wants to know the Key Type we can't determine that for
@@ -300,48 +300,51 @@ pub fn get_attributes(
         }
     }
 
-    Ok(kmip_attrs.into())
+    Ok(kmip_attrs.into_vec())
 }
 
-fn value_to_attr(value: AttributeValue) -> kmip::types::response::Attribute {
-    let name = AttributeName(
-        match value {
-            AttributeValue::Name(_) => "Name",
-            AttributeValue::ObjectType(_) => "Object Type",
-            AttributeValue::CryptographicAlgorithm(_) => "Cryptographic Algorithm",
-            AttributeValue::CryptographicLength(_) => "Cryptographic Length",
-            _ => unimplemented!(),
-        }
-        .to_string(),
-    );
+/// A set of KMIP attributes.
+//
+// Note: We can't use HashSet because Attribute doesn't implement Hash.
+struct AttributeSet(Vec<kmip::types::response::Attribute>);
 
-    kmip::types::response::Attribute {
-        name,
-        index: None,
-        value,
-    }
-}
-
-struct AttributeVec(Vec<kmip::types::response::Attribute>);
-
-impl AttributeVec {
+impl AttributeSet {
     pub fn new() -> Self {
         Self(vec![])
     }
 
     pub fn insert(&mut self, value: AttributeValue) {
-        let item = value_to_attr(value);
+        let item = Self::value_to_attr(value);
         if !self.0.contains(&item) {
             self.0.push(item);
         }
     }
 
-    pub fn into(self) -> Vec<kmip::types::response::Attribute> {
+    pub fn into_vec(self) -> Vec<kmip::types::response::Attribute> {
         self.0
+    }
+
+    fn value_to_attr(value: AttributeValue) -> kmip::types::response::Attribute {
+        let name = AttributeName(
+            match value {
+                AttributeValue::Name(_) => "Name",
+                AttributeValue::ObjectType(_) => "Object Type",
+                AttributeValue::CryptographicAlgorithm(_) => "Cryptographic Algorithm",
+                AttributeValue::CryptographicLength(_) => "Cryptographic Length",
+                _ => unimplemented!(),
+            }
+            .to_string(),
+        );
+
+        kmip::types::response::Attribute {
+            name,
+            index: None,
+            value,
+        }
     }
 }
 
-impl Deref for AttributeVec {
+impl Deref for AttributeSet {
     type Target = Vec<kmip::types::response::Attribute>;
 
     fn deref(&self) -> &Self::Target {
@@ -349,7 +352,7 @@ impl Deref for AttributeVec {
     }
 }
 
-impl DerefMut for AttributeVec {
+impl DerefMut for AttributeSet {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.0
     }

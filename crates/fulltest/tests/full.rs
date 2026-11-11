@@ -53,6 +53,7 @@ fn main() {
         None => Softhsm2::launch(&tempdir).unwrap(),
         Some(module) if module == "nethsm" => Nethsm::launch(&tempdir).unwrap(),
         Some(module) if module == "pykmip" => Pykmip::launch(&tempdir).unwrap(),
+        Some(module) if module == "securosys" => Securosys::launch().unwrap(),
         Some(module) if module == "softhsm2" => Softhsm2::launch(&tempdir).unwrap(),
         Some(module) if module == "yubihsm2" => Yubihsm2::launch(&tempdir).unwrap(),
         Some(other) => {

@@ -1,11 +1,13 @@
 pub mod nethsm;
 pub mod pykmip;
+pub mod securosys;
 pub mod softhsm2;
 pub mod yubihsm2;
 
 use domain_kmip::dep::kmip_protocol::net::{TlsClientAuth, TlsServerAuth};
 pub use nethsm::Nethsm;
 pub use pykmip::Pykmip;
+pub use securosys::Securosys;
 pub use softhsm2::Softhsm2;
 pub use yubihsm2::Yubihsm2;
 
@@ -46,16 +48,17 @@ pub trait Hsm {
 pub enum Hsms {
     Nethsm(Nethsm),
     Pykmip(Pykmip),
+    Securosys(Securosys),
     Softhsm2(Softhsm2),
     Yubihsm2(Yubihsm2),
 }
-impl Hsms {}
 
 impl Hsm for Hsms {
     fn lib_path(&self) -> Option<&OsStr> {
         match self {
             Hsms::Nethsm(hsm) => hsm.lib_path(),
             Hsms::Pykmip(hsm) => hsm.lib_path(),
+            Hsms::Securosys(hsm) => hsm.lib_path(),
             Hsms::Softhsm2(hsm) => hsm.lib_path(),
             Hsms::Yubihsm2(hsm) => hsm.lib_path(),
         }
@@ -65,6 +68,7 @@ impl Hsm for Hsms {
         match self {
             Hsms::Nethsm(hsm) => hsm.env_vars(),
             Hsms::Pykmip(hsm) => hsm.env_vars(),
+            Hsms::Securosys(hsm) => hsm.env_vars(),
             Hsms::Softhsm2(hsm) => hsm.env_vars(),
             Hsms::Yubihsm2(hsm) => hsm.env_vars(),
         }
@@ -74,6 +78,7 @@ impl Hsm for Hsms {
         match self {
             Hsms::Nethsm(hsm) => hsm.username(),
             Hsms::Pykmip(hsm) => hsm.username(),
+            Hsms::Securosys(hsm) => hsm.username(),
             Hsms::Softhsm2(hsm) => hsm.username(),
             Hsms::Yubihsm2(hsm) => hsm.username(),
         }
@@ -83,6 +88,7 @@ impl Hsm for Hsms {
         match self {
             Hsms::Nethsm(hsm) => hsm.password(),
             Hsms::Pykmip(hsm) => hsm.password(),
+            Hsms::Securosys(hsm) => hsm.password(),
             Hsms::Softhsm2(hsm) => hsm.password(),
             Hsms::Yubihsm2(hsm) => hsm.password(),
         }
@@ -92,6 +98,7 @@ impl Hsm for Hsms {
         match self {
             Hsms::Nethsm(hsm) => hsm.address(),
             Hsms::Pykmip(hsm) => hsm.address(),
+            Hsms::Securosys(hsm) => hsm.address(),
             Hsms::Softhsm2(hsm) => hsm.address(),
             Hsms::Yubihsm2(hsm) => hsm.address(),
         }
@@ -101,6 +108,7 @@ impl Hsm for Hsms {
         match self {
             Hsms::Nethsm(hsm) => hsm.tls_client_auth(),
             Hsms::Pykmip(hsm) => hsm.tls_client_auth(),
+            Hsms::Securosys(hsm) => hsm.tls_client_auth(),
             Hsms::Softhsm2(hsm) => hsm.tls_client_auth(),
             Hsms::Yubihsm2(hsm) => hsm.tls_client_auth(),
         }
@@ -110,6 +118,7 @@ impl Hsm for Hsms {
         match self {
             Hsms::Nethsm(hsm) => hsm.tls_server_auth(),
             Hsms::Pykmip(hsm) => hsm.tls_server_auth(),
+            Hsms::Securosys(hsm) => hsm.tls_server_auth(),
             Hsms::Softhsm2(hsm) => hsm.tls_server_auth(),
             Hsms::Yubihsm2(hsm) => hsm.tls_server_auth(),
         }
@@ -119,6 +128,7 @@ impl Hsm for Hsms {
         match self {
             Hsms::Nethsm(hsm) => hsm.tls_server_name(),
             Hsms::Pykmip(hsm) => hsm.tls_server_name(),
+            Hsms::Securosys(hsm) => hsm.tls_server_name(),
             Hsms::Softhsm2(hsm) => hsm.tls_server_name(),
             Hsms::Yubihsm2(hsm) => hsm.tls_server_name(),
         }

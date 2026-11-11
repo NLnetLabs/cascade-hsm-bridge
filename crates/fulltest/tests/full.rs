@@ -186,8 +186,8 @@ fn do_test_keygen_signing(pool: &ConnPool, key_params: GenerateParams) -> Result
         .map_err(|err| format!("verify: {err}"))?;
 
     // PyKMIP says the object isn't activated so cannot be revoked.
-    // domain_kmip::destroy(key.public_key_id(), pool.clone())
-    //     .map_err(|err| format!("destroy pub: {err}"))?;
+    domain_kmip::destroy(key.public_key_id(), pool.clone())
+        .map_err(|err| format!("destroy pub: {err}"))?;
     domain_kmip::destroy(key.private_key_id(), pool.clone())
         .map_err(|err| format!("destroy pri: {err}"))?;
 

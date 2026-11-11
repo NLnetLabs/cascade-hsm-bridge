@@ -1,6 +1,6 @@
 use std::{
     io,
-    net::{Ipv6Addr, SocketAddr, TcpListener},
+    net::{Ipv4Addr, SocketAddr, TcpListener},
     process::Command,
 };
 
@@ -26,7 +26,7 @@ impl<'a> Daemon<'a> {
     /// Launch a new [`Daemon`].
     pub fn launch(tempdir: &'a TempDir, hsm: &impl Hsm) -> io::Result<Self> {
         // Bind a TCP socket for the KMIP server.
-        let sock = TcpListener::bind((Ipv6Addr::LOCALHOST, 0))?;
+        let sock = TcpListener::bind((Ipv4Addr::LOCALHOST, 0))?;
         let addr = sock.local_addr()?;
 
         // Configure the daemon.
@@ -79,6 +79,8 @@ daemon.log-target = {{ type = "file", path = {log_path:?} }}
             .current_dir(tempdir.path())
             .spawn()?;
 
+        println!("Cascade-HSM-Bridge is running at {addr}");
+
         Ok(Self {
             address: addr,
             process: proc,
@@ -106,6 +108,7 @@ daemon.log-target = {{ type = "file", path = {log_path:?} }}
 impl<'a> Drop for Daemon<'a> {
     fn drop(&mut self) {
         // Stop the daemon.
+        println!("Stopping Cascade-HSM-Bridge");
         // TODO: Use SIGTERM?
         let _ = self.process.kill();
 

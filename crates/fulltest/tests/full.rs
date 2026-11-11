@@ -62,13 +62,14 @@ fn main() {
     };
 
     // Launch the daemon, if the HSM is a PKCS#11 module.
-    let conn_settings = if hsm.lib_path().is_some() {
+    let (_daemon, conn_settings) = if hsm.lib_path().is_some() {
+        println!("HSM lib path: {:?}", hsm.lib_path());
         let daemon = Daemon::launch(&tempdir, &hsm).unwrap_or_else(|err| {
             eprintln!("Could not launch the daemon: {err}");
             std::process::exit(1);
         });
 
-        ConnectionSettings {
+        let conn_settings = ConnectionSettings {
             host: daemon.address().ip().to_string(),
             port: daemon.address().port(),
             username: hsm.username().map(ToString::to_string),
@@ -80,10 +81,12 @@ fn main() {
             tls_client_auth: daemon.tls_client_auth(),
             tls_server_auth: daemon.tls_server_auth(),
             tls_server_name: daemon.tls_server_name(),
-        }
+        };
+
+        (Some(daemon), conn_settings)
     } else {
         // The HSM is a KMIP HSM, no bridge needed.
-        ConnectionSettings {
+        let conn_settings = ConnectionSettings {
             host: hsm.address().unwrap().ip().to_string(),
             port: hsm.address().unwrap().port(),
             username: hsm.username().map(ToString::to_string),
@@ -95,7 +98,9 @@ fn main() {
             tls_client_auth: hsm.tls_client_auth(),
             tls_server_auth: hsm.tls_server_auth(),
             tls_server_name: hsm.tls_server_name(),
-        }
+        };
+
+        (None, conn_settings)
     };
 
     // Establish a connection pool for talking to the HSM.
@@ -180,6 +185,7 @@ fn do_test_keygen_signing(pool: &ConnPool, key_params: GenerateParams) -> Result
         .verify(data, sig.as_ref())
         .map_err(|err| format!("verify: {err}"))?;
 
+    // PyKMIP says the object isn't activated so cannot be revoked.
     // domain_kmip::destroy(key.public_key_id(), pool.clone())
     //     .map_err(|err| format!("destroy pub: {err}"))?;
     domain_kmip::destroy(key.private_key_id(), pool.clone())

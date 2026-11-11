@@ -91,7 +91,7 @@ slots:
         let health_state = res.json::<HealthState>().unwrap();
         if health_state.state == "Unprovisioned" {
             let time_now = Utc::now().format("%Y-%m-%dT%H:%M:%SZ").to_string();
-            println!("Provisiong NetHSM: time now = {time_now}");
+            println!("Provisioning NetHSM: time now = {time_now}");
 
             let mut provision_args = HashMap::new();
             provision_args.insert("unlockPassphrase", &password);

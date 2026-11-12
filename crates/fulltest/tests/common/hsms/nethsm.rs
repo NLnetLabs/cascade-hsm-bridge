@@ -27,15 +27,18 @@ impl Nethsm {
     pub fn launch(tempdir: &TempDir) -> io::Result<Hsms> {
         let nethsm_host = std::env::var("NETHSM_HOST").unwrap_or("127.0.0.1:8443".into());
 
-        // Determine the location of the SoftHSMv2 library.
-        let lib_path = [
+        // Determine the location of the NetHSM library.
+        let lib_path = std::env::var_os("NETHSM_PKCS11_PATH")
+            .into_iter()
+            .chain(
+        [
             "/usr/lib64/pkcs11/nethsm-pkcs11-v3.0.1-x86_64-linux-glibc.so", // Fedora 43
         ]
         .into_iter()
         .filter(|&p| std::fs::exists(p).is_ok_and(|v| v))
-        .map(|v| String::from(v).into())
+        .map(|v| String::from(v).into()))
         .next()
-        .unwrap_or_else(|| panic!("could not locate the NetHSM PKCS#11 module!"));
+        .unwrap_or_else(|| panic!("could not locate the NetHSM PKCS#11 module! Try setting env var NETHSM_PKCS11_PATH"));
 
         let password = "unlockpass32768".to_string();
 

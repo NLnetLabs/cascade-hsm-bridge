@@ -27,7 +27,7 @@ impl Yubihsm2 {
                 .map(|v| String::from(v).into()),
             )
             .next()
-            .unwrap_or_else(|| panic!("could not locate the YubiHSM2 PKCS#11 module!"));
+            .unwrap_or_else(|| panic!("could not locate the YubiHSM2 PKCS#11 module! Try setting env var YUBIHSM_PKCS11_MODULE."));
 
         let hsm_config_path = tempdir.path().join("yubihsm_pkcs11.conf");
         std::fs::write(

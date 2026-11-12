@@ -36,7 +36,7 @@ impl Softhsm2 {
                 .map(|v| String::from(v).into()),
             )
             .next()
-            .unwrap_or_else(|| panic!("could not locate the SoftHSMv2 PKCS#11 module!"));
+            .unwrap_or_else(|| panic!("could not locate the SoftHSMv2 PKCS#11 module! Try setting env var SOFTHSM2_PATH."));
 
         // Configure SoftHSMv2.
         let tokens_path = tempdir.path().join("tokens").display().to_string();

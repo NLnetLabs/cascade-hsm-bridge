@@ -19,11 +19,16 @@
 
 pub mod common;
 
-use domain_kmip::dep::domain::crypto::{
-    openssl,
-    sign::{GenerateParams, SignRaw},
-};
 use domain_kmip::dep::kmip_protocol::net::{ConnectionSettings, sync_pool::ConnPool};
+use domain_kmip::dep::{
+    domain::crypto::{
+        openssl,
+        sign::{GenerateParams, SignRaw},
+    },
+    kmip_protocol::net::NetError,
+};
+use std::path::PathBuf;
+use std::str::FromStr;
 use std::{sync::Arc, time::Duration};
 use tracing_subscriber::{EnvFilter, fmt};
 
@@ -40,22 +45,68 @@ fn main() {
     fmt().with_env_filter(EnvFilter::from_default_env()).init();
 
     // Allocate a temporary directory for the daemon.
-    let tempdir = tempfile::tempdir().unwrap_or_else(|err| {
+    let temp_dir = tempfile::tempdir().unwrap_or_else(|err| {
         eprintln!("Could not create a temporary directory: {err}");
         std::process::exit(1);
     });
 
+    // TODO: This has become too complicated, time to use Clap or something
+    // for command line argument handling!
     let mut args = std::env::args();
-    let _prog_name = args.next().unwrap();
+    let prog_name = args.next().unwrap();
     let pkcs11_module = args.next();
+    let report_dir = args.next().map(|path| {
+        let path = PathBuf::from_str(&path).unwrap();
+        std::fs::create_dir_all(&path).unwrap();
+        path
+    });
+    let hex_to_txt_bin_path = args.next().map(|path| PathBuf::from_str(&path).unwrap());
 
     let hsm = match &pkcs11_module {
-        None => Softhsm2::launch(&tempdir).unwrap(),
-        Some(module) if module == "nethsm" => Nethsm::launch(&tempdir).unwrap(),
-        Some(module) if module == "pykmip" => Pykmip::launch(&tempdir).unwrap(),
+        None => Softhsm2::launch(&temp_dir).unwrap(),
+        Some(arg) if arg == "-h" || arg == "--help" => {
+            println!(
+                "Usage: {} [<pkcs11-module>] [<report-dir>] [<hex-to-txt-bin-path>]",
+                prog_name
+            );
+            println!();
+            println!("Where:");
+            println!("  <pkcs11-module        - optional HSM to test (*1), one of:");
+            println!("                            fortanixdsm");
+            println!("                            fortanixdsm-pkcs11");
+            println!("                            nethsm");
+            println!("                            pykmip");
+            println!("                            securosys");
+            println!("                            softhsm2 (default)");
+            println!("                            yubihsm2");
+            println!("  <report-dir>          - optional path to write captured logs to.");
+            println!("  <hex-to-txt-bin-path> - optional path to hex-to-txt program (*2).");
+            println!();
+            println!("*1: Each HSM has its own requirements that you must meet to test");
+            println!("    such as having the right PKCS#11 module installed or having");
+            println!("    the appropriate credentials set in environment variables. The");
+            println!("    requirements vary and are specific to each HSM.");
+            println!();
+            println!("*2: hex-to-txt is part of the kmip-protocol Rust crate project.");
+            println!("    You can build it using cargo build --example hex-to-txt in a");
+            println!("    git clone of the kmip-protocol repository. When specified it");
+            println!("    will be used to generate a kmip.log file in <report-dir> that");
+            println!("    shows the KMIP exchanges in the Cascade-HSM-Bridge log in a");
+            println!("    more human readable form.");
+
+            std::process::exit(0);
+        }
+        Some(module) if module == "fortanixdsm" => {
+            FortanixDSM::launch(&temp_dir, &report_dir, false).unwrap()
+        }
+        Some(module) if module == "fortanixdsm-pkcs11" => {
+            FortanixDSM::launch(&temp_dir, &report_dir, true).unwrap()
+        }
+        Some(module) if module == "nethsm" => Nethsm::launch(&temp_dir).unwrap(),
+        Some(module) if module == "pykmip" => Pykmip::launch(&temp_dir, &report_dir).unwrap(),
         Some(module) if module == "securosys" => Securosys::launch().unwrap(),
-        Some(module) if module == "softhsm2" => Softhsm2::launch(&tempdir).unwrap(),
-        Some(module) if module == "yubihsm2" => Yubihsm2::launch(&tempdir).unwrap(),
+        Some(module) if module == "softhsm2" => Softhsm2::launch(&temp_dir).unwrap(),
+        Some(module) if module == "yubihsm2" => Yubihsm2::launch(&temp_dir).unwrap(),
         Some(other) => {
             eprintln!("Unsupported HSM: {other}");
             std::process::exit(1);
@@ -65,10 +116,11 @@ fn main() {
     // Launch the daemon, if the HSM is a PKCS#11 module.
     let (_daemon, conn_settings) = if hsm.lib_path().is_some() {
         println!("HSM lib path: {:?}", hsm.lib_path());
-        let daemon = Daemon::launch(&tempdir, &hsm).unwrap_or_else(|err| {
-            eprintln!("Could not launch the daemon: {err}");
-            std::process::exit(1);
-        });
+        let daemon = Daemon::launch(&temp_dir, &report_dir, hex_to_txt_bin_path, &hsm)
+            .unwrap_or_else(|err| {
+                eprintln!("Could not launch the daemon: {err}");
+                std::process::exit(1);
+            });
 
         let conn_settings = ConnectionSettings {
             host: daemon.address().ip().to_string(),
@@ -165,7 +217,7 @@ fn do_test_keygen_signing(pool: &ConnPool, key_params: GenerateParams) -> Result
     // Generate a new key. Note that the labels are NOT the IDs of the
     // generated key parts, those are returned by generate().
     let pub_label = "some-public-key-label";
-    let pri_label = "smoe-private-key-label";
+    let pri_label = "some-private-key-label";
     let key = domain_kmip::generate(pub_label, pri_label, key_params, 0, pool.clone())
         .map_err(|err| format!("generate: {err}"))?;
 
@@ -188,8 +240,22 @@ fn do_test_keygen_signing(pool: &ConnPool, key_params: GenerateParams) -> Result
 
     // PyKMIP says the object isn't activated so cannot be revoked.
     domain_kmip::destroy(key.public_key_id(), pool.clone())
+        .or_else(|err| {
+            if matches!(err, NetError::ItemNotFound(_)) {
+                Ok(())
+            } else {
+                Err(err)
+            }
+        })
         .map_err(|err| format!("destroy pub: {err}"))?;
     domain_kmip::destroy(key.private_key_id(), pool.clone())
+        .or_else(|err| {
+            if matches!(err, NetError::ItemNotFound(_)) {
+                Ok(())
+            } else {
+                Err(err)
+            }
+        })
         .map_err(|err| format!("destroy pri: {err}"))?;
 
     Ok(())

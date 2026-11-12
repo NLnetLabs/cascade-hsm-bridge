@@ -29,19 +29,21 @@ pub struct Pykmip {
     tls_cert: rcgen::Certificate,
 
     tls_private_key: rcgen::KeyPair,
+
+    report_dir: Option<PathBuf>,
 }
 
 impl Pykmip {
-    pub fn launch(tempdir: &TempDir) -> io::Result<Hsms> {
-        let hsm_config_path = tempdir.path().join("pykmip.conf");
-        let tls_cert_path = tempdir.path().join("cert.pem");
-        let tls_key_path = tempdir.path().join("key.pem");
-        let db_path = tempdir.path().join("pykmip.db");
-        let log_path = tempdir.path().join("pykmip.log");
-        let run_server_path = tempdir.path().join("run-server.sh");
-        let run_server_py_path = tempdir.path().join("run-server.py");
-        let python_venv_path = tempdir.path().join(".venv");
-        let python_constraints_path = tempdir.path().join("pykmip.constraints");
+    pub fn launch(temp_dir: &TempDir, report_dir: &Option<PathBuf>) -> io::Result<Hsms> {
+        let hsm_config_path = temp_dir.path().join("pykmip.conf");
+        let tls_cert_path = temp_dir.path().join("cert.pem");
+        let tls_key_path = temp_dir.path().join("key.pem");
+        let db_path = temp_dir.path().join("pykmip.db");
+        let log_path = temp_dir.path().join("pykmip.log");
+        let run_server_path = temp_dir.path().join("run-server.sh");
+        let run_server_py_path = temp_dir.path().join("run-server.py");
+        let python_venv_path = temp_dir.path().join(".venv");
+        let python_constraints_path = temp_dir.path().join("pykmip.constraints");
 
         // Generate a self-signed certificate and key for PyKMIP to use.
         let CertifiedKey {
@@ -127,7 +129,7 @@ python {run_server_py_path_str}
 
         let process = Command::new("/usr/bin/bash")
             .args(["-e", &run_server_path.to_string_lossy()])
-            .current_dir(tempdir.path())
+            .current_dir(temp_dir.path())
             .group_spawn()?;
 
         // Wait for PyKMIP to become ready.
@@ -171,6 +173,7 @@ python {run_server_py_path_str}
             log_path,
             tls_cert,
             tls_private_key,
+            report_dir: report_dir.clone(),
         }))
     }
 }
@@ -178,11 +181,11 @@ python {run_server_py_path_str}
 impl Drop for Pykmip {
     fn drop(&mut self) {
         println!("Stopping PyKMIP");
-        // Stop PyKMIP.
         let _ = self.process.kill();
 
-        if std::thread::panicking() {
-            // Try to provide the pykmip log file.
+        if let Some(report_dir) = &self.report_dir {
+            std::fs::rename(&self.log_path, report_dir.join("pykmip.log")).unwrap();
+        } else if std::thread::panicking() {
             if let Ok(log) = std::fs::read_to_string(&self.log_path) {
                 println!("pykmip log:\n{log}");
             }

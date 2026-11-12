@@ -71,7 +71,7 @@ fn main() {
             );
             println!();
             println!("Where:");
-            println!("  <pkcs11-module        - optional HSM to test (*1), one of:");
+            println!("  <pkcs11-module>       - optional HSM to test (*1), one of:");
             println!("                            fortanixdsm");
             println!("                            fortanixdsm-pkcs11");
             println!("                            kryoptic");

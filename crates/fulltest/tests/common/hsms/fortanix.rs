@@ -13,9 +13,9 @@ use tempfile::TempDir;
 use crate::common::hsms::{Hsm, Hsms};
 
 pub struct FortanixDSM {
-    env_vars: HashMap<&'static str, String>,
-
     lib_path: Option<OsString>,
+
+    env_vars: HashMap<&'static str, String>,
 
     pkcs11spy_log_path: Option<PathBuf>,
 
@@ -109,7 +109,7 @@ level = "trace"
                 std::env::var_os("OPENSC_PKCS11SPY_PKCS11_MODULE_PATH")
                     .into_iter()
                     .chain(
-                        ["/lib64/pkcs11pkcs11-spy.so"]
+                        ["/lib64/pkcs11-spy.so"]
                             .into_iter()
                             .filter(|&p| std::fs::exists(p).is_ok_and(|v| v))
                             .map(|v| String::from(v).into()),

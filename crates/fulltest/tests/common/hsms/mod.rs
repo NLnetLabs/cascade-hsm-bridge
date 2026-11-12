@@ -1,4 +1,5 @@
 pub mod fortanix;
+pub mod kryoptic;
 pub mod nethsm;
 pub mod pykmip;
 pub mod securosys;
@@ -7,6 +8,7 @@ pub mod yubihsm2;
 
 use domain_kmip::dep::kmip_protocol::net::{TlsClientAuth, TlsServerAuth};
 pub use fortanix::FortanixDSM;
+pub use kryoptic::Kryoptic;
 pub use nethsm::Nethsm;
 pub use pykmip::Pykmip;
 pub use securosys::Securosys;
@@ -49,6 +51,7 @@ pub trait Hsm {
 
 pub enum Hsms {
     Fortanix(FortanixDSM),
+    Kryoptic(Kryoptic),
     Nethsm(Nethsm),
     Pykmip(Pykmip),
     Securosys(Securosys),
@@ -60,6 +63,7 @@ impl Hsm for Hsms {
     fn lib_path(&self) -> Option<&OsStr> {
         match self {
             Hsms::Fortanix(hsm) => hsm.lib_path(),
+            Hsms::Kryoptic(hsm) => hsm.lib_path(),
             Hsms::Nethsm(hsm) => hsm.lib_path(),
             Hsms::Pykmip(hsm) => hsm.lib_path(),
             Hsms::Securosys(hsm) => hsm.lib_path(),
@@ -71,6 +75,7 @@ impl Hsm for Hsms {
     fn env_vars(&self) -> &HashMap<&'static str, String> {
         match self {
             Hsms::Fortanix(hsm) => hsm.env_vars(),
+            Hsms::Kryoptic(hsm) => hsm.env_vars(),
             Hsms::Nethsm(hsm) => hsm.env_vars(),
             Hsms::Pykmip(hsm) => hsm.env_vars(),
             Hsms::Securosys(hsm) => hsm.env_vars(),
@@ -82,6 +87,7 @@ impl Hsm for Hsms {
     fn username(&self) -> Option<&str> {
         match self {
             Hsms::Fortanix(hsm) => hsm.username(),
+            Hsms::Kryoptic(hsm) => hsm.username(),
             Hsms::Nethsm(hsm) => hsm.username(),
             Hsms::Pykmip(hsm) => hsm.username(),
             Hsms::Securosys(hsm) => hsm.username(),
@@ -93,6 +99,7 @@ impl Hsm for Hsms {
     fn password(&self) -> Option<&str> {
         match self {
             Hsms::Fortanix(hsm) => hsm.password(),
+            Hsms::Kryoptic(hsm) => hsm.password(),
             Hsms::Nethsm(hsm) => hsm.password(),
             Hsms::Pykmip(hsm) => hsm.password(),
             Hsms::Securosys(hsm) => hsm.password(),
@@ -104,6 +111,7 @@ impl Hsm for Hsms {
     fn address(&self) -> Option<SocketAddr> {
         match self {
             Hsms::Fortanix(hsm) => hsm.address(),
+            Hsms::Kryoptic(hsm) => hsm.address(),
             Hsms::Nethsm(hsm) => hsm.address(),
             Hsms::Pykmip(hsm) => hsm.address(),
             Hsms::Securosys(hsm) => hsm.address(),
@@ -115,6 +123,7 @@ impl Hsm for Hsms {
     fn tls_client_auth(&self) -> Option<TlsClientAuth> {
         match self {
             Hsms::Fortanix(hsm) => hsm.tls_client_auth(),
+            Hsms::Kryoptic(hsm) => hsm.tls_client_auth(),
             Hsms::Nethsm(hsm) => hsm.tls_client_auth(),
             Hsms::Pykmip(hsm) => hsm.tls_client_auth(),
             Hsms::Securosys(hsm) => hsm.tls_client_auth(),
@@ -126,6 +135,7 @@ impl Hsm for Hsms {
     fn tls_server_auth(&self) -> TlsServerAuth {
         match self {
             Hsms::Fortanix(hsm) => hsm.tls_server_auth(),
+            Hsms::Kryoptic(hsm) => hsm.tls_server_auth(),
             Hsms::Nethsm(hsm) => hsm.tls_server_auth(),
             Hsms::Pykmip(hsm) => hsm.tls_server_auth(),
             Hsms::Securosys(hsm) => hsm.tls_server_auth(),
@@ -137,6 +147,7 @@ impl Hsm for Hsms {
     fn tls_server_name(&self) -> Option<String> {
         match self {
             Hsms::Fortanix(hsm) => hsm.tls_server_name(),
+            Hsms::Kryoptic(hsm) => hsm.tls_server_name(),
             Hsms::Nethsm(hsm) => hsm.tls_server_name(),
             Hsms::Pykmip(hsm) => hsm.tls_server_name(),
             Hsms::Securosys(hsm) => hsm.tls_server_name(),

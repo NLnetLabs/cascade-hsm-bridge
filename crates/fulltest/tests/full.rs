@@ -63,7 +63,7 @@ fn main() {
     let hex_to_txt_bin_path = args.next().map(|path| PathBuf::from_str(&path).unwrap());
 
     let hsm = match &pkcs11_module {
-        None => Softhsm2::launch(&temp_dir).unwrap(),
+        None => Softhsm2::launch(&temp_dir, &report_dir).unwrap(),
         Some(arg) if arg == "-h" || arg == "--help" => {
             println!(
                 "Usage: {} [<pkcs11-module>] [<report-dir>] [<hex-to-txt-bin-path>]",
@@ -74,6 +74,7 @@ fn main() {
             println!("  <pkcs11-module        - optional HSM to test (*1), one of:");
             println!("                            fortanixdsm");
             println!("                            fortanixdsm-pkcs11");
+            println!("                            kryoptic");
             println!("                            nethsm");
             println!("                            pykmip");
             println!("                            securosys");
@@ -102,10 +103,11 @@ fn main() {
         Some(module) if module == "fortanixdsm-pkcs11" => {
             FortanixDSM::launch(&temp_dir, &report_dir, true).unwrap()
         }
+        Some(module) if module == "kryoptic" => Kryoptic::launch(&temp_dir, &report_dir).unwrap(),
         Some(module) if module == "nethsm" => Nethsm::launch(&temp_dir).unwrap(),
         Some(module) if module == "pykmip" => Pykmip::launch(&temp_dir, &report_dir).unwrap(),
         Some(module) if module == "securosys" => Securosys::launch().unwrap(),
-        Some(module) if module == "softhsm2" => Softhsm2::launch(&temp_dir).unwrap(),
+        Some(module) if module == "softhsm2" => Softhsm2::launch(&temp_dir, &report_dir).unwrap(),
         Some(module) if module == "yubihsm2" => Yubihsm2::launch(&temp_dir).unwrap(),
         Some(other) => {
             eprintln!("Unsupported HSM: {other}");

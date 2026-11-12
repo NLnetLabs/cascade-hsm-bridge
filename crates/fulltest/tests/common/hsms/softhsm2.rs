@@ -1,9 +1,5 @@
 use std::{
-    collections::HashMap,
-    ffi::{OsStr, OsString},
-    io,
-    option::Option,
-    process::Command,
+    collections::HashMap, ffi::{OsStr, OsString}, io, option::Option, path::PathBuf, process::Command,
 };
 
 use tempfile::TempDir;
@@ -15,15 +11,19 @@ pub struct Softhsm2 {
 
     env_vars: HashMap<&'static str, String>,
 
+    pkcs11spy_log_path: PathBuf,
+
     slot_label: String,
 
     pin: String,
+
+    report_dir: Option<PathBuf>,
 }
 
 impl Softhsm2 {
-    pub fn launch(tempdir: &TempDir) -> io::Result<Hsms> {
+    pub fn launch(temp_dir: &TempDir, report_dir: &Option<PathBuf>) -> io::Result<Hsms> {
         // Determine the location of the SoftHSMv2 library.
-        let lib_path = std::env::var_os("SOFTHSM2_PATH")
+        let softhsm_lib_path = std::env::var_os("SOFTHSM2_PATH")
             .into_iter()
             .chain(
                 [
@@ -39,8 +39,8 @@ impl Softhsm2 {
             .unwrap_or_else(|| panic!("could not locate the SoftHSMv2 PKCS#11 module! Try setting env var SOFTHSM2_PATH."));
 
         // Configure SoftHSMv2.
-        let tokens_path = tempdir.path().join("tokens").display().to_string();
-        let hsm_config_path = tempdir.path().join("softhsm2.conf");
+        let tokens_path = temp_dir.path().join("tokens").display().to_string();
+        let hsm_config_path = temp_dir.path().join("softhsm2.conf");
         std::fs::write(
             &hsm_config_path,
             format!(
@@ -77,7 +77,32 @@ log.level = DEBUG
             return Err(io::Error::other("could not initialize SoftHSMv2"));
         }
 
+        // Configure PKCS#11 Spy to load the SoftHSMv2 PKCS#11 module.
+        // See:
+        //   https://github.com/OpenSC/OpenSC/wiki/Using-OpenSC#pkcs-11-spy
+        let pkcs11spy_log_path = temp_dir.path().join("pkcs11spy.log");
         let mut env_vars = HashMap::new();
+        env_vars.insert("PKCS11SPY", softhsm_lib_path.into_string().unwrap());
+        env_vars.insert(
+            "PKCS11SPY_OUTPUT",
+            format!("{}", pkcs11spy_log_path.display()),
+        );
+
+        // Find the PKCS#11 Spy module path.
+        let lib_path = 
+            std::env::var_os("OPENSC_PKCS11SPY_PKCS11_MODULE_PATH")
+                .into_iter()
+                .chain(
+                    ["/lib64/pkcs11-spy.so"]
+                        .into_iter()
+                        .filter(|&p| std::fs::exists(p).is_ok_and(|v| v))
+                        .map(|v| String::from(v).into()),
+                )
+                .next()
+                .unwrap_or_else(|| {
+                    panic!("could not locate the OpenSC PKCS#11 Spy PKCS#11 module! Try setting env var OPENSC_PKCS11SPY_PKCS11_MODULE_PATH.")
+                });
+
         env_vars.insert(
             "SOFTHSM2_CONF",
             hsm_config_path.to_string_lossy().to_string(),
@@ -86,9 +111,23 @@ log.level = DEBUG
         Ok(Hsms::Softhsm2(Self {
             lib_path,
             env_vars,
+            pkcs11spy_log_path,
             slot_label,
             pin,
+            report_dir: report_dir.clone(),
         }))
+    }
+}
+
+impl Drop for Softhsm2 {
+    fn drop(&mut self) {
+        if let Some(report_dir) = &self.report_dir {
+            std::fs::rename(&self.pkcs11spy_log_path, report_dir.join("pkcs11spy.log")).unwrap();
+        } else if std::thread::panicking() {
+            if let Ok(log) = std::fs::read_to_string(&self.pkcs11spy_log_path) {
+                println!("pkcs11spy log:\n{log}");
+            }
+        }
     }
 }
 

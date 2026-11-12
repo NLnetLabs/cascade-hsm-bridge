@@ -114,6 +114,10 @@ Supported operations
 +----------------------+----------------------------------------------------------------------------------------------------------+
 | `Get`_               | `C_FindObjectsInit`_, `C_FindObjects`_, `C_FindObjectsFinal`_ & `C_GetAttributeValue`_                   |
 +----------------------+----------------------------------------------------------------------------------------------------------+
+| `GetAttributes`      | `C_FindObjectsInit`_, `C_FindObjects`_, `C_FindObjectsFinal`_ & `C_GetAttributeValue`_                   |
++----------------------+----------------------------------------------------------------------------------------------------------+
+| `Locate`             | `C_FindObjectsInit`_, `C_FindObjects`_, `C_FindObjectsFinal`_ & `C_GetAttributeValue`_                   |
++----------------------+----------------------------------------------------------------------------------------------------------+
 | `Modify Attribute`_  | `C_FindObjectsInit`_, `C_FindObjects`_, `C_FindObjectsFinal`_ & `C_SetAttributeValue`_                   |
 +----------------------+----------------------------------------------------------------------------------------------------------+
 | `Query`_             | `C_GetSlotInfo`_, `C_GetTokenInfo`_                                                                      |
@@ -131,6 +135,8 @@ Supported operations
 .. _Destroy: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613548
 .. _Discover Versions: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613553
 .. _Get: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613538
+.. _Get Attributes: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613539
+.. _Locate: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613536
 .. _Modify Attribute: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613542
 .. _Query: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613552
 .. _Revoke: https://docs.oasis-open.org/kmip/spec/v1.2/os/kmip-spec-v1.2-os.html#_Toc409613547

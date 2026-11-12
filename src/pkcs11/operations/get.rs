@@ -29,6 +29,12 @@ pub const SECP256R1_OID: ConstOid = Oid(&[42, 134, 72, 206, 61, 3, 1, 7]);
 /// Identifies the P-384 curve for elliptic curve cryptography.
 pub const SECP384R1_OID: ConstOid = Oid(&[43, 129, 4, 0, 34]);
 
+/// [RFC 8410](https://www.rfc-editor.org/info/rfc8410/#section-3) `id-Ed25519`.
+pub const ED25519_OID: ConstOid = Oid(&[43, 101, 112]);
+
+/// [RFC 8410](https://www.rfc-editor.org/info/rfc8410/#section-3) `id-Ed448`.
+pub const ED448_OID: ConstOid = Oid(&[43, 101, 113]);
+
 pub fn get_public_key(
     pkcs11conn: Pkcs11Connection,
     id: &UniqueIdentifier,
@@ -74,12 +80,14 @@ fn get_public_key_details(
             .session()
             .get_attributes(key_handle, &request_attrs);
 
-        if matches!(res, Err(cryptoki::error::Error::NotSupported)) {
+        if matches!(res, Err(cryptoki::error::Error::NotSupported))
+            && request_attrs.contains(&AttributeType::KeyGenMechanism)
+        {
             // Retry without KeyGenMechanism attribute, as at least the
             // Nitrokey NetHSM doesn't support it and we can also get the
             // information we need from the KeyType attribute.
             debug!("C_GetAttributeValue failed, re-trying without CKA_KEY_GEN_MECHANISM");
-            let _ = request_attrs.pop();
+            request_attrs.retain(|p| p != &AttributeType::KeyGenMechanism);
             continue;
         }
 

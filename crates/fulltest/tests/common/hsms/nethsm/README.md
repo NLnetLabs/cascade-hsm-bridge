@@ -13,8 +13,9 @@ a Docker image](https://docs.nitrokey.com/nethsm/container/).
 ## Tested versions
 
 - Docker image nitrokey/nethsm@sha256:5c0d8fc85a2a0d32343504bf5fe37f45b62129011a2ac05e6a5221a6c9f523f6.
-  NetHSM container logs report `Starting NetHSM S-Keyfender - version 5.1 (2482cca)`.`
+  NetHSM container logs report `Starting NetHSM S-Keyfender - version 5.1 (2482cca)`.
 - PKCS#11 module `nethsm-pkcs11-v3.0.1-x86_64-linux-glibc.so`.
+- Cascade-HSM-Bridge reports `Loaded Nitrokey PKCS#11 library v3.0 supporting Cryptoki v3.2: Nitrokey NetHsm PKCS#11 library`.
 
 ## Known issues
 
@@ -24,7 +25,7 @@ a Docker image](https://docs.nitrokey.com/nethsm/container/).
 ## Testing prerequisites
 
 - The NetHSM Docker image must already be running. Run it with command:
-  `docker run nethsm/testing`.
+  `docker run --rm -ti -p 127.0.0.1:8443:8443 docker.io/nitrokey/nethsm:testing`.
 - Install the NetHSM PKCS#11 module (see the NetHSM documentation [here](https://docs.nitrokey.com/nethsm/pkcs11-setup)).
 - [OPTIONAL] Set environment variable `NETHSM_HOST` to
   `<IP ADDRESS>:<PORT NUMBER>` of the running NetHSM instance, if not the

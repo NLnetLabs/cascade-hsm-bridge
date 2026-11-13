@@ -13,6 +13,7 @@ interface to PKCS#11 modules tests against both SoftHSMv2 and Kryoptic.
 ## Tested versions
 
 - Fedora RPM v1.5.4.
+- Cascade-HSM-Bridge reports `Loaded Kryoptic PKCS#11 library v0.0 supporting Cryptoki v3.2: Kryoptic PKCS11 Module`.
 
 ## Known issues
 

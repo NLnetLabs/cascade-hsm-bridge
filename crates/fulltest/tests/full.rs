@@ -218,8 +218,8 @@ fn do_test_keygen_signing(pool: &ConnPool, key_params: GenerateParams) -> Result
 
     // Generate a new key. Note that the labels are NOT the IDs of the
     // generated key parts, those are returned by generate().
-    let pub_label = "some-public-key-label";
-    let pri_label = "some-private-key-label";
+    let pub_label = format!("public-key-label-alg-{}", key_params.algorithm());
+    let pri_label = format!("private-key-label-alg-{}", key_params.algorithm());
     let key = domain_kmip::generate(pub_label, pri_label, key_params, 0, pool.clone())
         .map_err(|err| format!("generate: {err}"))?;
 

@@ -60,3 +60,23 @@ version = "0.3.2"
 [target.'cfg(unix)'.dev-dependencies.tracing-subscriber]
 version = "0.3.20"
 features = ["env-filter"]
+
+[target.'cfg(unix)'.dev-dependencies.reqwest]
+version = "0.13.5"
+features = ["blocking", "json", "rustls-no-provider"]
+
+[target.'cfg(unix)'.dev-dependencies.serde]
+version = "1.0.229"
+features = ["derive"]
+
+[target.'cfg(unix)'.dev-dependencies.rustls]
+version = "0.23.46"
+
+[target.'cfg(unix)'.dev-dependencies.chrono]
+version = "0.4.45"
+
+[target.'cfg(unix)'.dev-dependencies.rcgen]
+workspace = true
+
+[target.'cfg(unix)'.dev-dependencies.command-group]
+version = "5.0.1"

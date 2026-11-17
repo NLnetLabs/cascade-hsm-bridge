@@ -69,7 +69,7 @@ Therefore the Cascade-HSM-Bridge integration test must be run from inside that
 container.
 
 The HSM is pre-provisioned with a partition but crypto officer and security
-offer passwords need to be set on first use. This must be done using the
+officer passwords need to be set on first use. This must be done using the
 `lunacm` tool which is included in the zip archive.
 
 ## How the test works

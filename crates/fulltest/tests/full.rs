@@ -27,7 +27,6 @@ use domain_kmip::dep::domain::crypto::{
     openssl,
     sign::{GenerateParams, SignRaw},
 };
-use domain_kmip::dep::kmip_protocol::net::NetError;
 use domain_kmip::dep::kmip_protocol::net::{ConnectionSettings, sync_pool::ConnPool};
 use domain_kmip::dep::kmip_protocol::types::request::RequestPayload;
 use domain_kmip::dep::kmip_protocol::types::response::ResponsePayload;
@@ -97,7 +96,7 @@ fn main() {
         "securosys" => Securosys::launch(&temp_dir, &args.report_dir, false).unwrap(),
         "securosys-pkcs11" => Securosys::launch(&temp_dir, &args.report_dir, true).unwrap(),
         "softhsm2" => Softhsm2::launch(&temp_dir).unwrap(),
-        "thales" => Thales::launch().unwrap(),
+        "thales" => ThalesDPOD::launch().unwrap(),
         "yubihsm2" => Yubihsm2::launch(&temp_dir).unwrap(),
         _ => unreachable!(),
     };

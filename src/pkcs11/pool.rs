@@ -433,7 +433,7 @@ pub struct PoolConnection {
     ///    long as the session continues to exist, the object continues to
     ///    exist, and the object continues to be accessible to the session."
     ///
-    /// From https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959689
+    /// From <https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959689>
     handle_cache: HandleCache,
 
     /// The PKCS#11 slot this session relates to.

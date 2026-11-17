@@ -8,7 +8,7 @@ a Docker image](https://docs.nitrokey.com/nethsm/container/).
 
 ## Interfaces offered
 
-- PKCS#11 v2 and v3.
+- PKCS#11: v2, v3
 
 ## Tested versions
 

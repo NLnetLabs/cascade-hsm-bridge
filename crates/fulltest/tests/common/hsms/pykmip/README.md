@@ -14,7 +14,7 @@ that:
 
 ## Interfaces offered
 
-- KMIP 1.x.
+- KMIP: 1.0, 1.1, 1.2, 1.3, 1.4, 2.0
 
 ## Tested versions
 

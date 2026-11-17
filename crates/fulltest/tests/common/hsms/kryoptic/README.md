@@ -8,7 +8,7 @@ interface to PKCS#11 modules tests against both SoftHSMv2 and Kryoptic.
 
 ## Interfaces offered
 
-- PKCS#11 v2 and v3.
+- PKCS#11: v2, v3
 
 ## Tested versions
 

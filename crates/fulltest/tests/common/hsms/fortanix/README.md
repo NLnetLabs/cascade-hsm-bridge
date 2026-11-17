@@ -20,8 +20,8 @@ Fortanix offer a demo instance at:
 
 ## Interfaces offered
 
-- KMIP 1.x
-- PKCS#11 v2 and v3
+- KMIP: 1.0, 1.1, 1.2, 1.3, 1.4
+- PKCS#11: v2, v3
 
 ## Tested versions
 

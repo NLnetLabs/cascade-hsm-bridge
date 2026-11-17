@@ -32,6 +32,7 @@ impl Daemon {
         temp_dir: &TempDir,
         report_dir: &Option<PathBuf>,
         hex_to_txt_bin_path: &Option<PathBuf>,
+        current_dir: Option<PathBuf>,
         hsm: &impl Hsm,
     ) -> io::Result<Self> {
         // Bind a TCP socket for the KMIP server.
@@ -75,7 +76,7 @@ daemon.log-target = {{ type = "file", path = {log_path:?} }}
 
         // Launch the daemon.
         let daemon_path = project_dir.join("../../target/debug/cascade-hsm-bridge");
-        let proc = Command::new(&daemon_path)
+        let mut proc = Command::new(&daemon_path)
             .arg("--config")
             .arg(&config_path)
             .fd_mappings(vec![FdMapping {
@@ -84,9 +85,13 @@ daemon.log-target = {{ type = "file", path = {log_path:?} }}
             }])
             .unwrap()
             .env("LISTEN_FDS", "1")
-            .envs(hsm.env_vars())
-            .current_dir(temp_dir.path())
-            .spawn()?;
+            .envs(hsm.env_vars());
+
+        if let Some(current_dir) = current_dir {
+            proc.current_dir(current_dir);
+        }
+
+        proc.spawn()?;
 
         println!("Cascade-HSM-Bridge is running at {addr}");
 

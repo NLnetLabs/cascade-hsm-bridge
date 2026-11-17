@@ -1,3 +1,4 @@
+pub mod thales;
 pub mod fortanix;
 pub mod kryoptic;
 pub mod nethsm;
@@ -14,6 +15,7 @@ pub use pkcs11spy::Pkcs11Spy;
 pub use pykmip::Pykmip;
 pub use securosys::Securosys;
 pub use softhsm2::Softhsm2;
+pub use thales::ThalesDPOD;
 pub use yubihsm2::Yubihsm2;
 
 use std::{collections::HashMap, ffi::OsStr, io, net::SocketAddr, path::PathBuf};
@@ -32,6 +34,11 @@ pub trait Hsm {
     fn username(&self) -> Option<&str>;
 
     fn password(&self) -> Option<&str>;
+
+    /// Override the current directory used by Cascade-HSM-Bridge.
+    fn current_dir(&self) -> Option<PathBuf> {
+        None
+    }
 
     // Setings for KMIP based HSMs. Not all HSMs offer KMIP.
     fn address(&self) -> Option<SocketAddr> {
@@ -60,6 +67,7 @@ pub enum Hsms {
     Pykmip(Pykmip),
     Securosys(Securosys),
     Softhsm2(Softhsm2),
+    Thales(ThalesDPOD),
     Yubihsm2(Yubihsm2),
 }
 
@@ -72,6 +80,7 @@ impl std::fmt::Display for Hsms {
             Hsms::Pykmip(_) => f.write_str("Pykmip"),
             Hsms::Securosys(_) => f.write_str("Securosys"),
             Hsms::Softhsm2(_) => f.write_str("Softhsm2"),
+            Hsms::Thales(_) => f.write_str("Thales"),
             Hsms::Yubihsm2(_) => f.write_str("Yubihsm2"),
         }
     }
@@ -96,6 +105,7 @@ impl Hsm for Hsms {
             Hsms::Pykmip(hsm) => hsm.lib_path(),
             Hsms::Securosys(hsm) => hsm.lib_path(),
             Hsms::Softhsm2(hsm) => hsm.lib_path(),
+            Hsms::Thales(hsm) => hsm.lib_path(),
             Hsms::Yubihsm2(hsm) => hsm.lib_path(),
         }
     }
@@ -108,6 +118,7 @@ impl Hsm for Hsms {
             Hsms::Pykmip(hsm) => hsm.env_vars(),
             Hsms::Securosys(hsm) => hsm.env_vars(),
             Hsms::Softhsm2(hsm) => hsm.env_vars(),
+            Hsms::Thales(hsm) => hsm.env_vars(),
             Hsms::Yubihsm2(hsm) => hsm.env_vars(),
         }
     }
@@ -120,6 +131,7 @@ impl Hsm for Hsms {
             Hsms::Pykmip(hsm) => hsm.username(),
             Hsms::Securosys(hsm) => hsm.username(),
             Hsms::Softhsm2(hsm) => hsm.username(),
+            Hsms::Thales(hsm) => hsm.username(),
             Hsms::Yubihsm2(hsm) => hsm.username(),
         }
     }
@@ -132,7 +144,21 @@ impl Hsm for Hsms {
             Hsms::Pykmip(hsm) => hsm.password(),
             Hsms::Securosys(hsm) => hsm.password(),
             Hsms::Softhsm2(hsm) => hsm.password(),
+            Hsms::Thales(hsm) => hsm.password(),
             Hsms::Yubihsm2(hsm) => hsm.password(),
+        }
+    }
+
+    fn current_dir(&self) -> Option<&str> {
+        match self {
+            Hsms::Fortanix(hsm) => hsm.current_dir(),
+            Hsms::Kryoptic(hsm) => hsm.current_dir(),
+            Hsms::Nethsm(hsm) => hsm.current_dir(),
+            Hsms::Pykmip(hsm) => hsm.current_dir(),
+            Hsms::Securosys(hsm) => hsm.current_dir(),
+            Hsms::Softhsm2(hsm) => hsm.current_dir(),
+            Hsms::Thales(hsm) => hsm.current_dir(),
+            Hsms::Yubihsm2(hsm) => hsm.current_dir(),
         }
     }
 
@@ -144,6 +170,7 @@ impl Hsm for Hsms {
             Hsms::Pykmip(hsm) => hsm.address(),
             Hsms::Securosys(hsm) => hsm.address(),
             Hsms::Softhsm2(hsm) => hsm.address(),
+            Hsms::Thales(hsm) => hsm.address(),
             Hsms::Yubihsm2(hsm) => hsm.address(),
         }
     }
@@ -156,6 +183,7 @@ impl Hsm for Hsms {
             Hsms::Pykmip(hsm) => hsm.tls_client_auth(),
             Hsms::Securosys(hsm) => hsm.tls_client_auth(),
             Hsms::Softhsm2(hsm) => hsm.tls_client_auth(),
+            Hsms::Thales(hsm) => hsm.tls_client_auth(),
             Hsms::Yubihsm2(hsm) => hsm.tls_client_auth(),
         }
     }
@@ -168,6 +196,7 @@ impl Hsm for Hsms {
             Hsms::Pykmip(hsm) => hsm.tls_server_auth(),
             Hsms::Securosys(hsm) => hsm.tls_server_auth(),
             Hsms::Softhsm2(hsm) => hsm.tls_server_auth(),
+            Hsms::Thales(hsm) => hsm.tls_server_auth(),
             Hsms::Yubihsm2(hsm) => hsm.tls_server_auth(),
         }
     }
@@ -180,6 +209,7 @@ impl Hsm for Hsms {
             Hsms::Pykmip(hsm) => hsm.tls_server_name(),
             Hsms::Securosys(hsm) => hsm.tls_server_name(),
             Hsms::Softhsm2(hsm) => hsm.tls_server_name(),
+            Hsms::Thales(hsm) => hsm.tls_server_name(),
             Hsms::Yubihsm2(hsm) => hsm.tls_server_name(),
         }
     }

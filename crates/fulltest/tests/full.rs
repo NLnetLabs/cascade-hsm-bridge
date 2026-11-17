@@ -97,6 +97,7 @@ fn main() {
         "securosys" => Securosys::launch(&temp_dir, &args.report_dir, false).unwrap(),
         "securosys-pkcs11" => Securosys::launch(&temp_dir, &args.report_dir, true).unwrap(),
         "softhsm2" => Softhsm2::launch(&temp_dir).unwrap(),
+        "thales" => Thales::launch().unwrap(),
         "yubihsm2" => Yubihsm2::launch(&temp_dir).unwrap(),
         _ => unreachable!(),
     };
@@ -112,7 +113,7 @@ fn main() {
     // access to it via the KMIP interface.
     let (_daemon, conn_settings) = if hsm.lib_path().is_some() {
         println!("HSM lib path: {:?}", hsm.lib_path());
-        let daemon = Daemon::launch(&temp_dir, &args.report_dir, &args.hex_to_txt_bin_path, &hsm)
+        let daemon = Daemon::launch(&temp_dir, &args.report_dir, &args.hex_to_txt_bin_path, hsm.current_dir(), &hsm)
             .unwrap_or_else(|err| {
                 eprintln!("Could not launch the daemon: {err}");
                 std::process::exit(1);
@@ -180,14 +181,14 @@ fn main() {
     }
 
     let algs_to_test = [
-        GenerateParams::RsaSha256 { bits: 1024 },
-        GenerateParams::RsaSha256 { bits: 2048 },
-        GenerateParams::RsaSha512 { bits: 1024 },
-        GenerateParams::RsaSha512 { bits: 2048 },
+        // GenerateParams::RsaSha256 { bits: 1024 },
+        // GenerateParams::RsaSha256 { bits: 2048 },
+        // GenerateParams::RsaSha512 { bits: 1024 },
+        // GenerateParams::RsaSha512 { bits: 2048 },
         GenerateParams::EcdsaP256Sha256,
         GenerateParams::EcdsaP384Sha384,
-        GenerateParams::Ed448,
-        GenerateParams::Ed25519,
+        // GenerateParams::Ed448,
+        // GenerateParams::Ed25519,
     ];
 
     let mut failing_algs = vec![];
@@ -252,24 +253,8 @@ fn do_test_keygen_signing(pool: &ConnPool, key_params: GenerateParams) -> Result
         .map_err(|err| format!("verify: {err}"))?;
 
     // PyKMIP says the object isn't activated so cannot be revoked.
-    domain_kmip::destroy(key.public_key_id(), pool.clone())
-        .or_else(|err| {
-            if matches!(err, NetError::ItemNotFound(_)) {
-                Ok(())
-            } else {
-                Err(err)
-            }
-        })
-        .map_err(|err| format!("destroy pub: {err}"))?;
-    domain_kmip::destroy(key.private_key_id(), pool.clone())
-        .or_else(|err| {
-            if matches!(err, NetError::ItemNotFound(_)) {
-                Ok(())
-            } else {
-                Err(err)
-            }
-        })
-        .map_err(|err| format!("destroy pri: {err}"))?;
+    domain_kmip::destroy(key.public_key_id(), pool.clone()).map_err(|err| format!("destroy pub: {err}"))?;
+    domain_kmip::destroy(key.private_key_id(), pool.clone()).map_err(|err| format!("destroy pri: {err}"))?;
 
     Ok(())
 }

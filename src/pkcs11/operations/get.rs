@@ -65,7 +65,7 @@ fn get_public_key_details(
         AttributeType::ModulusBits,    // For RSA keys
         AttributeType::PublicExponent, // For RSA keys
         AttributeType::KeyType,
-        AttributeType::KeyGenMechanism,
+        // AttributeType::KeyGenMechanism,
         AttributeType::EcPoint, // For ECDSA keys, DER encoded
     ];
 

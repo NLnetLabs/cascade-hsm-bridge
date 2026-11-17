@@ -22,6 +22,7 @@ For information about supported HSMs see their respective documentation pages:
 - [PyKMIP](../fulltest/tests/common/hsms/pykmip)
 - [Securosys](../fulltest/tests/common/hsms/securosys)
 - [SoftHSMv2](../fulltest/tests/common/hsms/softhsm2)
+- [Thales DPoD](../fulltest/tests/common/hsms/thales)
 - [YubiHSM2](../fulltest/tests/common/hsms/yubihsm2)
 
 ## Pre-requisites

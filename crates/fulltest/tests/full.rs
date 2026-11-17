@@ -186,14 +186,14 @@ fn main() {
     }
 
     let algs_to_test = [
-        // GenerateParams::RsaSha256 { bits: 1024 },
-        // GenerateParams::RsaSha256 { bits: 2048 },
-        // GenerateParams::RsaSha512 { bits: 1024 },
-        // GenerateParams::RsaSha512 { bits: 2048 },
+        GenerateParams::RsaSha256 { bits: 1024 },
+        GenerateParams::RsaSha256 { bits: 2048 },
+        GenerateParams::RsaSha512 { bits: 1024 },
+        GenerateParams::RsaSha512 { bits: 2048 },
         GenerateParams::EcdsaP256Sha256,
         GenerateParams::EcdsaP384Sha384,
-        // GenerateParams::Ed448,
-        // GenerateParams::Ed25519,
+        GenerateParams::Ed448,
+        GenerateParams::Ed25519,
     ];
 
     let mut failing_algs = vec![];

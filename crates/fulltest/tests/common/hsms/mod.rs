@@ -1,26 +1,30 @@
 pub mod fortanix;
 pub mod kryoptic;
 pub mod nethsm;
+pub mod pkcs11spy;
 pub mod pykmip;
 pub mod securosys;
 pub mod softhsm2;
 pub mod yubihsm2;
 
-use domain_kmip::dep::kmip_protocol::net::{TlsClientAuth, TlsServerAuth};
 pub use fortanix::FortanixDSM;
 pub use kryoptic::Kryoptic;
 pub use nethsm::Nethsm;
+pub use pkcs11spy::Pkcs11Spy;
 pub use pykmip::Pykmip;
 pub use securosys::Securosys;
 pub use softhsm2::Softhsm2;
 pub use yubihsm2::Yubihsm2;
 
-use std::{collections::HashMap, ffi::OsStr, net::SocketAddr};
+use std::{collections::HashMap, ffi::OsStr, io, net::SocketAddr, path::PathBuf};
+
+use domain_kmip::dep::kmip_protocol::net::{TlsClientAuth, TlsServerAuth};
+use tempfile::TempDir;
 
 //------------ Hsm -----------------------------------------------------------
 
 pub trait Hsm {
-    // Some for PKCS#11 based HSMs.
+    // Some for PKCS#11 based HSMs. All HSMs should offer PKCS#11.
     fn lib_path(&self) -> Option<&OsStr>;
 
     fn env_vars(&self) -> &HashMap<&'static str, String>;
@@ -29,7 +33,7 @@ pub trait Hsm {
 
     fn password(&self) -> Option<&str>;
 
-    //Setings for KMIP based HSMs
+    // Setings for KMIP based HSMs. Not all HSMs offer KMIP.
     fn address(&self) -> Option<SocketAddr> {
         None
     }
@@ -57,6 +61,30 @@ pub enum Hsms {
     Securosys(Securosys),
     Softhsm2(Softhsm2),
     Yubihsm2(Yubihsm2),
+}
+
+impl std::fmt::Display for Hsms {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Hsms::Fortanix(_) => f.write_str("Fortanix"),
+            Hsms::Kryoptic(_) => f.write_str("Kryoptic"),
+            Hsms::Nethsm(_) => f.write_str("Nethsm"),
+            Hsms::Pykmip(_) => f.write_str("Pykmip"),
+            Hsms::Securosys(_) => f.write_str("Securosys"),
+            Hsms::Softhsm2(_) => f.write_str("Softhsm2"),
+            Hsms::Yubihsm2(_) => f.write_str("Yubihsm2"),
+        }
+    }
+}
+
+impl Hsms {
+    pub fn pkcs11spyify(
+        self,
+        temp_dir: &TempDir,
+        report_dir: &Option<PathBuf>,
+    ) -> io::Result<Pkcs11Spy> {
+        Pkcs11Spy::wrap(self, temp_dir, report_dir)
+    }
 }
 
 impl Hsm for Hsms {

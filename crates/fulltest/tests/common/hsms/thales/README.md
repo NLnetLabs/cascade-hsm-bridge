@@ -55,7 +55,7 @@ Before it can be used it must be setup:
 
 ## Running the test
 
-cargo run --package fulltest -- thales
+`cargo run --package fulltest -- thales`
 
 ## How Thales DOpD works
 

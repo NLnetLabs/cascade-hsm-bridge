@@ -1,5 +1,9 @@
 use std::{
-    collections::HashMap, ffi::{OsStr, OsString}, io, option::Option, path::PathBuf,
+    collections::HashMap,
+    ffi::{OsStr, OsString},
+    io,
+    option::Option,
+    path::PathBuf,
 };
 
 use tempfile::TempDir;
@@ -19,22 +23,25 @@ pub struct Pkcs11Spy {
 }
 
 impl Pkcs11Spy {
-    pub fn wrap(wrapped_hsm: Hsms, temp_dir: &TempDir, report_dir: &Option<PathBuf>) -> io::Result<Self> {
+    pub fn wrap(
+        wrapped_hsm: Hsms,
+        temp_dir: &TempDir,
+        report_dir: &Option<PathBuf>,
+    ) -> io::Result<Self> {
         if let Some(wrapped_lib_path) = wrapped_hsm.lib_path() {
             // Find the PKCS#11 Spy module path.
-            let lib_path = 
-                std::env::var_os("OPENSC_PKCS11SPY_PKCS11_MODULE_PATH")
-                    .into_iter()
-                    .chain(
-                        ["/lib64/pkcs11-spy.so"]
-                            .into_iter()
-                            .filter(|&p| std::fs::exists(p).is_ok_and(|v| v))
-                            .map(|v| String::from(v).into()),
-                    )
-                    .next()
-                    .unwrap_or_else(|| {
-                        panic!("could not locate the OpenSC PKCS#11 Spy PKCS#11 module! Try setting env var OPENSC_PKCS11SPY_PKCS11_MODULE_PATH.")
-                    });
+            let lib_path = std::env::var_os("OPENSC_PKCS11SPY_PKCS11_MODULE_PATH")
+                .into_iter()
+                .chain(
+                    ["/lib64/pkcs11-spy.so"]
+                        .into_iter()
+                        .filter(|&p| std::fs::exists(p).is_ok_and(|v| v))
+                        .map(|v| String::from(v).into()),
+                )
+                .next()
+                .unwrap_or_else(|| {
+                    panic!("could not locate the OpenSC PKCS#11 Spy PKCS#11 module! Try setting env var OPENSC_PKCS11SPY_PKCS11_MODULE_PATH.")
+                });
 
             // Configure PKCS#11 Spy to load the PKCS#11 module to wrap.
             // See:
@@ -88,13 +95,13 @@ impl std::fmt::Display for Pkcs11Spy {
 impl Drop for Pkcs11Spy {
     fn drop(&mut self) {
         if let Some(pkcs11spy_log_path) = &self.pkcs11spy_log_path {
-        if let Some(report_dir) = &self.report_dir {
-            std::fs::rename(pkcs11spy_log_path, report_dir.join("pkcs11spy.log")).unwrap();
-        } else if std::thread::panicking() {
-            if let Ok(log) = std::fs::read_to_string(pkcs11spy_log_path) {
-                println!("pkcs11spy log:\n{log}");
+            if let Some(report_dir) = &self.report_dir {
+                std::fs::rename(pkcs11spy_log_path, report_dir.join("pkcs11spy.log")).unwrap();
+            } else if std::thread::panicking() {
+                if let Ok(log) = std::fs::read_to_string(pkcs11spy_log_path) {
+                    println!("pkcs11spy log:\n{log}");
+                }
             }
-        }
         }
     }
 }

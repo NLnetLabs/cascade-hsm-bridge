@@ -2,10 +2,12 @@ use std::{
     collections::HashMap,
     ffi::{OsStr, OsString},
     io,
+    net::SocketAddr,
     option::Option,
     path::PathBuf,
 };
 
+use domain_kmip::dep::kmip_protocol::net::{TlsClientAuth, TlsServerAuth};
 use tempfile::TempDir;
 
 use crate::common::hsms::{Hsm, Hsms};
@@ -121,5 +123,21 @@ impl Hsm for Pkcs11Spy {
 
     fn password(&self) -> Option<&str> {
         self.wrapped_hsm.password()
+    }
+
+    fn address(&self) -> Option<SocketAddr> {
+        self.wrapped_hsm.address()
+    }
+
+    fn tls_client_auth(&self) -> Option<TlsClientAuth> {
+        self.wrapped_hsm.tls_client_auth()
+    }
+
+    fn tls_server_auth(&self) -> TlsServerAuth {
+        self.wrapped_hsm.tls_server_auth()
+    }
+
+    fn tls_server_name(&self) -> Option<String> {
+        self.wrapped_hsm.tls_server_name()
     }
 }

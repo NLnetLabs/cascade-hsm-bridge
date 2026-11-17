@@ -140,4 +140,8 @@ impl Hsm for Pkcs11Spy {
     fn tls_server_name(&self) -> Option<String> {
         self.wrapped_hsm.tls_server_name()
     }
+
+    fn current_dir(&self) -> Option<PathBuf> {
+        self.wrapped_hsm.current_dir()
+    }
 }

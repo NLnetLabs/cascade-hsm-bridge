@@ -47,6 +47,7 @@ impl ThalesDPOD {
         let pin = "mycopassword".to_string();
         let so_pin = "mypartitionsopassword".to_string();
 
+        // See: https://thalesdocs.com/dpod/services/luna_cloud_hsm/service/quick_start/index.html
         let lunacm_script_path = temp_dir.path().join("lunacm.script");
         std::fs::write(
             &lunacm_script_path,

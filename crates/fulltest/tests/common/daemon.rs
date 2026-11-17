@@ -31,7 +31,7 @@ impl Daemon {
     pub fn launch(
         temp_dir: &TempDir,
         report_dir: &Option<PathBuf>,
-        hex_to_txt_bin_path: Option<PathBuf>,
+        hex_to_txt_bin_path: &Option<PathBuf>,
         hsm: &impl Hsm,
     ) -> io::Result<Self> {
         // Bind a TCP socket for the KMIP server.
@@ -95,7 +95,7 @@ daemon.log-target = {{ type = "file", path = {log_path:?} }}
             process: proc,
             log_path,
             report_dir: report_dir.clone(),
-            hex_to_txt_bin_path,
+            hex_to_txt_bin_path: hex_to_txt_bin_path.clone(),
         })
     }
 

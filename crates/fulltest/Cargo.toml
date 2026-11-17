@@ -80,3 +80,6 @@ workspace = true
 
 [target.'cfg(unix)'.dev-dependencies.command-group]
 version = "5.0.1"
+
+[target.'cfg(unix)'.dependencies]
+clap = { workspace = true, features = ["derive"] }

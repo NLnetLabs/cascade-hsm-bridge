@@ -17,8 +17,6 @@ pub struct FortanixDSM {
 
     env_vars: HashMap<&'static str, String>,
 
-    pkcs11spy_log_path: Option<PathBuf>,
-
     fortanix_log_path: Option<PathBuf>,
 
     username: String,
@@ -37,7 +35,6 @@ impl FortanixDSM {
         let username;
         let password;
         let mut lib_path = None;
-        let mut pkcs11spy_log_path = None;
         let mut fortanix_log_path = None;
         let mut env_vars = HashMap::new();
 
@@ -83,42 +80,16 @@ level = "trace"
             );
 
             // Locate the Fortanix DSM PKCS#11 module.
-            let fortanix_dsm_lib_path = std::env::var("FORTANIX_DSM_PKCS11_MODULE_PATH")
+            lib_path = Some(std::env::var_os("FORTANIX_DSM_PKCS11_MODULE_PATH")
                 .into_iter()
                 .chain(
                     ["/opt/fortanix/pkcs11/fortanix_pkcs11.so"]
                         .into_iter()
                         .filter(|&p| std::fs::exists(p).is_ok_and(|v| v))
-                        .map(ToString::to_string),
+                        .map(|v| String::from(v).into())
                 )
                 .next()
-                .unwrap_or_else(|| panic!("could not locate the Fortanix DSM PKCS#11 module! Try setting env var FORTANIX_DSM_PKCS11_MODULE_PATH."));
-
-            // Configure PKCS#11 Spy to load the Fortanix DSM PKCS#11 module.
-            // See:
-            //   https://github.com/OpenSC/OpenSC/wiki/Using-OpenSC#pkcs-11-spy
-            pkcs11spy_log_path = Some(temp_dir.path().join("pkcs11spy.log"));
-            env_vars.insert("PKCS11SPY", fortanix_dsm_lib_path);
-            env_vars.insert(
-                "PKCS11SPY_OUTPUT",
-                format!("{}", pkcs11spy_log_path.as_ref().unwrap().display()),
-            );
-
-            // Find the PKCS#11 Spy module path.
-            lib_path = Some(
-                std::env::var_os("OPENSC_PKCS11SPY_PKCS11_MODULE_PATH")
-                    .into_iter()
-                    .chain(
-                        ["/lib64/pkcs11-spy.so"]
-                            .into_iter()
-                            .filter(|&p| std::fs::exists(p).is_ok_and(|v| v))
-                            .map(|v| String::from(v).into()),
-                    )
-                    .next()
-                    .unwrap_or_else(|| {
-                        panic!("could not locate the OpenSC PKCS#11 Spy PKCS#11 module! Try setting env var OPENSC_PKCS11SPY_PKCS11_MODULE_PATH.")
-                    }),
-            );
+                .unwrap_or_else(|| panic!("could not locate the Fortanix DSM PKCS#11 module! Try setting env var FORTANIX_DSM_PKCS11_MODULE_PATH.")));
         } else {
             username =
                 std::env::var("FORTANIX_USER").expect("env var 'FORTANIX_USER' should be set");
@@ -129,7 +100,6 @@ level = "trace"
         Ok(Hsms::Fortanix(Self {
             env_vars,
             lib_path,
-            pkcs11spy_log_path,
             fortanix_log_path,
             username,
             password,
@@ -140,15 +110,6 @@ level = "trace"
 
 impl Drop for FortanixDSM {
     fn drop(&mut self) {
-        if let Some(pkcs11spy_log_path) = &self.pkcs11spy_log_path {
-            if let Some(report_dir) = &self.report_dir {
-                std::fs::rename(pkcs11spy_log_path, report_dir.join("pkcs11spy.log")).unwrap();
-            } else if std::thread::panicking() {
-                if let Ok(log) = std::fs::read_to_string(pkcs11spy_log_path) {
-                    println!("pkcs11spy log:\n{log}");
-                }
-            }
-        }
         if let Some(fortanix_log_path) = &self.fortanix_log_path {
             if let Some(report_dir) = &self.report_dir {
                 std::fs::rename(fortanix_log_path, report_dir.join("fortanix.log")).unwrap();

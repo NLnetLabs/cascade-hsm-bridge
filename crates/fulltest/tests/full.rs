@@ -19,21 +19,46 @@
 
 pub mod common;
 
-use domain_kmip::dep::kmip_protocol::net::{ConnectionSettings, sync_pool::ConnPool};
-use domain_kmip::dep::{
-    domain::crypto::{
-        openssl,
-        sign::{GenerateParams, SignRaw},
-    },
-    kmip_protocol::net::NetError,
-};
 use std::path::PathBuf;
-use std::str::FromStr;
 use std::{sync::Arc, time::Duration};
+
+use clap::Parser;
+use domain_kmip::dep::domain::crypto::{
+    openssl,
+    sign::{GenerateParams, SignRaw},
+};
+use domain_kmip::dep::kmip_protocol::net::NetError;
+use domain_kmip::dep::kmip_protocol::net::{ConnectionSettings, sync_pool::ConnPool};
+use domain_kmip::dep::kmip_protocol::types::request::RequestPayload;
+use domain_kmip::dep::kmip_protocol::types::response::ResponsePayload;
 use tracing_subscriber::{EnvFilter, fmt};
 
 use common::daemon::Daemon;
 use common::hsms::*;
+
+#[derive(Parser)]
+#[command(version, about, long_about = None)]
+struct Args {
+    /// Path to write captured logs to.
+    #[arg(long, value_parser = clap::value_parser!(PathBuf), default_value = None)]
+    report_dir: Option<PathBuf>,
+
+    /// Path to hex-to-txt binary.
+    ///
+    /// Used to extract KMIP messages from the Cascade-HSM-Bridge log.
+    #[arg(long, default_value = None)]
+    hex_to_txt_bin_path: Option<PathBuf>,
+
+    /// Wrap PKCS#11 modules with OpenSC pkcs11-spy.
+    ///
+    /// Enables logging of PKCS#11 calls.
+    #[arg(long, default_value_t = false)]
+    pkcs11spy: bool,
+
+    /// HSM to test.
+    #[arg(default_value_t = "softhsm2".to_string(), value_parser = ["fortanixdsm", "fortanixdsm-pkcs11", "kryoptic", "nethsm", "pykmip", "securosys", "securosys-pkcs11", "softhsm2", "yubihsm"])]
+    hsm: String,
+}
 
 //------------ main ----------------------------------------------------------
 
@@ -44,81 +69,50 @@ fn main() {
 
     fmt().with_env_filter(EnvFilter::from_default_env()).init();
 
+    let args = Args::parse();
+
     // Allocate a temporary directory for the daemon.
     let temp_dir = tempfile::tempdir().unwrap_or_else(|err| {
         eprintln!("Could not create a temporary directory: {err}");
         std::process::exit(1);
     });
 
-    // TODO: This has become too complicated, time to use Clap or something
-    // for command line argument handling!
-    let mut args = std::env::args();
-    let prog_name = args.next().unwrap();
-    let pkcs11_module = args.next();
-    let report_dir = args.next().map(|path| {
-        let path = PathBuf::from_str(&path).unwrap();
-        std::fs::create_dir_all(&path).unwrap();
-        path
-    });
-    let hex_to_txt_bin_path = args.next().map(|path| PathBuf::from_str(&path).unwrap());
-
-    let hsm = match &pkcs11_module {
-        None => Softhsm2::launch(&temp_dir, &report_dir).unwrap(),
-        Some(arg) if arg == "-h" || arg == "--help" => {
-            println!(
-                "Usage: {} [<pkcs11-module>] [<report-dir>] [<hex-to-txt-bin-path>]",
-                prog_name
+    if let Some(report_dir) = &args.report_dir {
+        if report_dir.exists() {
+            eprintln!(
+                "Could not create report directory '{}': Directory already exists",
+                report_dir.display()
             );
-            println!();
-            println!("Where:");
-            println!("  <pkcs11-module>       - optional HSM to test (*1), one of:");
-            println!("                            fortanixdsm");
-            println!("                            fortanixdsm-pkcs11");
-            println!("                            kryoptic");
-            println!("                            nethsm");
-            println!("                            pykmip");
-            println!("                            securosys");
-            println!("                            softhsm2 (default)");
-            println!("                            yubihsm2");
-            println!("  <report-dir>          - optional path to write captured logs to.");
-            println!("  <hex-to-txt-bin-path> - optional path to hex-to-txt program (*2).");
-            println!();
-            println!("*1: Each HSM has its own requirements that you must meet to test");
-            println!("    such as having the right PKCS#11 module installed or having");
-            println!("    the appropriate credentials set in environment variables. The");
-            println!("    requirements vary and are specific to each HSM.");
-            println!();
-            println!("*2: hex-to-txt is part of the kmip-protocol Rust crate project.");
-            println!("    You can build it using cargo build --example hex-to-txt in a");
-            println!("    git clone of the kmip-protocol repository. When specified it");
-            println!("    will be used to generate a kmip.log file in <report-dir> that");
-            println!("    shows the KMIP exchanges in the Cascade-HSM-Bridge log in a");
-            println!("    more human readable form.");
-
-            std::process::exit(0);
-        }
-        Some(module) if module == "fortanixdsm" => {
-            FortanixDSM::launch(&temp_dir, &report_dir, false).unwrap()
-        }
-        Some(module) if module == "fortanixdsm-pkcs11" => {
-            FortanixDSM::launch(&temp_dir, &report_dir, true).unwrap()
-        }
-        Some(module) if module == "kryoptic" => Kryoptic::launch(&temp_dir, &report_dir).unwrap(),
-        Some(module) if module == "nethsm" => Nethsm::launch(&temp_dir).unwrap(),
-        Some(module) if module == "pykmip" => Pykmip::launch(&temp_dir, &report_dir).unwrap(),
-        Some(module) if module == "securosys" => Securosys::launch().unwrap(),
-        Some(module) if module == "softhsm2" => Softhsm2::launch(&temp_dir, &report_dir).unwrap(),
-        Some(module) if module == "yubihsm2" => Yubihsm2::launch(&temp_dir).unwrap(),
-        Some(other) => {
-            eprintln!("Unsupported HSM: {other}");
             std::process::exit(1);
         }
+        std::fs::create_dir_all(report_dir).unwrap();
+    }
+
+    let hsm = match args.hsm.as_str() {
+        "fortanixdsm" => FortanixDSM::launch(&temp_dir, &args.report_dir, false).unwrap(),
+        "fortanixdsm-pkcs11" => FortanixDSM::launch(&temp_dir, &args.report_dir, true).unwrap(),
+        "kryoptic" => Kryoptic::launch(&temp_dir).unwrap(),
+        "nethsm" => Nethsm::launch(&temp_dir).unwrap(),
+        "pykmip" => Pykmip::launch(&temp_dir, &args.report_dir).unwrap(),
+        "securosys" => Securosys::launch(&temp_dir, &args.report_dir, false).unwrap(),
+        "securosys-pkcs11" => Securosys::launch(&temp_dir, &args.report_dir, true).unwrap(),
+        "softhsm2" => Softhsm2::launch(&temp_dir).unwrap(),
+        "yubihsm2" => Yubihsm2::launch(&temp_dir).unwrap(),
+        _ => unreachable!(),
     };
 
-    // Launch the daemon, if the HSM is a PKCS#11 module.
+    // Configure OpenSC pksc11-spy if needed.
+    let hsm = if args.pkcs11spy {
+        Pkcs11Spy::wrap(hsm, &temp_dir, &args.report_dir).unwrap()
+    } else {
+        Pkcs11Spy::skip(hsm).unwrap()
+    };
+
+    // If the HSM is a PKCS#11 module launch Cascade-HSM-Bridge to serve
+    // access to it via the KMIP interface.
     let (_daemon, conn_settings) = if hsm.lib_path().is_some() {
         println!("HSM lib path: {:?}", hsm.lib_path());
-        let daemon = Daemon::launch(&temp_dir, &report_dir, hex_to_txt_bin_path, &hsm)
+        let daemon = Daemon::launch(&temp_dir, &args.report_dir, &args.hex_to_txt_bin_path, &hsm)
             .unwrap_or_else(|err| {
                 eprintln!("Could not launch the daemon: {err}");
                 std::process::exit(1);
@@ -160,13 +154,30 @@ fn main() {
 
     // Establish a connection pool for talking to the HSM.
     let conn_pool = ConnPool::new(
-        pkcs11_module.unwrap_or_else(|| "SoftHSMv2".to_string()),
+        format!("{hsm}"),
         Arc::new(conn_settings),
         32,
         Some(Duration::from_secs(5)),
         Some(Duration::from_secs(5)),
     )
     .unwrap();
+
+    let request = RequestPayload::DiscoverVersions(vec![]);
+    let mut client = conn_pool.get().unwrap();
+    let response = client.do_request_payload(request).unwrap();
+    let response = TryInto::<ResponsePayload>::try_into(response).unwrap();
+    if let ResponsePayload::DiscoverVersions(payload) = response {
+        if let Some(versions) = payload.supported_versions {
+            println!(
+                "KMIP server supports versions: {}",
+                versions
+                    .iter()
+                    .map(ToString::to_string)
+                    .collect::<Vec<_>>()
+                    .join(",")
+            );
+        }
+    }
 
     let algs_to_test = [
         GenerateParams::RsaSha256 { bits: 1024 },

@@ -1,4 +1,3 @@
-pub mod thales;
 pub mod fortanix;
 pub mod kryoptic;
 pub mod nethsm;
@@ -6,6 +5,7 @@ pub mod pkcs11spy;
 pub mod pykmip;
 pub mod securosys;
 pub mod softhsm2;
+pub mod thales;
 pub mod yubihsm2;
 
 pub use fortanix::FortanixDSM;
@@ -149,7 +149,7 @@ impl Hsm for Hsms {
         }
     }
 
-    fn current_dir(&self) -> Option<&str> {
+    fn current_dir(&self) -> Option<PathBuf> {
         match self {
             Hsms::Fortanix(hsm) => hsm.current_dir(),
             Hsms::Kryoptic(hsm) => hsm.current_dir(),

@@ -112,11 +112,17 @@ fn main() {
     // access to it via the KMIP interface.
     let (_daemon, conn_settings) = if hsm.lib_path().is_some() {
         println!("HSM lib path: {:?}", hsm.lib_path());
-        let daemon = Daemon::launch(&temp_dir, &args.report_dir, &args.hex_to_txt_bin_path, hsm.current_dir(), &hsm)
-            .unwrap_or_else(|err| {
-                eprintln!("Could not launch the daemon: {err}");
-                std::process::exit(1);
-            });
+        let daemon = Daemon::launch(
+            &temp_dir,
+            &args.report_dir,
+            &args.hex_to_txt_bin_path,
+            hsm.current_dir(),
+            &hsm,
+        )
+        .unwrap_or_else(|err| {
+            eprintln!("Could not launch the daemon: {err}");
+            std::process::exit(1);
+        });
 
         let conn_settings = ConnectionSettings {
             host: daemon.address().ip().to_string(),
@@ -252,8 +258,10 @@ fn do_test_keygen_signing(pool: &ConnPool, key_params: GenerateParams) -> Result
         .map_err(|err| format!("verify: {err}"))?;
 
     // PyKMIP says the object isn't activated so cannot be revoked.
-    domain_kmip::destroy(key.public_key_id(), pool.clone()).map_err(|err| format!("destroy pub: {err}"))?;
-    domain_kmip::destroy(key.private_key_id(), pool.clone()).map_err(|err| format!("destroy pri: {err}"))?;
+    domain_kmip::destroy(key.public_key_id(), pool.clone())
+        .map_err(|err| format!("destroy pub: {err}"))?;
+    domain_kmip::destroy(key.private_key_id(), pool.clone())
+        .map_err(|err| format!("destroy pri: {err}"))?;
 
     Ok(())
 }

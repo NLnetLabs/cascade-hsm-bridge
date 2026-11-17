@@ -14,6 +14,16 @@ config file and capture of any available logging from the module.
 And as the test uses a KMIP client it also supports additional KMIP compatible
 HSMs sending requests direct to the HSM rather than to Cascade-HSM-Bridge.
 
+For information about supported HSMs see their respective documentation pages:
+
+- [Fortanix DSM](../fulltest/tests/common/hsms/fortanix)
+- [Kryoptic](../fulltest/tests/common/hsms/kryoptic)
+- [Nitrokey NetHSM](../fulltest/tests/common/hsms/nethsm)
+- [PyKMIP](../fulltest/tests/common/hsms/pykmip)
+- [Securosys](../fulltest/tests/common/hsms/securosys)
+- [SoftHSMv2](../fulltest/tests/common/hsms/softhsm2)
+- [YubiHSM2](../fulltest/tests/common/hsms/yubihsm2)
+
 ## Pre-requisites
 
 To run this test you will need to have the appropriate PKCS#11 module

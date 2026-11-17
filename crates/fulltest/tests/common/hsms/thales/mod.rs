@@ -1,6 +1,13 @@
 use std::{
-    collections::HashMap, ffi::{OsStr, OsString}, io, option::Option, path::PathBuf,
+    collections::HashMap,
+    ffi::{OsStr, OsString},
+    io,
+    option::Option,
+    path::PathBuf,
+    process::Command,
 };
+
+use tempfile::TempDir;
 
 use crate::common::hsms::{Hsm, Hsms};
 
@@ -15,7 +22,7 @@ pub struct ThalesDPOD {
 }
 
 impl ThalesDPOD {
-    pub fn launch() -> io::Result<Hsms> {
+    pub fn launch(temp_dir: &TempDir) -> io::Result<Hsms> {
         // Determine the location of the ThalesDPOD library.
         let lib_path = std::env::var_os("THALES_DPOD_PKCS11_MODULE_PATH")
             .into_iter()
@@ -38,6 +45,34 @@ impl ThalesDPOD {
 
         let slot_label = "MyPartition".to_string();
         let pin = "mycopassword".to_string();
+        let so_pin = "mypartitionsopassword".to_string();
+
+        let lunacm_script_path = temp_dir.path().join("lunacm.script");
+        std::fs::write(
+            &lunacm_script_path,
+            format!(
+                r#"
+partition init -label {slot_label} -password {so_pin} -domain mydomain -force
+role login -name po -password {so_pin}
+role init -name co -password {pin}
+role login -name co -password {pin}
+role changepw -name co -oldpw {pin} -newpw {pin} -force
+"#
+            ),
+        )?;
+
+        // Initialize the HSM if needed.
+        if !Command::new("./bin/64/lunacm")
+            .current_dir("/usr/local/dpodclient")
+            .args(["-e", lunacm_script_path.to_str().unwrap()])
+            .spawn()?
+            .wait()?
+            .success()
+        {
+            return Err(io::Error::other(
+                "could not initialize the HSM partition and roles",
+            ));
+        }
 
         Ok(Hsms::Thales(Self {
             lib_path,

@@ -96,7 +96,7 @@ fn main() {
         "securosys" => Securosys::launch(&temp_dir, &args.report_dir, false).unwrap(),
         "securosys-pkcs11" => Securosys::launch(&temp_dir, &args.report_dir, true).unwrap(),
         "softhsm2" => Softhsm2::launch(&temp_dir).unwrap(),
-        "thales" => ThalesDPOD::launch().unwrap(),
+        "thales" => ThalesDPOD::launch(&temp_dir).unwrap(),
         "yubihsm2" => Yubihsm2::launch(&temp_dir).unwrap(),
         _ => unreachable!(),
     };

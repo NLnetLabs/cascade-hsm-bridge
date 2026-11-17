@@ -2,8 +2,6 @@ use std::{
     collections::HashMap, ffi::{OsStr, OsString}, io, option::Option, path::PathBuf,
 };
 
-use tempfile::TempDir;
-
 use crate::common::hsms::{Hsm, Hsms};
 
 pub struct ThalesDPOD {
@@ -69,6 +67,6 @@ impl Hsm for ThalesDPOD {
 
     fn current_dir(&self) -> Option<PathBuf> {
         // Without this the module appears to have no initialized slots...
-        Some(PathBuf::new("/usr/local/dpodclient"))
+        Some("/usr/local/dpodclient".try_into().unwrap())
     }
 }

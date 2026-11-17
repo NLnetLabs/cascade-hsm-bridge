@@ -76,8 +76,8 @@ daemon.log-target = {{ type = "file", path = {log_path:?} }}
 
         // Launch the daemon.
         let daemon_path = project_dir.join("../../target/debug/cascade-hsm-bridge");
-        let mut proc = Command::new(&daemon_path)
-            .arg("--config")
+        let mut proc = Command::new(&daemon_path);
+        proc.arg("--config")
             .arg(&config_path)
             .fd_mappings(vec![FdMapping {
                 parent_fd: sock.into(),
@@ -91,7 +91,7 @@ daemon.log-target = {{ type = "file", path = {log_path:?} }}
             proc.current_dir(current_dir);
         }
 
-        proc.spawn()?;
+        let proc = proc.spawn()?;
 
         println!("Cascade-HSM-Bridge is running at {addr}");
 

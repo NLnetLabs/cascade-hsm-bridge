@@ -6,55 +6,55 @@ This crate contains an integration test of Cascade-HSM-Bridge backed by the
 SoftHSMv2 PKCS#11 module and using the `domain-kmip` crate to interact with
 the bridge.
 
+As the test uses Cascade-HSM-Bridge which can load any PKCS#11 module the
+test also supports additional PKCS#11 HSM modules from various providers other
+than the SoftHSMv2 default. The support includes generation of the appropriate
+config file and capture of any available logging from the module.
+
+And as the test uses a KMIP client it also supports additional KMIP compatible
+HSMs sending requests direct to the HSM rather than to Cascade-HSM-Bridge.
+
 ## Pre-requisites
 
-To run this test you will need to have SoftHSMv2 installed.
+To run this test you will need to have the appropriate PKCS#11 module
+installed and any dependencies it has, and/or have the necessary credentials
+to use the chosen PKCS#11 module or KMIP compatbile HSM.
 
 ## Running the test
 
 Note: Running the test will also cause the Cascade-HSM-Test code to be
 recompiled.
 
-Running the test can be done from within the crate directory like so:
-
-```
-cargo test
-```
-
-Alternatively it can be run from the root Cascade-HSM-Bridge directory:
+Running the test like so will test by default against SoftHSMv2:
 
 ```
 cargo test --package fulltest
 ```
 
+## Testing against other HSMs
+
+To test against a HSM other than SoftHSMv2, consult the help to determine
+which HSMs are supported:
+
+```
+cargo test --package --fulltest -- --help 
+```
+
 ## Diagnosing issues
 
-This crate supports the RUST_LOG environment variable for increasing the
-level at which the client side of the KMIP communication is logged. Set
-RUST_LOG=trace for maximum logging, including KMIP requests and responses
-logged in hexadecimal form.
+Set the `RUST_LOG` environment variable to `debug` or `trace` for increased
+KMIP client logging, including KMIP messages in hexadecimal form, e.g.:
 
-E.g.
+Provide the `--report-dir` and `--hex-to-txt-bin-path` arguments to cause
+the test to capture the Cascade-HSM-Bridge log to a file and automatically
+extract the KMIP messages and use [hex-to-txt](https://github.com/NLnetLabs/kmip-protocol/tree/main/examples/hex_to_txt)
+to render them in human readable form to a file called `kmip.log` in the
+chosen report directory.
 
-```
-2026-10-07T12:38:08.668519Z TRACE kmip_protocol::net::client: Writing 584 bytes to the server: 4200780100000240420...
-```
-
-To interpret those responses, copy the 4200... byte sequence to a file,
-then use the `kmip-protocol` crate `hex_to_txt` example tool to print it
-in more readable form, e.g.
-
-```
-cd src/kmip-protocol
-cargo run --example hex_to_txt -- /path/to/file/containing/hex/bytes.txt
-...
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.03s
-     Running `target/debug/examples/hex_to_txt -`
-Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
-  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
-    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
-...
-```
+Provide the --`pkcs11spy` argument to cause tests of PKCS#11 modules to
+load the chosen module via the [OpenSC pkcs11-spy module](https://github.com/OpenSC/OpenSC/wiki/Using-OpenSC#pkcs-11-spy)
+to produce a log of the PKCS#11 function calls made by Cascade-HSM-Bridge
+and the results of those calls.
 
 ## Why does this test not live directly in the Cascade-HSM-Bridge crate?
 

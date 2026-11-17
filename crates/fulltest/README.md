@@ -14,7 +14,8 @@ config file and capture of any available logging from the module.
 And as the test uses a KMIP client it also supports additional KMIP compatible
 HSMs sending requests direct to the HSM rather than to Cascade-HSM-Bridge.
 
-For information about supported HSMs see their respective documentation pages:
+For information about the HSMs that can be tested see their respective
+documentation pages:
 
 - [Fortanix DSM](../fulltest/tests/common/hsms/fortanix)
 - [Kryoptic](../fulltest/tests/common/hsms/kryoptic)

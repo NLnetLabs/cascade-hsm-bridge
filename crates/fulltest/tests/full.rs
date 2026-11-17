@@ -55,7 +55,7 @@ struct Args {
     pkcs11spy: bool,
 
     /// HSM to test.
-    #[arg(default_value_t = "softhsm2".to_string(), value_parser = ["fortanixdsm", "fortanixdsm-pkcs11", "kryoptic", "nethsm", "pykmip", "securosys", "securosys-pkcs11", "softhsm2", "yubihsm"])]
+    #[arg(default_value_t = "softhsm2".to_string(), value_parser = ["fortanixdsm", "fortanixdsm-pkcs11", "kryoptic", "nethsm", "pykmip", "securosys", "securosys-pkcs11", "softhsm2", "thales", "yubihsm"])]
     hsm: String,
 }
 

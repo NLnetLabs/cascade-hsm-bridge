@@ -35,10 +35,13 @@ impl Pkcs11Spy {
             let lib_path = std::env::var_os("OPENSC_PKCS11SPY_PKCS11_MODULE_PATH")
                 .into_iter()
                 .chain(
-                    ["/lib64/pkcs11-spy.so"]
-                        .into_iter()
-                        .filter(|&p| std::fs::exists(p).is_ok_and(|v| v))
-                        .map(|v| String::from(v).into()),
+                    [
+                        "/lib64/pkcs11-spy.so",
+                        "/usr/lib/x86_64-linux-gnu/pkcs11-spy.so"
+                    ]
+                    .into_iter()
+                    .filter(|&p| std::fs::exists(p).is_ok_and(|v| v))
+                    .map(|v| String::from(v).into()),
                 )
                 .next()
                 .unwrap_or_else(|| {

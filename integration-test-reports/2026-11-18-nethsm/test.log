@@ -1,0 +1,24 @@
+Cascade-HSM-Bridge is running at 127.0.0.1:44043
+[2026-11-18T16:32:30Z INFO  nethsm_pkcs11::config::logging] Loaded config file at: /tmp/.tmpSzfzkp/p11nethsm.conf
+[2026-11-18T16:32:30Z INFO  nethsm_pkcs11::config::logging] Logging to STDERR
+[2026-11-18T16:32:30Z INFO  nethsm_pkcs11::config::initialization] Loaded configuration with 1 slots
+[2026-11-18T16:32:30Z INFO  nethsm_pkcs11::config::initialization] Slot with 1 instances, timeout: Some(10), retries: Some(RetryConfig { count: 3, delay_seconds: 1 })
+[2026-11-18T16:32:30Z INFO  nethsm_pkcs11::config::initialization] Instance configured with: max_idle_connection: Some(10)
+KMIP server supports versions: 1.2,1.1,1.0
+test_keygen_signing(RsaSha256 { bits: 1024 })...ok
+test_keygen_signing(RsaSha256 { bits: 2048 })...ok
+test_keygen_signing(RsaSha512 { bits: 1024 })...ok
+test_keygen_signing(RsaSha512 { bits: 2048 })...ok
+test_keygen_signing(EcdsaP256Sha256)...ok
+test_keygen_signing(EcdsaP384Sha384)...ok
+[2026-11-18T16:32:32Z WARN  nethsm_pkcs11::backend::key] Unsupported EC key type OID 1.3.101.113
+[2026-11-18T16:32:32Z ERROR nethsm_pkcs11::api::generation] C_GenerateKeyPair() failed to generate key: InvalidAttribute(384)
+[2026-11-18T16:32:32Z WARN  nethsm_pkcs11::api::generation] C_GenerateKeyPair failed with error FunctionFailed
+test_keygen_signing(Ed448)...err: generate: a problem occurred while communicating with the KMIP server: Server error: Operation unknown failed: CryptographicFailure: Failed to create key pair: Bridge failed to invoke PKCS#11 function 'Function::GenerateKeyPair': FunctionFailed
+test_keygen_signing(Ed25519)...ok
+
+thread 'main' (325559) panicked at crates/fulltest/tests/full.rs:209:9:
+1/8 algorithms failed: ED448
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+Stopping Cascade-HSM-Bridge
+error: test failed, to rerun pass `-p fulltest --test full`

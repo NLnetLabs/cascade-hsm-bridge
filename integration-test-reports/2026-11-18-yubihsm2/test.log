@@ -1,0 +1,20 @@
+HSM lib path: Some("/lib64/pkcs11-spy.so")
+   Compiling cascade-hsm-bridge v0.2.0-beta3-dev (/data/home/ximon/src/cascade/cascade-hsm-bridge)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.36s
+Cascade-HSM-Bridge is running at 127.0.0.1:42919
+KMIP server supports versions: 1.2,1.1,1.0
+test_keygen_signing(RsaSha256 { bits: 1024 })...err: generate: a problem occurred while communicating with the KMIP server: Server error: Operation unknown failed: FeatureNotSupported: PKCS#11 module lacks support for the requested key size: 2048 (min) <= 1024 (requested) <= 4096 (max)
+test_keygen_signing(RsaSha256 { bits: 2048 })...ok
+test_keygen_signing(RsaSha512 { bits: 1024 })...err: generate: a problem occurred while communicating with the KMIP server: Server error: Operation unknown failed: FeatureNotSupported: PKCS#11 module lacks support for the requested key size: 2048 (min) <= 1024 (requested) <= 4096 (max)
+test_keygen_signing(RsaSha512 { bits: 2048 })...ok
+test_keygen_signing(EcdsaP256Sha256)...ok
+test_keygen_signing(EcdsaP384Sha384)...ok
+test_keygen_signing(Ed448)...err: generate: a problem occurred while communicating with the KMIP server: Server error: Operation unknown failed: CryptographicFailure: Failed to create key pair: Bridge failed to invoke PKCS#11 function 'Function::GenerateKeyPair': CurveNotSupported
+test_keygen_signing(Ed25519)...err: generate: a problem occurred while communicating with the KMIP server: Server error: Operation unknown failed: CryptographicFailure: Failed to create key pair: Bridge failed to invoke PKCS#11 function 'Function::GenerateKeyPair': CurveNotSupported
+
+thread 'main' (379423) panicked at crates/fulltest/tests/full.rs:209:9:
+4/8 algorithms failed: RSASHA256, RSASHA512, ED448, ED25519
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+Stopping Cascade-HSM-Bridge
+error: test failed, to rerun pass `-p fulltest --test full`
+

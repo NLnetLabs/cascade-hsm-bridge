@@ -1,0 +1,226 @@
+[[34mP11 - INF[0m 22:37:20.495298] yubihsm_pkcs11.c:273 (C_Initialize): Found 1 configured connector(s)
+[[34mP11 - INF[0m 22:37:20.498906] yubihsm_pkcs11.c:369 (C_Initialize): Found 1 usable connector(s)
+[[34mP11 - INF[0m 22:37:20.498909] yubihsm_pkcs11.c:371 (C_Initialize): Found 0 configured device public key(s)
+[[34mP11 - INF[0m 22:37:20.514133] yubihsm_pkcs11.c:541 (C_GetSlotList): Number of slots with a token is 1
+[[34mP11 - INF[0m 22:37:20.514134] yubihsm_pkcs11.c:548 (C_GetSlotList): Can return 1 slot(s)
+[[34mP11 - INF[0m 22:37:20.514143] yubihsm_pkcs11.c:573 (C_GetSlotList): Returning slot 0
+[[34mP11 - INF[0m 22:37:20.514175] yubihsm_pkcs11.c:541 (C_GetSlotList): Number of slots with a token is 1
+[[34mP11 - INF[0m 22:37:20.514176] yubihsm_pkcs11.c:548 (C_GetSlotList): Can return 1 slot(s)
+[[34mP11 - INF[0m 22:37:20.514179] yubihsm_pkcs11.c:573 (C_GetSlotList): Returning slot 0
+[[34mP11 - INF[0m 22:37:20.514693] yubihsm_pkcs11.c:920 (C_OpenSession): Allocated session 1
+[[34mP11 - INF[0m 22:37:20.514834] yubihsm_pkcs11.c:920 (C_OpenSession): Allocated session 2
+[[34mP11 - INF[0m 22:37:20.562375] yubihsm_pkcs11.c:2545 (C_FindObjectsInit): find with 1 attributes
+[[34mP11 - INF[0m 22:37:20.595064] util_pkcs11.c:4992 (parse_id_value): Supplied id is long, truncating it (was 20 bytes)
+[[34mP11 - INF[0m 22:37:20.595067] yubihsm_pkcs11.c:2861 (C_FindObjectsInit): id parsed as 4170
+[[34mP11 - INF[0m 22:37:20.595086] yubihsm_pkcs11.c:2944 (C_FindObjects): Can return 10 object(s)
+[[34mP11 - INF[0m 22:37:20.595087] yubihsm_pkcs11.c:2993 (C_FindObjects): Returning 0 object(s)
+[[34mP11 - INF[0m 22:37:20.595245] yubihsm_pkcs11.c:5533 (C_GenerateKeyPair): Generating RSA asymmetric key...
+[[34mP11 - INF[0m 22:37:24.043956] util_pkcs11.c:993 (write_meta_object): Successfully imported opaque object 0x92d with label: Meta object for 0x000341ad
+[[34mP11 - INF[0m 22:37:24.066551] yubihsm_pkcs11.c:2545 (C_FindObjectsInit): find with 2 attributes
+[[34mP11 - INF[0m 22:37:24.066553] yubihsm_pkcs11.c:2570 (C_FindObjectsInit): filtering for public keys
+[[34mP11 - INF[0m 22:37:24.077613] util_pkcs11.c:4992 (parse_id_value): Supplied id is long, truncating it (was 20 bytes)
+[[34mP11 - INF[0m 22:37:24.077616] yubihsm_pkcs11.c:2861 (C_FindObjectsInit): id parsed as 4170
+[[34mP11 - INF[0m 22:37:24.077627] yubihsm_pkcs11.c:2944 (C_FindObjects): Can return 10 object(s)
+[[34mP11 - INF[0m 22:37:24.077628] yubihsm_pkcs11.c:2989 (C_FindObjects): Returning object 0 as 008341ad
+[[34mP11 - INF[0m 22:37:24.077628] yubihsm_pkcs11.c:2993 (C_FindObjects): Returning 1 object(s)
+[[34mP11 - INF[0m 22:37:24.077687] yubihsm_pkcs11.c:2243 (C_GetAttributeValue): For object 008341ad
+[[34mP11 - INF[0m 22:37:24.077688] util_pkcs11.c:5862 (populate_template): Getting attribute 0x0
+[[34mP11 - INF[0m 22:37:24.077689] util_pkcs11.c:5884 (populate_template): Retrieving attribute value, length is 8
+[[34mP11 - INF[0m 22:37:24.077689] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 8
+[[34mP11 - INF[0m 22:37:24.077690] util_pkcs11.c:5862 (populate_template): Getting attribute 0x120
+[[34mP11 - INF[0m 22:37:24.090081] util_pkcs11.c:5877 (populate_template): Retrieving only length which is 256
+[[34mP11 - INF[0m 22:37:24.090083] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 256
+[[34mP11 - INF[0m 22:37:24.090083] util_pkcs11.c:5862 (populate_template): Getting attribute 0x121
+[[34mP11 - INF[0m 22:37:24.090084] util_pkcs11.c:5884 (populate_template): Retrieving attribute value, length is 8
+[[34mP11 - INF[0m 22:37:24.090085] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 8
+[[34mP11 - INF[0m 22:37:24.090085] util_pkcs11.c:5862 (populate_template): Getting attribute 0x122
+[[34mP11 - INF[0m 22:37:24.090085] util_pkcs11.c:5877 (populate_template): Retrieving only length which is 3
+[[34mP11 - INF[0m 22:37:24.090086] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 3
+[[34mP11 - INF[0m 22:37:24.090092] util_pkcs11.c:5862 (populate_template): Getting attribute 0x100
+[[34mP11 - INF[0m 22:37:24.090093] util_pkcs11.c:5884 (populate_template): Retrieving attribute value, length is 8
+[[34mP11 - INF[0m 22:37:24.090094] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 8
+[[34mP11 - INF[0m 22:37:24.090094] util_pkcs11.c:5862 (populate_template): Getting attribute 0x181
+[[31mP11 - ERR[0m 22:37:24.090095] util_pkcs11.c:5897 (populate_template): Attribute type invalid
+[[34mP11 - INF[0m 22:37:24.090112] yubihsm_pkcs11.c:2243 (C_GetAttributeValue): For object 008341ad
+[[34mP11 - INF[0m 22:37:24.090113] util_pkcs11.c:5862 (populate_template): Getting attribute 0x120
+[[34mP11 - INF[0m 22:37:24.102452] util_pkcs11.c:5884 (populate_template): Retrieving attribute value, length is 256
+[[34mP11 - INF[0m 22:37:24.102454] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 256
+[[34mP11 - INF[0m 22:37:24.102455] util_pkcs11.c:5862 (populate_template): Getting attribute 0x122
+[[34mP11 - INF[0m 22:37:24.102455] util_pkcs11.c:5884 (populate_template): Retrieving attribute value, length is 3
+[[34mP11 - INF[0m 22:37:24.102456] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 3
+[[34mP11 - INF[0m 22:37:24.103624] yubihsm_pkcs11.c:2545 (C_FindObjectsInit): find with 2 attributes
+[[34mP11 - INF[0m 22:37:24.103625] yubihsm_pkcs11.c:2576 (C_FindObjectsInit): filtering for private keys
+[[34mP11 - INF[0m 22:37:24.114608] util_pkcs11.c:4992 (parse_id_value): Supplied id is long, truncating it (was 20 bytes)
+[[34mP11 - INF[0m 22:37:24.114610] yubihsm_pkcs11.c:2861 (C_FindObjectsInit): id parsed as 4170
+[[34mP11 - INF[0m 22:37:24.114620] yubihsm_pkcs11.c:2944 (C_FindObjects): Can return 10 object(s)
+[[34mP11 - INF[0m 22:37:24.114621] yubihsm_pkcs11.c:2989 (C_FindObjects): Returning object 0 as 000341ad
+[[34mP11 - INF[0m 22:37:24.114621] yubihsm_pkcs11.c:2993 (C_FindObjects): Returning 1 object(s)
+[[34mP11 - INF[0m 22:37:24.115916] yubihsm_pkcs11.c:4320 (C_SignInit): Trying to sign data with mechanism 0x0001 and key 000341ad
+[[34mP11 - INF[0m 22:37:24.115921] yubihsm_pkcs11.c:4360 (C_SignInit): RSA signature requested
+[[34mP11 - INF[0m 22:37:24.115927] yubihsm_pkcs11.c:4499 (C_Sign): The size of the signature will be 256
+[[34mP11 - INF[0m 22:37:24.115931] yubihsm_pkcs11.c:4499 (C_Sign): The size of the signature will be 256
+[[34mP11 - INF[0m 22:37:24.115932] yubihsm_pkcs11.c:4522 (C_Sign): Sending 51 bytes to sign
+[[34mP11 - INF[0m 22:37:24.115932] yubihsm_pkcs11.c:4536 (C_Sign): Using key 41ad
+[[34mP11 - INF[0m 22:37:24.115932] yubihsm_pkcs11.c:4537 (C_Sign): After padding and transformation there are 51 bytes
+[[34mP11 - INF[0m 22:37:24.264303] yubihsm_pkcs11.c:4547 (C_Sign): Got 256 bytes back
+[[34mP11 - INF[0m 22:37:24.265990] yubihsm_pkcs11.c:2123 (C_DestroyObject): Trying to delete public key, returning success with noop
+[[34mP11 - INF[0m 22:37:24.321971] yubihsm_pkcs11.c:2148 (C_DestroyObject): Deleted object 000341ad
+[[34mP11 - INF[0m 22:37:24.348352] yubihsm_pkcs11.c:2159 (C_DestroyObject): Deleted meta object 0x92d
+[[34mP11 - INF[0m 22:37:24.350013] yubihsm_pkcs11.c:2545 (C_FindObjectsInit): find with 1 attributes
+[[34mP11 - INF[0m 22:37:24.361026] util_pkcs11.c:4992 (parse_id_value): Supplied id is long, truncating it (was 20 bytes)
+[[34mP11 - INF[0m 22:37:24.361028] yubihsm_pkcs11.c:2861 (C_FindObjectsInit): id parsed as 588e
+[[34mP11 - INF[0m 22:37:24.361037] yubihsm_pkcs11.c:2944 (C_FindObjects): Can return 10 object(s)
+[[34mP11 - INF[0m 22:37:24.361038] yubihsm_pkcs11.c:2993 (C_FindObjects): Returning 0 object(s)
+[[34mP11 - INF[0m 22:37:24.361127] yubihsm_pkcs11.c:5533 (C_GenerateKeyPair): Generating RSA asymmetric key...
+[[34mP11 - INF[0m 22:37:32.415967] util_pkcs11.c:993 (write_meta_object): Successfully imported opaque object 0xcaa4 with label: Meta object for 0x0003a049
+[[34mP11 - INF[0m 22:37:32.438798] yubihsm_pkcs11.c:2545 (C_FindObjectsInit): find with 2 attributes
+[[34mP11 - INF[0m 22:37:32.438804] yubihsm_pkcs11.c:2570 (C_FindObjectsInit): filtering for public keys
+[[34mP11 - INF[0m 22:37:32.449838] util_pkcs11.c:4992 (parse_id_value): Supplied id is long, truncating it (was 20 bytes)
+[[34mP11 - INF[0m 22:37:32.449840] yubihsm_pkcs11.c:2861 (C_FindObjectsInit): id parsed as 588e
+[[34mP11 - INF[0m 22:37:32.449851] yubihsm_pkcs11.c:2944 (C_FindObjects): Can return 10 object(s)
+[[34mP11 - INF[0m 22:37:32.449851] yubihsm_pkcs11.c:2989 (C_FindObjects): Returning object 0 as 0083a049
+[[34mP11 - INF[0m 22:37:32.449852] yubihsm_pkcs11.c:2993 (C_FindObjects): Returning 1 object(s)
+[[34mP11 - INF[0m 22:37:32.449894] yubihsm_pkcs11.c:2243 (C_GetAttributeValue): For object 0083a049
+[[34mP11 - INF[0m 22:37:32.449895] util_pkcs11.c:5862 (populate_template): Getting attribute 0x0
+[[34mP11 - INF[0m 22:37:32.449896] util_pkcs11.c:5884 (populate_template): Retrieving attribute value, length is 8
+[[34mP11 - INF[0m 22:37:32.449897] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 8
+[[34mP11 - INF[0m 22:37:32.449897] util_pkcs11.c:5862 (populate_template): Getting attribute 0x120
+[[34mP11 - INF[0m 22:37:32.462236] util_pkcs11.c:5877 (populate_template): Retrieving only length which is 256
+[[34mP11 - INF[0m 22:37:32.462238] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 256
+[[34mP11 - INF[0m 22:37:32.462239] util_pkcs11.c:5862 (populate_template): Getting attribute 0x121
+[[34mP11 - INF[0m 22:37:32.462244] util_pkcs11.c:5884 (populate_template): Retrieving attribute value, length is 8
+[[34mP11 - INF[0m 22:37:32.462244] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 8
+[[34mP11 - INF[0m 22:37:32.462244] util_pkcs11.c:5862 (populate_template): Getting attribute 0x122
+[[34mP11 - INF[0m 22:37:32.462245] util_pkcs11.c:5877 (populate_template): Retrieving only length which is 3
+[[34mP11 - INF[0m 22:37:32.462245] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 3
+[[34mP11 - INF[0m 22:37:32.462245] util_pkcs11.c:5862 (populate_template): Getting attribute 0x100
+[[34mP11 - INF[0m 22:37:32.462245] util_pkcs11.c:5884 (populate_template): Retrieving attribute value, length is 8
+[[34mP11 - INF[0m 22:37:32.462246] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 8
+[[34mP11 - INF[0m 22:37:32.462246] util_pkcs11.c:5862 (populate_template): Getting attribute 0x181
+[[31mP11 - ERR[0m 22:37:32.462246] util_pkcs11.c:5897 (populate_template): Attribute type invalid
+[[34mP11 - INF[0m 22:37:32.462264] yubihsm_pkcs11.c:2243 (C_GetAttributeValue): For object 0083a049
+[[34mP11 - INF[0m 22:37:32.462264] util_pkcs11.c:5862 (populate_template): Getting attribute 0x120
+[[34mP11 - INF[0m 22:37:32.474464] util_pkcs11.c:5884 (populate_template): Retrieving attribute value, length is 256
+[[34mP11 - INF[0m 22:37:32.474466] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 256
+[[34mP11 - INF[0m 22:37:32.474466] util_pkcs11.c:5862 (populate_template): Getting attribute 0x122
+[[34mP11 - INF[0m 22:37:32.474467] util_pkcs11.c:5884 (populate_template): Retrieving attribute value, length is 3
+[[34mP11 - INF[0m 22:37:32.474467] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 3
+[[34mP11 - INF[0m 22:37:32.475426] yubihsm_pkcs11.c:2545 (C_FindObjectsInit): find with 2 attributes
+[[34mP11 - INF[0m 22:37:32.475426] yubihsm_pkcs11.c:2576 (C_FindObjectsInit): filtering for private keys
+[[34mP11 - INF[0m 22:37:32.486400] util_pkcs11.c:4992 (parse_id_value): Supplied id is long, truncating it (was 20 bytes)
+[[34mP11 - INF[0m 22:37:32.486402] yubihsm_pkcs11.c:2861 (C_FindObjectsInit): id parsed as 588e
+[[34mP11 - INF[0m 22:37:32.486411] yubihsm_pkcs11.c:2944 (C_FindObjects): Can return 10 object(s)
+[[34mP11 - INF[0m 22:37:32.486414] yubihsm_pkcs11.c:2989 (C_FindObjects): Returning object 0 as 0003a049
+[[34mP11 - INF[0m 22:37:32.486418] yubihsm_pkcs11.c:2993 (C_FindObjects): Returning 1 object(s)
+[[34mP11 - INF[0m 22:37:32.487119] yubihsm_pkcs11.c:4320 (C_SignInit): Trying to sign data with mechanism 0x0001 and key 0003a049
+[[34mP11 - INF[0m 22:37:32.487123] yubihsm_pkcs11.c:4360 (C_SignInit): RSA signature requested
+[[34mP11 - INF[0m 22:37:32.487132] yubihsm_pkcs11.c:4499 (C_Sign): The size of the signature will be 256
+[[34mP11 - INF[0m 22:37:32.487138] yubihsm_pkcs11.c:4499 (C_Sign): The size of the signature will be 256
+[[34mP11 - INF[0m 22:37:32.487138] yubihsm_pkcs11.c:4522 (C_Sign): Sending 83 bytes to sign
+[[34mP11 - INF[0m 22:37:32.487138] yubihsm_pkcs11.c:4536 (C_Sign): Using key a049
+[[34mP11 - INF[0m 22:37:32.487139] yubihsm_pkcs11.c:4537 (C_Sign): After padding and transformation there are 83 bytes
+[[34mP11 - INF[0m 22:37:32.635016] yubihsm_pkcs11.c:4547 (C_Sign): Got 256 bytes back
+[[34mP11 - INF[0m 22:37:32.636367] yubihsm_pkcs11.c:2123 (C_DestroyObject): Trying to delete public key, returning success with noop
+[[34mP11 - INF[0m 22:37:32.692410] yubihsm_pkcs11.c:2148 (C_DestroyObject): Deleted object 0003a049
+[[34mP11 - INF[0m 22:37:32.718771] yubihsm_pkcs11.c:2159 (C_DestroyObject): Deleted meta object 0xcaa4
+[[34mP11 - INF[0m 22:37:32.719723] yubihsm_pkcs11.c:2545 (C_FindObjectsInit): find with 1 attributes
+[[34mP11 - INF[0m 22:37:32.730853] util_pkcs11.c:4992 (parse_id_value): Supplied id is long, truncating it (was 20 bytes)
+[[34mP11 - INF[0m 22:37:32.730855] yubihsm_pkcs11.c:2861 (C_FindObjectsInit): id parsed as a2e2
+[[34mP11 - INF[0m 22:37:32.730864] yubihsm_pkcs11.c:2944 (C_FindObjects): Can return 10 object(s)
+[[34mP11 - INF[0m 22:37:32.730865] yubihsm_pkcs11.c:2993 (C_FindObjects): Returning 0 object(s)
+[[34mP11 - INF[0m 22:37:33.023017] util_pkcs11.c:993 (write_meta_object): Successfully imported opaque object 0x7bc1 with label: Meta object for 0x0003818b
+[[34mP11 - INF[0m 22:37:33.045335] yubihsm_pkcs11.c:2545 (C_FindObjectsInit): find with 2 attributes
+[[34mP11 - INF[0m 22:37:33.045336] yubihsm_pkcs11.c:2570 (C_FindObjectsInit): filtering for public keys
+[[34mP11 - INF[0m 22:37:33.056351] util_pkcs11.c:4992 (parse_id_value): Supplied id is long, truncating it (was 20 bytes)
+[[34mP11 - INF[0m 22:37:33.056353] yubihsm_pkcs11.c:2861 (C_FindObjectsInit): id parsed as a2e2
+[[34mP11 - INF[0m 22:37:33.056362] yubihsm_pkcs11.c:2944 (C_FindObjects): Can return 10 object(s)
+[[34mP11 - INF[0m 22:37:33.056362] yubihsm_pkcs11.c:2989 (C_FindObjects): Returning object 0 as 0083818b
+[[34mP11 - INF[0m 22:37:33.056363] yubihsm_pkcs11.c:2993 (C_FindObjects): Returning 1 object(s)
+[[34mP11 - INF[0m 22:37:33.056398] yubihsm_pkcs11.c:2243 (C_GetAttributeValue): For object 0083818b
+[[34mP11 - INF[0m 22:37:33.056398] util_pkcs11.c:5862 (populate_template): Getting attribute 0x0
+[[34mP11 - INF[0m 22:37:33.056399] util_pkcs11.c:5884 (populate_template): Retrieving attribute value, length is 8
+[[34mP11 - INF[0m 22:37:33.056399] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 8
+[[34mP11 - INF[0m 22:37:33.056400] util_pkcs11.c:5862 (populate_template): Getting attribute 0x120
+[[31mP11 - ERR[0m 22:37:33.056400] util_pkcs11.c:5897 (populate_template): Attribute type invalid
+[[34mP11 - INF[0m 22:37:33.056400] util_pkcs11.c:5862 (populate_template): Getting attribute 0x121
+[[31mP11 - ERR[0m 22:37:33.056400] util_pkcs11.c:5897 (populate_template): Attribute type invalid
+[[34mP11 - INF[0m 22:37:33.056401] util_pkcs11.c:5862 (populate_template): Getting attribute 0x122
+[[31mP11 - ERR[0m 22:37:33.056401] util_pkcs11.c:5897 (populate_template): Attribute type invalid
+[[34mP11 - INF[0m 22:37:33.056401] util_pkcs11.c:5862 (populate_template): Getting attribute 0x100
+[[34mP11 - INF[0m 22:37:33.056401] util_pkcs11.c:5884 (populate_template): Retrieving attribute value, length is 8
+[[34mP11 - INF[0m 22:37:33.056402] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 8
+[[34mP11 - INF[0m 22:37:33.056405] util_pkcs11.c:5862 (populate_template): Getting attribute 0x181
+[[34mP11 - INF[0m 22:37:33.067426] util_pkcs11.c:5877 (populate_template): Retrieving only length which is 67
+[[34mP11 - INF[0m 22:37:33.067428] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 67
+[[34mP11 - INF[0m 22:37:33.067440] yubihsm_pkcs11.c:2243 (C_GetAttributeValue): For object 0083818b
+[[34mP11 - INF[0m 22:37:33.067440] util_pkcs11.c:5862 (populate_template): Getting attribute 0x181
+[[34mP11 - INF[0m 22:37:33.078418] util_pkcs11.c:5884 (populate_template): Retrieving attribute value, length is 67
+[[34mP11 - INF[0m 22:37:33.078420] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 67
+[[34mP11 - INF[0m 22:37:33.079296] yubihsm_pkcs11.c:2545 (C_FindObjectsInit): find with 2 attributes
+[[34mP11 - INF[0m 22:37:33.079297] yubihsm_pkcs11.c:2576 (C_FindObjectsInit): filtering for private keys
+[[34mP11 - INF[0m 22:37:33.090234] util_pkcs11.c:4992 (parse_id_value): Supplied id is long, truncating it (was 20 bytes)
+[[34mP11 - INF[0m 22:37:33.090236] yubihsm_pkcs11.c:2861 (C_FindObjectsInit): id parsed as a2e2
+[[34mP11 - INF[0m 22:37:33.090246] yubihsm_pkcs11.c:2944 (C_FindObjects): Can return 10 object(s)
+[[34mP11 - INF[0m 22:37:33.090246] yubihsm_pkcs11.c:2989 (C_FindObjects): Returning object 0 as 0003818b
+[[34mP11 - INF[0m 22:37:33.090246] yubihsm_pkcs11.c:2993 (C_FindObjects): Returning 1 object(s)
+[[34mP11 - INF[0m 22:37:33.090946] yubihsm_pkcs11.c:4320 (C_SignInit): Trying to sign data with mechanism 0x1041 and key 0003818b
+[[34mP11 - INF[0m 22:37:33.090950] yubihsm_pkcs11.c:4420 (C_SignInit): ECDSA signature requested
+[[34mP11 - INF[0m 22:37:33.090954] yubihsm_pkcs11.c:4499 (C_Sign): The size of the signature will be 64
+[[34mP11 - INF[0m 22:37:33.090957] yubihsm_pkcs11.c:4499 (C_Sign): The size of the signature will be 64
+[[34mP11 - INF[0m 22:37:33.090958] yubihsm_pkcs11.c:4522 (C_Sign): Sending 32 bytes to sign
+[[34mP11 - INF[0m 22:37:33.090958] yubihsm_pkcs11.c:4536 (C_Sign): Using key 818b
+[[34mP11 - INF[0m 22:37:33.090958] yubihsm_pkcs11.c:4537 (C_Sign): After padding and transformation there are 32 bytes
+[[34mP11 - INF[0m 22:37:33.170611] yubihsm_pkcs11.c:4547 (C_Sign): Got 64 bytes back
+[[34mP11 - INF[0m 22:37:33.171929] yubihsm_pkcs11.c:2123 (C_DestroyObject): Trying to delete public key, returning success with noop
+[[34mP11 - INF[0m 22:37:33.199263] yubihsm_pkcs11.c:2148 (C_DestroyObject): Deleted object 0003818b
+[[34mP11 - INF[0m 22:37:33.225531] yubihsm_pkcs11.c:2159 (C_DestroyObject): Deleted meta object 0x7bc1
+[[34mP11 - INF[0m 22:37:33.226408] yubihsm_pkcs11.c:2545 (C_FindObjectsInit): find with 1 attributes
+[[34mP11 - INF[0m 22:37:33.237211] util_pkcs11.c:4992 (parse_id_value): Supplied id is long, truncating it (was 20 bytes)
+[[34mP11 - INF[0m 22:37:33.237213] yubihsm_pkcs11.c:2861 (C_FindObjectsInit): id parsed as 20bf
+[[34mP11 - INF[0m 22:37:33.237227] yubihsm_pkcs11.c:2944 (C_FindObjects): Can return 10 object(s)
+[[34mP11 - INF[0m 22:37:33.237228] yubihsm_pkcs11.c:2993 (C_FindObjects): Returning 0 object(s)
+[[34mP11 - INF[0m 22:37:33.703524] util_pkcs11.c:993 (write_meta_object): Successfully imported opaque object 0xc683 with label: Meta object for 0x0003cc6e
+[[34mP11 - INF[0m 22:37:33.725958] yubihsm_pkcs11.c:2545 (C_FindObjectsInit): find with 2 attributes
+[[34mP11 - INF[0m 22:37:33.725960] yubihsm_pkcs11.c:2570 (C_FindObjectsInit): filtering for public keys
+[[34mP11 - INF[0m 22:37:33.737065] util_pkcs11.c:4992 (parse_id_value): Supplied id is long, truncating it (was 20 bytes)
+[[34mP11 - INF[0m 22:37:33.737068] yubihsm_pkcs11.c:2861 (C_FindObjectsInit): id parsed as 20bf
+[[34mP11 - INF[0m 22:37:33.737083] yubihsm_pkcs11.c:2944 (C_FindObjects): Can return 10 object(s)
+[[34mP11 - INF[0m 22:37:33.737084] yubihsm_pkcs11.c:2989 (C_FindObjects): Returning object 0 as 0083cc6e
+[[34mP11 - INF[0m 22:37:33.737089] yubihsm_pkcs11.c:2993 (C_FindObjects): Returning 1 object(s)
+[[34mP11 - INF[0m 22:37:33.737145] yubihsm_pkcs11.c:2243 (C_GetAttributeValue): For object 0083cc6e
+[[34mP11 - INF[0m 22:37:33.737146] util_pkcs11.c:5862 (populate_template): Getting attribute 0x0
+[[34mP11 - INF[0m 22:37:33.737147] util_pkcs11.c:5884 (populate_template): Retrieving attribute value, length is 8
+[[34mP11 - INF[0m 22:37:33.737147] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 8
+[[34mP11 - INF[0m 22:37:33.737147] util_pkcs11.c:5862 (populate_template): Getting attribute 0x120
+[[31mP11 - ERR[0m 22:37:33.737148] util_pkcs11.c:5897 (populate_template): Attribute type invalid
+[[34mP11 - INF[0m 22:37:33.737149] util_pkcs11.c:5862 (populate_template): Getting attribute 0x121
+[[31mP11 - ERR[0m 22:37:33.737149] util_pkcs11.c:5897 (populate_template): Attribute type invalid
+[[34mP11 - INF[0m 22:37:33.737149] util_pkcs11.c:5862 (populate_template): Getting attribute 0x122
+[[31mP11 - ERR[0m 22:37:33.737150] util_pkcs11.c:5897 (populate_template): Attribute type invalid
+[[34mP11 - INF[0m 22:37:33.737150] util_pkcs11.c:5862 (populate_template): Getting attribute 0x100
+[[34mP11 - INF[0m 22:37:33.737150] util_pkcs11.c:5884 (populate_template): Retrieving attribute value, length is 8
+[[34mP11 - INF[0m 22:37:33.737151] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 8
+[[34mP11 - INF[0m 22:37:33.737151] util_pkcs11.c:5862 (populate_template): Getting attribute 0x181
+[[34mP11 - INF[0m 22:37:33.748349] util_pkcs11.c:5877 (populate_template): Retrieving only length which is 99
+[[34mP11 - INF[0m 22:37:33.748351] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 99
+[[34mP11 - INF[0m 22:37:33.748369] yubihsm_pkcs11.c:2243 (C_GetAttributeValue): For object 0083cc6e
+[[34mP11 - INF[0m 22:37:33.748370] util_pkcs11.c:5862 (populate_template): Getting attribute 0x181
+[[34mP11 - INF[0m 22:37:33.759577] util_pkcs11.c:5884 (populate_template): Retrieving attribute value, length is 99
+[[34mP11 - INF[0m 22:37:33.759579] util_pkcs11.c:5904 (populate_template): Attribute/length successfully returned with length 99
+[[34mP11 - INF[0m 22:37:33.760596] yubihsm_pkcs11.c:2545 (C_FindObjectsInit): find with 2 attributes
+[[34mP11 - INF[0m 22:37:33.760597] yubihsm_pkcs11.c:2576 (C_FindObjectsInit): filtering for private keys
+[[34mP11 - INF[0m 22:37:33.771667] util_pkcs11.c:4992 (parse_id_value): Supplied id is long, truncating it (was 20 bytes)
+[[34mP11 - INF[0m 22:37:33.771669] yubihsm_pkcs11.c:2861 (C_FindObjectsInit): id parsed as 20bf
+[[34mP11 - INF[0m 22:37:33.771692] yubihsm_pkcs11.c:2944 (C_FindObjects): Can return 10 object(s)
+[[34mP11 - INF[0m 22:37:33.771693] yubihsm_pkcs11.c:2989 (C_FindObjects): Returning object 0 as 0003cc6e
+[[34mP11 - INF[0m 22:37:33.771693] yubihsm_pkcs11.c:2993 (C_FindObjects): Returning 1 object(s)
+[[34mP11 - INF[0m 22:37:33.772494] yubihsm_pkcs11.c:4320 (C_SignInit): Trying to sign data with mechanism 0x1041 and key 0003cc6e
+[[34mP11 - INF[0m 22:37:33.772498] yubihsm_pkcs11.c:4420 (C_SignInit): ECDSA signature requested
+[[34mP11 - INF[0m 22:37:33.772506] yubihsm_pkcs11.c:4499 (C_Sign): The size of the signature will be 96
+[[34mP11 - INF[0m 22:37:33.772513] yubihsm_pkcs11.c:4499 (C_Sign): The size of the signature will be 96
+[[34mP11 - INF[0m 22:37:33.772513] yubihsm_pkcs11.c:4522 (C_Sign): Sending 48 bytes to sign
+[[34mP11 - INF[0m 22:37:33.772514] yubihsm_pkcs11.c:4536 (C_Sign): Using key cc6e
+[[34mP11 - INF[0m 22:37:33.772514] yubihsm_pkcs11.c:4537 (C_Sign): After padding and transformation there are 48 bytes
+[[34mP11 - INF[0m 22:37:33.899163] yubihsm_pkcs11.c:4547 (C_Sign): Got 96 bytes back
+[[34mP11 - INF[0m 22:37:33.900841] yubihsm_pkcs11.c:2123 (C_DestroyObject): Trying to delete public key, returning success with noop
+[[34mP11 - INF[0m 22:37:33.932374] yubihsm_pkcs11.c:2148 (C_DestroyObject): Deleted objec

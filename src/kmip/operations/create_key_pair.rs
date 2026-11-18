@@ -84,7 +84,7 @@ pub fn op(
                                         // non-standard OID for Ed25519 that
                                         // appears to come from libgcrypt:
                                         //   1.3.6.1.4.1.11591.15.1
-                                        // See: https://www.thalesdocs.com/dpod/services/luna_cloud_hsm/extern/client_guides/Content/sdk/using/ecc_curve_cross-reference.htmi
+                                        // See: https://www.thalesdocs.com/dpod/services/luna_cloud_hsm/extern/client_guides/Content/sdk/using/ecc_curve_cross-reference.htm
                                         // See: https://www.gnupg.org/oids.html
                                         vec![
                                             0x06, 0x09, 0x2B, 0x06, 0x01, 0x04, 0x01, 0xDA, 0x47,

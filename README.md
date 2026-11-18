@@ -56,4 +56,8 @@ This application is possible thanks to the following foundational Rust crates on
 
 ## Testing and compatibility
 
-See [`crates/fulltest/README.md`](crates/fulltest/README.md).
+The sub-crate [`crates/fulltest/`](crates/fulltest/) can be used to test
+compatability with supported HSMs.
+
+Reports generated with the test crate can be seen at
+[`integration-test-reports/`](./integration-test-reports).

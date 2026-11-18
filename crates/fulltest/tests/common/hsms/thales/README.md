@@ -1,13 +1,19 @@
-# Thales Data Protection on Demand (DPoD)
+# Thales Luna Cloud HSM via DOpD
 
 ## About
 
-[Thales DPoD](https://cpl.thalesgroup.com/encryption/data-protection-on-demand) is:
+[Thales Data Protection on Demand (DPoD)](https://cpl.thalesgroup.com/encryption/data-protection-on-demand) is:
 
 > a cloud‑based platform providing a wide range of cloud HSM and key
 > management services through a simple online marketplace. Deploy and manage
 > key management and hardware security module services, on‑demand and from
 > the cloud.
+
+[Luna Cloud HSM](https://cpl.thalesgroup.com/encryption/data-protection-on-demand/services/luna-cloud-hsm)
+is a cloud HSM service available through DPoD:
+
+> The Luna Cloud HSM service is a generic key vault that can be used for a
+> wide variety of use cases.
 
 ## Interfaces offered
 
@@ -28,7 +34,8 @@
 
 ## Testing prerequisites
 
-To test with a Luna Cloud HSM via Thales DPoD you will need Docker.
+To test with a Luna Cloud HSM via Thales DPoD you will need a compatible
+operating system or Docker. These instructions assume you are using Docker.
 
 Then:
 

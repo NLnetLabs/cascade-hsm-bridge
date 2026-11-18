@@ -1,0 +1,12 @@
+Cascade-HSM-Bridge is running at 127.0.0.1:39715
+KMIP server supports versions: 1.2,1.1,1.0
+test_keygen_signing(RsaSha256 { bits: 1024 })...ok
+test_keygen_signing(RsaSha256 { bits: 2048 })...ok
+test_keygen_signing(RsaSha512 { bits: 1024 })...ok
+test_keygen_signing(RsaSha512 { bits: 2048 })...ok
+test_keygen_signing(EcdsaP256Sha256)...ok
+test_keygen_signing(EcdsaP384Sha384)...ok
+test_keygen_signing(Ed448)...ok
+test_keygen_signing(Ed25519)...ok
+Stopping Cascade-HSM-Bridge
+

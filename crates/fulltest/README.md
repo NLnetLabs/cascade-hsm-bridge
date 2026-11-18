@@ -2,17 +2,14 @@
 
 ## What is this?
 
-This crate contains an integration test of Cascade-HSM-Bridge backed by the
-SoftHSMv2 PKCS#11 module and using the `domain-kmip` crate to interact with
-the bridge.
+This crate contains an integration test for testing the PKCS#11 and KMIP
+support offered by [Cascade-HSM-Bridge](https://github.com/NLnetLabs/cascade-hsm-bridge)
+and the [domain-kmip](https://github.com/NLnetLabs/domain-kmip) KMIP client.
 
-As the test uses Cascade-HSM-Bridge which can load any PKCS#11 module the
-test also supports additional PKCS#11 HSM modules from various providers other
-than the SoftHSMv2 default. The support includes generation of the appropriate
-config file and capture of any available logging from the module.
-
-And as the test uses a KMIP client it also supports additional KMIP compatible
-HSMs sending requests direct to the HSM rather than to Cascade-HSM-Bridge.
+By default the test directs KMIP requests to an instance of Cascade-HSM-Bridge
+configured to use the SoftHSMv2 PKCS#11 module. However the test also supports
+various other PKCS#11 modules and also supports direct KMIP connections to a
+number of real KMIP compatible HSMs.
 
 For information about the HSMs that can be tested see their respective
 documentation pages:

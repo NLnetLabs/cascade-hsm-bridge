@@ -54,20 +54,6 @@ This application is possible thanks to the following foundational Rust crates on
 - [rustls](https://crates.io/crates/rustls)
 - [tokio](https://crates.io/crates/tokio)
 
-## Testing
+## Testing and compatibility
 
-In `crates/fulltest` an integration test is provided. It uses:
-- a [`domain-kmip`](https://github.com/NLnetLabs/domain-kmip) based client,
-- the SoftHSMv2 PKCS#11 module as backing HSM to be loaded by
-  Cascade-HSM-Bridge.
-- the [`ring`](https://crates.io/crates/ring) library to verify the generated
-  signatures.
-
-To run the test (requires SoftHSMv2 to be installed) do:
-
-```sh
-cargo test --package fulltest
-```
-
-The test creates signing keys using different algorithms and verifies
-that using Cascade-HSM-Bridge to sign with them yields valid signatures.
+See [`crates/fulltest/README.md`](crates/fulltest/README.md).

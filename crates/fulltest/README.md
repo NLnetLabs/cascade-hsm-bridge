@@ -36,7 +36,7 @@ recompiled.
 
 Running the test like so will test by default against SoftHSMv2:
 
-```
+```sh
 cargo test --package fulltest
 ```
 
@@ -45,9 +45,21 @@ cargo test --package fulltest
 To test against a HSM other than SoftHSMv2, consult the help to determine
 which HSMs are supported:
 
-```
+```sh
 cargo test --package --fulltest -- --help 
 ```
+
+## Generating test reports
+
+Test reports like the ones stored at [`integration-test-reports`](../../integration-test-reports)
+can be generated using the following commands:
+
+```sh
+cargo test --package fulltest -- <HSM NAME> --report-dir <OUTPUT DIR> --hex-to-txt-bin-path <PATH/TO/hex_to_txt> --pkcs11spy
+```
+
+_(the `--pkcs11spy` option will have no effect when the HSM under test is
+communicated with directly via KMIP)_
 
 ## Diagnosing issues
 

@@ -23,6 +23,8 @@ use std::{collections::HashMap, ffi::OsStr, io, net::SocketAddr, path::PathBuf};
 use domain_kmip::dep::kmip_protocol::net::{TlsClientAuth, TlsServerAuth};
 use tempfile::TempDir;
 
+use crate::common::args::Args;
+
 //------------ Hsm -----------------------------------------------------------
 
 pub trait Hsm {
@@ -87,12 +89,12 @@ impl std::fmt::Display for Hsms {
 }
 
 impl Hsms {
-    pub fn pkcs11spyify(
-        self,
-        temp_dir: &TempDir,
-        report_dir: &Option<PathBuf>,
-    ) -> io::Result<Pkcs11Spy> {
-        Pkcs11Spy::wrap(self, temp_dir, report_dir)
+    pub fn pkcs11spyify(self, temp_dir: &TempDir, args: &Args) -> io::Result<Pkcs11Spy> {
+        if args.pkcs11spy() {
+            Pkcs11Spy::wrap(self, &temp_dir, &args)
+        } else {
+            Pkcs11Spy::skip(self)
+        }
     }
 }
 

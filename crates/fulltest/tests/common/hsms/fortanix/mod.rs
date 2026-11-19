@@ -10,7 +10,11 @@ use std::{
 use domain_kmip::dep::kmip_protocol::net::{TlsClientAuth, TlsServerAuth};
 use tempfile::TempDir;
 
-use crate::common::hsms::{Hsm, Hsms};
+use crate::common::{
+    args::Args,
+    hsms::{Hsm, Hsms},
+    util::extract_human_readable_kmip_messages,
+};
 
 pub struct FortanixDSM {
     lib_path: Option<OsString>,
@@ -24,14 +28,12 @@ pub struct FortanixDSM {
     password: String,
 
     report_dir: Option<PathBuf>,
+
+    hex_to_txt_bin_path: Option<PathBuf>,
 }
 
 impl FortanixDSM {
-    pub fn launch(
-        temp_dir: &TempDir,
-        report_dir: &Option<PathBuf>,
-        use_pkcs11: bool,
-    ) -> io::Result<Hsms> {
+    pub fn launch(temp_dir: &TempDir, args: &Args, use_pkcs11: bool) -> io::Result<Hsms> {
         let username;
         let password;
         let mut lib_path = None;
@@ -103,7 +105,8 @@ level = "trace"
             fortanix_log_path,
             username,
             password,
-            report_dir: report_dir.clone(),
+            report_dir: args.report_dir().cloned(),
+            hex_to_txt_bin_path: args.hex_to_txt_bin_path().cloned(),
         }))
     }
 }
@@ -113,6 +116,15 @@ impl Drop for FortanixDSM {
         if let Some(fortanix_log_path) = &self.fortanix_log_path {
             if let Some(report_dir) = &self.report_dir {
                 std::fs::rename(fortanix_log_path, report_dir.join("fortanix.log")).unwrap();
+
+                let kmip_client_log = report_dir.join("test.log");
+                if let Some(hex_to_txt_bin_path) = &self.hex_to_txt_bin_path {
+                    extract_human_readable_kmip_messages(
+                        &kmip_client_log,
+                        hex_to_txt_bin_path,
+                        report_dir,
+                    );
+                }
             } else if std::thread::panicking() {
                 if let Ok(log) = std::fs::read_to_string(fortanix_log_path) {
                     println!("fortanix log:\n{log}");

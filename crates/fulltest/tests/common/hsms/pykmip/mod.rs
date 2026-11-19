@@ -17,7 +17,11 @@ use domain_kmip::dep::kmip_protocol::{
 use rcgen::{CertifiedKey, generate_simple_self_signed};
 use tempfile::TempDir;
 
-use crate::common::hsms::{Hsm, Hsms};
+use crate::common::{
+    args::Args,
+    hsms::{Hsm, Hsms},
+    util::extract_human_readable_kmip_messages,
+};
 
 pub struct Pykmip {
     env_vars: HashMap<&'static str, String>,
@@ -31,10 +35,12 @@ pub struct Pykmip {
     tls_private_key: rcgen::KeyPair,
 
     report_dir: Option<PathBuf>,
+
+    hex_to_txt_bin_path: Option<PathBuf>,
 }
 
 impl Pykmip {
-    pub fn launch(temp_dir: &TempDir, report_dir: &Option<PathBuf>) -> io::Result<Hsms> {
+    pub fn launch(temp_dir: &TempDir, args: &Args) -> io::Result<Hsms> {
         let hsm_config_path = temp_dir.path().join("pykmip.conf");
         let tls_cert_path = temp_dir.path().join("cert.pem");
         let tls_key_path = temp_dir.path().join("key.pem");
@@ -173,7 +179,8 @@ python {run_server_py_path_str}
             log_path,
             tls_cert,
             tls_private_key,
-            report_dir: report_dir.clone(),
+            report_dir: args.report_dir().cloned(),
+            hex_to_txt_bin_path: args.hex_to_txt_bin_path().cloned(),
         }))
     }
 }
@@ -184,7 +191,17 @@ impl Drop for Pykmip {
         let _ = self.process.kill();
 
         if let Some(report_dir) = &self.report_dir {
-            std::fs::rename(&self.log_path, report_dir.join("pykmip.log")).unwrap();
+            let stored_log_path = report_dir.join("pykmip.log");
+            std::fs::rename(&self.log_path, &stored_log_path).unwrap();
+
+            let kmip_client_log = report_dir.join("test.log");
+            if let Some(hex_to_txt_bin_path) = &self.hex_to_txt_bin_path {
+                extract_human_readable_kmip_messages(
+                    &kmip_client_log,
+                    hex_to_txt_bin_path,
+                    report_dir,
+                );
+            }
         } else if std::thread::panicking() {
             if let Ok(log) = std::fs::read_to_string(&self.log_path) {
                 println!("pykmip log:\n{log}");

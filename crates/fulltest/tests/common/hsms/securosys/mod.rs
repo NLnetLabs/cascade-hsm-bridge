@@ -11,26 +11,36 @@ use std::{
 use domain_kmip::dep::kmip_protocol::net::{TlsClientAuth, TlsServerAuth};
 use tempfile::TempDir;
 
-use crate::common::hsms::{Hsm, Hsms};
+use crate::common::{
+    args::Args,
+    hsms::{Hsm, Hsms},
+    util::extract_human_readable_kmip_messages,
+};
 
 pub struct Securosys {
     lib_path: Option<OsString>,
+
     username: Option<String>,
+
     password: Option<String>,
+
     env_vars: HashMap<&'static str, String>,
+
     tls_ca_cert: Vec<u8>,
+
     tls_client_cert: Vec<u8>,
+
     tls_client_key: Vec<u8>,
+
     report_dir: Option<PathBuf>,
+
+    hex_to_txt_bin_path: Option<PathBuf>,
+
     securosys_log_path: Option<PathBuf>,
 }
 
 impl Securosys {
-    pub fn launch(
-        temp_dir: &TempDir,
-        report_dir: &Option<PathBuf>,
-        use_pkcs11: bool,
-    ) -> io::Result<Hsms> {
+    pub fn launch(temp_dir: &TempDir, args: &Args, use_pkcs11: bool) -> io::Result<Hsms> {
         if use_pkcs11 {
             let mut env_vars = HashMap::new();
 
@@ -50,11 +60,11 @@ impl Securosys {
             // For more information see:
             //   https://docs.securosys.com/pkcs/Installation/pkcs11_provider_configuration/
             let securosys_config_path = temp_dir.path().join("securosys.conf");
-            let securosys_log_path = report_dir
-                .as_ref()
+            let securosys_log_path = args
+                .report_dir()
                 .map(|p| p.join("securosys.log"))
                 .unwrap_or_default();
-            let write_log_file = report_dir.is_some().to_string();
+            let write_log_file = args.report_dir().is_some().to_string();
             let securosys_log_path_str = securosys_log_path.to_string_lossy().to_string();
             std::fs::write(
                 &securosys_config_path,
@@ -117,7 +127,8 @@ primus: {{
                 tls_ca_cert: vec![],
                 tls_client_cert: vec![],
                 tls_client_key: vec![],
-                report_dir: report_dir.clone(),
+                report_dir: args.report_dir().cloned(),
+                hex_to_txt_bin_path: args.hex_to_txt_bin_path().cloned(),
                 securosys_log_path: Some(securosys_log_path),
             }))
         } else {
@@ -140,7 +151,8 @@ primus: {{
                 tls_ca_cert: std::fs::read(tls_ca_cert_path).unwrap(),
                 tls_client_cert: std::fs::read(tls_client_cert_path).unwrap(),
                 tls_client_key: std::fs::read(tls_client_key_path).unwrap(),
-                report_dir: report_dir.clone(),
+                report_dir: args.report_dir().cloned(),
+                hex_to_txt_bin_path: args.hex_to_txt_bin_path().cloned(),
                 securosys_log_path: None,
             }))
         }
@@ -152,6 +164,15 @@ impl Drop for Securosys {
         if let Some(log_path) = &self.securosys_log_path {
             if let Some(report_dir) = &self.report_dir {
                 std::fs::rename(log_path, report_dir.join("securosys.log")).unwrap();
+
+                let kmip_client_log = report_dir.join("test.log");
+                if let Some(hex_to_txt_bin_path) = &self.hex_to_txt_bin_path {
+                    extract_human_readable_kmip_messages(
+                        &kmip_client_log,
+                        hex_to_txt_bin_path,
+                        report_dir,
+                    );
+                }
             } else if std::thread::panicking() {
                 if let Ok(log) = std::fs::read_to_string(log_path) {
                     println!("securosys log:\n{log}");

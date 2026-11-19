@@ -10,7 +10,10 @@ use std::{
 use domain_kmip::dep::kmip_protocol::net::{TlsClientAuth, TlsServerAuth};
 use tempfile::TempDir;
 
-use crate::common::hsms::{Hsm, Hsms};
+use crate::common::{
+    args::Args,
+    hsms::{Hsm, Hsms},
+};
 
 pub struct Pkcs11Spy {
     wrapped_hsm: Hsms,
@@ -25,11 +28,7 @@ pub struct Pkcs11Spy {
 }
 
 impl Pkcs11Spy {
-    pub fn wrap(
-        wrapped_hsm: Hsms,
-        temp_dir: &TempDir,
-        report_dir: &Option<PathBuf>,
-    ) -> io::Result<Self> {
+    pub fn wrap(wrapped_hsm: Hsms, temp_dir: &TempDir, args: &Args) -> io::Result<Self> {
         if let Some(wrapped_lib_path) = wrapped_hsm.lib_path() {
             // Find the PKCS#11 Spy module path.
             let lib_path = std::env::var_os("OPENSC_PKCS11SPY_PKCS11_MODULE_PATH")
@@ -64,7 +63,7 @@ impl Pkcs11Spy {
                 lib_path: Some(lib_path),
                 env_vars,
                 pkcs11spy_log_path: Some(pkcs11spy_log_path),
-                report_dir: report_dir.clone(),
+                report_dir: args.report_dir().cloned(),
             })
         } else {
             let env_vars = wrapped_hsm.env_vars().clone();
@@ -73,7 +72,7 @@ impl Pkcs11Spy {
                 lib_path: None,
                 env_vars,
                 pkcs11spy_log_path: None,
-                report_dir: report_dir.clone(),
+                report_dir: args.report_dir().cloned(),
             })
         }
     }

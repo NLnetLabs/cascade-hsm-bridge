@@ -17,9 +17,8 @@
 // Only available on Unix machines.
 #![cfg(unix)]
 
-pub mod common;
+mod common;
 
-use std::path::PathBuf;
 use std::{sync::Arc, time::Duration};
 
 use clap::Parser;
@@ -30,34 +29,12 @@ use domain_kmip::dep::domain::crypto::{
 use domain_kmip::dep::kmip_protocol::net::{ConnectionSettings, sync_pool::ConnPool};
 use domain_kmip::dep::kmip_protocol::types::request::RequestPayload;
 use domain_kmip::dep::kmip_protocol::types::response::ResponsePayload;
-use tracing_subscriber::{EnvFilter, fmt};
+use tracing_subscriber::{EnvFilter, filter::LevelFilter};
 
 use common::daemon::Daemon;
 use common::hsms::*;
 
-#[derive(Parser)]
-#[command(version, about, long_about = None)]
-struct Args {
-    /// Path to write captured logs to.
-    #[arg(long, value_parser = clap::value_parser!(PathBuf), default_value = None)]
-    report_dir: Option<PathBuf>,
-
-    /// Path to hex-to-txt binary.
-    ///
-    /// Used to extract KMIP messages from the Cascade-HSM-Bridge log.
-    #[arg(long, default_value = None)]
-    hex_to_txt_bin_path: Option<PathBuf>,
-
-    /// Wrap PKCS#11 modules with OpenSC pkcs11-spy.
-    ///
-    /// Enables logging of PKCS#11 calls.
-    #[arg(long, default_value_t = false)]
-    pkcs11spy: bool,
-
-    /// HSM to test.
-    #[arg(default_value_t = "softhsm2".to_string(), value_parser = ["fortanixdsm", "fortanixdsm-pkcs11", "kryoptic", "nethsm", "pykmip", "securosys", "securosys-pkcs11", "softhsm2", "thales", "yubihsm2"])]
-    hsm: String,
-}
+use crate::common::args::Args;
 
 //------------ main ----------------------------------------------------------
 
@@ -65,8 +42,6 @@ fn main() {
     rustls::crypto::aws_lc_rs::default_provider()
         .install_default()
         .unwrap();
-
-    fmt().with_env_filter(EnvFilter::from_default_env()).init();
 
     let args = Args::parse();
 
@@ -76,7 +51,7 @@ fn main() {
         std::process::exit(1);
     });
 
-    if let Some(report_dir) = &args.report_dir {
+    if let Some(report_dir) = args.report_dir() {
         if report_dir.exists() {
             eprintln!(
                 "Could not create report directory '{}': Directory already exists",
@@ -85,44 +60,47 @@ fn main() {
             std::process::exit(1);
         }
         std::fs::create_dir_all(report_dir).unwrap();
+
+        let file_logger = tracing_appender::rolling::never(report_dir, "test.log");
+        // let (non_blocking_appender, _guard) = tracing_appender::non_blocking(file_logger);
+        tracing_subscriber::fmt()
+            .with_max_level(LevelFilter::TRACE)
+            .with_writer(file_logger) //non_blocking_appender)
+            .init();
+    } else {
+        tracing_subscriber::fmt()
+            .with_env_filter(EnvFilter::from_default_env())
+            .init();
     }
 
-    let hsm = match args.hsm.as_str() {
-        "fortanixdsm" => FortanixDSM::launch(&temp_dir, &args.report_dir, false).unwrap(),
-        "fortanixdsm-pkcs11" => FortanixDSM::launch(&temp_dir, &args.report_dir, true).unwrap(),
+    // Remember to update the value_parser array in common/args.rs when the
+    // list of strings to match here changes.
+    let hsm = match args.hsm() {
+        "fortanixdsm" => FortanixDSM::launch(&temp_dir, &args, false).unwrap(),
+        "fortanixdsm-pkcs11" => FortanixDSM::launch(&temp_dir, &args, true).unwrap(),
         "kryoptic" => Kryoptic::launch(&temp_dir).unwrap(),
         "nethsm" => Nethsm::launch(&temp_dir).unwrap(),
-        "pykmip" => Pykmip::launch(&temp_dir, &args.report_dir).unwrap(),
-        "securosys" => Securosys::launch(&temp_dir, &args.report_dir, false).unwrap(),
-        "securosys-pkcs11" => Securosys::launch(&temp_dir, &args.report_dir, true).unwrap(),
+        "pykmip" => Pykmip::launch(&temp_dir, &args).unwrap(),
+        "securosys" => Securosys::launch(&temp_dir, &args, false).unwrap(),
+        "securosys-pkcs11" => Securosys::launch(&temp_dir, &args, true).unwrap(),
         "softhsm2" => Softhsm2::launch(&temp_dir).unwrap(),
         "thales" => ThalesDPOD::launch(&temp_dir).unwrap(),
-        "yubihsm2" => Yubihsm2::launch(&temp_dir, &args.report_dir).unwrap(),
+        "yubihsm2" => Yubihsm2::launch(&temp_dir, &args).unwrap(),
         _ => unreachable!(),
     };
 
     // Configure OpenSC pksc11-spy if needed.
-    let hsm = if args.pkcs11spy {
-        Pkcs11Spy::wrap(hsm, &temp_dir, &args.report_dir).unwrap()
-    } else {
-        Pkcs11Spy::skip(hsm).unwrap()
-    };
+    let hsm = hsm.pkcs11spyify(&temp_dir, &args).unwrap();
 
     // If the HSM is a PKCS#11 module launch Cascade-HSM-Bridge to serve
     // access to it via the KMIP interface.
     let (_daemon, conn_settings) = if hsm.lib_path().is_some() {
         println!("HSM lib path: {:?}", hsm.lib_path());
-        let daemon = Daemon::launch(
-            &temp_dir,
-            &args.report_dir,
-            &args.hex_to_txt_bin_path,
-            hsm.current_dir(),
-            &hsm,
-        )
-        .unwrap_or_else(|err| {
-            eprintln!("Could not launch the daemon: {err}");
-            std::process::exit(1);
-        });
+        let daemon =
+            Daemon::launch(&temp_dir, &args, hsm.current_dir(), &hsm).unwrap_or_else(|err| {
+                eprintln!("Could not launch the daemon: {err}");
+                std::process::exit(1);
+            });
 
         let conn_settings = ConnectionSettings {
             host: daemon.address().ip().to_string(),

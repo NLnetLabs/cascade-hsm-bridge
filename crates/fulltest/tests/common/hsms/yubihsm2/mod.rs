@@ -7,7 +7,10 @@ use std::{
 
 use tempfile::TempDir;
 
-use crate::common::hsms::{Hsm, Hsms};
+use crate::common::{
+    args::Args,
+    hsms::{Hsm, Hsms},
+};
 
 pub struct Yubihsm2 {
     lib_path: OsString,
@@ -20,7 +23,7 @@ pub struct Yubihsm2 {
 }
 
 impl Yubihsm2 {
-    pub fn launch(tempdir: &TempDir, report_dir: &Option<PathBuf>) -> io::Result<Hsms> {
+    pub fn launch(tempdir: &TempDir, args: &Args) -> io::Result<Hsms> {
         let lib_path = std::env::var_os("YUBIHSM_PKCS11_MODULE")
             .into_iter()
             .chain(
@@ -58,7 +61,7 @@ timeout = 5
         Ok(Hsms::Yubihsm2(Self {
             lib_path,
             env_vars,
-            report_dir: report_dir.clone(),
+            report_dir: args.report_dir().cloned(),
             log_path,
         }))
     }

@@ -1,0 +1,19 @@
+HSM lib path: Some("/lib64/pkcs11-spy.so")
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.05s
+Cascade-HSM-Bridge is running at 127.0.0.1:46017
+C_GetInterface failed 54, retry 2.x wayKMIP server supports versions: 1.2,1.1,1.0
+test_keygen_signing(RsaSha256 { bits: 1024 })...ok
+test_keygen_signing(RsaSha256 { bits: 2048 })...ok
+test_keygen_signing(RsaSha512 { bits: 1024 })...ok
+test_keygen_signing(RsaSha512 { bits: 2048 })...ok
+test_keygen_signing(EcdsaP256Sha256)...ok
+test_keygen_signing(EcdsaP384Sha384)...ok
+test_keygen_signing(Ed448)...err: generate: a problem occurred while communicating with the KMIP server: Server error: Operation unknown failed: CryptographicFailure: Failed to create key pair: Bridge failed to invoke PKCS#11 function 'Function::GenerateKeyPair': AttributeValueInvalid
+test_keygen_signing(Ed25519)...ok
+
+thread 'main' (370101) panicked at crates/fulltest/tests/full.rs:209:9:
+1/8 algorithms failed: ED448
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+Stopping Cascade-HSM-Bridge
+error: test failed, to rerun pass `-p fulltest --test full`
+

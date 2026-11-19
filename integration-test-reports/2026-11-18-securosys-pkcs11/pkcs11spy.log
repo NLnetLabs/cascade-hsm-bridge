@@ -1,0 +1,3442 @@
+
+
+*************** OpenSC PKCS#11 spy *****************
+Loaded: "/usr/local/primus/lib/libprimusP11.so"
+
+0: C_GetInterface
+P:372727; T:0x139727381351808 2026-11-18 22:25:50.555
+[compat]
+[in] pInterfaceName = NULL
+[in] pVersion = NULL
+[in] flags = 
+Returned:  0 CKR_OK
+
+1: C_GetFunctionList
+P:372727; T:0x139727381351808 2026-11-18 22:25:50.555
+Returned:  0 CKR_OK
+
+2: C_Initialize
+P:372727; T:0x139727381351808 2026-11-18 22:25:50.555
+[in] pInitArgs = 0x7ffd24a301b0
+     flags: 2
+       CKF_OS_LOCKING_OK
+Returned:  0 CKR_OK
+
+3: C_GetInfo
+P:372727; T:0x139727381351808 2026-11-18 22:25:52.706
+[out] pInfo: 
+      cryptokiVersion:         3.2
+      manufacturerID:         'Securosys SA                    '
+      flags:                   0
+      libraryDescription:     'PKCS#11 Library                 '
+      libraryVersion:          2.82
+Returned:  0 CKR_OK
+
+4: C_GetSlotList
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.709
+[in] tokenPresent = 0x1
+[out] pSlotList: 
+Count is 1
+[out] *pulCount = 0x1
+Returned:  0 CKR_OK
+
+5: C_GetSlotList
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.709
+[in] tokenPresent = 0x1
+[out] pSlotList: 
+Slot 0
+[out] *pulCount = 0x1
+Returned:  0 CKR_OK
+
+6: C_GetTokenInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.709
+[in] slotID = 0x0
+[out] pInfo: 
+      label:                  'PRIMUSDEV417                    '
+      manufacturerID:         'Securosys SA                    '
+      model:                  'Primus HSM      '
+      serialNumber:           '8bcf62e597a0a1cc'
+      ulMaxSessionCount:       1000
+      ulSessionCount:          0
+      ulMaxRwSessionCount:     1000
+      ulRwSessionCount:        -1
+      ulMaxPinLen:             32
+      ulMinPinLen:             0
+      ulTotalPublicMemory:     -1
+      ulFreePublicMemory:      -1
+      ulTotalPrivateMemory:    -1
+      ulFreePrivateMemory:     -1
+      hardwareVersion:         3.4
+      firmwareVersion:         2.82
+      time:                   '2026111821255200'
+      flags:                   46d
+        CKF_RNG                          
+        CKF_LOGIN_REQUIRED               
+        CKF_USER_PIN_INITIALIZED         
+        CKF_RESTORE_KEY_NOT_NEEDED       
+        CKF_CLOCK_ON_TOKEN               
+        CKF_TOKEN_INITIALIZED            
+Returned:  0 CKR_OK
+
+7: C_GetTokenInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.735
+[in] slotID = 0x0
+[out] pInfo: 
+      label:                  'PRIMUSDEV417                    '
+      manufacturerID:         'Securosys SA                    '
+      model:                  'Primus HSM      '
+      serialNumber:           '8bcf62e597a0a1cc'
+      ulMaxSessionCount:       1000
+      ulSessionCount:          0
+      ulMaxRwSessionCount:     1000
+      ulRwSessionCount:        -1
+      ulMaxPinLen:             32
+      ulMinPinLen:             0
+      ulTotalPublicMemory:     -1
+      ulFreePublicMemory:      -1
+      ulTotalPrivateMemory:    -1
+      ulFreePrivateMemory:     -1
+      hardwareVersion:         3.4
+      firmwareVersion:         2.82
+      time:                   '2026111821255200'
+      flags:                   46d
+        CKF_RNG                          
+        CKF_LOGIN_REQUIRED               
+        CKF_USER_PIN_INITIALIZED         
+        CKF_RESTORE_KEY_NOT_NEEDED       
+        CKF_CLOCK_ON_TOKEN               
+        CKF_TOKEN_INITIALIZED            
+Returned:  0 CKR_OK
+
+8: C_GetSlotList
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.760
+[in] tokenPresent = 0x1
+[out] pSlotList: 
+Count is 1
+[out] *pulCount = 0x1
+Returned:  0 CKR_OK
+
+9: C_GetSlotList
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.760
+[in] tokenPresent = 0x1
+[out] pSlotList: 
+Slot 0
+[out] *pulCount = 0x1
+Returned:  0 CKR_OK
+
+10: C_GetTokenInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.760
+[in] slotID = 0x0
+[out] pInfo: 
+      label:                  'PRIMUSDEV417                    '
+      manufacturerID:         'Securosys SA                    '
+      model:                  'Primus HSM      '
+      serialNumber:           '8bcf62e597a0a1cc'
+      ulMaxSessionCount:       1000
+      ulSessionCount:          0
+      ulMaxRwSessionCount:     1000
+      ulRwSessionCount:        -1
+      ulMaxPinLen:             32
+      ulMinPinLen:             0
+      ulTotalPublicMemory:     -1
+      ulFreePublicMemory:      -1
+      ulTotalPrivateMemory:    -1
+      ulFreePrivateMemory:     -1
+      hardwareVersion:         3.4
+      firmwareVersion:         2.82
+      time:                   '2026111821255200'
+      flags:                   46d
+        CKF_RNG                          
+        CKF_LOGIN_REQUIRED               
+        CKF_USER_PIN_INITIALIZED         
+        CKF_RESTORE_KEY_NOT_NEEDED       
+        CKF_CLOCK_ON_TOKEN               
+        CKF_TOKEN_INITIALIZED            
+Returned:  0 CKR_OK
+
+11: C_GetTokenInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.785
+[in] slotID = 0x0
+[out] pInfo: 
+      label:                  'PRIMUSDEV417                    '
+      manufacturerID:         'Securosys SA                    '
+      model:                  'Primus HSM      '
+      serialNumber:           '8bcf62e597a0a1cc'
+      ulMaxSessionCount:       1000
+      ulSessionCount:          0
+      ulMaxRwSessionCount:     1000
+      ulRwSessionCount:        -1
+      ulMaxPinLen:             32
+      ulMinPinLen:             0
+      ulTotalPublicMemory:     -1
+      ulFreePublicMemory:      -1
+      ulTotalPrivateMemory:    -1
+      ulFreePrivateMemory:     -1
+      hardwareVersion:         3.4
+      firmwareVersion:         2.82
+      time:                   '2026111821255200'
+      flags:                   46d
+        CKF_RNG                          
+        CKF_LOGIN_REQUIRED               
+        CKF_USER_PIN_INITIALIZED         
+        CKF_RESTORE_KEY_NOT_NEEDED       
+        CKF_CLOCK_ON_TOKEN               
+        CKF_TOKEN_INITIALIZED            
+Returned:  0 CKR_OK
+
+12: C_GetTokenInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.810
+[in] slotID = 0x0
+[out] pInfo: 
+      label:                  'PRIMUSDEV417                    '
+      manufacturerID:         'Securosys SA                    '
+      model:                  'Primus HSM      '
+      serialNumber:           '8bcf62e597a0a1cc'
+      ulMaxSessionCount:       1000
+      ulSessionCount:          0
+      ulMaxRwSessionCount:     1000
+      ulRwSessionCount:        -1
+      ulMaxPinLen:             32
+      ulMinPinLen:             0
+      ulTotalPublicMemory:     -1
+      ulFreePublicMemory:      -1
+      ulTotalPrivateMemory:    -1
+      ulFreePrivateMemory:     -1
+      hardwareVersion:         3.4
+      firmwareVersion:         2.82
+      time:                   '2026111821255200'
+      flags:                   46d
+        CKF_RNG                          
+        CKF_LOGIN_REQUIRED               
+        CKF_USER_PIN_INITIALIZED         
+        CKF_RESTORE_KEY_NOT_NEEDED       
+        CKF_CLOCK_ON_TOKEN               
+        CKF_TOKEN_INITIALIZED            
+Returned:  0 CKR_OK
+
+13: C_GetSlotInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.839
+[in] slotID = 0x0
+[out] pInfo: 
+      slotDescription:        'PRIMUSDEV417                    '
+                              '                                '
+      manufacturerID:         'Securosys SA                    '
+      hardwareVersion:         3.4
+      firmwareVersion:         2.82
+      flags:                   5
+        CKF_TOKEN_PRESENT                
+        CKF_HW_SLOT                      
+Returned:  0 CKR_OK
+
+14: C_GetMechanismInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.852
+[in] slotID = 0x0
+[in] type = CKM_RSA_PKCS_KEY_PAIR_GEN              
+[out] pInfo: 
+CKM_RSA_PKCS_KEY_PAIR_GEN               : min:1024 max:8192 flags:0x10001 ( Hardware KeyPair )
+Returned:  0 CKR_OK
+
+15: C_GetMechanismInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.852
+[in] slotID = 0x0
+[in] type = CKM_EC_KEY_PAIR_GEN                    
+[out] pInfo: 
+CKM_EC_KEY_PAIR_GEN                     : min:224 max:521 flags:0x3D10001 ( Hardware KeyPair F(P) EcParams OID Uncompress Compress NamedCurve Unknown )
+Returned:  0 CKR_OK
+
+16: C_GetMechanismInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.852
+[in] slotID = 0x0
+[in] type = CKM_EC_EDWARDS_KEY_PAIR_GEN            
+[out] pInfo: 
+CKM_EC_EDWARDS_KEY_PAIR_GEN             : min:256 max:448 flags:0x10001 ( Hardware KeyPair )
+Returned:  0 CKR_OK
+
+17: C_OpenSession
+P:372727; T:0x139726535210688 2026-11-18 22:25:52.852
+[in] slotID = 0x0
+[in] flags = 0x6
+[in] pApplication = (nil)
+[in] Notify = (nil)
+[out] *phSession = 0x90bfe
+Returned:  0 CKR_OK
+
+18: C_GetSessionInfo
+
+19: C_OpenSession
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.852
+[in] hSession = 0x90bfe
+P:372727; T:0x139726533109440 2026-11-18 22:25:52.852
+[in] slotID = 0x0
+[in] flags = 0x6
+[in] pApplication = (nil)
+[in] Notify = (nil)
+[out] pInfo: 
+      slotID:                  0
+      state:                   2 (           CKS_RW_PUBLIC_SESSION)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+20: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.852
+[in] hSession = 0x90bfe
+[out] *phSession = 0x73392
+Returned:  0 CKR_OK
+[out] pInfo: 
+      slotID:                  0
+      state:                   2 (           CKS_RW_PUBLIC_SESSION)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+21: C_GetTokenInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.852
+[in] slotID = 0x0
+[out] pInfo: 
+      label:                  'PRIMUSDEV417                    '
+      manufacturerID:         'Securosys SA                    '
+      model:                  'Primus HSM      '
+      serialNumber:           '8bcf62e597a0a1cc'
+      ulMaxSessionCount:       1000
+      ulSessionCount:          2
+      ulMaxRwSessionCount:     1000
+      ulRwSessionCount:        -1
+      ulMaxPinLen:             32
+      ulMinPinLen:             0
+      ulTotalPublicMemory:     -1
+      ulFreePublicMemory:      -1
+      ulTotalPrivateMemory:    -1
+      ulFreePrivateMemory:     -1
+      hardwareVersion:         3.4
+      firmwareVersion:         2.82
+      time:                   '2026111821255200'
+      flags:                   46d
+        CKF_RNG                          
+        CKF_LOGIN_REQUIRED               
+        CKF_USER_PIN_INITIALIZED         
+        CKF_RESTORE_KEY_NOT_NEEDED       
+        CKF_CLOCK_ON_TOKEN               
+        CKF_TOKEN_INITIALIZED            
+Returned:  0 CKR_OK
+
+22: C_Login
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.878
+[in] hSession = 0x90bfe
+[in] userType = CKU_USER
+[in] pPin[ulPinLen] 00007f147c004070 / 9
+    00000000  50 52 49 4D 55 53 44 45 56                       PRIMUSDEV       
+Returned:  0 CKR_OK
+
+23: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.907
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+24: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.907
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+25: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.907
+[in] hSession = 0x90bfe
+[in] pTemplate[1]: 
+    CKA_ID                00007f147c004070 / 20
+    00000000  79 47 78 8E 5D D2 C8 D0 02 CE 69 24 BD EF 8F D7  yGx.].....i$....
+    00000010  A9 AD 44 25                                      ..D%            
+Returned:  0 CKR_OK
+
+26: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.961
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x0
+Returned:  0 CKR_OK
+
+27: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.961
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+28: C_GenerateKeyPair
+P:372727; T:0x139726537311936 2026-11-18 22:25:52.961
+[in] hSession = 0x90bfe
+[in] pMechanism->type = CKM_RSA_PKCS_KEY_PAIR_GEN              
+[in] pMechanism->pParameter = NULL
+[in] pPublicKeyTemplate[10]: 
+    CKA_CLASS             CKO_PUBLIC_KEY           
+    CKA_ID                00007f147c004070 / 20
+    00000000  79 47 78 8E 5D D2 C8 D0 02 CE 69 24 BD EF 8F D7  yGx.].....i$....
+    00000010  A9 AD 44 25                                      ..D%            
+    CKA_VERIFY            True
+    CKA_ENCRYPT           False
+    CKA_WRAP              False
+    CKA_TOKEN             True
+    CKA_PUBLIC_EXPONENT   00007f146c005800 / 3
+    00000000  01 00 01                                         ...             
+    CKA_KEY_TYPE          CKK_RSA             
+    CKA_LABEL             00007f146c005820 / 22
+    7075626C 69632D6B 65792D6C 6162656C 2D616C67 2D38
+     p u b l  i c - k  e y - l  a b e l  - a l g  - 8
+    CKA_MODULUS_BITS      00007f147c004cd0 / 8
+    00000000  00 04 00 00 00 00 00 00                          ........        
+[in] pPrivateKeyTemplate[9]: 
+    CKA_CLASS             CKO_PRIVATE_KEY          
+    CKA_ID                00007f147c004540 / 20
+    00000000  79 47 78 8E 5D D2 C8 D0 02 CE 69 24 BD EF 8F D7  yGx.].....i$....
+    00000010  A9 AD 44 25                                      ..D%            
+    CKA_SIGN              True
+    CKA_DECRYPT           False
+    CKA_TOKEN             True
+    CKA_PRIVATE           True
+    CKA_SENSITIVE         True
+    CKA_KEY_TYPE          CKK_RSA             
+    CKA_LABEL             00007f147c004500 / 23
+    70726976 6174652D 6B65792D 6C616265 6C2D616C 672D38
+     p r i v  a t e -  k e y -  l a b e  l - a l  g - 8
+[out] hPublicKey = 0x95f815f5
+[out] hPrivateKey = 0x3c9c9b8b
+Returned:  0 CKR_OK
+
+29: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.128
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+30: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.128
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+31: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.128
+[in] hSession = 0x90bfe
+[in] pTemplate[2]: 
+    CKA_ID                00007f147c005380 / 20
+    00000000  79 47 78 8E 5D D2 C8 D0 02 CE 69 24 BD EF 8F D7  yGx.].....i$....
+    00000010  A9 AD 44 25                                      ..D%            
+    CKA_CLASS             CKO_PUBLIC_KEY           
+Returned:  0 CKR_OK
+
+32: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.173
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x1
+Object 0x95f815f5 matches
+Returned:  0 CKR_OK
+
+33: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.173
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+34: C_GetAttributeValue
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.173
+[in] hSession = 0x90bfe
+[in] hObject = 0x95f815f5
+[in] pTemplate[6]: 
+    CKA_CLASS             00007f147c005650 / 8
+    CKA_MODULUS           0000000000000000 / 0
+    CKA_MODULUS_BITS      00007f147c005710 / 8
+    CKA_PUBLIC_EXPONENT   0000000000000000 / 0
+    CKA_KEY_TYPE          00007f147c005630 / 8
+    CKA_EC_POINT          0000000000000000 / 0
+[out] pTemplate[6]: 
+    CKA_CLASS             CKO_PUBLIC_KEY           
+    CKA_MODULUS           0000000000000000 / 128
+    CKA_MODULUS_BITS      00007f147c005710 / 8
+    00000000  00 04 00 00 00 00 00 00                          ........        
+    CKA_PUBLIC_EXPONENT   0000000000000000 / 3
+    CKA_KEY_TYPE          CKK_RSA             
+    CKA_EC_POINT          0000000000000000 / -1
+Returned:  18 CKR_ATTRIBUTE_TYPE_INVALID
+
+35: C_GetAttributeValue
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.213
+[in] hSession = 0x90bfe
+[in] hObject = 0x95f815f5
+[in] pTemplate[2]: 
+    CKA_MODULUS           00007f14c8002c10 / 128
+    CKA_PUBLIC_EXPONENT   00007f147c0055d0 / 3
+[out] pTemplate[2]: 
+    CKA_MODULUS           00007f14c8002c10 / 128
+    00000000  BC 2D 96 4F 48 32 DA CF B5 C5 BF FE A2 50 E9 79  .-.OH2.......P.y
+    00000010  05 AB 54 B9 68 4E 00 8E 6D 7E 6E 37 BB 28 A6 75  ..T.hN..m~n7.(.u
+    00000020  58 A8 6A 8D 6F 0F D4 7C 72 04 A3 5B 5D F7 15 97  X.j.o..|r..[]...
+    00000030  51 62 30 26 AB B8 F7 76 74 BF 5D 67 5F 9B 7C 43  Qb0&...vt.]g_.|C
+    00000040  6C 6C 00 63 D3 D7 6B 1E 16 1A E8 24 BB 38 51 F8  ll.c..k....$.8Q.
+    00000050  82 22 A2 80 C7 9E 0B 66 E3 E1 52 10 66 C9 14 6A  .".....f..R.f..j
+    00000060  D6 3A E2 A8 6F 4E D4 F3 F4 46 59 E3 EE E8 CC F8  .:..oN...FY.....
+    00000070  1A B3 BD F6 08 07 8F F3 57 A0 1D D3 B7 48 BF 8D  ........W....H..
+    CKA_PUBLIC_EXPONENT   00007f147c0055d0 / 3
+    00000000  01 00 01                                         ...             
+Returned:  0 CKR_OK
+
+36: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.244
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+37: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.244
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+38: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.244
+[in] hSession = 0x90bfe
+[in] pTemplate[2]: 
+    CKA_ID                00007f147c0049c0 / 20
+    00000000  79 47 78 8E 5D D2 C8 D0 02 CE 69 24 BD EF 8F D7  yGx.].....i$....
+    00000010  A9 AD 44 25                                      ..D%            
+    CKA_CLASS             CKO_PRIVATE_KEY          
+Returned:  0 CKR_OK
+
+39: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.289
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x1
+Object 0x3c9c9b8b matches
+Returned:  0 CKR_OK
+
+40: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.289
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+41: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.290
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+42: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.290
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+43: C_SignInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.291
+[in] hSession = 0x90bfe
+[in] pMechanism->type = CKM_RSA_PKCS                           
+[in] pMechanism->pParameter = NULL
+[in] hKey = 0x3c9c9b8b
+Returned:  0 CKR_OK
+
+44: C_Sign
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.291
+[in] hSession = 0x90bfe
+[in] pData[ulDataLen] 00007f147c046e10 / 51
+    00000000  30 31 30 0D 06 09 60 86 48 01 65 03 04 02 01 05  010...`.H.e.....
+    00000010  00 04 20 7F 83 B1 65 7F F1 FC 53 B9 2D C1 81 48  .. ..e..S.-..H
+    00000020  A1 D6 5D FC 2D 4B 1F A3 D6 77 28 4A DD D2 00 12  ..].-K...w(J....
+    00000030  6D 90 69                                         m.i             
+[out] pSignature[*pulSignatureLen] NULL [size : 0x80 (128)]
+Returned:  0 CKR_OK
+
+45: C_Sign
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.304
+[in] hSession = 0x90bfe
+[in] pData[ulDataLen] 00007f147c046e10 / 51
+    00000000  30 31 30 0D 06 09 60 86 48 01 65 03 04 02 01 05  010...`.H.e.....
+    00000010  00 04 20 7F 83 B1 65 7F F1 FC 53 B9 2D C1 81 48  .. ..e..S.-..H
+    00000020  A1 D6 5D FC 2D 4B 1F A3 D6 77 28 4A DD D2 00 12  ..].-K...w(J....
+    00000030  6D 90 69                                         m.i             
+[out] pSignature[*pulSignatureLen] 00007f147c046b60 / 128
+    00000000  61 B5 43 C7 36 E2 71 05 AC 7D 87 8D 5E B5 A8 2C  a.C.6.q..}..^..,
+    00000010  D7 D2 69 41 B9 49 9E 4E 83 00 75 15 AD FE 4A 11  ..iA.I.N..u...J.
+    00000020  78 77 67 94 9C 8B 3C 4C DD B8 93 B7 EF 64 4A 09  xwg...<L.....dJ.
+    00000030  45 AD 35 9A 1E 70 F0 31 82 77 09 E7 AA DC 8B 84  E.5..p.1.w......
+    00000040  6C 40 33 CB 7F EC 50 B7 EA F0 BE BF 61 83 C5 8C  l@3..P.....a...
+    00000050  F2 C3 F7 4E B3 6C 4C F8 4B D4 F8 C5 D3 98 36 75  ...N.lL.K.....6u
+    00000060  24 BA 86 64 70 8E 9E 8F 98 0A 17 A2 92 20 EC 37  $..dp........ .7
+    00000070  8E 69 62 2C 3D DE 34 1A 00 5D 69 18 7A 87 45 36  .ib,=.4..]i.z.E6
+Returned:  0 CKR_OK
+
+46: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.320
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+47: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.320
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+48: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.321
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+49: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.321
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+50: C_DestroyObject
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.321
+[in] hSession = 0x90bfe
+[in] hObject = 0x95f815f5
+Returned:  0 CKR_OK
+
+51: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.335
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+52: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.335
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+53: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.336
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+54: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.336
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+55: C_DestroyObject
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.336
+[in] hSession = 0x90bfe
+[in] hObject = 0x3c9c9b8b
+Returned:  0 CKR_OK
+
+56: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.350
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+57: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.350
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+58: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.350
+[in] hSession = 0x90bfe
+[in] pTemplate[1]: 
+    CKA_ID                00007f147c005920 / 20
+    00000000  88 E2 27 72 C9 4F F7 5F A4 56 30 55 1D AF 3E 60  ..'r.O._.V0U..>`
+    00000010  14 51 0C 93                                      .Q..            
+Returned:  0 CKR_OK
+
+59: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.393
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x0
+Returned:  0 CKR_OK
+
+60: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.393
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+61: C_GenerateKeyPair
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.393
+[in] hSession = 0x90bfe
+[in] pMechanism->type = CKM_RSA_PKCS_KEY_PAIR_GEN              
+[in] pMechanism->pParameter = NULL
+[in] pPublicKeyTemplate[10]: 
+    CKA_CLASS             CKO_PUBLIC_KEY           
+    CKA_ID                00007f147c005920 / 20
+    00000000  88 E2 27 72 C9 4F F7 5F A4 56 30 55 1D AF 3E 60  ..'r.O._.V0U..>`
+    00000010  14 51 0C 93                                      .Q..            
+    CKA_VERIFY            True
+    CKA_ENCRYPT           False
+    CKA_WRAP              False
+    CKA_TOKEN             True
+    CKA_PUBLIC_EXPONENT   00007f14c8004fe0 / 3
+    00000000  01 00 01                                         ...             
+    CKA_KEY_TYPE          CKK_RSA             
+    CKA_LABEL             00007f14c8002230 / 22
+    7075626C 69632D6B 65792D6C 6162656C 2D616C67 2D38
+     p u b l  i c - k  e y - l  a b e l  - a l g  - 8
+    CKA_MODULUS_BITS      00007f147c047700 / 8
+    00000000  00 08 00 00 00 00 00 00                          ........        
+[in] pPrivateKeyTemplate[9]: 
+    CKA_CLASS             CKO_PRIVATE_KEY          
+    CKA_ID                00007f1464001980 / 20
+    00000000  88 E2 27 72 C9 4F F7 5F A4 56 30 55 1D AF 3E 60  ..'r.O._.V0U..>`
+    00000010  14 51 0C 93                                      .Q..            
+    CKA_SIGN              True
+    CKA_DECRYPT           False
+    CKA_TOKEN             True
+    CKA_PRIVATE           True
+    CKA_SENSITIVE         True
+    CKA_KEY_TYPE          CKK_RSA             
+    CKA_LABEL             00007f147c005900 / 23
+    70726976 6174652D 6B65792D 6C616265 6C2D616C 672D38
+     p r i v  a t e -  k e y -  l a b e  l - a l  g - 8
+[out] hPublicKey = 0x3153193e
+[out] hPrivateKey = 0x308a94b0
+Returned:  0 CKR_OK
+
+62: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.772
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+63: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.772
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+64: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.772
+[in] hSession = 0x90bfe
+[in] pTemplate[2]: 
+    CKA_ID                00007f147c047310 / 20
+    00000000  88 E2 27 72 C9 4F F7 5F A4 56 30 55 1D AF 3E 60  ..'r.O._.V0U..>`
+    00000010  14 51 0C 93                                      .Q..            
+    CKA_CLASS             CKO_PUBLIC_KEY           
+Returned:  0 CKR_OK
+
+65: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.816
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x1
+Object 0x3153193e matches
+Returned:  0 CKR_OK
+
+66: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.816
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+67: C_GetAttributeValue
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.816
+[in] hSession = 0x90bfe
+[in] hObject = 0x3153193e
+[in] pTemplate[6]: 
+    CKA_CLASS             00007f147c047310 / 8
+    CKA_MODULUS           0000000000000000 / 0
+    CKA_MODULUS_BITS      00007f147c047aa0 / 8
+    CKA_PUBLIC_EXPONENT   0000000000000000 / 0
+    CKA_KEY_TYPE          00007f147c047bc0 / 8
+    CKA_EC_POINT          0000000000000000 / 0
+[out] pTemplate[6]: 
+    CKA_CLASS             CKO_PUBLIC_KEY           
+    CKA_MODULUS           0000000000000000 / 256
+    CKA_MODULUS_BITS      00007f147c047aa0 / 8
+    00000000  00 08 00 00 00 00 00 00                          ........        
+    CKA_PUBLIC_EXPONENT   0000000000000000 / 3
+    CKA_KEY_TYPE          CKK_RSA             
+    CKA_EC_POINT          0000000000000000 / -1
+Returned:  18 CKR_ATTRIBUTE_TYPE_INVALID
+
+68: C_GetAttributeValue
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.857
+[in] hSession = 0x90bfe
+[in] hObject = 0x3153193e
+[in] pTemplate[2]: 
+    CKA_MODULUS           00007f14c80052e0 / 256
+    CKA_PUBLIC_EXPONENT   00007f147c046b40 / 3
+[out] pTemplate[2]: 
+    CKA_MODULUS           00007f14c80052e0 / 256
+    00000000  BB A7 52 4E 50 DB 64 C8 BE EB A4 04 58 3A 6E F5  ..RNP.d.....X:n.
+    00000010  D8 F7 AF 3A 21 40 50 90 B7 59 9D 4C 42 9B 83 4A  ...:!@P..Y.LB..J
+    00000020  AD 5B D6 58 93 51 47 FD 01 6C 99 6E 32 D2 3E C2  .[.X.QG..l.n2.>.
+    00000030  BD 5C BA B9 3B 7E B6 5F 9D 3B E4 E7 C9 EB FC D4  .\..;~._.;......
+    00000040  C2 52 97 A6 5F 65 66 BF FC 28 93 1A 5B 70 91 AF  .R.._ef..(..[p..
+    00000050  16 BA FE CA FE EA A5 7E 51 F8 24 08 75 6C D1 45  .......~Q.$.ul.E
+    00000060  FE 01 3E 51 0D 94 A2 57 82 19 3C 44 8B 88 D7 B0  ..>Q...W..<D....
+    00000070  DD D8 B4 69 AB 97 FA 8B 63 D8 A0 76 FF 91 17 2B  ...i....c..v...+
+    00000080  14 FD 75 C3 58 E9 3D AE 1C B5 57 9F 7A 5E 88 2C  ..u.X.=...W.z^.,
+    00000090  23 63 DE F6 EF 4B D2 16 4B 51 E9 D4 80 C9 83 CF  #c...K..KQ......
+    000000A0  A5 57 4B D1 BB 4C 90 81 CB BA C2 DB A1 DB 3A 55  .WK..L........:U
+    000000B0  02 2E A3 30 D0 C3 15 E7 01 3D 65 C4 D0 7A 73 2B  ...0.....=e..zs+
+    000000C0  3F 1D C8 32 A3 4B 3E 4A E0 F3 5B E6 70 02 68 D7  ?..2.K>J..[.p.h.
+    000000D0  5B 46 0F 8C F3 AB 32 B3 51 68 73 C3 A1 3A D3 3D  [F....2.Qhs..:.=
+    000000E0  49 22 63 A7 33 BF 44 94 CD FF B4 58 16 6D CB 70  I"c.3.D....X.m.p
+    000000F0  7B DF 17 CD F8 92 11 30 39 5C A4 32 69 48 BC 41  {......09\.2iH.A
+    CKA_PUBLIC_EXPONENT   00007f147c046b40 / 3
+    00000000  01 00 01                                         ...             
+Returned:  0 CKR_OK
+
+69: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.884
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+70: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.884
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+71: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.884
+[in] hSession = 0x90bfe
+[in] pTemplate[2]: 
+    CKA_ID                00007f147c047ba0 / 20
+    00000000  88 E2 27 72 C9 4F F7 5F A4 56 30 55 1D AF 3E 60  ..'r.O._.V0U..>`
+    00000010  14 51 0C 93                                      .Q..            
+    CKA_CLASS             CKO_PRIVATE_KEY          
+Returned:  0 CKR_OK
+
+72: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.931
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x1
+Object 0x308a94b0 matches
+Returned:  0 CKR_OK
+
+73: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.931
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+74: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.931
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+75: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.931
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+76: C_SignInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.931
+[in] hSession = 0x90bfe
+[in] pMechanism->type = CKM_RSA_PKCS                           
+[in] pMechanism->pParameter = NULL
+[in] hKey = 0x308a94b0
+Returned:  0 CKR_OK
+
+77: C_Sign
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.931
+[in] hSession = 0x90bfe
+[in] pData[ulDataLen] 00007f14c8005650 / 51
+    00000000  30 31 30 0D 06 09 60 86 48 01 65 03 04 02 01 05  010...`.H.e.....
+    00000010  00 04 20 7F 83 B1 65 7F F1 FC 53 B9 2D C1 81 48  .. ..e..S.-..H
+    00000020  A1 D6 5D FC 2D 4B 1F A3 D6 77 28 4A DD D2 00 12  ..].-K...w(J....
+    00000030  6D 90 69                                         m.i             
+[out] pSignature[*pulSignatureLen] NULL [size : 0x100 (256)]
+Returned:  0 CKR_OK
+
+78: C_Sign
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.944
+[in] hSession = 0x90bfe
+[in] pData[ulDataLen] 00007f14c8005650 / 51
+    00000000  30 31 30 0D 06 09 60 86 48 01 65 03 04 02 01 05  010...`.H.e.....
+    00000010  00 04 20 7F 83 B1 65 7F F1 FC 53 B9 2D C1 81 48  .. ..e..S.-..H
+    00000020  A1 D6 5D FC 2D 4B 1F A3 D6 77 28 4A DD D2 00 12  ..].-K...w(J....
+    00000030  6D 90 69                                         m.i             
+[out] pSignature[*pulSignatureLen] 00007f14c80052e0 / 256
+    00000000  24 80 F8 FE 9C F5 95 C3 69 83 33 83 0F DA 5D 82  $.......i.3...].
+    00000010  01 C7 33 54 DC 95 F5 1F D5 B6 6C 75 9A 3A 5F A0  ..3T......lu.:_.
+    00000020  A5 C1 95 73 CC D7 35 D6 C0 4D D4 F1 B3 68 E4 C1  ...s..5..M...h..
+    00000030  17 43 69 A6 2C 5B 0F C9 75 C8 22 41 76 C3 FB 2A  .Ci.,[..u."Av..*
+    00000040  FE 4C 8D 60 5C 7D AF F0 A5 B5 D9 DE 07 1B A1 B1  .L.`\}..........
+    00000050  C2 3F 84 A6 71 BF 8C 6C 65 3F 5A E6 82 62 37 BA  .?..q..le?Z..b7.
+    00000060  99 E3 96 D9 A8 7D 8D A9 01 30 9F BB F1 2A 76 54  .....}...0...*vT
+    00000070  9E 65 15 3F 93 10 42 62 19 C7 93 2C 7B 62 D2 CE  .e.?..Bb...,{b..
+    00000080  E7 C5 C6 D3 B1 6C 19 1E 50 CD 4D DF E1 08 42 2A  .....l..P.M...B*
+    00000090  32 95 FD 79 26 68 D6 14 23 91 B1 B1 3F B1 39 BF  2..y&h..#...?.9.
+    000000A0  F5 A8 DB A8 AE A1 F0 B9 35 1B 71 E9 8C 39 9A 62  ........5.q..9.b
+    000000B0  68 B1 38 DA E4 98 44 D5 AB BB 00 FA BE 80 A9 0D  h.8...D.........
+    000000C0  3E A2 77 33 08 D1 52 F6 8A 9A 76 1F 70 F1 0A EB  >.w3..R...v.p...
+    000000D0  43 18 8E B4 96 88 3A 7E C6 BA F5 5C DF 60 19 27  C.....:~...\.`.'
+    000000E0  B2 92 68 D4 8D 3E 96 F3 DA 77 04 98 5A 9A D7 4A  ..h..>...w..Z..J
+    000000F0  C6 F4 7A A9 30 40 94 92 1A D5 27 C2 3A 48 0C D9  ..z.0@....'.:H..
+Returned:  0 CKR_OK
+
+79: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.965
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+80: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.965
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+81: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.965
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+82: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.965
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+83: C_DestroyObject
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.965
+[in] hSession = 0x90bfe
+[in] hObject = 0x3153193e
+Returned:  0 CKR_OK
+
+84: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.979
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+85: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.979
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+86: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.980
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+87: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.980
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+88: C_DestroyObject
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.980
+[in] hSession = 0x90bfe
+[in] hObject = 0x308a94b0
+Returned:  0 CKR_OK
+
+89: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.994
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+90: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.994
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+91: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:53.994
+[in] hSession = 0x90bfe
+[in] pTemplate[1]: 
+    CKA_ID                00007f147c047ce0 / 20
+    00000000  57 6E 89 BE CB F7 6E CD EA 5F C3 F1 CD F5 72 7B  Wn....n.._....r{
+    00000010  7A 3E 16 4B                                      z>.K            
+Returned:  0 CKR_OK
+
+92: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.039
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x0
+Returned:  0 CKR_OK
+
+93: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.039
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+94: C_GenerateKeyPair
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.039
+[in] hSession = 0x90bfe
+[in] pMechanism->type = CKM_RSA_PKCS_KEY_PAIR_GEN              
+[in] pMechanism->pParameter = NULL
+[in] pPublicKeyTemplate[10]: 
+    CKA_CLASS             CKO_PUBLIC_KEY           
+    CKA_ID                00007f147c047ce0 / 20
+    00000000  57 6E 89 BE CB F7 6E CD EA 5F C3 F1 CD F5 72 7B  Wn....n.._....r{
+    00000010  7A 3E 16 4B                                      z>.K            
+    CKA_VERIFY            True
+    CKA_ENCRYPT           False
+    CKA_WRAP              False
+    CKA_TOKEN             True
+    CKA_PUBLIC_EXPONENT   00007f14c8002d50 / 3
+    00000000  01 00 01                                         ...             
+    CKA_KEY_TYPE          CKK_RSA             
+    CKA_LABEL             00007f14c8005110 / 23
+    7075626C 69632D6B 65792D6C 6162656C 2D616C67 2D3130
+     p u b l  i c - k  e y - l  a b e l  - a l g  - 1 0
+    CKA_MODULUS_BITS      00007f147c007b90 / 8
+    00000000  00 04 00 00 00 00 00 00                          ........        
+[in] pPrivateKeyTemplate[9]: 
+    CKA_CLASS             CKO_PRIVATE_KEY          
+    CKA_ID                00007f147c047c00 / 20
+    00000000  57 6E 89 BE CB F7 6E CD EA 5F C3 F1 CD F5 72 7B  Wn....n.._....r{
+    00000010  7A 3E 16 4B                                      z>.K            
+    CKA_SIGN              True
+    CKA_DECRYPT           False
+    CKA_TOKEN             True
+    CKA_PRIVATE           True
+    CKA_SENSITIVE         True
+    CKA_KEY_TYPE          CKK_RSA             
+    CKA_LABEL             00007f147c047b80 / 24
+    70726976 6174652D 6B65792D 6C616265 6C2D616C 672D3130
+     p r i v  a t e -  k e y -  l a b e  l - a l  g - 1 0
+[out] hPublicKey = 0xc20dc013
+[out] hPrivateKey = 0xd9f1c91a
+Returned:  0 CKR_OK
+
+95: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.182
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+96: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.182
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+97: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.182
+[in] hSession = 0x90bfe
+[in] pTemplate[2]: 
+    CKA_ID                00007f147c047b40 / 20
+    00000000  57 6E 89 BE CB F7 6E CD EA 5F C3 F1 CD F5 72 7B  Wn....n.._....r{
+    00000010  7A 3E 16 4B                                      z>.K            
+    CKA_CLASS             CKO_PUBLIC_KEY           
+Returned:  0 CKR_OK
+
+98: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.226
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x1
+Object 0xc20dc013 matches
+Returned:  0 CKR_OK
+
+99: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.226
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+100: C_GetAttributeValue
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.226
+[in] hSession = 0x90bfe
+[in] hObject = 0xc20dc013
+[in] pTemplate[6]: 
+    CKA_CLASS             00007f147c047b40 / 8
+    CKA_MODULUS           0000000000000000 / 0
+    CKA_MODULUS_BITS      00007f147c007e70 / 8
+    CKA_PUBLIC_EXPONENT   0000000000000000 / 0
+    CKA_KEY_TYPE          00007f147c008090 / 8
+    CKA_EC_POINT          0000000000000000 / 0
+[out] pTemplate[6]: 
+    CKA_CLASS             CKO_PUBLIC_KEY           
+    CKA_MODULUS           0000000000000000 / 128
+    CKA_MODULUS_BITS      00007f147c007e70 / 8
+    00000000  00 04 00 00 00 00 00 00                          ........        
+    CKA_PUBLIC_EXPONENT   0000000000000000 / 3
+    CKA_KEY_TYPE          CKK_RSA             
+    CKA_EC_POINT          0000000000000000 / -1
+Returned:  18 CKR_ATTRIBUTE_TYPE_INVALID
+
+101: C_GetAttributeValue
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.267
+[in] hSession = 0x90bfe
+[in] hObject = 0xc20dc013
+[in] pTemplate[2]: 
+    CKA_MODULUS           00007f14c80058b0 / 128
+    CKA_PUBLIC_EXPONENT   00007f147c0059d0 / 3
+[out] pTemplate[2]: 
+    CKA_MODULUS           00007f14c80058b0 / 128
+    00000000  B6 8F 2A 8E 25 61 65 6C BE F2 47 CD ED E6 19 C1  ..*.%ael..G.....
+    00000010  D1 0E F1 AA B8 9B E2 4E B9 C0 60 D1 21 D4 EB 6B  .......N..`.!..k
+    00000020  48 00 99 3A 9F 3E 34 03 0F EA B5 FA E8 1D EA 9F  H..:.>4.........
+    00000030  95 07 72 60 4D A3 51 61 41 67 4D FF 89 23 C7 7C  ..r`M.QaAgM..#.|
+    00000040  EF 40 E3 29 4E 3D F3 58 A4 78 81 AC FC EA 10 E6  .@.)N=.X.x......
+    00000050  37 83 21 92 B3 F0 E8 A9 39 06 A4 7D B8 20 99 56  7.!.....9..}. .V
+    00000060  D9 B6 16 47 6E 87 E8 E2 39 E5 FD FF 56 3D 4A 70  ...Gn...9...V=Jp
+    00000070  38 00 7A CC 50 F0 62 92 34 D4 AA 7A 6F 5B 5E 31  8.z.P.b.4..zo[^1
+    CKA_PUBLIC_EXPONENT   00007f147c0059d0 / 3
+    00000000  01 00 01                                         ...             
+Returned:  0 CKR_OK
+
+102: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.296
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+103: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.296
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+104: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.297
+[in] hSession = 0x90bfe
+[in] pTemplate[2]: 
+    CKA_ID                00007f147c047b40 / 20
+    00000000  57 6E 89 BE CB F7 6E CD EA 5F C3 F1 CD F5 72 7B  Wn....n.._....r{
+    00000010  7A 3E 16 4B                                      z>.K            
+    CKA_CLASS             CKO_PRIVATE_KEY          
+Returned:  0 CKR_OK
+
+105: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.340
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x1
+Object 0xd9f1c91a matches
+Returned:  0 CKR_OK
+
+106: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.340
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+107: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.341
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+108: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.341
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+109: C_SignInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.341
+[in] hSession = 0x90bfe
+[in] pMechanism->type = CKM_RSA_PKCS                           
+[in] pMechanism->pParameter = NULL
+[in] hKey = 0xd9f1c91a
+Returned:  0 CKR_OK
+
+110: C_Sign
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.341
+[in] hSession = 0x90bfe
+[in] pData[ulDataLen] 00007f1464003150 / 83
+    00000000  30 51 30 0D 06 09 60 86 48 01 65 03 04 02 03 05  0Q0...`.H.e.....
+    00000010  00 04 40 86 18 44 D6 70 4E 85 73 FE C3 4D 96 7E  ..@..D.pN.s..M.~
+    00000020  20 BC FE F3 D4 24 CF 48 BE 04 E6 DC 08 F2 BD 58   ....$.H.......X
+    00000030  C7 29 74 33 71 01 5E AD 89 1C C3 CF 1C 9D 34 B4  .)t3q.^.......4.
+    00000040  92 64 B5 10 75 1B 1F F9 E5 37 93 7B C4 6B 5D 6F  .d..u....7.{.k]o
+    00000050  F4 EC C8                                         ...             
+[out] pSignature[*pulSignatureLen] NULL [size : 0x80 (128)]
+Returned:  0 CKR_OK
+
+111: C_Sign
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.356
+[in] hSession = 0x90bfe
+[in] pData[ulDataLen] 00007f1464003150 / 83
+    00000000  30 51 30 0D 06 09 60 86 48 01 65 03 04 02 03 05  0Q0...`.H.e.....
+    00000010  00 04 40 86 18 44 D6 70 4E 85 73 FE C3 4D 96 7E  ..@..D.pN.s..M.~
+    00000020  20 BC FE F3 D4 24 CF 48 BE 04 E6 DC 08 F2 BD 58   ....$.H.......X
+    00000030  C7 29 74 33 71 01 5E AD 89 1C C3 CF 1C 9D 34 B4  .)t3q.^.......4.
+    00000040  92 64 B5 10 75 1B 1F F9 E5 37 93 7B C4 6B 5D 6F  .d..u....7.{.k]o
+    00000050  F4 EC C8                                         ...             
+[out] pSignature[*pulSignatureLen] 00007f14c80058b0 / 128
+    00000000  22 AA 23 A1 8C F5 19 D6 39 B9 5C 01 15 F6 FE 1B  ".#.....9.\.....
+    00000010  92 5C A2 11 3C DD FC DC FA C0 B4 F4 E9 F5 AE DD  .\..<...........
+    00000020  1D 11 F9 C9 82 B1 61 AC 1E 87 42 4F 4F 3F 86 33  ......a...BOO?.3
+    00000030  FC A5 65 67 E1 00 6D D0 F1 DF 28 EE F0 F9 65 93  ..eg..m...(...e.
+    00000040  B2 1F 60 7D 4F A1 62 3A C4 59 8C 46 C0 92 FD 72  ..`}O.b:.Y.F...r
+    00000050  58 42 0B 8C 61 E8 5B 6C 95 89 D7 B6 CF 60 98 96  XB..a.[l.....`..
+    00000060  44 F1 A6 3F 2C 74 B6 F2 28 39 99 C9 D9 B7 5C F9  D..?,t..(9....\.
+    00000070  30 E2 65 97 07 3B 68 0D A2 1A 75 1A 31 55 E4 D8  0.e..;h...u.1U..
+Returned:  0 CKR_OK
+
+112: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.372
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+113: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.372
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+114: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.372
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+115: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.372
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+116: C_DestroyObject
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.372
+[in] hSession = 0x90bfe
+[in] hObject = 0xc20dc013
+Returned:  0 CKR_OK
+
+117: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.386
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+118: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.386
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+119: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.387
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+120: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.387
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+121: C_DestroyObject
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.387
+[in] hSession = 0x90bfe
+[in] hObject = 0xd9f1c91a
+Returned:  0 CKR_OK
+
+122: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.401
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+123: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.401
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+124: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.401
+[in] hSession = 0x90bfe
+[in] pTemplate[1]: 
+    CKA_ID                00007f147c007f90 / 20
+    00000000  2D 2B 31 0C 5A 6E 04 DF 82 9E 85 2C 69 69 72 51  -+1.Zn.....,iirQ
+    00000010  AF 10 60 48                                      ..`H            
+Returned:  0 CKR_OK
+
+125: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.446
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x0
+Returned:  0 CKR_OK
+
+126: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.446
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+127: C_GenerateKeyPair
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.446
+[in] hSession = 0x90bfe
+[in] pMechanism->type = CKM_RSA_PKCS_KEY_PAIR_GEN              
+[in] pMechanism->pParameter = NULL
+[in] pPublicKeyTemplate[10]: 
+    CKA_CLASS             CKO_PUBLIC_KEY           
+    CKA_ID                00007f147c007f90 / 20
+    00000000  2D 2B 31 0C 5A 6E 04 DF 82 9E 85 2C 69 69 72 51  -+1.Zn.....,iirQ
+    00000010  AF 10 60 48                                      ..`H            
+    CKA_VERIFY            True
+    CKA_ENCRYPT           False
+    CKA_WRAP              False
+    CKA_TOKEN             True
+    CKA_PUBLIC_EXPONENT   00007f14c8002910 / 3
+    00000000  01 00 01                                         ...             
+    CKA_KEY_TYPE          CKK_RSA             
+    CKA_LABEL             00007f14b80030b0 / 23
+    7075626C 69632D6B 65792D6C 6162656C 2D616C67 2D3130
+     p u b l  i c - k  e y - l  a b e l  - a l g  - 1 0
+    CKA_MODULUS_BITS      00007f147c0489f0 / 8
+    00000000  00 08 00 00 00 00 00 00                          ........        
+[in] pPrivateKeyTemplate[9]: 
+    CKA_CLASS             CKO_PRIVATE_KEY          
+    CKA_ID                00007f147c007ed0 / 20
+    00000000  2D 2B 31 0C 5A 6E 04 DF 82 9E 85 2C 69 69 72 51  -+1.Zn.....,iirQ
+    00000010  AF 10 60 48                                      ..`H            
+    CKA_SIGN              True
+    CKA_DECRYPT           False
+    CKA_TOKEN             True
+    CKA_PRIVATE           True
+    CKA_SENSITIVE         True
+    CKA_KEY_TYPE          CKK_RSA             
+    CKA_LABEL             00007f147c007f50 / 24
+    70726976 6174652D 6B65792D 6C616265 6C2D616C 672D3130
+     p r i v  a t e -  k e y -  l a b e  l - a l  g - 1 0
+[out] hPublicKey = 0x8b03b40f
+[out] hPrivateKey = 0x795b7fcf
+Returned:  0 CKR_OK
+
+128: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.968
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+129: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.968
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+130: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:54.968
+[in] hSession = 0x90bfe
+[in] pTemplate[2]: 
+    CKA_ID                00007f147c0471c0 / 20
+    00000000  2D 2B 31 0C 5A 6E 04 DF 82 9E 85 2C 69 69 72 51  -+1.Zn.....,iirQ
+    00000010  AF 10 60 48                                      ..`H            
+    CKA_CLASS             CKO_PUBLIC_KEY           
+Returned:  0 CKR_OK
+
+131: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.012
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x1
+Object 0x8b03b40f matches
+Returned:  0 CKR_OK
+
+132: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.012
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+133: C_GetAttributeValue
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.012
+[in] hSession = 0x90bfe
+[in] hObject = 0x8b03b40f
+[in] pTemplate[6]: 
+    CKA_CLASS             00007f147c0471c0 / 8
+    CKA_MODULUS           0000000000000000 / 0
+    CKA_MODULUS_BITS      00007f147c0056d0 / 8
+    CKA_PUBLIC_EXPONENT   0000000000000000 / 0
+    CKA_KEY_TYPE          00007f147c048df0 / 8
+    CKA_EC_POINT          0000000000000000 / 0
+[out] pTemplate[6]: 
+    CKA_CLASS             CKO_PUBLIC_KEY           
+    CKA_MODULUS           0000000000000000 / 256
+    CKA_MODULUS_BITS      00007f147c0056d0 / 8
+    00000000  00 08 00 00 00 00 00 00                          ........        
+    CKA_PUBLIC_EXPONENT   0000000000000000 / 3
+    CKA_KEY_TYPE          CKK_RSA             
+    CKA_EC_POINT          0000000000000000 / -1
+Returned:  18 CKR_ATTRIBUTE_TYPE_INVALID
+
+134: C_GetAttributeValue
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.053
+[in] hSession = 0x90bfe
+[in] hObject = 0x8b03b40f
+[in] pTemplate[2]: 
+    CKA_MODULUS           00007f14c8005c90 / 256
+    CKA_PUBLIC_EXPONENT   00007f147c047c20 / 3
+[out] pTemplate[2]: 
+    CKA_MODULUS           00007f14c8005c90 / 256
+    00000000  B6 70 74 74 AD 95 61 94 71 70 B7 AB 2F 88 B4 FA  .ptt..a.qp../...
+    00000010  CC DF B2 36 DD F6 CE 97 88 EC 9A 25 88 41 43 D2  ...6.......%.AC.
+    00000020  D2 C0 8D 94 65 FC F6 D6 B3 12 4F 85 56 09 27 0C  ....e.....O.V.'.
+    00000030  A0 59 79 AE 97 16 B6 1B 93 85 EE 58 B7 9D E6 7A  .Yy........X...z
+    00000040  6D A4 8F 2E 3A 8F 45 BB EC BE 8D D0 78 DD D4 13  m...:.E.....x...
+    00000050  9A 33 96 B1 31 0E 17 D7 E6 88 9A AF C9 3C 4B B0  .3..1........<K.
+    00000060  76 64 7E 23 41 70 43 D7 BA 45 4A E0 E1 F7 44 1E  vd~#ApC..EJ...D.
+    00000070  69 81 8F 27 A9 7B DA 04 66 D0 A8 4D 62 57 5C 61  i..'.{..f..MbW\a
+    00000080  F3 D6 88 4B CF 90 DF 97 88 1A FA 8C 20 A7 D3 CF  ...K........ ...
+    00000090  12 FF DC 48 AE 35 DD 0A 0E 92 61 69 1C A3 34 C1  ...H.5....ai..4.
+    000000A0  D2 7D 5E DF 53 94 64 C3 C0 59 CA 9F D1 CB 00 F8  .}^.S.d..Y......
+    000000B0  3C BA 42 C3 DB CF E9 43 7A 1C 7F 9B D7 9A 75 C5  <.B....Cz....u.
+    000000C0  8F 47 FB 4A E9 46 41 EE E4 16 7A 51 94 59 D9 25  .G.J.FA...zQ.Y.%
+    000000D0  23 37 64 76 FA 71 BA 3E B3 C6 D7 52 9E D5 99 AA  #7dv.q.>...R....
+    000000E0  7D 8E 6A 7E 9D EF AD 98 47 4D 3D 71 C6 1C C4 A3  }.j~....GM=q....
+    000000F0  E1 98 86 FE 2C C9 11 7F 23 5B 28 AB AB 83 E4 01  ....,..#[(.....
+    CKA_PUBLIC_EXPONENT   00007f147c047c20 / 3
+    00000000  01 00 01                                         ...             
+Returned:  0 CKR_OK
+
+135: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.081
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+136: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.081
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+137: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.081
+[in] hSession = 0x90bfe
+[in] pTemplate[2]: 
+    CKA_ID                00007f147c0056d0 / 20
+    00000000  2D 2B 31 0C 5A 6E 04 DF 82 9E 85 2C 69 69 72 51  -+1.Zn.....,iirQ
+    00000010  AF 10 60 48                                      ..`H            
+    CKA_CLASS             CKO_PRIVATE_KEY          
+Returned:  0 CKR_OK
+
+138: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.125
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x1
+Object 0x795b7fcf matches
+Returned:  0 CKR_OK
+
+139: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.125
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+140: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.126
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+141: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.126
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+142: C_SignInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.126
+[in] hSession = 0x90bfe
+[in] pMechanism->type = CKM_RSA_PKCS                           
+[in] pMechanism->pParameter = NULL
+[in] hKey = 0x795b7fcf
+Returned:  0 CKR_OK
+
+143: C_Sign
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.126
+[in] hSession = 0x90bfe
+[in] pData[ulDataLen] 00007f147c049a70 / 83
+    00000000  30 51 30 0D 06 09 60 86 48 01 65 03 04 02 03 05  0Q0...`.H.e.....
+    00000010  00 04 40 86 18 44 D6 70 4E 85 73 FE C3 4D 96 7E  ..@..D.pN.s..M.~
+    00000020  20 BC FE F3 D4 24 CF 48 BE 04 E6 DC 08 F2 BD 58   ....$.H.......X
+    00000030  C7 29 74 33 71 01 5E AD 89 1C C3 CF 1C 9D 34 B4  .)t3q.^.......4.
+    00000040  92 64 B5 10 75 1B 1F F9 E5 37 93 7B C4 6B 5D 6F  .d..u....7.{.k]o
+    00000050  F4 EC C8                                         ...             
+[out] pSignature[*pulSignatureLen] NULL [size : 0x100 (256)]
+Returned:  0 CKR_OK
+
+144: C_Sign
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.139
+[in] hSession = 0x90bfe
+[in] pData[ulDataLen] 00007f147c049a70 / 83
+    00000000  30 51 30 0D 06 09 60 86 48 01 65 03 04 02 03 05  0Q0...`.H.e.....
+    00000010  00 04 40 86 18 44 D6 70 4E 85 73 FE C3 4D 96 7E  ..@..D.pN.s..M.~
+    00000020  20 BC FE F3 D4 24 CF 48 BE 04 E6 DC 08 F2 BD 58   ....$.H.......X
+    00000030  C7 29 74 33 71 01 5E AD 89 1C C3 CF 1C 9D 34 B4  .)t3q.^.......4.
+    00000040  92 64 B5 10 75 1B 1F F9 E5 37 93 7B C4 6B 5D 6F  .d..u....7.{.k]o
+    00000050  F4 EC C8                                         ...             
+[out] pSignature[*pulSignatureLen] 00007f14c8005c90 / 256
+    00000000  72 E6 80 50 0B 1A F6 4C 46 C7 1E 5B 88 2F 4A 54  r..P...LF..[./JT
+    00000010  8C 3F B8 CC 20 11 C3 97 64 8E DF CF C7 6A BF 26  .?.. ...d....j.&
+    00000020  9E 1B C2 71 22 A3 68 27 E5 C8 50 33 D2 41 09 1C  ...q".h'..P3.A..
+    00000030  BB BA B5 AE C8 AC D0 6D 13 B8 BE 95 7A 47 00 55  .......m....zG.U
+    00000040  B0 FC 64 23 37 DB 97 AB D9 BF 04 13 D9 47 7C ED  ..d#7........G|.
+    00000050  F2 2C F2 FB E2 64 16 DC D3 1E F5 62 7C 18 5F 33  .,...d.....b|._3
+    00000060  2A 1A A4 FD 13 60 01 C6 02 FF A3 F6 7B B3 26 2D  *....`......{.&-
+    00000070  5E C8 47 81 DD E9 DA D1 3D 8E 4F 50 56 35 19 C0  ^.G.....=.OPV5..
+    00000080  44 88 39 FC 79 54 A1 13 2C B9 6F 04 18 54 BD 04  D.9.yT..,.o..T..
+    00000090  31 BE 8C DD 68 1B 43 1C 83 64 94 57 AF A8 00 29  1...h.C..d.W...)
+    000000A0  64 EF 12 26 E5 C9 1E 24 B7 31 6F 21 E8 EF D9 D9  d..&...$.1o!....
+    000000B0  9E B4 93 53 B8 48 22 DB 9B 4D 90 9C A6 78 DA 1D  ...S.H"..M...x..
+    000000C0  70 85 32 58 F9 53 6B 74 5F 69 2F 88 B8 6A 96 DB  p.2X.Skt_i/..j..
+    000000D0  3C FA FF 2D 20 B9 58 E2 1E 8F 4D ED 44 67 4A 14  <..- .X...M.DgJ.
+    000000E0  84 7E 38 AE 5F F3 C0 F6 5B 39 7D B0 1C 1C EF 26  .~8._...[9}....&
+    000000F0  C9 D0 B3 2B 6C 79 D6 AB DC 7D 22 93 05 98 F0 74  ...+ly...}"....t
+Returned:  0 CKR_OK
+
+145: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.159
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+146: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.159
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+147: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.160
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+148: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.160
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+149: C_DestroyObject
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.160
+[in] hSession = 0x90bfe
+[in] hObject = 0x8b03b40f
+Returned:  0 CKR_OK
+
+150: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.174
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+151: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.174
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+152: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.175
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+153: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.175
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+154: C_DestroyObject
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.175
+[in] hSession = 0x90bfe
+[in] hObject = 0x795b7fcf
+Returned:  0 CKR_OK
+
+155: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.189
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+156: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.189
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+157: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.189
+[in] hSession = 0x90bfe
+[in] pTemplate[1]: 
+    CKA_ID                00007f147c048cf0 / 20
+    00000000  5F C8 11 C1 E8 6B 57 8B 98 21 AF D6 C4 14 2C D5  _....kW..!....,.
+    00000010  56 18 69 6E                                      V.in            
+Returned:  0 CKR_OK
+
+158: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.234
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x0
+Returned:  0 CKR_OK
+
+159: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.234
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+160: C_GenerateKeyPair
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.234
+[in] hSession = 0x90bfe
+[in] pMechanism->type = CKM_EC_KEY_PAIR_GEN                    
+[in] pMechanism->pParameter = NULL
+[in] pPublicKeyTemplate[9]: 
+    CKA_CLASS             CKO_PUBLIC_KEY           
+    CKA_ID                00007f1464001980 / 20
+    00000000  5F C8 11 C1 E8 6B 57 8B 98 21 AF D6 C4 14 2C D5  _....kW..!....,.
+    00000010  56 18 69 6E                                      V.in            
+    CKA_VERIFY            True
+    CKA_ENCRYPT           False
+    CKA_WRAP              False
+    CKA_TOKEN             True
+    CKA_KEY_TYPE          CKK_EC              
+    CKA_LABEL             00007f14c8002230 / 23
+    7075626C 69632D6B 65792D6C 6162656C 2D616C67 2D3133
+     p u b l  i c - k  e y - l  a b e l  - a l g  - 1 3
+    CKA_EC_PARAMS         00007f147c048cb0 / 10
+    00000000  06 08 2A 86 48 CE 3D 03 01 07                    ..*.H.=...      
+[in] pPrivateKeyTemplate[9]: 
+    CKA_CLASS             CKO_PRIVATE_KEY          
+    CKA_ID                00007f147c009830 / 20
+    00000000  5F C8 11 C1 E8 6B 57 8B 98 21 AF D6 C4 14 2C D5  _....kW..!....,.
+    00000010  56 18 69 6E                                      V.in            
+    CKA_SIGN              True
+    CKA_DECRYPT           False
+    CKA_TOKEN             True
+    CKA_PRIVATE           True
+    CKA_SENSITIVE         True
+    CKA_KEY_TYPE          CKK_EC              
+    CKA_LABEL             00007f14c8002d50 / 24
+    70726976 6174652D 6B65792D 6C616265 6C2D616C 672D3133
+     p r i v  a t e -  k e y -  l a b e  l - a l  g - 1 3
+[out] hPublicKey = 0x4957522e
+[out] hPrivateKey = 0xe4b00aad
+Returned:  0 CKR_OK
+
+161: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.308
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+162: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.308
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+163: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.308
+[in] hSession = 0x90bfe
+[in] pTemplate[2]: 
+    CKA_ID                00007f147c029000 / 20
+    00000000  5F C8 11 C1 E8 6B 57 8B 98 21 AF D6 C4 14 2C D5  _....kW..!....,.
+    00000010  56 18 69 6E                                      V.in            
+    CKA_CLASS             CKO_PUBLIC_KEY           
+Returned:  0 CKR_OK
+
+164: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.353
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x1
+Object 0x4957522e matches
+Returned:  0 CKR_OK
+
+165: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.353
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+166: C_GetAttributeValue
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.353
+[in] hSession = 0x90bfe
+[in] hObject = 0x4957522e
+[in] pTemplate[6]: 
+    CKA_CLASS             00007f147c029000 / 8
+    CKA_MODULUS           0000000000000000 / 0
+    CKA_MODULUS_BITS      00007f147c009810 / 8
+    CKA_PUBLIC_EXPONENT   0000000000000000 / 0
+    CKA_KEY_TYPE          00007f147c04afe0 / 8
+    CKA_EC_POINT          0000000000000000 / 0
+[out] pTemplate[6]: 
+    CKA_CLASS             CKO_PUBLIC_KEY           
+    CKA_MODULUS           0000000000000000 / -1
+    CKA_MODULUS_BITS      00007f147c009810 / 8
+    00000000  00 01 00 00 00 00 00 00                          ........        
+    CKA_PUBLIC_EXPONENT   0000000000000000 / -1
+    CKA_KEY_TYPE          CKK_EC              
+    CKA_EC_POINT          0000000000000000 / 67
+Returned:  18 CKR_ATTRIBUTE_TYPE_INVALID
+
+167: C_GetAttributeValue
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.410
+[in] hSession = 0x90bfe
+[in] hObject = 0x4957522e
+[in] pTemplate[1]: 
+    CKA_EC_POINT          00007f14c0003310 / 67
+[out] pTemplate[1]: 
+    CKA_EC_POINT          00007f14c0003310 / 67
+    00000000  04 41 04 B3 6B DC F8 6B 5E FB 01 56 63 3B B8 6F  .A..k..k^..Vc;.o
+    00000010  EA C4 51 4C DB 6C 0E 6B B6 0B 49 E0 79 6A 65 06  ..QL.l.k..I.yje.
+    00000020  38 33 7E 91 5C 22 58 B2 4D 26 65 F2 55 BA 58 23  83~.\"X.M&e.U.X#
+    00000030  6F CF 33 C8 3B 7D 80 7A E3 F3 21 0C 10 DA D3 F7  o.3.;}.z..!.....
+    00000040  FF 81 5D                                         ..]             
+Returned:  0 CKR_OK
+
+168: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.425
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+169: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.425
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+170: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.425
+[in] hSession = 0x90bfe
+[in] pTemplate[2]: 
+    CKA_ID                00007f147c009810 / 20
+    00000000  5F C8 11 C1 E8 6B 57 8B 98 21 AF D6 C4 14 2C D5  _....kW..!....,.
+    00000010  56 18 69 6E                                      V.in            
+    CKA_CLASS             CKO_PRIVATE_KEY          
+Returned:  0 CKR_OK
+
+171: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.469
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x1
+Object 0xe4b00aad matches
+Returned:  0 CKR_OK
+
+172: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.469
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+173: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.470
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+174: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.470
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+175: C_SignInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.470
+[in] hSession = 0x90bfe
+[in] pMechanism->type = CKM_ECDSA                              
+[in] pMechanism->pParameter = NULL
+[in] hKey = 0xe4b00aad
+Returned:  0 CKR_OK
+
+176: C_Sign
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.470
+[in] hSession = 0x90bfe
+[in] pData[ulDataLen] 00007f149e9ee058 / 32
+    00000000  7F 83 B1 65 7F F1 FC 53 B9 2D C1 81 48 A1 D6 5D  ..e..S.-..H..]
+    00000010  FC 2D 4B 1F A3 D6 77 28 4A DD D2 00 12 6D 90 69  .-K...w(J....m.i
+[out] pSignature[*pulSignatureLen] NULL [size : 0x40 (64)]
+Returned:  0 CKR_OK
+
+177: C_Sign
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.483
+[in] hSession = 0x90bfe
+[in] pData[ulDataLen] 00007f149e9ee058 / 32
+    00000000  7F 83 B1 65 7F F1 FC 53 B9 2D C1 81 48 A1 D6 5D  ..e..S.-..H..]
+    00000010  FC 2D 4B 1F A3 D6 77 28 4A DD D2 00 12 6D 90 69  .-K...w(J....m.i
+[out] pSignature[*pulSignatureLen] 00007f147c049820 / 64
+    00000000  EA 7C 43 0B CB 4B D8 91 56 B0 97 C4 62 6E 0B 9D  .|C..K..V...bn..
+    00000010  EF B8 23 75 E9 BC 3A 84 D5 7C 2F 6F 0F 78 66 BD  ..#u..:..|/o.xf.
+    00000020  1A 5A 95 4E 2C 87 62 8E 81 6E 2A 9C 11 62 31 C6  .Z.N,.b..n*..b1.
+    00000030  6A F3 9C 08 FC 24 F6 FF 49 08 E1 8F 23 F8 2C 5C  j....$..I...#.,\
+Returned:  0 CKR_OK
+
+178: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.499
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+179: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.499
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+180: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.499
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+181: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.499
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+182: C_DestroyObject
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.499
+[in] hSession = 0x90bfe
+[in] hObject = 0x4957522e
+Returned:  0 CKR_OK
+
+183: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.513
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+184: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.513
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+185: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.514
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+186: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.514
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+187: C_DestroyObject
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.514
+[in] hSession = 0x90bfe
+[in] hObject = 0xe4b00aad
+Returned:  0 CKR_OK
+
+188: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.528
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+189: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.528
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+190: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.528
+[in] hSession = 0x90bfe
+[in] pTemplate[1]: 
+    CKA_ID                00007f147c04afc0 / 20
+    00000000  BE A6 FA 17 1C F5 93 D5 7C 9B 0B 11 D6 B8 D1 C1  ........|.......
+    00000010  60 65 1B 08                                      `e..            
+Returned:  0 CKR_OK
+
+191: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.574
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x0
+Returned:  0 CKR_OK
+
+192: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.574
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+193: C_GenerateKeyPair
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.574
+[in] hSession = 0x90bfe
+[in] pMechanism->type = CKM_EC_KEY_PAIR_GEN                    
+[in] pMechanism->pParameter = NULL
+[in] pPublicKeyTemplate[9]: 
+    CKA_CLASS             CKO_PUBLIC_KEY           
+    CKA_ID                00007f147c048da0 / 20
+    00000000  BE A6 FA 17 1C F5 93 D5 7C 9B 0B 11 D6 B8 D1 C1  ........|.......
+    00000010  60 65 1B 08                                      `e..            
+    CKA_VERIFY            True
+    CKA_ENCRYPT           False
+    CKA_WRAP              False
+    CKA_TOKEN             True
+    CKA_KEY_TYPE          CKK_EC              
+    CKA_LABEL             00007f14c8002230 / 23
+    7075626C 69632D6B 65792D6C 6162656C 2D616C67 2D3134
+     p u b l  i c - k  e y - l  a b e l  - a l g  - 1 4
+    CKA_EC_PARAMS         00007f147c005f30 / 7
+    00000000  06 05 2B 81 04 00 22                             ..+..."         
+[in] pPrivateKeyTemplate[9]: 
+    CKA_CLASS             CKO_PRIVATE_KEY          
+    CKA_ID                00007f14640023d0 / 20
+    00000000  BE A6 FA 17 1C F5 93 D5 7C 9B 0B 11 D6 B8 D1 C1  ........|.......
+    00000010  60 65 1B 08                                      `e..            
+    CKA_SIGN              True
+    CKA_DECRYPT           False
+    CKA_TOKEN             True
+    CKA_PRIVATE           True
+    CKA_SENSITIVE         True
+    CKA_KEY_TYPE          CKK_EC              
+    CKA_LABEL             00007f147c04b000 / 24
+    70726976 6174652D 6B65792D 6C616265 6C2D616C 672D3134
+     p r i v  a t e -  k e y -  l a b e  l - a l  g - 1 4
+[out] hPublicKey = 0x3ca93a8a
+[out] hPrivateKey = 0xdfe04b07
+Returned:  0 CKR_OK
+
+194: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.659
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+195: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.659
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+196: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.660
+[in] hSession = 0x90bfe
+[in] pTemplate[2]: 
+    CKA_ID                00007f147c04c800 / 20
+    00000000  BE A6 FA 17 1C F5 93 D5 7C 9B 0B 11 D6 B8 D1 C1  ........|.......
+    00000010  60 65 1B 08                                      `e..            
+    CKA_CLASS             CKO_PUBLIC_KEY           
+Returned:  0 CKR_OK
+
+197: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.705
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x1
+Object 0x3ca93a8a matches
+Returned:  0 CKR_OK
+
+198: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.705
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+199: C_GetAttributeValue
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.705
+[in] hSession = 0x90bfe
+[in] hObject = 0x3ca93a8a
+[in] pTemplate[6]: 
+    CKA_CLASS             00007f147c04c800 / 8
+    CKA_MODULUS           0000000000000000 / 0
+    CKA_MODULUS_BITS      00007f147c04c860 / 8
+    CKA_PUBLIC_EXPONENT   0000000000000000 / 0
+    CKA_KEY_TYPE          00007f147c04afc0 / 8
+    CKA_EC_POINT          0000000000000000 / 0
+[out] pTemplate[6]: 
+    CKA_CLASS             CKO_PUBLIC_KEY           
+    CKA_MODULUS           0000000000000000 / -1
+    CKA_MODULUS_BITS      00007f147c04c860 / 8
+    00000000  80 01 00 00 00 00 00 00                          ........        
+    CKA_PUBLIC_EXPONENT   0000000000000000 / -1
+    CKA_KEY_TYPE          CKK_EC              
+    CKA_EC_POINT          0000000000000000 / 99
+Returned:  18 CKR_ATTRIBUTE_TYPE_INVALID
+
+200: C_GetAttributeValue
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.760
+[in] hSession = 0x90bfe
+[in] hObject = 0x3ca93a8a
+[in] pTemplate[1]: 
+    CKA_EC_POINT          00007f147c049900 / 99
+[out] pTemplate[1]: 
+    CKA_EC_POINT          00007f147c049900 / 99
+    00000000  04 61 04 3C F5 D5 A3 51 FE 41 68 DB F6 FE 4E D3  .a.<...Q.Ah...N.
+    00000010  80 0E 45 74 6A 99 BE 19 06 B9 F3 86 22 A6 35 3F  ..Etj.......".5?
+    00000020  F6 AB A2 C7 89 31 DC 1D 3F D1 ED 7D C2 E9 5F A6  .....1..?..}.._.
+    00000030  95 57 7D 02 F0 62 06 43 36 CE 3D 80 92 3B 5D 1A  .W}..b.C6.=..;].
+    00000040  ED C9 56 14 18 0F 6F E5 BC 0F C4 21 B4 09 F1 8C  ..V...o....!....
+    00000050  03 CC BE CA 40 E7 05 D2 37 15 1A 60 9C 9E AA 91  ....@...7..`....
+    00000060  98 3E 3A                                         .>:             
+Returned:  0 CKR_OK
+
+201: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.775
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+202: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.775
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+203: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.775
+[in] hSession = 0x90bfe
+[in] pTemplate[2]: 
+    CKA_ID                00007f147c04c860 / 20
+    00000000  BE A6 FA 17 1C F5 93 D5 7C 9B 0B 11 D6 B8 D1 C1  ........|.......
+    00000010  60 65 1B 08                                      `e..            
+    CKA_CLASS             CKO_PRIVATE_KEY          
+Returned:  0 CKR_OK
+
+204: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.819
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x1
+Object 0xdfe04b07 matches
+Returned:  0 CKR_OK
+
+205: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.819
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+206: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.820
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+207: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.820
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+208: C_SignInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.820
+[in] hSession = 0x90bfe
+[in] pMechanism->type = CKM_ECDSA                              
+[in] pMechanism->pParameter = NULL
+[in] hKey = 0xdfe04b07
+Returned:  0 CKR_OK
+
+209: C_Sign
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.820
+[in] hSession = 0x90bfe
+[in] pData[ulDataLen] 00007f149e9ee058 / 48
+    00000000  BF D7 6C 0E BB D0 06 FE E5 83 41 05 47 C1 88 7B  ..l.......A.G..{
+    00000010  02 92 BE 76 D5 82 D9 6C 24 2D 2A 79 27 23 E3 FD  ...v...l$-*y'#..
+    00000020  6F D0 61 F9 D5 CF D1 3B 8F 96 13 58 E6 AD BA 4A  o.a....;...X...J
+[out] pSignature[*pulSignatureLen] NULL [size : 0x60 (96)]
+Returned:  0 CKR_OK
+
+210: C_Sign
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.833
+[in] hSession = 0x90bfe
+[in] pData[ulDataLen] 00007f149e9ee058 / 48
+    00000000  BF D7 6C 0E BB D0 06 FE E5 83 41 05 47 C1 88 7B  ..l.......A.G..{
+    00000010  02 92 BE 76 D5 82 D9 6C 24 2D 2A 79 27 23 E3 FD  ...v...l$-*y'#..
+    00000020  6F D0 61 F9 D5 CF D1 3B 8F 96 13 58 E6 AD BA 4A  o.a....;...X...J
+[out] pSignature[*pulSignatureLen] 00007f147c04b8a0 / 96
+    00000000  9F 08 5A 96 F6 43 4F 3A 10 2B C6 1D F1 42 CA 0D  ..Z..CO:.+...B..
+    00000010  60 5B CE DE 7C 39 27 89 4B 16 C6 E3 49 7C 5D 75  `[..|9'.K...I|]u
+    00000020  5A F7 16 2D 46 9E FB 76 6D 0B 54 0B 76 BD 57 08  Z..-F..vm.T.v.W.
+    00000030  37 E0 AA AA EB D4 91 A3 A8 D3 94 C1 D6 B2 1C 8C  7...............
+    00000040  8D AB 84 6F 1C 36 38 45 2F E4 A1 D2 17 56 07 95  ...o.68E/....V..
+    00000050  7A 15 02 7E 4C 93 8F 61 7F 20 F2 75 4D 41 D0 AF  z..~L..a .uMA..
+Returned:  0 CKR_OK
+
+211: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.851
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+212: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.851
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+213: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.852
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+214: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.852
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+215: C_DestroyObject
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.852
+[in] hSession = 0x90bfe
+[in] hObject = 0x3ca93a8a
+Returned:  0 CKR_OK
+
+216: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.866
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+217: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.866
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+218: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.866
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+219: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.866
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+220: C_DestroyObject
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.866
+[in] hSession = 0x90bfe
+[in] hObject = 0xdfe04b07
+Returned:  0 CKR_OK
+
+221: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.881
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+222: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.881
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+223: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.881
+[in] hSession = 0x90bfe
+[in] pTemplate[1]: 
+    CKA_ID                00007f147c04c960 / 20
+    00000000  D3 4F FD E8 AC A8 D7 FE EE F2 9F E3 6F B5 08 42  .O..........o..B
+    00000010  66 1E 50 C6                                      f.P.            
+Returned:  0 CKR_OK
+
+224: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.926
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x0
+Returned:  0 CKR_OK
+
+225: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.926
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+226: C_GenerateKeyPair
+P:372727; T:0x139726537311936 2026-11-18 22:25:55.926
+[in] hSession = 0x90bfe
+[in] pMechanism->type = CKM_EC_EDWARDS_KEY_PAIR_GEN            
+[in] pMechanism->pParameter = NULL
+[in] pPublicKeyTemplate[9]: 
+    CKA_CLASS             CKO_PUBLIC_KEY           
+    CKA_ID                00007f14b8001b20 / 20
+    00000000  D3 4F FD E8 AC A8 D7 FE EE F2 9F E3 6F B5 08 42  .O..........o..B
+    00000010  66 1E 50 C6                                      f.P.            
+    CKA_VERIFY            True
+    CKA_ENCRYPT           False
+    CKA_WRAP              False
+    CKA_TOKEN             True
+    CKA_KEY_TYPE          CKK_EC_EDWARDS      
+    CKA_EC_PARAMS         00007f14c8002230 / 5
+    00000000  06 03 2B 65 71                                   ..+eq           
+    CKA_LABEL             00007f14c8006130 / 23
+    7075626C 69632D6B 65792D6C 6162656C 2D616C67 2D3136
+     p u b l  i c - k  e y - l  a b e l  - a l g  - 1 6
+[in] pPrivateKeyTemplate[9]: 
+    CKA_CLASS             CKO_PRIVATE_KEY          
+    CKA_ID                00007f147c04c920 / 20
+    00000000  D3 4F FD E8 AC A8 D7 FE EE F2 9F E3 6F B5 08 42  .O..........o..B
+    00000010  66 1E 50 C6                                      f.P.            
+    CKA_SIGN              True
+    CKA_DECRYPT           False
+    CKA_TOKEN             True
+    CKA_PRIVATE           True
+    CKA_SENSITIVE         True
+    CKA_KEY_TYPE          CKK_EC_EDWARDS      
+    CKA_LABEL             00007f147c04c900 / 24
+    70726976 6174652D 6B65792D 6C616265 6C2D616C 672D3136
+     p r i v  a t e -  k e y -  l a b e  l - a l  g - 1 6
+[out] hPublicKey = 0x43a3564a
+[out] hPrivateKey = 0xed07cf80
+Returned:  0 CKR_OK
+
+227: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.031
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+228: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.031
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+229: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.031
+[in] hSession = 0x90bfe
+[in] pTemplate[2]: 
+    CKA_ID                00007f147c04afa0 / 20
+    00000000  D3 4F FD E8 AC A8 D7 FE EE F2 9F E3 6F B5 08 42  .O..........o..B
+    00000010  66 1E 50 C6                                      f.P.            
+    CKA_CLASS             CKO_PUBLIC_KEY           
+Returned:  0 CKR_OK
+
+230: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.076
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x1
+Object 0x43a3564a matches
+Returned:  0 CKR_OK
+
+231: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.076
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+232: C_GetAttributeValue
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.076
+[in] hSession = 0x90bfe
+[in] hObject = 0x43a3564a
+[in] pTemplate[6]: 
+    CKA_CLASS             00007f147c04afa0 / 8
+    CKA_MODULUS           0000000000000000 / 0
+    CKA_MODULUS_BITS      00007f147c04b0f0 / 8
+    CKA_PUBLIC_EXPONENT   0000000000000000 / 0
+    CKA_KEY_TYPE          00007f147c04e4c0 / 8
+    CKA_EC_POINT          0000000000000000 / 0
+[out] pTemplate[6]: 
+    CKA_CLASS             CKO_PUBLIC_KEY           
+    CKA_MODULUS           0000000000000000 / -1
+    CKA_MODULUS_BITS      00007f147c04b0f0 / 8
+    00000000  C0 01 00 00 00 00 00 00                          ........        
+    CKA_PUBLIC_EXPONENT   0000000000000000 / -1
+    CKA_KEY_TYPE          CKK_EC_EDWARDS      
+    CKA_EC_POINT          0000000000000000 / 59
+Returned:  18 CKR_ATTRIBUTE_TYPE_INVALID
+
+233: C_GetAttributeValue
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.131
+[in] hSession = 0x90bfe
+[in] hObject = 0x43a3564a
+[in] pTemplate[1]: 
+    CKA_EC_POINT          00007f14c0003680 / 59
+[out] pTemplate[1]: 
+    CKA_EC_POINT          00007f14c0003680 / 59
+    00000000  04 39 98 D1 D7 DD FF D1 28 FC 50 59 33 BA 9C 4A  .9......(.PY3..J
+    00000010  E4 1C 23 B2 D2 FE 02 76 31 6D B0 80 2D B8 14 3C  ..#....v1m..-..<
+    00000020  D5 43 61 98 F0 68 FF D3 37 44 DC E8 A7 72 FB 78  .Ca..h..7D...r.x
+    00000030  4A CE 75 13 66 8A 82 D0 16 DA 00                 J.u.f......     
+Returned:  0 CKR_OK
+
+234: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.146
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+235: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.146
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+236: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.146
+[in] hSession = 0x90bfe
+[in] pTemplate[2]: 
+    CKA_ID                00007f147c04b0f0 / 20
+    00000000  D3 4F FD E8 AC A8 D7 FE EE F2 9F E3 6F B5 08 42  .O..........o..B
+    00000010  66 1E 50 C6                                      f.P.            
+    CKA_CLASS             CKO_PRIVATE_KEY          
+Returned:  0 CKR_OK
+
+237: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.190
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x1
+Object 0xed07cf80 matches
+Returned:  0 CKR_OK
+
+238: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.190
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+239: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.191
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+240: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.191
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+241: C_SignInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.191
+[in] hSession = 0x90bfe
+[in] pMechanism->type = CKM_EDDSA                              
+[in] pMechanism->pParameter[ulParameterLen] 00007f149e9ed728 / 24
+    00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+    00000010  01 00 00 00 00 00 00 00                          ........        
+[in] hKey = 0xed07cf80
+Returned:  0 CKR_OK
+
+242: C_Sign
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.191
+[in] hSession = 0x90bfe
+[in] pData[ulDataLen] 00007f14640023d0 / 12
+    00000000  48 65 6C 6C 6F 20 57 6F 72 6C 64 21              Hello World!    
+[out] pSignature[*pulSignatureLen] NULL [size : 0x72 (114)]
+Returned:  0 CKR_OK
+
+243: C_Sign
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.204
+[in] hSession = 0x90bfe
+[in] pData[ulDataLen] 00007f14640023d0 / 12
+    00000000  48 65 6C 6C 6F 20 57 6F 72 6C 64 21              Hello World!    
+[out] pSignature[*pulSignatureLen] 00007f14c8002730 / 114
+    00000000  3E 6B B5 AE 2C C4 2B 96 50 B6 28 6F 5B 71 18 AB  >k..,.+.P.(o[q..
+    00000010  26 49 A6 96 D5 EB 40 92 C0 75 2F 55 FC 69 CB 01  &I....@..u/U.i..
+    00000020  CD 3F FC AF C9 72 F5 D8 5A 0A 83 8D A5 64 04 EA  .?...r..Z....d..
+    00000030  C0 4E 6A 2F 46 02 9E 84 00 43 08 CD C7 B7 95 1F  .Nj/F....C......
+    00000040  41 8C C6 D7 F7 84 A3 72 B0 79 D0 9A 8C EF DA BC  A......r.y......
+    00000050  3B 54 82 B2 26 BE BC CF 2D 04 A4 66 2D 45 E6 03  ;T..&...-..f-E..
+    00000060  DC 1C 6D 13 71 D7 7A FD BE B7 B4 EB 5A E2 3C 91  ..m.q.z.....Z.<.
+    00000070  2C 00                                            ,.              
+Returned:  0 CKR_OK
+
+244: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.227
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+245: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.227
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+246: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.228
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+247: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.228
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+248: C_DestroyObject
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.228
+[in] hSession = 0x90bfe
+[in] hObject = 0x43a3564a
+Returned:  0 CKR_OK
+
+249: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.242
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+250: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.242
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+251: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.243
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+252: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.243
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+253: C_DestroyObject
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.243
+[in] hSession = 0x90bfe
+[in] hObject = 0xed07cf80
+Returned:  0 CKR_OK
+
+254: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.257
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+255: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.257
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+256: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.257
+[in] hSession = 0x90bfe
+[in] pTemplate[1]: 
+    CKA_ID                00007f147c04e480 / 20
+    00000000  1F 85 CF FA 1E 8D 92 74 24 7E 4A 97 5C B2 0A E5  .......t$~J.\...
+    00000010  1D 09 C8 A3                                      ....            
+Returned:  0 CKR_OK
+
+257: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.300
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x0
+Returned:  0 CKR_OK
+
+258: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.300
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+259: C_GenerateKeyPair
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.300
+[in] hSession = 0x90bfe
+[in] pMechanism->type = CKM_EC_EDWARDS_KEY_PAIR_GEN            
+[in] pMechanism->pParameter = NULL
+[in] pPublicKeyTemplate[9]: 
+    CKA_CLASS             CKO_PUBLIC_KEY           
+    CKA_ID                00007f147c049990 / 20
+    00000000  1F 85 CF FA 1E 8D 92 74 24 7E 4A 97 5C B2 0A E5  .......t$~J.\...
+    00000010  1D 09 C8 A3                                      ....            
+    CKA_VERIFY            True
+    CKA_ENCRYPT           False
+    CKA_WRAP              False
+    CKA_TOKEN             True
+    CKA_KEY_TYPE          CKK_EC_EDWARDS      
+    CKA_EC_PARAMS         00007f14c8006130 / 5
+    00000000  06 03 2B 65 70                                   ..+ep           
+    CKA_LABEL             00007f147c04b0f0 / 23
+    7075626C 69632D6B 65792D6C 6162656C 2D616C67 2D3135
+     p u b l  i c - k  e y - l  a b e l  - a l g  - 1 5
+[in] pPrivateKeyTemplate[9]: 
+    CKA_CLASS             CKO_PRIVATE_KEY          
+    CKA_ID                00007f14c8007180 / 20
+    00000000  1F 85 CF FA 1E 8D 92 74 24 7E 4A 97 5C B2 0A E5  .......t$~J.\...
+    00000010  1D 09 C8 A3                                      ....            
+    CKA_SIGN              True
+    CKA_DECRYPT           False
+    CKA_TOKEN             True
+    CKA_PRIVATE           True
+    CKA_SENSITIVE         True
+    CKA_KEY_TYPE          CKK_EC_EDWARDS      
+    CKA_LABEL             00007f147c04e420 / 24
+    70726976 6174652D 6B65792D 6C616265 6C2D616C 672D3135
+     p r i v  a t e -  k e y -  l a b e  l - a l  g - 1 5
+[out] hPublicKey = 0x83fac11c
+[out] hPrivateKey = 0x27bcc20c
+Returned:  0 CKR_OK
+
+260: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.365
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+261: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.365
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+262: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.365
+[in] hSession = 0x90bfe
+[in] pTemplate[2]: 
+    CKA_ID                00007f147c04e4c0 / 20
+    00000000  1F 85 CF FA 1E 8D 92 74 24 7E 4A 97 5C B2 0A E5  .......t$~J.\...
+    00000010  1D 09 C8 A3                                      ....            
+    CKA_CLASS             CKO_PUBLIC_KEY           
+Returned:  0 CKR_OK
+
+263: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.410
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x1
+Object 0x83fac11c matches
+Returned:  0 CKR_OK
+
+264: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.410
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+265: C_GetAttributeValue
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.410
+[in] hSession = 0x90bfe
+[in] hObject = 0x83fac11c
+[in] pTemplate[6]: 
+    CKA_CLASS             00007f147c050240 / 8
+    CKA_MODULUS           0000000000000000 / 0
+    CKA_MODULUS_BITS      00007f147c0079b0 / 8
+    CKA_PUBLIC_EXPONENT   0000000000000000 / 0
+    CKA_KEY_TYPE          00007f147c04c8c0 / 8
+    CKA_EC_POINT          0000000000000000 / 0
+[out] pTemplate[6]: 
+    CKA_CLASS             CKO_PUBLIC_KEY           
+    CKA_MODULUS           0000000000000000 / -1
+    CKA_MODULUS_BITS      00007f147c0079b0 / 8
+    00000000  00 02 00 00 00 00 00 00                          ........        
+    CKA_PUBLIC_EXPONENT   0000000000000000 / -1
+    CKA_KEY_TYPE          CKK_EC_EDWARDS      
+    CKA_EC_POINT          0000000000000000 / 34
+Returned:  18 CKR_ATTRIBUTE_TYPE_INVALID
+
+266: C_GetAttributeValue
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.464
+[in] hSession = 0x90bfe
+[in] hObject = 0x83fac11c
+[in] pTemplate[1]: 
+    CKA_EC_POINT          00007f147c009610 / 34
+[out] pTemplate[1]: 
+    CKA_EC_POINT          00007f147c009610 / 34
+    00000000  04 20 7B 78 39 C7 55 F6 9F 86 32 7F DB 62 F5 AB  . {x9.U...2.b..
+    00000010  D9 C8 86 9C DD 2E 9E C4 0C 6F A0 DF FC 17 28 44  .........o....(D
+    00000020  69 D0                                            i.              
+Returned:  0 CKR_OK
+
+267: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.479
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+268: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.479
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+269: C_FindObjectsInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.479
+[in] hSession = 0x90bfe
+[in] pTemplate[2]: 
+    CKA_ID                00007f147c04e420 / 20
+    00000000  1F 85 CF FA 1E 8D 92 74 24 7E 4A 97 5C B2 0A E5  .......t$~J.\...
+    00000010  1D 09 C8 A3                                      ....            
+    CKA_CLASS             CKO_PRIVATE_KEY          
+Returned:  0 CKR_OK
+
+270: C_FindObjects
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.524
+[in] hSession = 0x90bfe
+[in] ulMaxObjectCount = 0xa
+[out] ulObjectCount = 0x1
+Object 0x27bcc20c matches
+Returned:  0 CKR_OK
+
+271: C_FindObjectsFinal
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.524
+[in] hSession = 0x90bfe
+Returned:  0 CKR_OK
+
+272: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.525
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+273: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.525
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+274: C_SignInit
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.525
+[in] hSession = 0x90bfe
+[in] pMechanism->type = CKM_EDDSA                              
+[in] pMechanism->pParameter = NULL
+[in] hKey = 0x27bcc20c
+Returned:  0 CKR_OK
+
+275: C_Sign
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.525
+[in] hSession = 0x90bfe
+[in] pData[ulDataLen] 00007f1464001ac0 / 12
+    00000000  48 65 6C 6C 6F 20 57 6F 72 6C 64 21              Hello World!    
+[out] pSignature[*pulSignatureLen] NULL [size : 0x40 (64)]
+Returned:  0 CKR_OK
+
+276: C_Sign
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.538
+[in] hSession = 0x90bfe
+[in] pData[ulDataLen] 00007f1464001ac0 / 12
+    00000000  48 65 6C 6C 6F 20 57 6F 72 6C 64 21              Hello World!    
+[out] pSignature[*pulSignatureLen] 00007f14c0003770 / 64
+    00000000  4D EC 79 9C C1 2E 12 EF 76 81 D9 D0 1C 46 56 21  M.y.....v....FV!
+    00000010  F7 BC A5 29 70 D4 9A F8 2C B5 AA 8A 95 08 EC B4  ...)p...,.......
+    00000020  B3 8F 9C 1E 37 9B CA E6 04 9F D4 1E 0E 10 1A A3  ....7...........
+    00000030  44 56 88 08 4B FB D5 77 96 91 64 8F 65 74 4D 01  DV..K..w..d.etM.
+Returned:  0 CKR_OK
+
+277: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.552
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+278: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.552
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+279: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.553
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+280: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.553
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+281: C_DestroyObject
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.553
+[in] hSession = 0x90bfe
+[in] hObject = 0x83fac11c
+Returned:  0 CKR_OK
+
+282: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.566
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+283: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.566
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+284: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.567
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+285: C_GetSessionInfo
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.567
+[in] hSession = 0x90bfe
+[out] pInfo: 
+      slotID:                  0
+      state:                   3 (           CKS_RW_USER_FUNCTIONS)
+      flags:                   6
+        CKF_RW_SESSION                   
+        CKF_SERIAL_SESSION               
+      ulDeviceError:           0
+Returned:  0 CKR_OK
+
+286: C_DestroyObject
+P:372727; T:0x139726537311936 2026-11-18 22:25:56.567
+[in] hSession = 0x90bfe
+[in] hObject = 0x27bcc20c
+Returned:  0 CKR_OK

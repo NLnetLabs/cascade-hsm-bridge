@@ -145,8 +145,8 @@ fn process_request(
             Operation::Query => query::op(&pool, config, batch_item),
             _ => {
                 let pkcs11conn = pool.get().unwrap();
-                if let Err(err) =
-                    pkcs11conn.ensure_logged_in(AuthPin::new(pin.to_string().into_boxed_str()))
+                if let Err(err) = pkcs11conn
+                    .ensure_logged_in(&pool, AuthPin::new(pin.to_string().into_boxed_str()))
                 {
                     Err((ResultReason::AuthenticationNotSuccessful, err.to_string()))
                 } else {
@@ -169,7 +169,11 @@ fn process_request(
             "Processed batch item operation {} from client {peer_addr} in {}us: {}",
             batch_item.operation(),
             start.elapsed().as_micros(),
-            if res.is_ok() { "Succeeded" } else { "Failed" },
+            if let Err(err) = &res {
+                format!("Failed (reason: {}, msg: {})", err.0, err.1)
+            } else {
+                "Succeeded".to_string()
+            },
         );
 
         let res_batch_item = match res {

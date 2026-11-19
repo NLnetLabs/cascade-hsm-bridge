@@ -1,0 +1,19 @@
+Using slot 0 with a present token (0x1)                                                                                                                                                        
+Token successfully initialized                                                                                                                                                                 
+Using slot 0 with a present token (0x1)                                                                                                                                                        
+User PIN successfully initialized                                                                                                                                                              
+HSM lib path: Some("/lib64/pkcs11-spy.so")                                                                                                                                                     
+   Compiling cascade-hsm-bridge v0.2.0-beta3-dev (/data/home/ximon/src/cascade/cascade-hsm-bridge)                                                                                             
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.44s                                                                                                                        
+Cascade-HSM-Bridge is running at 127.0.0.1:32903                                                                                                                                               
+KMIP server supports versions: 1.2,1.1,1.0
+test_keygen_signing(RsaSha256 { bits: 1024 })...ok
+test_keygen_signing(RsaSha256 { bits: 2048 })...ok
+test_keygen_signing(RsaSha512 { bits: 1024 })...ok
+test_keygen_signing(RsaSha512 { bits: 2048 })...ok
+test_keygen_signing(EcdsaP256Sha256)...ok
+test_keygen_signing(EcdsaP384Sha384)...ok
+test_keygen_signing(Ed448)...ok
+test_keygen_signing(Ed25519)...ok
+Stopping Cascade-HSM-Bridge
+

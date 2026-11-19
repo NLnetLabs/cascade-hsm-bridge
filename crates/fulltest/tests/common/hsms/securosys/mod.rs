@@ -14,7 +14,7 @@ use tempfile::TempDir;
 use crate::common::{
     args::Args,
     hsms::{Hsm, Hsms},
-    util::extract_human_readable_kmip_messages,
+    util::rename_file,
 };
 
 pub struct Securosys {
@@ -33,8 +33,6 @@ pub struct Securosys {
     tls_client_key: Vec<u8>,
 
     report_dir: Option<PathBuf>,
-
-    hex_to_txt_bin_path: Option<PathBuf>,
 
     securosys_log_path: Option<PathBuf>,
 }
@@ -128,7 +126,6 @@ primus: {{
                 tls_client_cert: vec![],
                 tls_client_key: vec![],
                 report_dir: args.report_dir().cloned(),
-                hex_to_txt_bin_path: args.hex_to_txt_bin_path().cloned(),
                 securosys_log_path: Some(securosys_log_path),
             }))
         } else {
@@ -152,7 +149,6 @@ primus: {{
                 tls_client_cert: std::fs::read(tls_client_cert_path).unwrap(),
                 tls_client_key: std::fs::read(tls_client_key_path).unwrap(),
                 report_dir: args.report_dir().cloned(),
-                hex_to_txt_bin_path: args.hex_to_txt_bin_path().cloned(),
                 securosys_log_path: None,
             }))
         }
@@ -163,16 +159,7 @@ impl Drop for Securosys {
     fn drop(&mut self) {
         if let Some(log_path) = &self.securosys_log_path {
             if let Some(report_dir) = &self.report_dir {
-                std::fs::rename(log_path, report_dir.join("securosys.log")).unwrap();
-
-                let kmip_client_log = report_dir.join("test.log");
-                if let Some(hex_to_txt_bin_path) = &self.hex_to_txt_bin_path {
-                    extract_human_readable_kmip_messages(
-                        &kmip_client_log,
-                        hex_to_txt_bin_path,
-                        report_dir,
-                    );
-                }
+                rename_file(log_path, &report_dir.join("securosys.log"));
             } else if std::thread::panicking() {
                 if let Ok(log) = std::fs::read_to_string(log_path) {
                     println!("securosys log:\n{log}");

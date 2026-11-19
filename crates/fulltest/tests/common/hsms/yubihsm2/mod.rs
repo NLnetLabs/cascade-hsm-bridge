@@ -10,6 +10,7 @@ use tempfile::TempDir;
 use crate::common::{
     args::Args,
     hsms::{Hsm, Hsms},
+    util::rename_file,
 };
 
 pub struct Yubihsm2 {
@@ -70,7 +71,7 @@ timeout = 5
 impl Drop for Yubihsm2 {
     fn drop(&mut self) {
         if let Some(report_dir) = &self.report_dir {
-            std::fs::rename(&self.log_path, report_dir.join("yubihsm2.log")).unwrap();
+            rename_file(&self.log_path, &report_dir.join("yubihsm2.log"));
         } else if std::thread::panicking() {
             if let Ok(log) = std::fs::read_to_string(&self.log_path) {
                 println!("yubihsm2 log:\n{log}");

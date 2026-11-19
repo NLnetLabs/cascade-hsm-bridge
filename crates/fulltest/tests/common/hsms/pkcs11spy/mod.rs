@@ -13,6 +13,7 @@ use tempfile::TempDir;
 use crate::common::{
     args::Args,
     hsms::{Hsm, Hsms},
+    util::rename_file,
 };
 
 pub struct Pkcs11Spy {
@@ -100,7 +101,7 @@ impl Drop for Pkcs11Spy {
     fn drop(&mut self) {
         if let Some(pkcs11spy_log_path) = &self.pkcs11spy_log_path {
             if let Some(report_dir) = &self.report_dir {
-                std::fs::rename(pkcs11spy_log_path, report_dir.join("pkcs11spy.log")).unwrap();
+                rename_file(pkcs11spy_log_path, &report_dir.join("pkcs11spy.log"));
             } else if std::thread::panicking() {
                 if let Ok(log) = std::fs::read_to_string(pkcs11spy_log_path) {
                     println!("pkcs11spy log:\n{log}");

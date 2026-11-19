@@ -1,4 +1,5 @@
 use std::{
+    ffi::OsString,
     io::Write,
     path::Path,
     process::{Command, Stdio},
@@ -6,7 +7,7 @@ use std::{
 
 pub fn extract_human_readable_kmip_messages(
     in_log_path: &Path,
-    hex_to_txt_bin_path: &Path,
+    hex_to_txt_bin_path: Option<&Path>,
     report_dir: &Path,
 ) {
     // Open a report file for writing.
@@ -35,12 +36,25 @@ pub fn extract_human_readable_kmip_messages(
 
             // Convert it to human readable text.
             // Based on: https://doc.rust-lang.org/std/process/struct.Stdio.html#method.piped
-            let mut hex_to_txt = Command::new(hex_to_txt_bin_path)
+
+            // Use `hex_to_txt` from the $PATH if no path given.
+            let hex_to_txt = hex_to_txt_bin_path
+                .map(|p| p.as_os_str().to_os_string())
+                .unwrap_or_else(|| OsString::from("hex_to_txt"));
+
+            let res = Command::new(hex_to_txt)
                 .args(["-"])
                 .stdin(Stdio::piped())
                 .stdout(Stdio::piped())
-                .spawn()
-                .expect("hex_to_txt command should start");
+                .spawn();
+
+            let Ok(mut hex_to_txt) = res else {
+                println!(
+                    "Skipping human-readable KMIP message generation: {}",
+                    res.unwrap_err()
+                );
+                return;
+            };
 
             let mut stdin = hex_to_txt.stdin.take().unwrap();
             let bytes_to_write = kmip_hex_bytes.as_bytes().to_vec();
@@ -56,6 +70,17 @@ pub fn extract_human_readable_kmip_messages(
             writeln!(kmip_report, "Raw KMIP:\n{kmip_hex_bytes}").unwrap();
             writeln!(kmip_report, "Rendered:\n{human_readable}").unwrap();
             writeln!(kmip_report).unwrap();
+        }
+    }
+}
+
+pub fn rename_file(src: &Path, dst: &Path) {
+    println!("Renaming {} -> {}", src.display(), dst.display());
+    if let Err(err) = std::fs::rename(src, dst) {
+        if err.kind() == std::io::ErrorKind::CrossesDevices {
+            println!("Cannot rename across devices, copying and deleting instead.");
+            std::fs::copy(src, dst).unwrap();
+            std::fs::remove_file(src).unwrap();
         }
     }
 }

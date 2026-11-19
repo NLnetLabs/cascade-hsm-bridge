@@ -55,27 +55,33 @@ Test reports like the ones stored at [`integration-test-reports`](../../integrat
 can be generated using the following commands:
 
 ```sh
-cargo test --package fulltest -- <HSM NAME> --report-dir <OUTPUT DIR> --hex-to-txt-bin-path <PATH/TO/hex_to_txt> --pkcs11spy
+cargo test --package fulltest -- <HSM NAME> --report-dir auto --pkcs11spy
 ```
 
-_(the `--pkcs11spy` option will have no effect when the HSM under test is
-communicated with directly via KMIP)_
+The `--pkcs11spy` option will have no effect when the HSM under test is
+communicated with directly via KMIP.
+
+Note: If the `hex_to_txt` binary is not in your $PATH a human readable
+`kmip.log` file will not be created. Specify `--hex-to-txt-bin-path` to
+specify where the binary can be found if necessary.
 
 ## Diagnosing issues
 
 Set the `RUST_LOG` environment variable to `debug` or `trace` for increased
 KMIP client logging, including KMIP messages in hexadecimal form, e.g.:
-
-Provide the `--report-dir` and `--hex-to-txt-bin-path` arguments to cause
-the test to capture the Cascade-HSM-Bridge log to a file and automatically
-extract the KMIP messages and use [hex-to-txt](https://github.com/NLnetLabs/kmip-protocol/tree/main/examples/hex_to_txt)
-to render them in human readable form to a file called `kmip.log` in the
+When the
+[`hex-to-txt`](https://github.com/NLnetLabs/kmip-protocol/tree/main/examples/h
+ex_to_txt) binary is in your $PATH, or specified explicitly via
+`--hex-to-txt-bin-path`, and `--report-dir` is specified,  the test to capture
+the Cascade-HSM-Bridge log to a file and automatically KMIP messages will be
+extracted renndered in human readable form to a file called `kmip.log` in the
 chosen report directory.
 
-Provide the --`pkcs11spy` argument to cause tests of PKCS#11 modules to
-load the chosen module via the [OpenSC pkcs11-spy module](https://github.com/OpenSC/OpenSC/wiki/Using-OpenSC#pkcs-11-spy)
-to produce a log of the PKCS#11 function calls made by Cascade-HSM-Bridge
-and the results of those calls.
+Providing the --`pkcs11spy` argument will cause
+the chosen PKCS#11 module to be loaded via [OpenSC
+pkcs11-spy](https://github.com/OpenSC/OpenSC/wiki/Using-OpenSC#pkcs-11-spy)
+and PKCS#11 function calls to be logged to a file called `pkcs11spy.log` in
+the chosen report directory.
 
 ## Why does this test not live directly in the Cascade-HSM-Bridge crate?
 

@@ -13,7 +13,7 @@ use tempfile::TempDir;
 use crate::common::{
     args::Args,
     hsms::{Hsm, Hsms},
-    util::extract_human_readable_kmip_messages,
+    util::rename_file,
 };
 
 pub struct FortanixDSM {
@@ -28,8 +28,6 @@ pub struct FortanixDSM {
     password: String,
 
     report_dir: Option<PathBuf>,
-
-    hex_to_txt_bin_path: Option<PathBuf>,
 }
 
 impl FortanixDSM {
@@ -106,7 +104,6 @@ level = "trace"
             username,
             password,
             report_dir: args.report_dir().cloned(),
-            hex_to_txt_bin_path: args.hex_to_txt_bin_path().cloned(),
         }))
     }
 }
@@ -115,16 +112,7 @@ impl Drop for FortanixDSM {
     fn drop(&mut self) {
         if let Some(fortanix_log_path) = &self.fortanix_log_path {
             if let Some(report_dir) = &self.report_dir {
-                std::fs::rename(fortanix_log_path, report_dir.join("fortanix.log")).unwrap();
-
-                let kmip_client_log = report_dir.join("test.log");
-                if let Some(hex_to_txt_bin_path) = &self.hex_to_txt_bin_path {
-                    extract_human_readable_kmip_messages(
-                        &kmip_client_log,
-                        hex_to_txt_bin_path,
-                        report_dir,
-                    );
-                }
+                rename_file(fortanix_log_path, &report_dir.join("fortanix.log"));
             } else if std::thread::panicking() {
                 if let Ok(log) = std::fs::read_to_string(fortanix_log_path) {
                     println!("fortanix log:\n{log}");

@@ -29,12 +29,13 @@ use domain_kmip::dep::domain::crypto::{
 use domain_kmip::dep::kmip_protocol::net::{ConnectionSettings, sync_pool::ConnPool};
 use domain_kmip::dep::kmip_protocol::types::request::RequestPayload;
 use domain_kmip::dep::kmip_protocol::types::response::ResponsePayload;
+use io_redirect::redirect_std_to_path;
 use tracing_subscriber::{EnvFilter, filter::LevelFilter};
 
 use common::daemon::Daemon;
 use common::hsms::*;
 
-use crate::common::args::Args;
+use crate::common::{args::Args, util::extract_human_readable_kmip_messages};
 
 //------------ main ----------------------------------------------------------
 
@@ -43,13 +44,15 @@ fn main() {
         .install_default()
         .unwrap();
 
-    let args = Args::parse();
+    let args = Args::parse().process_report_dir();
 
     // Allocate a temporary directory for the daemon.
     let temp_dir = tempfile::tempdir().unwrap_or_else(|err| {
         eprintln!("Could not create a temporary directory: {err}");
         std::process::exit(1);
     });
+
+    let mut kmip_client_log = None;
 
     if let Some(report_dir) = args.report_dir() {
         if report_dir.exists() {
@@ -61,11 +64,25 @@ fn main() {
         }
         std::fs::create_dir_all(report_dir).unwrap();
 
-        let file_logger = tracing_appender::rolling::never(report_dir, "test.log");
-        // let (non_blocking_appender, _guard) = tracing_appender::non_blocking(file_logger);
+        println!(
+            "Report will be generated in: {}",
+            report_dir.canonicalize().unwrap().display()
+        );
+
+        let test_log_path = report_dir.join("test.log");
+        println!("Redirecting stdout/stderr to {}", test_log_path.display());
+        redirect_std_to_path(&test_log_path, false).unwrap();
+
+        let kmip_client_log_path = report_dir.join("client.log");
+        let file_logger = tracing_appender::rolling::never(
+            kmip_client_log_path.parent().unwrap(),
+            kmip_client_log_path.file_name().unwrap(),
+        );
+        kmip_client_log = Some(kmip_client_log_path);
+
         tracing_subscriber::fmt()
             .with_max_level(LevelFilter::TRACE)
-            .with_writer(file_logger) //non_blocking_appender)
+            .with_writer(file_logger)
             .init();
     } else {
         tracing_subscriber::fmt()
@@ -94,7 +111,7 @@ fn main() {
 
     // If the HSM is a PKCS#11 module launch Cascade-HSM-Bridge to serve
     // access to it via the KMIP interface.
-    let (_daemon, conn_settings) = if hsm.lib_path().is_some() {
+    let (daemon, conn_settings) = if hsm.lib_path().is_some() {
         println!("HSM lib path: {:?}", hsm.lib_path());
         let daemon =
             Daemon::launch(&temp_dir, &args, hsm.current_dir(), &hsm).unwrap_or_else(|err| {
@@ -146,6 +163,7 @@ fn main() {
     )
     .unwrap();
 
+    // Query the protocol versions supported by the KMIP server.
     let request = RequestPayload::DiscoverVersions(vec![]);
     let mut client = conn_pool.get().unwrap();
     let response = client.do_request_payload(request).unwrap();
@@ -163,6 +181,7 @@ fn main() {
         }
     }
 
+    // Test each algorithm / size combination of interest.
     let algs_to_test = [
         GenerateParams::RsaSha256 { bits: 1024 },
         GenerateParams::RsaSha256 { bits: 2048 },
@@ -175,13 +194,27 @@ fn main() {
     ];
 
     let mut failing_algs = vec![];
-
     for alg in &algs_to_test {
         if !test_keygen_signing(&conn_pool, alg.clone()) {
             failing_algs.push(alg.algorithm().to_mnemonic_str().unwrap());
         }
     }
 
+    // If there is no Cascade-HSM-Bridge instance, post-process the client log
+    // instead to create a human readable KMIP message log.
+    if daemon.is_none() {
+        if let Some(kmip_client_log) = kmip_client_log {
+            if let Some(report_dir) = args.report_dir() {
+                extract_human_readable_kmip_messages(
+                    &kmip_client_log,
+                    args.hex_to_txt_bin_path().map(|p| p.as_path()),
+                    report_dir,
+                );
+            }
+        }
+    }
+
+    // Panic if any of the tests failed.
     if !failing_algs.is_empty() {
         let failing_algs_csv = failing_algs.join(", ");
         panic!(

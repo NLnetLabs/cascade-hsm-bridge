@@ -1,11 +1,14 @@
 use std::path::PathBuf;
 
+use chrono::Local;
 use clap::Parser;
 
 #[derive(Parser)]
 #[command(version, about, long_about = None)]
 pub struct Args {
     /// Path to write captured logs to.
+    ///
+    /// Set to `auto` to output to `integration-test-reports/YYYY-MM-DD-<HSM NAME>`.
     #[arg(long, value_parser = clap::value_parser!(PathBuf), default_value = None)]
     report_dir: Option<PathBuf>,
 
@@ -41,5 +44,23 @@ impl Args {
 
     pub fn hsm(&self) -> &str {
         &self.hsm
+    }
+
+    pub fn process_report_dir(mut self) -> Args {
+        if let Some(report_dir) = &self.report_dir {
+            if report_dir.as_os_str() == "auto" {
+                let integration_test_reports_dir = PathBuf::from("../../integration-test-reports");
+                if !integration_test_reports_dir.exists() {
+                    panic!(
+                        "Cannot generate 'auto' report-dir path: '{}' does not exist",
+                        integration_test_reports_dir.display()
+                    );
+                }
+                let date = Local::now().format("%Y-%m-%d").to_string();
+                let hsm = &self.hsm;
+                self.report_dir = Some(integration_test_reports_dir.join(format!("{date}-{hsm}")));
+            }
+        }
+        self
     }
 }

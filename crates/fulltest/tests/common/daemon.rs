@@ -9,7 +9,11 @@ use command_fds::{CommandFdExt, FdMapping};
 use domain_kmip::dep::kmip_protocol::net::{TlsClientAuth, TlsServerAuth};
 use tempfile::TempDir;
 
-use crate::common::{args::Args, hsms::Hsm, util::extract_human_readable_kmip_messages};
+use crate::common::{
+    args::Args,
+    hsms::Hsm,
+    util::{extract_human_readable_kmip_messages, rename_file},
+};
 
 /// A running `cascade-hsm-bridge` daemon.
 pub struct Daemon {
@@ -128,15 +132,13 @@ impl Drop for Daemon {
 
         if let Some(report_dir) = &self.report_dir {
             let stored_log_path = report_dir.join("cascade-hsm-bridge.log");
-            std::fs::rename(&self.log_path, &stored_log_path).unwrap();
+            rename_file(&self.log_path, &stored_log_path);
 
-            if let Some(hex_to_txt_bin_path) = &self.hex_to_txt_bin_path {
-                extract_human_readable_kmip_messages(
-                    &stored_log_path,
-                    hex_to_txt_bin_path,
-                    report_dir,
-                );
-            }
+            extract_human_readable_kmip_messages(
+                &stored_log_path,
+                self.hex_to_txt_bin_path.as_deref(),
+                report_dir,
+            );
         } else if std::thread::panicking() {
             if let Ok(log) = std::fs::read_to_string(&self.log_path) {
                 eprintln!("cascade-hsm-bridge log:\n{log}");

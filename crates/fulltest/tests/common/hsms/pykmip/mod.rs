@@ -20,7 +20,7 @@ use tempfile::TempDir;
 use crate::common::{
     args::Args,
     hsms::{Hsm, Hsms},
-    util::extract_human_readable_kmip_messages,
+    util::rename_file,
 };
 
 pub struct Pykmip {
@@ -35,8 +35,6 @@ pub struct Pykmip {
     tls_private_key: rcgen::KeyPair,
 
     report_dir: Option<PathBuf>,
-
-    hex_to_txt_bin_path: Option<PathBuf>,
 }
 
 impl Pykmip {
@@ -180,7 +178,6 @@ python {run_server_py_path_str}
             tls_cert,
             tls_private_key,
             report_dir: args.report_dir().cloned(),
-            hex_to_txt_bin_path: args.hex_to_txt_bin_path().cloned(),
         }))
     }
 }
@@ -191,17 +188,7 @@ impl Drop for Pykmip {
         let _ = self.process.kill();
 
         if let Some(report_dir) = &self.report_dir {
-            let stored_log_path = report_dir.join("pykmip.log");
-            std::fs::rename(&self.log_path, &stored_log_path).unwrap();
-
-            let kmip_client_log = report_dir.join("test.log");
-            if let Some(hex_to_txt_bin_path) = &self.hex_to_txt_bin_path {
-                extract_human_readable_kmip_messages(
-                    &kmip_client_log,
-                    hex_to_txt_bin_path,
-                    report_dir,
-                );
-            }
+            rename_file(&self.log_path, &report_dir.join("pykmip.log"));
         } else if std::thread::panicking() {
             if let Ok(log) = std::fs::read_to_string(&self.log_path) {
                 println!("pykmip log:\n{log}");

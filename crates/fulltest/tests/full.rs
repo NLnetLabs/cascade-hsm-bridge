@@ -22,13 +22,16 @@ mod common;
 use std::{sync::Arc, time::Duration};
 
 use clap::Parser;
-use domain_kmip::dep::domain::crypto::{
-    openssl,
-    sign::{GenerateParams, SignRaw},
-};
 use domain_kmip::dep::kmip_protocol::net::{ConnectionSettings, sync_pool::ConnPool};
 use domain_kmip::dep::kmip_protocol::types::request::RequestPayload;
 use domain_kmip::dep::kmip_protocol::types::response::ResponsePayload;
+use domain_kmip::dep::{
+    domain::crypto::{
+        openssl,
+        sign::{GenerateParams, SignRaw},
+    },
+    kmip_protocol::net::NetError,
+};
 use io_redirect::redirect_std_to_path;
 use tracing_subscriber::{EnvFilter, filter::LevelFilter};
 
@@ -271,8 +274,19 @@ fn do_test_keygen_signing(pool: &ConnPool, key_params: GenerateParams) -> Result
     // PyKMIP says the object isn't activated so cannot be revoked.
     domain_kmip::destroy(key.public_key_id(), pool.clone())
         .map_err(|err| format!("destroy pub: {err}"))?;
+    // Fortanix DSM destroys  the private key when the public key is destroyed
+    // so revocation of the private key fails.
     domain_kmip::destroy(key.private_key_id(), pool.clone())
-        .map_err(|err| format!("destroy pri: {err}"))?;
+        .or_else(|err| {
+            if matches!(err, NetError::ItemNotFound(_)) {
+                if pool.server_id() == "Fortanix" {
+                    println!("Note: Ignoring ItemNotFound error while attempting to destroy the private key as this is a known issue with Fortanix");
+                    return Ok(());
+                }
+            }
+            Err(err)
+        })
+        .map_err(|err| format!("destroy pri: {err:?}"))?;
 
     Ok(())
 }

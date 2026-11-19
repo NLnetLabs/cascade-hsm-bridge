@@ -93,7 +93,11 @@ impl Pkcs11Spy {
 
 impl std::fmt::Display for Pkcs11Spy {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Pkcs11Spy({})", self.wrapped_hsm)
+        if self.lib_path.is_some() {
+            write!(f, "Pkcs11Spy({})", self.wrapped_hsm)
+        } else {
+            write!(f, "{}", self.wrapped_hsm)
+        }
     }
 }
 

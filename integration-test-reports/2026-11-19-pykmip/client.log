@@ -1,0 +1,946 @@
+[2m2026-11-19T12:56:07.574120Z[0m [34mDEBUG[0m [2mrustls::client::hs[0m[2m:[0m No cached session for IpAddress(V4(Ipv4Addr([127, 0, 0, 1])))
+[2m2026-11-19T12:56:07.574145Z[0m [34mDEBUG[0m [2mrustls::client::hs[0m[2m:[0m Not resuming any session
+[2m2026-11-19T12:56:07.589572Z[0m [35mTRACE[0m [2mrustls::client::hs[0m[2m:[0m Sending ClientHello Message {
+    version: TLSv1_0,
+    payload: Handshake {
+        parsed: HandshakeMessagePayload(
+            ClientHello(
+                ClientHelloPayload {
+                    client_version: TLSv1_2,
+                    random: 7af8366780e248775d487bfc49f5dfada24400cafcb2f5386d9d653470f0ca1f,
+                    session_id: a8d29b7f9e4be04b254fa84c0a2c115d33481b1272e3c83894ce01a597213417,
+                    cipher_suites: [
+                        TLS13_AES_256_GCM_SHA384,
+                        TLS13_AES_128_GCM_SHA256,
+                        TLS13_CHACHA20_POLY1305_SHA256,
+                        TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
+                        TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+                        TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,
+                        TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+                        TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+                        TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256,
+                        TLS_EMPTY_RENEGOTIATION_INFO_SCSV,
+                    ],
+                    compression_methods: [
+                        Null,
+                    ],
+                    extensions: ClientExtensions {
+                        certificate_status_request: Ocsp(
+                            OcspCertificateStatusRequest {
+                                responder_ids: [],
+                                extensions: ,
+                            },
+                        ),
+                        named_groups: [
+                            X25519MLKEM768,
+                            X25519,
+                            secp256r1,
+                            secp384r1,
+                        ],
+                        ec_point_formats: SupportedEcPointFormats {
+                            uncompressed: true,
+                        },
+                        signature_schemes: [
+                            RSA_PKCS1_SHA1,
+                            RSA_PKCS1_SHA256,
+                            RSA_PKCS1_SHA384,
+                            RSA_PKCS1_SHA512,
+                            ECDSA_NISTP256_SHA256,
+                            RSA_PSS_SHA256,
+                            RSA_PSS_SHA384,
+                            RSA_PSS_SHA512,
+                            ED448,
+                            ED25519,
+                        ],
+                        extended_master_secret_request: (),
+                        session_ticket: Request,
+                        supported_versions: SupportedProtocolVersions {
+                            tls13: true,
+                            tls12: true,
+                        },
+                        preshared_key_modes: PskKeyExchangeModes {
+                            psk_dhe: true,
+                            psk: false,
+                        },
+                        key_shares: [
+                            KeyShareEntry {
+                                group: X25519MLKEM768,
+                                payload: 12e5a5a5c99ea31a96dc36500269413cc12438f81c179628fc6bbc1a40961c932a9e6ac609fb0cbc5c28974b86c671141a7a170496b8f8a2c966d942f6184f623802e8e94cafc3c89a8315f4273ab9ab8aaec3cb4667166a297c1984631f922533f74231a4c72e299a95c968173b75b71504b4ca39adfb53aae8baf2e440edcc758eb3c8eaf469d1d796c10a48d3b29ede7c75bfc5113ac1c317323b5036912ed25e7d41b54a74a812b38ce498225acb90e0b596046ac161390b62e81660b5b93c01b32a031e04090bb3084b2f974f69384bc1c98d96565e3484888edb94ba9433cca930d25a80df47b99330ada3b0918a8991a42a3d59f5430f0868d6250b1c6a673b307c19527226ca2930d8ca0fac9a21f659450aafc944c4c4b2aa34564f9d8102676506d808c0f4528f36e60bed8037c1f4c18d493ce438800e9ba7be281194c06f2161a9fe77a25c4b403e0416a1845ccdd6a5c001ce2ae929d50b5ec0422577220fc52a5bd5c214441676af3101a7914d2c231a70b2172188c46c4cbb277b77d53b6db279a3b720249a1bc943016806d45cd12c945df9b4e5b480a1b47f6777631e869bdd87b6783b2dc96a821f565ff2484e2de0bf8eabba063483828230cd52b9c2e999ac07861e2b2b45bbb79feb67deda3e7ef01a139440876b4e6e94292ce5163c011080c82a82f32a46e9af0a449a08b056261a9827657f65c3bf27945d3b219334d40e52495f47e4467a531f5b573059320330263ce9039e3f4c59ecd4790dd3b7ff9c4245f675df924cae13955866a1456387a00744de924a80d4123c620c788b080b77a1eb7c2f2029a54c835260f094b3767adcf93dca226471da086b166b6ee8b2fde6524221159b483a715361611c1055594898362dbdcc53a93921278c1d83e91a2b152adc3489f82c9ac287623e7bc8d8455137f5bfe23c847c7864d4c51623aace9722b926f423a219a9ab9502c1870eb2a94211b36ba9c2ac5926204933a85d89687caa0b7109bac46c1c3b6a14c4b79e5194458c486094582760fa5fa4d55811cba01fb7159103c352dbca2351179927369915c8804b530ff64ba13539b09a945928a2191caec2d7aaa3f1bd8aa12063e6aa391a7da17a1894e372b7f23ba7e855de5941c2061e943c861ee26c4856127b066a28d0b6aaa9a27a08348e83ba271511e0b1afc161be90605625cb4ca1aaa4926708ed796560a26919c4956490bb64e2c4c1659c39846057815ed140cf328a37ff946e563c04a34b8a330b37b8f235a30269adbbb37d4ba3f59a9d05610d74335d93818626e33b2221a333127b54a07895914fff34ba2fc2c2072806e1827c5343300e007b59c69e030652717556343b2515802b0ec47b71e60b6ce4575ef78fbd83502355c3b8da04daa09f839667e66b448b2830b98224ab2218192381aca0a593b96e277c9d0379c1301c4d70f345a845b1f9f0be153b480f3bb45b6bb3c90702ddb11367019ebd309bba72c147eca3df2b25ec0b8f2ed83fe25ab4e900346c9aa6fce9b8df87774eb59d96958f8b80174279c5ddf1a96f066b1a610ea1474535e045aba7c978f3447733a5b4ec8970f9b8f2c99b7b7095ace6c020d7baa51a3e24b8203f8a3c4e20b21aaa60b14ce6ba2a78b566f4619313aabec709f7d216a448a2ad559a02f5897ea4686fad17ef01babb3536970b192c56401cb0a6870a29,
+                            },
+                            KeyShareEntry {
+                                group: X25519,
+                                payload: 48a2ad559a02f5897ea4686fad17ef01babb3536970b192c56401cb0a6870a29,
+                            },
+                        ],
+                        order_seed: 37700,
+                        contiguous_extensions: [],
+                        ..
+                    },
+                },
+            ),
+        ),
+        encoded: 0100059903037af8366780e248775d487bfc49f5dfada24400cafcb2f5386d9d653470f0ca1f20a8d29b7f9e4be04b254fa84c0a2c115d33481b1272e3c83894ce01a5972134170014130213011303c02cc02bcca9c030c02fcca800ff0100053c00170000000a000a000811ec001d00170018000b00020100003304ea04e811ec04c012e5a5a5c99ea31a96dc36500269413cc12438f81c179628fc6bbc1a40961c932a9e6ac609fb0cbc5c28974b86c671141a7a170496b8f8a2c966d942f6184f623802e8e94cafc3c89a8315f4273ab9ab8aaec3cb4667166a297c1984631f922533f74231a4c72e299a95c968173b75b71504b4ca39adfb53aae8baf2e440edcc758eb3c8eaf469d1d796c10a48d3b29ede7c75bfc5113ac1c317323b5036912ed25e7d41b54a74a812b38ce498225acb90e0b596046ac161390b62e81660b5b93c01b32a031e04090bb3084b2f974f69384bc1c98d96565e3484888edb94ba9433cca930d25a80df47b99330ada3b0918a8991a42a3d59f5430f0868d6250b1c6a673b307c19527226ca2930d8ca0fac9a21f659450aafc944c4c4b2aa34564f9d8102676506d808c0f4528f36e60bed8037c1f4c18d493ce438800e9ba7be281194c06f2161a9fe77a25c4b403e0416a1845ccdd6a5c001ce2ae929d50b5ec0422577220fc52a5bd5c214441676af3101a7914d2c231a70b2172188c46c4cbb277b77d53b6db279a3b720249a1bc943016806d45cd12c945df9b4e5b480a1b47f6777631e869bdd87b6783b2dc96a821f565ff2484e2de0bf8eabba063483828230cd52b9c2e999ac07861e2b2b45bbb79feb67deda3e7ef01a139440876b4e6e94292ce5163c011080c82a82f32a46e9af0a449a08b056261a9827657f65c3bf27945d3b219334d40e52495f47e4467a531f5b573059320330263ce9039e3f4c59ecd4790dd3b7ff9c4245f675df924cae13955866a1456387a00744de924a80d4123c620c788b080b77a1eb7c2f2029a54c835260f094b3767adcf93dca226471da086b166b6ee8b2fde6524221159b483a715361611c1055594898362dbdcc53a93921278c1d83e91a2b152adc3489f82c9ac287623e7bc8d8455137f5bfe23c847c7864d4c51623aace9722b926f423a219a9ab9502c1870eb2a94211b36ba9c2ac5926204933a85d89687caa0b7109bac46c1c3b6a14c4b79e5194458c486094582760fa5fa4d55811cba01fb7159103c352dbca2351179927369915c8804b530ff64ba13539b09a945928a2191caec2d7aaa3f1bd8aa12063e6aa391a7da17a1894e372b7f23ba7e855de5941c2061e943c861ee26c4856127b066a28d0b6aaa9a27a08348e83ba271511e0b1afc161be90605625cb4ca1aaa4926708ed796560a26919c4956490bb64e2c4c1659c39846057815ed140cf328a37ff946e563c04a34b8a330b37b8f235a30269adbbb37d4ba3f59a9d05610d74335d93818626e33b2221a333127b54a07895914fff34ba2fc2c2072806e1827c5343300e007b59c69e030652717556343b2515802b0ec47b71e60b6ce4575ef78fbd83502355c3b8da04daa09f839667e66b448b2830b98224ab2218192381aca0a593b96e277c9d0379c1301c4d70f345a845b1f9f0be153b480f3bb45b6bb3c90702ddb11367019ebd309bba72c147eca3df2b25ec0b8f2ed83fe25ab4e900346c9aa6fce9b8df87774eb59d96958f8b80174279c5ddf1a96f066b1a610ea1474535e045aba7c978f3447733a5b4ec8970f9b8f2c99b7b7095ace6c020d7baa51a3e24b8203f8a3c4e20b21aaa60b14ce6ba2a78b566f4619313aabec709f7d216a448a2ad559a02f5897ea4686fad17ef01babb3536970b192c56401cb0a6870a29001d002048a2ad559a02f5897ea4686fad17ef01babb3536970b192c56401cb0a6870a29002d0002010100230000002b00050403040303000500050100000000000d001600140201040105010601040308040805080608080807,
+    },
+}
+[2m2026-11-19T12:56:08.590239Z[0m [34mDEBUG[0m [2mrustls::client::hs[0m[2m:[0m No cached session for IpAddress(V4(Ipv4Addr([127, 0, 0, 1])))
+[2m2026-11-19T12:56:08.590266Z[0m [34mDEBUG[0m [2mrustls::client::hs[0m[2m:[0m Not resuming any session
+[2m2026-11-19T12:56:08.590385Z[0m [35mTRACE[0m [2mrustls::client::hs[0m[2m:[0m Sending ClientHello Message {
+    version: TLSv1_0,
+    payload: Handshake {
+        parsed: HandshakeMessagePayload(
+            ClientHello(
+                ClientHelloPayload {
+                    client_version: TLSv1_2,
+                    random: c3a054da19980ef34b030fc94b01467aa3a10e981004ad7377dc27aad08256c7,
+                    session_id: dcc08de723d4afef6c62459aaf8cefb46f4af683d21ce5552cd6eebe23425fb2,
+                    cipher_suites: [
+                        TLS13_AES_256_GCM_SHA384,
+                        TLS13_AES_128_GCM_SHA256,
+                        TLS13_CHACHA20_POLY1305_SHA256,
+                        TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
+                        TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+                        TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,
+                        TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+                        TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+                        TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256,
+                        TLS_EMPTY_RENEGOTIATION_INFO_SCSV,
+                    ],
+                    compression_methods: [
+                        Null,
+                    ],
+                    extensions: ClientExtensions {
+                        certificate_status_request: Ocsp(
+                            OcspCertificateStatusRequest {
+                                responder_ids: [],
+                                extensions: ,
+                            },
+                        ),
+                        named_groups: [
+                            X25519MLKEM768,
+                            X25519,
+                            secp256r1,
+                            secp384r1,
+                        ],
+                        ec_point_formats: SupportedEcPointFormats {
+                            uncompressed: true,
+                        },
+                        signature_schemes: [
+                            RSA_PKCS1_SHA1,
+                            RSA_PKCS1_SHA256,
+                            RSA_PKCS1_SHA384,
+                            RSA_PKCS1_SHA512,
+                            ECDSA_NISTP256_SHA256,
+                            RSA_PSS_SHA256,
+                            RSA_PSS_SHA384,
+                            RSA_PSS_SHA512,
+                            ED448,
+                            ED25519,
+                        ],
+                        extended_master_secret_request: (),
+                        session_ticket: Request,
+                        supported_versions: SupportedProtocolVersions {
+                            tls13: true,
+                            tls12: true,
+                        },
+                        preshared_key_modes: PskKeyExchangeModes {
+                            psk_dhe: true,
+                            psk: false,
+                        },
+                        key_shares: [
+                            KeyShareEntry {
+                                group: X25519MLKEM768,
+                                payload: bc88432dd10fd8f4c8f658241166ab2fd599c15833ef3b5396e591d60bb51144116c100f4172cf9e1aab42f865e595808f6c1fafbaa009dba6ba47200b984eadb0318909932b76b56b63c68b5318a7564a458c5586d0ce86b8309bfbb642d553344467cf0cd06244448c96907bf0148a9a6b604acc0a4c935a171684b16ddf066e486762c84b6d328a75faf8a06d98129f9b10912a8f5cf15f611128845924d8a677069cbb08210b19a4446370563e9694ca64bdecd475a22568a66cc409287a66c3cf53792009461a4cc93868609d60388bb9f303799ab93c359cc74cb9010a1cf7b499c2f4c7812bc5b01395469935859cc405c34f40a867e3980d723143456314eee955e5ca87767639e3196ed49742cc64c9a24777fe2ace8be788d8d41ee3b1a9695692182687d4bb7208975384499e3b623e8ca52d63a43ea8240cf7a4260ec182b3ba137ff676cea75a136c8202b48c863810e39c40bb04cdb25159efbac896f72c1e67ae960c34275b7d702b688e7c9c42d12f4e04bcc4db8057866ac776947751a447169df53962279c11c606cba674c5d9e6c157148c72b6b68d8c063908b3826286a9050e88c40f72e0745d0c31cda2cbc2db75b86847958c1b0cb661377a1c7a0903bfd2a914f8ba00821b2989b5a6b6be92d480ab50307235423b2b2e8f960d8d41cdbd51153a81753b803a67b54db881671a557c29845b7d0c321f2c18316052d33b5ab45763cb7388290865dff20f63100a3617ce221674a99055c2a0b21d216c69dc8a24a62f11d1c8ddf00e50d718675820fc68ce4a21a6fbca720da88643495960f37e76a71f5f60c1fa6531938699560c2604347b43d276d0641dd9246147b46087174139a6a5b3b8a95882701fc0010d97a679f7360a286c2beba79f6aaab61cc6b2d0551b159331a661dc9c4059f393710463efb98213f819eae893d517141b87634236302bc89bec688014ab8240ec49650c5d14f88d2bba854d24870cb256ea7075fa7333e92bcabd652d85fccc7100953db7a43b884421a72c9ee47707a70edcf6aab6977211e79422f7b14f2a2581247fb71796689c0961b14a444410afebaadc1c60130498237460e236435a08791e99a07e96c1933b383afc83b369b744b31bc7e9bc6bc9199413caed635597f650c17300ff471d395201d7f6450cb6cf4446b2404436737b8e2436c4c38a3ceb996cbac95a41eb4fdc581c0f2590b8c22777f545b6649ba55189dc83526521b28f56264dda4974a76a7c0355b0210faa9a67278b0f84b4254d75a74fa527dd33863475cb96873a92086f25307948457648094b1391845a6b746c0aaaa623be7c3a101c878a2d72bcf5e851f184ad3c00cd4c7957a5da340ee9acbdf51f67840b235b6425b711ae8baf00882bd0857aa1fa19c9338d1547556bfba02638b44aa50b559909c9a57e7fdb0d3b90ac0a94be65d2c1dc73349c57226a872ca09c171d169d3aacbdf670538fa2bb3bd5b756e1679870751a5c47d10c76ff22206e992afd43898929b7bb89733369c732c24fcca8cbf682bac0674254f957754284cc604fdd293563f97495204036174d3cb340348342f2fa343a637377e71822a3c73a435ba0ec202bd1ac407a66fb7a406c5ac182a3c4574eb97ef5063a7054b604a4347bd8143e903e82f3d077e35e0b8516dc5983df9e64cce527fd6db1efe89d5f2678e1cc19,
+                            },
+                            KeyShareEntry {
+                                group: X25519,
+                                payload: 903e82f3d077e35e0b8516dc5983df9e64cce527fd6db1efe89d5f2678e1cc19,
+                            },
+                        ],
+                        order_seed: 57206,
+                        contiguous_extensions: [],
+                        ..
+                    },
+                },
+            ),
+        ),
+        encoded: 010005990303c3a054da19980ef34b030fc94b01467aa3a10e981004ad7377dc27aad08256c720dcc08de723d4afef6c62459aaf8cefb46f4af683d21ce5552cd6eebe23425fb20014130213011303c02cc02bcca9c030c02fcca800ff0100053c000b00020100003304ea04e811ec04c0bc88432dd10fd8f4c8f658241166ab2fd599c15833ef3b5396e591d60bb51144116c100f4172cf9e1aab42f865e595808f6c1fafbaa009dba6ba47200b984eadb0318909932b76b56b63c68b5318a7564a458c5586d0ce86b8309bfbb642d553344467cf0cd06244448c96907bf0148a9a6b604acc0a4c935a171684b16ddf066e486762c84b6d328a75faf8a06d98129f9b10912a8f5cf15f611128845924d8a677069cbb08210b19a4446370563e9694ca64bdecd475a22568a66cc409287a66c3cf53792009461a4cc93868609d60388bb9f303799ab93c359cc74cb9010a1cf7b499c2f4c7812bc5b01395469935859cc405c34f40a867e3980d723143456314eee955e5ca87767639e3196ed49742cc64c9a24777fe2ace8be788d8d41ee3b1a9695692182687d4bb7208975384499e3b623e8ca52d63a43ea8240cf7a4260ec182b3ba137ff676cea75a136c8202b48c863810e39c40bb04cdb25159efbac896f72c1e67ae960c34275b7d702b688e7c9c42d12f4e04bcc4db8057866ac776947751a447169df53962279c11c606cba674c5d9e6c157148c72b6b68d8c063908b3826286a9050e88c40f72e0745d0c31cda2cbc2db75b86847958c1b0cb661377a1c7a0903bfd2a914f8ba00821b2989b5a6b6be92d480ab50307235423b2b2e8f960d8d41cdbd51153a81753b803a67b54db881671a557c29845b7d0c321f2c18316052d33b5ab45763cb7388290865dff20f63100a3617ce221674a99055c2a0b21d216c69dc8a24a62f11d1c8ddf00e50d718675820fc68ce4a21a6fbca720da88643495960f37e76a71f5f60c1fa6531938699560c2604347b43d276d0641dd9246147b46087174139a6a5b3b8a95882701fc0010d97a679f7360a286c2beba79f6aaab61cc6b2d0551b159331a661dc9c4059f393710463efb98213f819eae893d517141b87634236302bc89bec688014ab8240ec49650c5d14f88d2bba854d24870cb256ea7075fa7333e92bcabd652d85fccc7100953db7a43b884421a72c9ee47707a70edcf6aab6977211e79422f7b14f2a2581247fb71796689c0961b14a444410afebaadc1c60130498237460e236435a08791e99a07e96c1933b383afc83b369b744b31bc7e9bc6bc9199413caed635597f650c17300ff471d395201d7f6450cb6cf4446b2404436737b8e2436c4c38a3ceb996cbac95a41eb4fdc581c0f2590b8c22777f545b6649ba55189dc83526521b28f56264dda4974a76a7c0355b0210faa9a67278b0f84b4254d75a74fa527dd33863475cb96873a92086f25307948457648094b1391845a6b746c0aaaa623be7c3a101c878a2d72bcf5e851f184ad3c00cd4c7957a5da340ee9acbdf51f67840b235b6425b711ae8baf00882bd0857aa1fa19c9338d1547556bfba02638b44aa50b559909c9a57e7fdb0d3b90ac0a94be65d2c1dc73349c57226a872ca09c171d169d3aacbdf670538fa2bb3bd5b756e1679870751a5c47d10c76ff22206e992afd43898929b7bb89733369c732c24fcca8cbf682bac0674254f957754284cc604fdd293563f97495204036174d3cb340348342f2fa343a637377e71822a3c73a435ba0ec202bd1ac407a66fb7a406c5ac182a3c4574eb97ef5063a7054b604a4347bd8143e903e82f3d077e35e0b8516dc5983df9e64cce527fd6db1efe89d5f2678e1cc19001d0020903e82f3d077e35e0b8516dc5983df9e64cce527fd6db1efe89d5f2678e1cc19002d0002010100170000002b0005040304030300050005010000000000230000000a000a000811ec001d00170018000d001600140201040105010601040308040805080608080807,
+    },
+}
+[2m2026-11-19T12:56:09.591015Z[0m [34mDEBUG[0m [2mrustls::client::hs[0m[2m:[0m No cached session for IpAddress(V4(Ipv4Addr([127, 0, 0, 1])))
+[2m2026-11-19T12:56:09.591044Z[0m [34mDEBUG[0m [2mrustls::client::hs[0m[2m:[0m Not resuming any session
+[2m2026-11-19T12:56:09.591165Z[0m [35mTRACE[0m [2mrustls::client::hs[0m[2m:[0m Sending ClientHello Message {
+    version: TLSv1_0,
+    payload: Handshake {
+        parsed: HandshakeMessagePayload(
+            ClientHello(
+                ClientHelloPayload {
+                    client_version: TLSv1_2,
+                    random: fe81e685e312f800bdbbacbdb1efe6a20fd2934cbd7436ad53a316c9aabd2ac4,
+                    session_id: f6d584ce3d1553eac4e05cf1ed8e85659d27db836c6416be4e680b354ed0209b,
+                    cipher_suites: [
+                        TLS13_AES_256_GCM_SHA384,
+                        TLS13_AES_128_GCM_SHA256,
+                        TLS13_CHACHA20_POLY1305_SHA256,
+                        TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
+                        TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+                        TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,
+                        TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+                        TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+                        TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256,
+                        TLS_EMPTY_RENEGOTIATION_INFO_SCSV,
+                    ],
+                    compression_methods: [
+                        Null,
+                    ],
+                    extensions: ClientExtensions {
+                        certificate_status_request: Ocsp(
+                            OcspCertificateStatusRequest {
+                                responder_ids: [],
+                                extensions: ,
+                            },
+                        ),
+                        named_groups: [
+                            X25519MLKEM768,
+                            X25519,
+                            secp256r1,
+                            secp384r1,
+                        ],
+                        ec_point_formats: SupportedEcPointFormats {
+                            uncompressed: true,
+                        },
+                        signature_schemes: [
+                            RSA_PKCS1_SHA1,
+                            RSA_PKCS1_SHA256,
+                            RSA_PKCS1_SHA384,
+                            RSA_PKCS1_SHA512,
+                            ECDSA_NISTP256_SHA256,
+                            RSA_PSS_SHA256,
+                            RSA_PSS_SHA384,
+                            RSA_PSS_SHA512,
+                            ED448,
+                            ED25519,
+                        ],
+                        extended_master_secret_request: (),
+                        session_ticket: Request,
+                        supported_versions: SupportedProtocolVersions {
+                            tls13: true,
+                            tls12: true,
+                        },
+                        preshared_key_modes: PskKeyExchangeModes {
+                            psk_dhe: true,
+                            psk: false,
+                        },
+                        key_shares: [
+                            KeyShareEntry {
+                                group: X25519MLKEM768,
+                                payload: 2f18b2fac9b17733689e76291c01c279504bdd313724fb031009621f38161a852ea91385d2eba65ea0cbc8f287b9161b91da1aad29a2b9ca29a336c078308859aab248d574fe741643177eddfbba4020ba7f5b0996d95c3583be5e5199d2650a1c502fcb18565e609c1d9a59d2282f373b4a209b02ce15ce23c44e480506a57c32482470bb7835173588aeeb51af1c8ade105fae6154defc53134202109a394489a72a211de664b3e9b391a34b6ba08a8797c89b7af22ba9693f6f437762eb7a294b19f5fc51ce6a86b51aa7be641d0fc03afe091c69aa2f5e9360b09358ea364270c5a0763b9896abcbc2b452c6f217e5a9b9a7c306305778413c938e41587ea41c76397750001e0e778931cc3138959095c49042ea42f9e53f9839b83486a00aea0f31871c48e6b91eb26bbf1044c9026c62b528a8756b575b39a2f885c8e36ab27a5f9f75a52cc3808620aa8d815b11a748d9174ace266ca9e593c81cc0d840bb2f16bff27c37b9740c063cb15f71908e367e484a4259f13ca49cb12c6860cf9c58b786adfc44b5c3ca11a8b08896d045c61c57c0334efcca001eecb88f44c6229953cfb3ac31eb969e6b121fb3491f95131825463fa97edf2339b8e8573e850147cc0f1e8414d402bcb0f4850e507d34e064b7ca58c386060febbda1e6771167c8508183ecccaf0d84542f35bd5024297a79390a9a0857e5b6deb55556813b0999838455c3fa26748a16c13c193f85574ee0816ab71233293490b2e724e5fb527f09cb5dd96c679115de462d1b252fbf537f1932cc7d0562c302030b507c3939060fa556beb040a60c37bfe547a513477d61cbb98c6c98e1ccb8eb8834a816b1522695a86f19bb46eca2306479cc94c3c0319011812aba70800b53603fca127076e946e7fc0388f0324cfc64f2b853c1048bb15c87b4a21d2174814f6bb53aecbf41f617fd6315fb7392575c423db9a1bdcc079ce2a597d02b455b31acab67766c698ba9b074b780d9d316a99b72be6970099b50801065e55ccf8a5779df6c6ca7d406f8e113a51774c8d78c014657383929a0944be79b09ac85acc34c2df6e44fc5b46d1c59447d37bc57d7cfd6bb38159a86fed4aa419932c1e49678a08a144653f22939f8182a0dfc4e8e223f46759f307b0bf915a2a0fa5fc617a15868576f50be18e82bf66cc5e3b7831c3cb741328ad769bf83d10aa9a46959aa3d8d75508a8586623b5a2bb6855836a969f6b4b9c9925655052307b5745034aa98278ca212d94b9790e7b9b74a7bfebc6d0b112d4820b262727950f1a135c964fee1c088c70d80626f53bb4b6b675e01f8b95187670a75bcb080816fc3561c101ffef4750ac1084694110c92a9f5f39794007e19285acb4c42280171970c4caac42d4ed57720d04686558bcef78e4b568181eca756003c9b0668e31341aa92be7f092183403ab130386284ac43f79e1f02810e59a41540c46a393732942dd8478c29166c9ef8833a0625cb92890660a8dd7b1085a475cf160cb6fb6ef5485eab812ed5d113d18bc1238639edc5b461131869258fa650cef26362309907ade1cbbd8a839a350d3a82cee9530af5204c5077610d164193053d5b09794e0c2c76399dd70cc7e4bedf850ead41eb38c0f731b90b6c698041565cee085c3f8711824905686bc0bd49575d7a8a4247b70c414ad28bbe04b2a513e0f0a02ac71141597b36,
+                            },
+                            KeyShareEntry {
+                                group: X25519,
+                                payload: 686bc0bd49575d7a8a4247b70c414ad28bbe04b2a513e0f0a02ac71141597b36,
+                            },
+                        ],
+                        order_seed: 42787,
+                        contiguous_extensions: [],
+                        ..
+                    },
+                },
+            ),
+        ),
+        encoded: 010005990303fe81e685e312f800bdbbacbdb1efe6a20fd2934cbd7436ad53a316c9aabd2ac420f6d584ce3d1553eac4e05cf1ed8e85659d27db836c6416be4e680b354ed0209b0014130213011303c02cc02bcca9c030c02fcca800ff0100053c003304ea04e811ec04c02f18b2fac9b17733689e76291c01c279504bdd313724fb031009621f38161a852ea91385d2eba65ea0cbc8f287b9161b91da1aad29a2b9ca29a336c078308859aab248d574fe741643177eddfbba4020ba7f5b0996d95c3583be5e5199d2650a1c502fcb18565e609c1d9a59d2282f373b4a209b02ce15ce23c44e480506a57c32482470bb7835173588aeeb51af1c8ade105fae6154defc53134202109a394489a72a211de664b3e9b391a34b6ba08a8797c89b7af22ba9693f6f437762eb7a294b19f5fc51ce6a86b51aa7be641d0fc03afe091c69aa2f5e9360b09358ea364270c5a0763b9896abcbc2b452c6f217e5a9b9a7c306305778413c938e41587ea41c76397750001e0e778931cc3138959095c49042ea42f9e53f9839b83486a00aea0f31871c48e6b91eb26bbf1044c9026c62b528a8756b575b39a2f885c8e36ab27a5f9f75a52cc3808620aa8d815b11a748d9174ace266ca9e593c81cc0d840bb2f16bff27c37b9740c063cb15f71908e367e484a4259f13ca49cb12c6860cf9c58b786adfc44b5c3ca11a8b08896d045c61c57c0334efcca001eecb88f44c6229953cfb3ac31eb969e6b121fb3491f95131825463fa97edf2339b8e8573e850147cc0f1e8414d402bcb0f4850e507d34e064b7ca58c386060febbda1e6771167c8508183ecccaf0d84542f35bd5024297a79390a9a0857e5b6deb55556813b0999838455c3fa26748a16c13c193f85574ee0816ab71233293490b2e724e5fb527f09cb5dd96c679115de462d1b252fbf537f1932cc7d0562c302030b507c3939060fa556beb040a60c37bfe547a513477d61cbb98c6c98e1ccb8eb8834a816b1522695a86f19bb46eca2306479cc94c3c0319011812aba70800b53603fca127076e946e7fc0388f0324cfc64f2b853c1048bb15c87b4a21d2174814f6bb53aecbf41f617fd6315fb7392575c423db9a1bdcc079ce2a597d02b455b31acab67766c698ba9b074b780d9d316a99b72be6970099b50801065e55ccf8a5779df6c6ca7d406f8e113a51774c8d78c014657383929a0944be79b09ac85acc34c2df6e44fc5b46d1c59447d37bc57d7cfd6bb38159a86fed4aa419932c1e49678a08a144653f22939f8182a0dfc4e8e223f46759f307b0bf915a2a0fa5fc617a15868576f50be18e82bf66cc5e3b7831c3cb741328ad769bf83d10aa9a46959aa3d8d75508a8586623b5a2bb6855836a969f6b4b9c9925655052307b5745034aa98278ca212d94b9790e7b9b74a7bfebc6d0b112d4820b262727950f1a135c964fee1c088c70d80626f53bb4b6b675e01f8b95187670a75bcb080816fc3561c101ffef4750ac1084694110c92a9f5f39794007e19285acb4c42280171970c4caac42d4ed57720d04686558bcef78e4b568181eca756003c9b0668e31341aa92be7f092183403ab130386284ac43f79e1f02810e59a41540c46a393732942dd8478c29166c9ef8833a0625cb92890660a8dd7b1085a475cf160cb6fb6ef5485eab812ed5d113d18bc1238639edc5b461131869258fa650cef26362309907ade1cbbd8a839a350d3a82cee9530af5204c5077610d164193053d5b09794e0c2c76399dd70cc7e4bedf850ead41eb38c0f731b90b6c698041565cee085c3f8711824905686bc0bd49575d7a8a4247b70c414ad28bbe04b2a513e0f0a02ac71141597b36001d0020686bc0bd49575d7a8a4247b70c414ad28bbe04b2a513e0f0a02ac71141597b36000500050100000000000d00160014020104010501060104030804080508060808080700170000002d00020101000a000a000811ec001d00170018000b00020100002b0005040304030300230000,
+    },
+}
+[2m2026-11-19T12:56:10.591972Z[0m [34mDEBUG[0m [2mrustls::client::hs[0m[2m:[0m No cached session for IpAddress(V4(Ipv4Addr([127, 0, 0, 1])))
+[2m2026-11-19T12:56:10.592006Z[0m [34mDEBUG[0m [2mrustls::client::hs[0m[2m:[0m Not resuming any session
+[2m2026-11-19T12:56:10.592123Z[0m [35mTRACE[0m [2mrustls::client::hs[0m[2m:[0m Sending ClientHello Message {
+    version: TLSv1_0,
+    payload: Handshake {
+        parsed: HandshakeMessagePayload(
+            ClientHello(
+                ClientHelloPayload {
+                    client_version: TLSv1_2,
+                    random: a63682a0c03bc61f0e98873fe555518fa43ddb67043e80d8a83aafcd87b8fa3b,
+                    session_id: 0bcec4240c2368e9fbcc095370e3f49b1e96cf6303a090b1ac377bc8fc394c54,
+                    cipher_suites: [
+                        TLS13_AES_256_GCM_SHA384,
+                        TLS13_AES_128_GCM_SHA256,
+                        TLS13_CHACHA20_POLY1305_SHA256,
+                        TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
+                        TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+                        TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,
+                        TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+                        TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+                        TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256,
+                        TLS_EMPTY_RENEGOTIATION_INFO_SCSV,
+                    ],
+                    compression_methods: [
+                        Null,
+                    ],
+                    extensions: ClientExtensions {
+                        certificate_status_request: Ocsp(
+                            OcspCertificateStatusRequest {
+                                responder_ids: [],
+                                extensions: ,
+                            },
+                        ),
+                        named_groups: [
+                            X25519MLKEM768,
+                            X25519,
+                            secp256r1,
+                            secp384r1,
+                        ],
+                        ec_point_formats: SupportedEcPointFormats {
+                            uncompressed: true,
+                        },
+                        signature_schemes: [
+                            RSA_PKCS1_SHA1,
+                            RSA_PKCS1_SHA256,
+                            RSA_PKCS1_SHA384,
+                            RSA_PKCS1_SHA512,
+                            ECDSA_NISTP256_SHA256,
+                            RSA_PSS_SHA256,
+                            RSA_PSS_SHA384,
+                            RSA_PSS_SHA512,
+                            ED448,
+                            ED25519,
+                        ],
+                        extended_master_secret_request: (),
+                        session_ticket: Request,
+                        supported_versions: SupportedProtocolVersions {
+                            tls13: true,
+                            tls12: true,
+                        },
+                        preshared_key_modes: PskKeyExchangeModes {
+                            psk_dhe: true,
+                            psk: false,
+                        },
+                        key_shares: [
+                            KeyShareEntry {
+                                group: X25519MLKEM768,
+                                payload: b9c6c1af3269a9d43f43f0300c710ad001b32ed87c500c2da1ca7c4fe78e1b838e7bc6b3f5913cc856b0f0f6cf0e5a750399cbb384713f805c1cd071f1132f634b7b9a602fe5fccdafaa9bf883b8c88931ba125aef6b90366999a5e15740b66b9cdacf88433494d592fc33a40c598ffdb05e9cfc3dd28c717bb81f79fb469fec44ffd4b69aec7d98d6797ada8bcb37b9d7ca40dcc76d212828a990bfc9fb2e769357bbc86212a985220bb84b3c9950a47701907b2e463a0d7cbdee997838c3067379c3c8254da5e972ced6b28fe285a0c6b2e85bc55a2350cb194817baa25ddab00e187b6b2acb502375e1db29b9bc58f0f815a406acfec0190c850a43b818f72a3df0e89650ec646544a147e8317cf80b8a6660344706dfe39691c70e16740116da0693293cc722bbb992722b9a4d4117783b166e285945d5896eba45263da9519b28780fcc79745099b4006e2c2894c9d9b034e7944058b3267202e35b1db0a385396cbf4c3a8ff75c664729216bcbbe83d653c03c1252332bb48992f2e443df720c2d0c0f573112875050ab80b0fa6047594497f50114b8c3b2d03478b30435ec82ccadfa22eca2761b5b5a63f15f4ad3badb0b3d4bf27acd7c5a070c2e11d6b620f957d71350e8a60bf3dc6d26b5825f417b74616ffbd87c00469869dac3879377bed2ca690156a8bb80caa7c3a83c56d20b8cbafb204a13ae37910150c6c9c7329faa155ff7206a971056c878b4897c9f6b7894da179e7cbb7689620c4ffb5f75a783ddda5526f244d6cb26c6e69fa9149b25e0a1a14362d548c228d370a4f436eb4b401b5a8e3987652114ccc10caf88017dd2257cfca9a3eb626bc4d961bd685864a831f8cb7e293b52cb304ebd80727a3959bac57ef0b9a49c4231baf80826b58112c5630db78a69071b7b35ba6c167c3719976624016ef98c4ed605f9897cc0f98908d51634e2c6453c0881a445bdcc0771139a3579401909cb67b412ff691cae5221b5405bd430516d86b078b355d4f49c05eca12ec420dc687f18a360ef5b70621a5cc0890437d0c6744447be96999866137e2c5be49c283877428a48095b949cb77cc7ce927ed8b5c8daf19e6a2c21712b4c248657135a8e81958a2028c0923cc8a4d62b57f6661775c0f29954a09752034a52d0d65f366a433dc235e74a0be1cacc9c92b5330a0a1dc108ccab7346629f915b0323934ea45b40bc7ac67581504aa86a9b7666b75950ef239c5862423310b024f98331e78a70933525161cf4b2039ee50ab4522c0749468eb8a5a2401995e223d96926d7203f62c914f63347b36b133cf28c98e40c657a3b3d2066d5999b65b72259956963b85ce209abd398096398ad4e80cce5a226b4b2953077aa9833242dd9ac8298af877c639531c522f27e8ab90b3298c0e18abecfd959078a76e587a82cbb9b549188bec95d4dc07530843feb9b2401d355f84c94ed4799061642712ba0fc98c9ac74c89e7970b40439d7d1343d244794f36380007f6cc7c59aac9453216f142924bf538e57dca78d585d5d886332201fb7153f2a7602c695ae91b9a1811b8cc31476c22982ca83bf46b00bb2e3165f41706f995f1927a56cb70b983b416a8c2e04124429d7f77c99c61d1ab658427d88bc2d699df32b8998a6d7c4ca81d7b364a14ed701ad4dac6fa35c9370b6dcd25f4c3adceef58763ff195106fcf0795a9469ec01,
+                            },
+                            KeyShareEntry {
+                                group: X25519,
+                                payload: 01ad4dac6fa35c9370b6dcd25f4c3adceef58763ff195106fcf0795a9469ec01,
+                            },
+                        ],
+                        order_seed: 18480,
+                        contiguous_extensions: [],
+                        ..
+                    },
+                },
+            ),
+        ),
+        encoded: 010005990303a63682a0c03bc61f0e98873fe555518fa43ddb67043e80d8a83aafcd87b8fa3b200bcec4240c2368e9fbcc095370e3f49b1e96cf6303a090b1ac377bc8fc394c540014130213011303c02cc02bcca9c030c02fcca800ff0100053c00230000000b00020100000500050100000000000d001600140201040105010601040308040805080608080807000a000a000811ec001d00170018003304ea04e811ec04c0b9c6c1af3269a9d43f43f0300c710ad001b32ed87c500c2da1ca7c4fe78e1b838e7bc6b3f5913cc856b0f0f6cf0e5a750399cbb384713f805c1cd071f1132f634b7b9a602fe5fccdafaa9bf883b8c88931ba125aef6b90366999a5e15740b66b9cdacf88433494d592fc33a40c598ffdb05e9cfc3dd28c717bb81f79fb469fec44ffd4b69aec7d98d6797ada8bcb37b9d7ca40dcc76d212828a990bfc9fb2e769357bbc86212a985220bb84b3c9950a47701907b2e463a0d7cbdee997838c3067379c3c8254da5e972ced6b28fe285a0c6b2e85bc55a2350cb194817baa25ddab00e187b6b2acb502375e1db29b9bc58f0f815a406acfec0190c850a43b818f72a3df0e89650ec646544a147e8317cf80b8a6660344706dfe39691c70e16740116da0693293cc722bbb992722b9a4d4117783b166e285945d5896eba45263da9519b28780fcc79745099b4006e2c2894c9d9b034e7944058b3267202e35b1db0a385396cbf4c3a8ff75c664729216bcbbe83d653c03c1252332bb48992f2e443df720c2d0c0f573112875050ab80b0fa6047594497f50114b8c3b2d03478b30435ec82ccadfa22eca2761b5b5a63f15f4ad3badb0b3d4bf27acd7c5a070c2e11d6b620f957d71350e8a60bf3dc6d26b5825f417b74616ffbd87c00469869dac3879377bed2ca690156a8bb80caa7c3a83c56d20b8cbafb204a13ae37910150c6c9c7329faa155ff7206a971056c878b4897c9f6b7894da179e7cbb7689620c4ffb5f75a783ddda5526f244d6cb26c6e69fa9149b25e0a1a14362d548c228d370a4f436eb4b401b5a8e3987652114ccc10caf88017dd2257cfca9a3eb626bc4d961bd685864a831f8cb7e293b52cb304ebd80727a3959bac57ef0b9a49c4231baf80826b58112c5630db78a69071b7b35ba6c167c3719976624016ef98c4ed605f9897cc0f98908d51634e2c6453c0881a445bdcc0771139a3579401909cb67b412ff691cae5221b5405bd430516d86b078b355d4f49c05eca12ec420dc687f18a360ef5b70621a5cc0890437d0c6744447be96999866137e2c5be49c283877428a48095b949cb77cc7ce927ed8b5c8daf19e6a2c21712b4c248657135a8e81958a2028c0923cc8a4d62b57f6661775c0f29954a09752034a52d0d65f366a433dc235e74a0be1cacc9c92b5330a0a1dc108ccab7346629f915b0323934ea45b40bc7ac67581504aa86a9b7666b75950ef239c5862423310b024f98331e78a70933525161cf4b2039ee50ab4522c0749468eb8a5a2401995e223d96926d7203f62c914f63347b36b133cf28c98e40c657a3b3d2066d5999b65b72259956963b85ce209abd398096398ad4e80cce5a226b4b2953077aa9833242dd9ac8298af877c639531c522f27e8ab90b3298c0e18abecfd959078a76e587a82cbb9b549188bec95d4dc07530843feb9b2401d355f84c94ed4799061642712ba0fc98c9ac74c89e7970b40439d7d1343d244794f36380007f6cc7c59aac9453216f142924bf538e57dca78d585d5d886332201fb7153f2a7602c695ae91b9a1811b8cc31476c22982ca83bf46b00bb2e3165f41706f995f1927a56cb70b983b416a8c2e04124429d7f77c99c61d1ab658427d88bc2d699df32b8998a6d7c4ca81d7b364a14ed701ad4dac6fa35c9370b6dcd25f4c3adceef58763ff195106fcf0795a9469ec01001d002001ad4dac6fa35c9370b6dcd25f4c3adceef58763ff195106fcf0795a9469ec01002b0005040304030300170000002d00020101,
+    },
+}
+[2m2026-11-19T12:56:10.592478Z[0m [34mDEBUG[0m [2mrustls::common_state[0m[2m:[0m Sending warning alert CloseNotify
+[2m2026-11-19T12:56:10.592567Z[0m [34mDEBUG[0m [2mrustls::client::hs[0m[2m:[0m No cached session for IpAddress(V4(Ipv4Addr([127, 0, 0, 1])))
+[2m2026-11-19T12:56:10.592573Z[0m [34mDEBUG[0m [2mrustls::client::hs[0m[2m:[0m Not resuming any session
+[2m2026-11-19T12:56:10.592648Z[0m [35mTRACE[0m [2mrustls::client::hs[0m[2m:[0m Sending ClientHello Message {
+    version: TLSv1_0,
+    payload: Handshake {
+        parsed: HandshakeMessagePayload(
+            ClientHello(
+                ClientHelloPayload {
+                    client_version: TLSv1_2,
+                    random: 2dee754712c90dae7c693e0eb6c3dd8a6b2a5e2d651a6a7648c7b1dc413dde25,
+                    session_id: 5b047ceedaaf20f696c5345b1310d9a8aefa157169eeb7fba6a6afaca0c92449,
+                    cipher_suites: [
+                        TLS13_AES_256_GCM_SHA384,
+                        TLS13_AES_128_GCM_SHA256,
+                        TLS13_CHACHA20_POLY1305_SHA256,
+                        TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
+                        TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+                        TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,
+                        TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+                        TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+                        TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256,
+                        TLS_EMPTY_RENEGOTIATION_INFO_SCSV,
+                    ],
+                    compression_methods: [
+                        Null,
+                    ],
+                    extensions: ClientExtensions {
+                        certificate_status_request: Ocsp(
+                            OcspCertificateStatusRequest {
+                                responder_ids: [],
+                                extensions: ,
+                            },
+                        ),
+                        named_groups: [
+                            X25519MLKEM768,
+                            X25519,
+                            secp256r1,
+                            secp384r1,
+                        ],
+                        ec_point_formats: SupportedEcPointFormats {
+                            uncompressed: true,
+                        },
+                        signature_schemes: [
+                            RSA_PKCS1_SHA1,
+                            RSA_PKCS1_SHA256,
+                            RSA_PKCS1_SHA384,
+                            RSA_PKCS1_SHA512,
+                            ECDSA_NISTP256_SHA256,
+                            RSA_PSS_SHA256,
+                            RSA_PSS_SHA384,
+                            RSA_PSS_SHA512,
+                            ED448,
+                            ED25519,
+                        ],
+                        extended_master_secret_request: (),
+                        session_ticket: Request,
+                        supported_versions: SupportedProtocolVersions {
+                            tls13: true,
+                            tls12: true,
+                        },
+                        preshared_key_modes: PskKeyExchangeModes {
+                            psk_dhe: true,
+                            psk: false,
+                        },
+                        key_shares: [
+                            KeyShareEntry {
+                                group: X25519MLKEM768,
+                                payload: 6e6195e69c2f5b42b1848664d1b8b48991ba54b1c76b1aae67493382fb1c72c668b380c2084c2443d1acfcc80547e46cb5968c87f0b78c49c31ce1b5f6e08ce6f98fafdb5ce5442a908b7c5d46701ce988b745b90b9a221e9a34115c9b45e39e3774079d259622c30e3fb884f6a15ec6d23e4fcba1e4893c04970e3ea6abada97ee70807815c737170243e5553478cb368c5a65de854c3db7a66ab9767f3115fa516dba0324cbb487a68805dc4cf5715b24a60aec16228e9b4688aa69544482958e3112922447f5299ce4415be2cb0c919182031a552a93bdda0a1ca0b6046e544d99950945ab579c914589b97f00aa55bf71f4cba9bd27b1b84342a8a40c0cfd3ab5f363ee8e029c42a59e3258d55ec3cc9a136b01b31cd41325af697da9858f9e09946372e980368f9589d3d2488f62a57d8c84295d316f5511da8491344b76053d519ee660e9cdcade2c9b9e06310c6ab0f32854a00736011013a32e97034a2667945cbd972366e39526b718daf759918d51d042526891a40f7b7a7648c307752212ffc398d551f2b5319072c1d0b18988902038ff5c94463925d86a51c9b394441c36cf62ae38a962205a4d294ce3e90bd50f81d904b47770bc89edc785b7cc9bb031bf63392e1d095b9d0a8938cc6edc44e0490840e7b8e375b7e09ab7c5d8388265c8418d80bb0e6cccc85b750ba0feb68484a406af8ac09fc19a63f3c19ef8a3fa5275cf6eb9db05820088233a081908113777b129f7cfc07c8e25a8734c260d832df9763607bc17cb67b5d08a897a35b559c0cbd543ff41c34f383ca3e26082c3368b81bcee057489f20b4258912c7895c32867aedb482214207c9a70908aa1b8a8203fa8072d8925275283e9f39c6c7dcc1c89733bf895b48f973d2f62a7f846d0b321e34e657ca1b30304765bdc021143b8c6b8899e24c5ad083755a0b3fe003546d07b51d8819101a854e357768a1ae7bda7073486a1282cb90d2c65588c6eb09529eb04a9bb7a36d3c05bc052380f8749fd78810068bac37a7e5a41416f9c40976607a63a31e2bc0ecc7513e979cade1cc3eba865735b5078894a601b9e3822eca70a8d86056c0bc13adca597a185b15b068ba44016f31908119b4c5470649331407b864ca013ac2cb701d74ab3064a1d1f96f0081749bc97107dba17496817bc305907ac4fbfa331fa4210e6c9045f9bc725294614ab3714b17f1695718a92de2fbaed63a32ca2317e235497f2074ca66917fa91b3aa93e8d93c455b18bced24f331c4e615bb9c2332e90b89aa980bd818c7f2ae036425b045420391646b7893465e29ab7d1c62551ba16b7331454953a68f2c86927034cc8acea57947a293684ca3aa5f14c4c4aafd331ca00ec51031833b4c59745f7089a77a838bb035e16af9936700e4421b3b4271ebc3f6f9c8469fa457096cddf3a9ad022bf99f3633cf18c16b677f5a60b499ab3f1d6605dc1719c7624d6f787a43522faac461bc25577e2aa9cb57265561e201001d3f85d1a258d5562360a6712f4d063a2b830ca2436f30387d4e7c6277270aff82e320415e66b95ab29803b67107c413a2920742e6c0cc673bbbce15788357037137f3dc98a8a23609f622627d82a1180bd178e51798a88e1092fbc00e0b82f2dae37975cc292c317467fe87e805381c46ad85a46e851c6212f614047d0e5e8b75fb3151b577217b0b988e441ed3d,
+                            },
+                            KeyShareEntry {
+                                group: X25519,
+                                payload: 81c46ad85a46e851c6212f614047d0e5e8b75fb3151b577217b0b988e441ed3d,
+                            },
+                        ],
+                        order_seed: 54251,
+                        contiguous_extensions: [],
+                        ..
+                    },
+                },
+            ),
+        ),
+        encoded: 0100059903032dee754712c90dae7c693e0eb6c3dd8a6b2a5e2d651a6a7648c7b1dc413dde25205b047ceedaaf20f696c5345b1310d9a8aefa157169eeb7fba6a6afaca0c924490014130213011303c02cc02bcca9c030c02fcca800ff0100053c00230000000d001600140201040105010601040308040805080608080807002b00050403040303002d0002010100170000003304ea04e811ec04c06e6195e69c2f5b42b1848664d1b8b48991ba54b1c76b1aae67493382fb1c72c668b380c2084c2443d1acfcc80547e46cb5968c87f0b78c49c31ce1b5f6e08ce6f98fafdb5ce5442a908b7c5d46701ce988b745b90b9a221e9a34115c9b45e39e3774079d259622c30e3fb884f6a15ec6d23e4fcba1e4893c04970e3ea6abada97ee70807815c737170243e5553478cb368c5a65de854c3db7a66ab9767f3115fa516dba0324cbb487a68805dc4cf5715b24a60aec16228e9b4688aa69544482958e3112922447f5299ce4415be2cb0c919182031a552a93bdda0a1ca0b6046e544d99950945ab579c914589b97f00aa55bf71f4cba9bd27b1b84342a8a40c0cfd3ab5f363ee8e029c42a59e3258d55ec3cc9a136b01b31cd41325af697da9858f9e09946372e980368f9589d3d2488f62a57d8c84295d316f5511da8491344b76053d519ee660e9cdcade2c9b9e06310c6ab0f32854a00736011013a32e97034a2667945cbd972366e39526b718daf759918d51d042526891a40f7b7a7648c307752212ffc398d551f2b5319072c1d0b18988902038ff5c94463925d86a51c9b394441c36cf62ae38a962205a4d294ce3e90bd50f81d904b47770bc89edc785b7cc9bb031bf63392e1d095b9d0a8938cc6edc44e0490840e7b8e375b7e09ab7c5d8388265c8418d80bb0e6cccc85b750ba0feb68484a406af8ac09fc19a63f3c19ef8a3fa5275cf6eb9db05820088233a081908113777b129f7cfc07c8e25a8734c260d832df9763607bc17cb67b5d08a897a35b559c0cbd543ff41c34f383ca3e26082c3368b81bcee057489f20b4258912c7895c32867aedb482214207c9a70908aa1b8a8203fa8072d8925275283e9f39c6c7dcc1c89733bf895b48f973d2f62a7f846d0b321e34e657ca1b30304765bdc021143b8c6b8899e24c5ad083755a0b3fe003546d07b51d8819101a854e357768a1ae7bda7073486a1282cb90d2c65588c6eb09529eb04a9bb7a36d3c05bc052380f8749fd78810068bac37a7e5a41416f9c40976607a63a31e2bc0ecc7513e979cade1cc3eba865735b5078894a601b9e3822eca70a8d86056c0bc13adca597a185b15b068ba44016f31908119b4c5470649331407b864ca013ac2cb701d74ab3064a1d1f96f0081749bc97107dba17496817bc305907ac4fbfa331fa4210e6c9045f9bc725294614ab3714b17f1695718a92de2fbaed63a32ca2317e235497f2074ca66917fa91b3aa93e8d93c455b18bced24f331c4e615bb9c2332e90b89aa980bd818c7f2ae036425b045420391646b7893465e29ab7d1c62551ba16b7331454953a68f2c86927034cc8acea57947a293684ca3aa5f14c4c4aafd331ca00ec51031833b4c59745f7089a77a838bb035e16af9936700e4421b3b4271ebc3f6f9c8469fa457096cddf3a9ad022bf99f3633cf18c16b677f5a60b499ab3f1d6605dc1719c7624d6f787a43522faac461bc25577e2aa9cb57265561e201001d3f85d1a258d5562360a6712f4d063a2b830ca2436f30387d4e7c6277270aff82e320415e66b95ab29803b67107c413a2920742e6c0cc673bbbce15788357037137f3dc98a8a23609f622627d82a1180bd178e51798a88e1092fbc00e0b82f2dae37975cc292c317467fe87e805381c46ad85a46e851c6212f614047d0e5e8b75fb3151b577217b0b988e441ed3d001d002081c46ad85a46e851c6212f614047d0e5e8b75fb3151b577217b0b988e441ed3d000500050100000000000a000a000811ec001d00170018000b00020100,
+    },
+}
+[2m2026-11-19T12:56:10.592965Z[0m [34mDEBUG[0m [2mrustls::common_state[0m[2m:[0m Sending warning alert CloseNotify
+[2m2026-11-19T12:56:10.593355Z[0m [34mDEBUG[0m [2mrustls::client::hs[0m[2m:[0m No cached session for IpAddress(V4(Ipv4Addr([127, 0, 0, 1])))
+[2m2026-11-19T12:56:10.593379Z[0m [34mDEBUG[0m [2mrustls::client::hs[0m[2m:[0m Not resuming any session
+[2m2026-11-19T12:56:10.593504Z[0m [35mTRACE[0m [2mrustls::client::hs[0m[2m:[0m Sending ClientHello Message {
+    version: TLSv1_0,
+    payload: Handshake {
+        parsed: HandshakeMessagePayload(
+            ClientHello(
+                ClientHelloPayload {
+                    client_version: TLSv1_2,
+                    random: 9f0d78fc01c5ca71e7d2594b50597707cdf043ea67e985b7917de400868c5a5d,
+                    session_id: 5ac031bba4ba0e30c6293c07e209b6ea24f69f44606b0f1a6632a67e98af60a2,
+                    cipher_suites: [
+                        TLS13_AES_256_GCM_SHA384,
+                        TLS13_AES_128_GCM_SHA256,
+                        TLS13_CHACHA20_POLY1305_SHA256,
+                        TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
+                        TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+                        TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,
+                        TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+                        TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+                        TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256,
+                        TLS_EMPTY_RENEGOTIATION_INFO_SCSV,
+                    ],
+                    compression_methods: [
+                        Null,
+                    ],
+                    extensions: ClientExtensions {
+                        certificate_status_request: Ocsp(
+                            OcspCertificateStatusRequest {
+                                responder_ids: [],
+                                extensions: ,
+                            },
+                        ),
+                        named_groups: [
+                            X25519MLKEM768,
+                            X25519,
+                            secp256r1,
+                            secp384r1,
+                        ],
+                        ec_point_formats: SupportedEcPointFormats {
+                            uncompressed: true,
+                        },
+                        signature_schemes: [
+                            RSA_PKCS1_SHA1,
+                            RSA_PKCS1_SHA256,
+                            RSA_PKCS1_SHA384,
+                            RSA_PKCS1_SHA512,
+                            ECDSA_NISTP256_SHA256,
+                            RSA_PSS_SHA256,
+                            RSA_PSS_SHA384,
+                            RSA_PSS_SHA512,
+                            ED448,
+                            ED25519,
+                        ],
+                        extended_master_secret_request: (),
+                        session_ticket: Request,
+                        supported_versions: SupportedProtocolVersions {
+                            tls13: true,
+                            tls12: true,
+                        },
+                        preshared_key_modes: PskKeyExchangeModes {
+                            psk_dhe: true,
+                            psk: false,
+                        },
+                        key_shares: [
+                            KeyShareEntry {
+                                group: X25519MLKEM768,
+                                payload: 0116bff8f08ee1366307fc7989ac27f9aa304f933d4cb90478c07300141d314138697bbaf81b7f668b4dfca95c519b7723db84f8140a4c947711f68c8ea11888b870a9c6c12eab5a14bc6016794f63b76800576dfc9295495736d57bb5af9c7557080a5d86868dc14c715cc3af795136190ad00a86fd979320f5af6f436785c357b95b58e82c16d377b7fcd3a95ec985264a3b3ea001aff466927c2cb37886ce14b63cba2d024b561835c62b522110bb0e3f318843fb89a482351a32313b01a4e501178a784152836c86074d7ce04d6c92632f37088258cc59f9a26c0b54d1d5c7355b09aca7c9555ccd9c11ce05c89a96db2f5bf6b66adc78820c1e134c3ae7a15448398a981b51bc35188658b864885ddc6131dc5b11674b219c532bc620a1e4a522d7138487914ba5442d230ac4bd322ae1c29ea9c92406488cae4003f42256bd0297f0e745e731b7d327b19fea83a3eb0c67c99bd4f3aaa3018f029b5c188a9b509813b691c608678f6455583f23366eeb95fda2567bfa0894942eb0c85d7b36795d62cb1dd021515c344740bd5e2caecdf463998209573977b863aa3a7b9e460237f4c8cd3a82bbfa7000cd52336a84aa6d38b62d55c2b7a042f5e2155c84907fc0ba7e7647daf96c21a439099899ad40ac90190750822e08d723a3f75976630538405dd5037e3b879142421beb0c1148060956c66d41428f7a58c36572419b160d57015eb8622617724ec56216ab10b6b0db03b2938e133759e85286e0e974d341abe6e42350acad2691b2746102cfc0738df1089b0079beb9132601b6cc51053af90dd6243c2439095696194ea88cb17294c4cc620b7ca9c0e0054e0a59fd49b54e063f6b17361e7378451c4c20926aec0b89dd647ebe51844887cefae09e71dc63f2863509880dc9b1c1a1853271b0355451aec7739db4d86b8d789bcdd9c0d1b60965266da2fb86e97ab5b9409099518652c378ccdb9a15553c4fb60b0c6b29d6469d66d7bf6173857ed4409235b02ef2c0a983bcc021b732776dc7a156b505bc0ad8812373471bd49316a6b07f97663245b8abe8a94b208d02b14ce9643d67200184e7916e7a5e52b1b81db34a6297216c4a0d19280bdedacf52c48de85566245c7f36f3b68044323c2b066b544691d29f596b07e8c3674bd9ace66273df840f4e072b9157949e9847fc90071e4883f89a107b222788aca002d235ded8aa45643b6d273b5ae616ef032a73b832ae968b71f5abee4856d676994972716e317903ba59648369003027f24b3053ea8fc6c55e288181d6e101dad56007277e26bb4e8049adcd91b105c58c6a38705cf1bb293a9b2281880f982588126324997af3761ad36a7c3eea215d04cf8378019b9c3edf7b5f358cc3f21735feb96b4f01965af2c1e0b6a2ee37b90026a9868736915406af197053d02b1ce8356376b747d7217a0a42d221197f54397cfbacbef183f1220ac1c45174c96bcb81b98821946ec5444d2203dd8b7e6348191a62cbed9808eee341b1eacde75954b089a18e08269a7378e641a03148b1dc459990b1997880c2682b04d6d609963ac591445ede63ad41d4cc99311a612b16abea0a8e299eacda0f1bfa753bf20916f456c855f10b96ac05f42bbc6a1c82d88048e2535fe8791811a2ee3b3054013e398acdae7986746d23eecb87d760d654458d28bbb5aa9fc25742561c4c59f33b574e,
+                            },
+                            KeyShareEntry {
+                                group: X25519,
+                                payload: cdae7986746d23eecb87d760d654458d28bbb5aa9fc25742561c4c59f33b574e,
+                            },
+                        ],
+                        order_seed: 35384,
+                        contiguous_extensions: [],
+                        ..
+                    },
+                },
+            ),
+        ),
+        encoded: 0100059903039f0d78fc01c5ca71e7d2594b50597707cdf043ea67e985b7917de400868c5a5d205ac031bba4ba0e30c6293c07e209b6ea24f69f44606b0f1a6632a67e98af60a20014130213011303c02cc02bcca9c030c02fcca800ff0100053c000500050100000000000b00020100002b0005040304030300170000003304ea04e811ec04c00116bff8f08ee1366307fc7989ac27f9aa304f933d4cb90478c07300141d314138697bbaf81b7f668b4dfca95c519b7723db84f8140a4c947711f68c8ea11888b870a9c6c12eab5a14bc6016794f63b76800576dfc9295495736d57bb5af9c7557080a5d86868dc14c715cc3af795136190ad00a86fd979320f5af6f436785c357b95b58e82c16d377b7fcd3a95ec985264a3b3ea001aff466927c2cb37886ce14b63cba2d024b561835c62b522110bb0e3f318843fb89a482351a32313b01a4e501178a784152836c86074d7ce04d6c92632f37088258cc59f9a26c0b54d1d5c7355b09aca7c9555ccd9c11ce05c89a96db2f5bf6b66adc78820c1e134c3ae7a15448398a981b51bc35188658b864885ddc6131dc5b11674b219c532bc620a1e4a522d7138487914ba5442d230ac4bd322ae1c29ea9c92406488cae4003f42256bd0297f0e745e731b7d327b19fea83a3eb0c67c99bd4f3aaa3018f029b5c188a9b509813b691c608678f6455583f23366eeb95fda2567bfa0894942eb0c85d7b36795d62cb1dd021515c344740bd5e2caecdf463998209573977b863aa3a7b9e460237f4c8cd3a82bbfa7000cd52336a84aa6d38b62d55c2b7a042f5e2155c84907fc0ba7e7647daf96c21a439099899ad40ac90190750822e08d723a3f75976630538405dd5037e3b879142421beb0c1148060956c66d41428f7a58c36572419b160d57015eb8622617724ec56216ab10b6b0db03b2938e133759e85286e0e974d341abe6e42350acad2691b2746102cfc0738df1089b0079beb9132601b6cc51053af90dd6243c2439095696194ea88cb17294c4cc620b7ca9c0e0054e0a59fd49b54e063f6b17361e7378451c4c20926aec0b89dd647ebe51844887cefae09e71dc63f2863509880dc9b1c1a1853271b0355451aec7739db4d86b8d789bcdd9c0d1b60965266da2fb86e97ab5b9409099518652c378ccdb9a15553c4fb60b0c6b29d6469d66d7bf6173857ed4409235b02ef2c0a983bcc021b732776dc7a156b505bc0ad8812373471bd49316a6b07f97663245b8abe8a94b208d02b14ce9643d67200184e7916e7a5e52b1b81db34a6297216c4a0d19280bdedacf52c48de85566245c7f36f3b68044323c2b066b544691d29f596b07e8c3674bd9ace66273df840f4e072b9157949e9847fc90071e4883f89a107b222788aca002d235ded8aa45643b6d273b5ae616ef032a73b832ae968b71f5abee4856d676994972716e317903ba59648369003027f24b3053ea8fc6c55e288181d6e101dad56007277e26bb4e8049adcd91b105c58c6a38705cf1bb293a9b2281880f982588126324997af3761ad36a7c3eea215d04cf8378019b9c3edf7b5f358cc3f21735feb96b4f01965af2c1e0b6a2ee37b90026a9868736915406af197053d02b1ce8356376b747d7217a0a42d221197f54397cfbacbef183f1220ac1c45174c96bcb81b98821946ec5444d2203dd8b7e6348191a62cbed9808eee341b1eacde75954b089a18e08269a7378e641a03148b1dc459990b1997880c2682b04d6d609963ac591445ede63ad41d4cc99311a612b16abea0a8e299eacda0f1bfa753bf20916f456c855f10b96ac05f42bbc6a1c82d88048e2535fe8791811a2ee3b3054013e398acdae7986746d23eecb87d760d654458d28bbb5aa9fc25742561c4c59f33b574e001d0020cdae7986746d23eecb87d760d654458d28bbb5aa9fc25742561c4c59f33b574e000d001600140201040105010601040308040805080608080807002d00020101000a000a000811ec001d0017001800230000,
+    },
+}
+[2m2026-11-19T12:56:10.594111Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.594156Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 120 bytes to the server: 42007801000000704200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000010000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F010000001842005C05000000040000001E000000004200790100000000
+[2m2026-11-19T12:56:10.595330Z[0m [35mTRACE[0m [2mrustls::client::hs[0m[2m:[0m We got ServerHello ServerHelloPayload {
+    legacy_version: TLSv1_2,
+    random: 01ef8b183e7870053a939978da94f176a8a05bdf3579ddf9b9fe41724afef443,
+    session_id: ,
+    cipher_suite: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+    compression_method: Null,
+    extensions: ServerExtensions {
+        ec_point_formats: SupportedEcPointFormats {
+            uncompressed: true,
+        },
+        session_ticket_ack: (),
+        renegotiation_info: ,
+        extended_master_secret_ack: (),
+        unknown_extensions: {},
+        ..
+    },
+}
+[2m2026-11-19T12:56:10.595377Z[0m [34mDEBUG[0m [2mrustls::client::hs[0m[2m:[0m ALPN protocol is None
+[2m2026-11-19T12:56:10.595388Z[0m [34mDEBUG[0m [2mrustls::client::hs[0m[2m:[0m Using ciphersuite TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+[2m2026-11-19T12:56:10.595407Z[0m [34mDEBUG[0m [2mrustls::client::tls12::server_hello[0m[2m:[0m Server supports tickets
+[2m2026-11-19T12:56:10.595444Z[0m [34mDEBUG[0m [2mrustls::client::tls12[0m[2m:[0m ECDHE curve is EcParameters { curve_type: NamedCurve, named_group: X25519 }
+[2m2026-11-19T12:56:10.595467Z[0m [34mDEBUG[0m [2mrustls::client::tls12[0m[2m:[0m Got CertificateRequest CertificateRequestPayload { certtypes: [RSASign, ECDSASign], sigschemes: [ECDSA_NISTP256_SHA256, ECDSA_NISTP384_SHA384, ECDSA_NISTP521_SHA512, ED25519, ED448, SignatureScheme(0x809), SignatureScheme(0x80a), SignatureScheme(0x80b), RSA_PSS_SHA256, RSA_PSS_SHA384, RSA_PSS_SHA512, RSA_PKCS1_SHA256, RSA_PKCS1_SHA384, RSA_PKCS1_SHA512, SignatureScheme(0x303), SignatureScheme(0x301)], canames: [] }
+[2m2026-11-19T12:56:10.595499Z[0m [34mDEBUG[0m [2mrustls::client::common[0m[2m:[0m Attempting client auth
+[2m2026-11-19T12:56:10.595516Z[0m [35mTRACE[0m [2mrustls::client::tls12[0m[2m:[0m Server cert is CertificateChain([CertificateDer(0x308201573081ffa00302010202147f8cc1f85105acff52a6e158ab7a840166a7d2ea300a06082a8648ce3d0403023021311f301d06035504030c16726367656e2073656c66207369676e656420636572743020170d3735303130313030303030305a180f34303936303130313030303030305a3021311f301d06035504030c16726367656e2073656c66207369676e656420636572743059301306072a8648ce3d020106082a8648ce3d030107034200047abbef8259d8e9d689271dfbc444e63a6af2de1467933605750587279592d0b97e41c34e602e76d96144a47126c2ff1017c1ae470055e1abe4ea0b2e74a8a492a3133011300f0603551d110408300687047f000001300a06082a8648ce3d0403020347003044022071794e9d8ac7f53d5514fe273d2aa76a7360ceac2df701d05ed294cfd9555b8702202da8aa878bf2e41155964f13a6338c3fd5a350563e6a767ff59431770c9374d6)])
+[2m2026-11-19T12:56:10.595553Z[0m [34mDEBUG[0m [2mrustls::client::tls12[0m[2m:[0m Server DNS name is IpAddress(V4(Ipv4Addr([127, 0, 0, 1])))
+[2m2026-11-19T12:56:10.596335Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.596351Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.596362Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.600157Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.600179Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 368 bytes from the KMIP server
+[2m2026-11-19T12:56:10.600188Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 368 bytes from the KMIP server
+[2m2026-11-19T12:56:10.600209Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 376 bytes from the server: 42007B010000017042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000001000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000011842005C05000000040000001E0000000042007F0500000004000000000000000042007C01000000F0420069010000002042006A0200000004000000020000000042006B02000000040000000000000000420069010000002042006A0200000004000000010000000042006B02000000040000000400000000420069010000002042006A0200000004000000010000000042006B02000000040000000300000000420069010000002042006A0200000004000000010000000042006B02000000040000000200000000420069010000002042006A0200000004000000010000000042006B02000000040000000100000000420069010000002042006A0200000004000000010000000042006B02000000040000000000000000
+[2m2026-11-19T12:56:10.600400Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.600619Z[0m [34mDEBUG[0m [2mrustls::client::hs[0m[2m:[0m No cached session for IpAddress(V4(Ipv4Addr([127, 0, 0, 1])))
+[2m2026-11-19T12:56:10.600646Z[0m [34mDEBUG[0m [2mrustls::client::hs[0m[2m:[0m Not resuming any session
+[2m2026-11-19T12:56:10.600778Z[0m [35mTRACE[0m [2mrustls::client::hs[0m[2m:[0m Sending ClientHello Message {
+    version: TLSv1_0,
+    payload: Handshake {
+        parsed: HandshakeMessagePayload(
+            ClientHello(
+                ClientHelloPayload {
+                    client_version: TLSv1_2,
+                    random: 43dda9bd3afc67693a4c56a45e10293b7c26e8f8790cbd1c15ed3bb4dea048c3,
+                    session_id: 77b9f2a06a564afd3f9e91d05a8d6663acbbcd74e516d3fea7f7daeb60e6ceac,
+                    cipher_suites: [
+                        TLS13_AES_256_GCM_SHA384,
+                        TLS13_AES_128_GCM_SHA256,
+                        TLS13_CHACHA20_POLY1305_SHA256,
+                        TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
+                        TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+                        TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,
+                        TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+                        TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+                        TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256,
+                        TLS_EMPTY_RENEGOTIATION_INFO_SCSV,
+                    ],
+                    compression_methods: [
+                        Null,
+                    ],
+                    extensions: ClientExtensions {
+                        certificate_status_request: Ocsp(
+                            OcspCertificateStatusRequest {
+                                responder_ids: [],
+                                extensions: ,
+                            },
+                        ),
+                        named_groups: [
+                            X25519MLKEM768,
+                            X25519,
+                            secp256r1,
+                            secp384r1,
+                        ],
+                        ec_point_formats: SupportedEcPointFormats {
+                            uncompressed: true,
+                        },
+                        signature_schemes: [
+                            RSA_PKCS1_SHA1,
+                            RSA_PKCS1_SHA256,
+                            RSA_PKCS1_SHA384,
+                            RSA_PKCS1_SHA512,
+                            ECDSA_NISTP256_SHA256,
+                            RSA_PSS_SHA256,
+                            RSA_PSS_SHA384,
+                            RSA_PSS_SHA512,
+                            ED448,
+                            ED25519,
+                        ],
+                        extended_master_secret_request: (),
+                        session_ticket: Request,
+                        supported_versions: SupportedProtocolVersions {
+                            tls13: true,
+                            tls12: true,
+                        },
+                        preshared_key_modes: PskKeyExchangeModes {
+                            psk_dhe: true,
+                            psk: false,
+                        },
+                        key_shares: [
+                            KeyShareEntry {
+                                group: X25519MLKEM768,
+                                payload: ec506c43a02673e79dc356073ed263a5b67a467c3f99175887c250f2181b0953b4e427345d5828c312b90d88b495e015ff3530e76a0ff84aab69f48b3bdab9bd7600a5266d6e24a2e5b29a4b3c676ab23aa7417d8310cee6cccb17e405b4c54794f05ff72b0a1478baf16b642cb2c60c09a4de210116643b91d143e5073a6b1b880752a5112a9966e882c230b749f2c6eec6c2d6864d6e6b56465c67dbdaa5cc66030e299f918cb271f6c2163589925b319aa6a5b9815ccce59e9f8395e9fb6cf5aaa707bc82df621b2c650efb44bea74c280f6b7480343e1f2117cee13e1fe29b2b57a6af8a2075b26dc2610bbc7a253458843bc84159eb7d758ac0e94abf063a92929325d103a6ce039d198a49f3747d5453cdabfa1f18683d6480021ab72272d47332852aee6cbe5381768165ac08f85526416893d6a7e842b4883181c5ac54bbb574c8d9611186be07930c64527421c4b5bbe6a0df037e4d843652b295dd0a15eeb1b2abf07a4a195b97638da683b669630a4f2807c5d93eb41c7dad93bb200b4e10563fe8c7591c50061a7b7839414ea1c94512fb4b47d2a209c224d1853414d4119d22cdc42849ef97a618448b20ec46a928b77da749c097161ae39e75eb1960c51640368cb8546549f7cfe50c2fcdc065ef651e7d517fa0827f929708e1a76616fc079b1600c52083d4d76685a22a926587a04ab10ea26af9000ec21933f96035034b89f1d9b9b8997aef189f57dbbf57cc6c1b55794a064b53aa53ca27a7c8d32d8eac3fff241a4a93a2c3ec4b45a50755e382d1b5a00c68a0e5376acb8647897b78f8722bf8b09d2331832cdcb7497997c96b3abe58c3f20b54452271e5870ad9f6ba1aa112a785caac3618ce54227788cdf21926a3aacfe1b40ab220328426530f3967e0cacec8d482b9d4c721377a98f24c046bad8561480da158475a849b86b554a0b38ef80452fbb7f17b8bc84191e8300210b78e721bb4ecb56ef773027231c01586b4fae26a9eec87616aaadb4a3b4cc5cf0ddb012fa6c18b257f450c975bd202a3c48fc4d37e9f146b7bfc6459474376b747f1e5367402a7f49c07fdd5c968c7698a5c8601b5bedcf8995ee39d6553a977a28d68d9962aab545b611a3785cd1be952fbe38e2754851ea4931f39a41e0c25c4626b95782ef28c1d2e9b32c6a914344636163c07d3ab41d5389a5e41b684b5c84dd62d9793050b365fe12c0468d63dc1e354b75632e802c5120cc768191dad62428bf570b37a3786bb361e1b997dd6692129a6d4e8372dc9524ab0b25cfbbb5ab69463fa6e157309d49635992225c72c60ea9a27f7c3863e059eea932186d16f2e551ad4b72bcb9b14e0b297eb5075aae095da8197d7d36a83197d0f4147fcd607c7a80e9a48c0fa8c443bd88e93ac18add91c151b0d9b597e95bcb48710ac0be90f367961c311bb5cd62cc678256b073a2c94ab7db571cfd75fb22baec8c155d492502f62a8f36758ab2314dc3a0022414f750849a9f3b63ada60306b49aa4c403211542eb8b5f3ab163ae1335c11b693036558fca21091a1af737564055a3117b4aa77828cb36f062a7e99c457a257c6797b713f5a7881c9512ba22e828cbb0d32969563a951bd6ba7c2fe5403dfca223a44d83e062068aecb640cad2e463beedca09e0fd0c08d0ee50526e26177de622b48f9a56e3e08b6d99b3b2b6a1f605ef894bfbc6b,
+                            },
+                            KeyShareEntry {
+                                group: X25519,
+                                payload: c08d0ee50526e26177de622b48f9a56e3e08b6d99b3b2b6a1f605ef894bfbc6b,
+                            },
+                        ],
+                        order_seed: 12375,
+                        contiguous_extensions: [],
+                        ..
+                    },
+                },
+            ),
+        ),
+        encoded: 01000599030343dda9bd3afc67693a4c56a45e10293b7c26e8f8790cbd1c15ed3bb4dea048c32077b9f2a06a564afd3f9e91d05a8d6663acbbcd74e516d3fea7f7daeb60e6ceac0014130213011303c02cc02bcca9c030c02fcca800ff0100053c002b0005040304030300170000000500050100000000000d001600140201040105010601040308040805080608080807003304ea04e811ec04c0ec506c43a02673e79dc356073ed263a5b67a467c3f99175887c250f2181b0953b4e427345d5828c312b90d88b495e015ff3530e76a0ff84aab69f48b3bdab9bd7600a5266d6e24a2e5b29a4b3c676ab23aa7417d8310cee6cccb17e405b4c54794f05ff72b0a1478baf16b642cb2c60c09a4de210116643b91d143e5073a6b1b880752a5112a9966e882c230b749f2c6eec6c2d6864d6e6b56465c67dbdaa5cc66030e299f918cb271f6c2163589925b319aa6a5b9815ccce59e9f8395e9fb6cf5aaa707bc82df621b2c650efb44bea74c280f6b7480343e1f2117cee13e1fe29b2b57a6af8a2075b26dc2610bbc7a253458843bc84159eb7d758ac0e94abf063a92929325d103a6ce039d198a49f3747d5453cdabfa1f18683d6480021ab72272d47332852aee6cbe5381768165ac08f85526416893d6a7e842b4883181c5ac54bbb574c8d9611186be07930c64527421c4b5bbe6a0df037e4d843652b295dd0a15eeb1b2abf07a4a195b97638da683b669630a4f2807c5d93eb41c7dad93bb200b4e10563fe8c7591c50061a7b7839414ea1c94512fb4b47d2a209c224d1853414d4119d22cdc42849ef97a618448b20ec46a928b77da749c097161ae39e75eb1960c51640368cb8546549f7cfe50c2fcdc065ef651e7d517fa0827f929708e1a76616fc079b1600c52083d4d76685a22a926587a04ab10ea26af9000ec21933f96035034b89f1d9b9b8997aef189f57dbbf57cc6c1b55794a064b53aa53ca27a7c8d32d8eac3fff241a4a93a2c3ec4b45a50755e382d1b5a00c68a0e5376acb8647897b78f8722bf8b09d2331832cdcb7497997c96b3abe58c3f20b54452271e5870ad9f6ba1aa112a785caac3618ce54227788cdf21926a3aacfe1b40ab220328426530f3967e0cacec8d482b9d4c721377a98f24c046bad8561480da158475a849b86b554a0b38ef80452fbb7f17b8bc84191e8300210b78e721bb4ecb56ef773027231c01586b4fae26a9eec87616aaadb4a3b4cc5cf0ddb012fa6c18b257f450c975bd202a3c48fc4d37e9f146b7bfc6459474376b747f1e5367402a7f49c07fdd5c968c7698a5c8601b5bedcf8995ee39d6553a977a28d68d9962aab545b611a3785cd1be952fbe38e2754851ea4931f39a41e0c25c4626b95782ef28c1d2e9b32c6a914344636163c07d3ab41d5389a5e41b684b5c84dd62d9793050b365fe12c0468d63dc1e354b75632e802c5120cc768191dad62428bf570b37a3786bb361e1b997dd6692129a6d4e8372dc9524ab0b25cfbbb5ab69463fa6e157309d49635992225c72c60ea9a27f7c3863e059eea932186d16f2e551ad4b72bcb9b14e0b297eb5075aae095da8197d7d36a83197d0f4147fcd607c7a80e9a48c0fa8c443bd88e93ac18add91c151b0d9b597e95bcb48710ac0be90f367961c311bb5cd62cc678256b073a2c94ab7db571cfd75fb22baec8c155d492502f62a8f36758ab2314dc3a0022414f750849a9f3b63ada60306b49aa4c403211542eb8b5f3ab163ae1335c11b693036558fca21091a1af737564055a3117b4aa77828cb36f062a7e99c457a257c6797b713f5a7881c9512ba22e828cbb0d32969563a951bd6ba7c2fe5403dfca223a44d83e062068aecb640cad2e463beedca09e0fd0c08d0ee50526e26177de622b48f9a56e3e08b6d99b3b2b6a1f605ef894bfbc6b001d0020c08d0ee50526e26177de622b48f9a56e3e08b6d99b3b2b6a1f605ef894bfbc6b002d0002010100230000000a000a000811ec001d00170018000b00020100,
+    },
+}
+[2m2026-11-19T12:56:10.601392Z[0m [35mTRACE[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Generating KeyPair object
+[2m2026-11-19T12:56:10.601413Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.601449Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 528 bytes to the server: 42007801000002084200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F01000001B042005C05000000040000000200000000420079010000019842001F0100000070420008010000003042000A070000001743727970746F6772617068696320416C676F726974686D0042000B05000000040000000400000000420008010000003042000A070000001443727970746F67726170686963204C656E6774680000000042000B020000000400000400000000004200650100000088420008010000004842000A07000000044E616D650000000042000B01000000304200550700000017707269766174652D6B65792D6C6162656C2D616C672D380042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B0200000004000000010000000042006E0100000088420008010000004842000A07000000044E616D650000000042000B010000003042005507000000167075626C69632D6B65792D6C6162656C2D616C672D38000042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B02000000040000000200000000
+[2m2026-11-19T12:56:10.601970Z[0m [35mTRACE[0m [2mrustls::client::hs[0m[2m:[0m We got ServerHello ServerHelloPayload {
+    legacy_version: TLSv1_2,
+    random: 34e1e94598aed43d36ae84cd4b6e0dfe6bd3a1a0c30c2ddce2c123965b98162e,
+    session_id: ,
+    cipher_suite: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+    compression_method: Null,
+    extensions: ServerExtensions {
+        ec_point_formats: SupportedEcPointFormats {
+            uncompressed: true,
+        },
+        session_ticket_ack: (),
+        renegotiation_info: ,
+        extended_master_secret_ack: (),
+        unknown_extensions: {},
+        ..
+    },
+}
+[2m2026-11-19T12:56:10.602012Z[0m [34mDEBUG[0m [2mrustls::client::hs[0m[2m:[0m ALPN protocol is None
+[2m2026-11-19T12:56:10.602023Z[0m [34mDEBUG[0m [2mrustls::client::hs[0m[2m:[0m Using ciphersuite TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+[2m2026-11-19T12:56:10.602041Z[0m [34mDEBUG[0m [2mrustls::client::tls12::server_hello[0m[2m:[0m Server supports tickets
+[2m2026-11-19T12:56:10.602072Z[0m [34mDEBUG[0m [2mrustls::client::tls12[0m[2m:[0m ECDHE curve is EcParameters { curve_type: NamedCurve, named_group: X25519 }
+[2m2026-11-19T12:56:10.602094Z[0m [34mDEBUG[0m [2mrustls::client::tls12[0m[2m:[0m Got CertificateRequest CertificateRequestPayload { certtypes: [RSASign, ECDSASign], sigschemes: [ECDSA_NISTP256_SHA256, ECDSA_NISTP384_SHA384, ECDSA_NISTP521_SHA512, ED25519, ED448, SignatureScheme(0x809), SignatureScheme(0x80a), SignatureScheme(0x80b), RSA_PSS_SHA256, RSA_PSS_SHA384, RSA_PSS_SHA512, RSA_PKCS1_SHA256, RSA_PKCS1_SHA384, RSA_PKCS1_SHA512, SignatureScheme(0x303), SignatureScheme(0x301)], canames: [] }
+[2m2026-11-19T12:56:10.602117Z[0m [34mDEBUG[0m [2mrustls::client::common[0m[2m:[0m Attempting client auth
+[2m2026-11-19T12:56:10.602132Z[0m [35mTRACE[0m [2mrustls::client::tls12[0m[2m:[0m Server cert is CertificateChain([CertificateDer(0x308201573081ffa00302010202147f8cc1f85105acff52a6e158ab7a840166a7d2ea300a06082a8648ce3d0403023021311f301d06035504030c16726367656e2073656c66207369676e656420636572743020170d3735303130313030303030305a180f34303936303130313030303030305a3021311f301d06035504030c16726367656e2073656c66207369676e656420636572743059301306072a8648ce3d020106082a8648ce3d030107034200047abbef8259d8e9d689271dfbc444e63a6af2de1467933605750587279592d0b97e41c34e602e76d96144a47126c2ff1017c1ae470055e1abe4ea0b2e74a8a492a3133011300f0603551d110408300687047f000001300a06082a8648ce3d0403020347003044022071794e9d8ac7f53d5514fe273d2aa76a7360ceac2df701d05ed294cfd9555b8702202da8aa878bf2e41155964f13a6338c3fd5a350563e6a767ff59431770c9374d6)])
+[2m2026-11-19T12:56:10.602175Z[0m [34mDEBUG[0m [2mrustls::client::tls12[0m[2m:[0m Server DNS name is IpAddress(V4(Ipv4Addr([127, 0, 0, 1])))
+[2m2026-11-19T12:56:10.602834Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.602852Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.602863Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.633477Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.633496Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 160 bytes from the KMIP server
+[2m2026-11-19T12:56:10.633500Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 160 bytes from the KMIP server
+[2m2026-11-19T12:56:10.633508Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 168 bytes from the server: 42007B01000000A042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000004842005C0500000004000000020000000042007F0500000004000000000000000042007C01000000204200660700000001320000000000000042006F07000000013100000000000000
+[2m2026-11-19T12:56:10.633580Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.633595Z[0m [35mTRACE[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Creating KeyPair object
+[2m2026-11-19T12:56:10.633612Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.633622Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 136 bytes to the server: 42007801000000804200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F010000002842005C05000000040000000A00000000420079010000001042009407000000013100000000000000
+[2m2026-11-19T12:56:10.633649Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.633652Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.633655Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.637433Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.637455Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 384 bytes from the KMIP server
+[2m2026-11-19T12:56:10.637465Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 384 bytes from the KMIP server
+[2m2026-11-19T12:56:10.637486Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 392 bytes from the server: 42007B010000018042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000012842005C05000000040000000A0000000042007F0500000004000000000000000042007C0100000100420057050000000400000003000000004200940700000001310000000000000042006D01000000D842004001000000D0420042050000000400000003000000004200450100000098420043080000008C30818902818100FEFC6D641D1B13C5BF948981C485FE1E7B99FB4E32E6CF8F3A5F046DED8A53A485F494C3583119D4A08E39E070B907A5352EEC3549181188965F8E0EB39225678CE94D49E8FB296DC28BEB0AFF65A44C40B27B3134C8747777E603FC9DF5FB7F103EC7F7D9CDE46C5D7D671226B8AE5054AF23C8D69DC3DA9BF9E1C612D551070203010001000000004200280500000004000000040000000042002A02000000040000040000000000
+[2m2026-11-19T12:56:10.637623Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.637643Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Cryptographic Algorithm: Some(RSA)
+[2m2026-11-19T12:56:10.637653Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Cryptographic Length: Some(1024)
+[2m2026-11-19T12:56:10.637662Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Key Format Type: PKCS1
+[2m2026-11-19T12:56:10.637670Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Key Compression Type: None
+[2m2026-11-19T12:56:10.637677Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Key bytes as hex: 30818902818100FEFC6D641D1B13C5BF948981C485FE1E7B99FB4E32E6CF8F3A5F046DED8A53A485F494C3583119D4A08E39E070B907A5352EEC3549181188965F8E0EB39225678CE94D49E8FB296DC28BEB0AFF65A44C40B27B3134C8747777E603FC9DF5FB7F103EC7F7D9CDE46C5D7D671226B8AE5054AF23C8D69DC3DA9BF9E1C612D551070203010001
+[2m2026-11-19T12:56:10.637730Z[0m [35mTRACE[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Activating key
+[2m2026-11-19T12:56:10.637740Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.637756Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 136 bytes to the server: 42007801000000804200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F010000002842005C05000000040000001200000000420079010000001042009407000000013200000000000000
+[2m2026-11-19T12:56:10.637819Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.637831Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.637839Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.642056Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.642077Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 144 bytes from the KMIP server
+[2m2026-11-19T12:56:10.642086Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 144 bytes from the KMIP server
+[2m2026-11-19T12:56:10.642100Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 152 bytes from the server: 42007B010000009042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000003842005C0500000004000000120000000042007F0500000004000000000000000042007C010000001042009407000000013200000000000000
+[2m2026-11-19T12:56:10.642177Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.642191Z[0m [35mTRACE[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Complete
+[2m2026-11-19T12:56:10.643082Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.643109Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 216 bytes to the server: 42007801000000D04200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000020000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F010000007842005C0500000004000000210000000042007901000000604200940700000001320000000000000042002B010000003042005F0500000004000000080000000042003805000000040000000600000000420028050000000400000004000000004200C2080000000C48656C6C6F20576F726C642100000000
+[2m2026-11-19T12:56:10.643152Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.643161Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.643169Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.654670Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.654691Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 280 bytes from the KMIP server
+[2m2026-11-19T12:56:10.654700Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 280 bytes from the KMIP server
+[2m2026-11-19T12:56:10.654718Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 288 bytes from the server: 42007B010000011842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000002000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F01000000C042005C0500000004000000210000000042007F0500000004000000000000000042007C0100000098420094070000000132000000000000004200C30800000080912724116296DDF0F4931B18A9EB3AB1B126D39405B4E95E20841804935A3C8005BCDFCC543A48965CC7630C17B4435C6E9F59C84FBE2A46587F33F533E68CC0FAB84192CB89303321DD2552F47B4171F6B79E517EB5EBC97B33119317F56A84C5857F043BC6D892ED9F4DE3D64B2574417708D6408165E081B9225C95377D32
+[2m2026-11-19T12:56:10.654817Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.654833Z[0m [35mTRACE[0m [2mdomain_kmip::key_pair[0m[2m:[0m KMIP signing post-processing: Algorithm: 8, Signature Data: 912724116296DDF0F4931B18A9EB3AB1B126D39405B4E95E20841804935A3C8005BCDFCC543A48965CC7630C17B4435C6E9F59C84FBE2A46587F33F533E68CC0FAB84192CB89303321DD2552F47B4171F6B79E517EB5EBC97B33119317F56A84C5857F043BC6D892ED9F4DE3D64B2574417708D6408165E081B9225C95377D32
+[2m2026-11-19T12:56:10.655407Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.655428Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 160 bytes to the server: 42007801000000984200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F010000004042005C05000000040000001300000000420079010000002842009407000000013100000000000000420081010000001042008205000000040000000600000000
+[2m2026-11-19T12:56:10.655466Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.655476Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.655484Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.658045Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.658065Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 232 bytes from the KMIP server
+[2m2026-11-19T12:56:10.658075Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 232 bytes from the KMIP server
+[2m2026-11-19T12:56:10.658091Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 240 bytes from the server: 42007B01000000E842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000009042005C0500000004000000130000000042007F0500000004000000010000000042007E05000000040000000B0000000042007D0700000054546865206F626A656374206973206E6F742061637469766520616E642063616E6E6F74206265207265766F6B6564207769746820726561736F6E206F74686572207468616E204B45595F434F4D50524F4D49534500000000
+[2m2026-11-19T12:56:10.658165Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.658208Z[0m [35mTRACE[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Generating KeyPair object
+[2m2026-11-19T12:56:10.658218Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.658250Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 528 bytes to the server: 42007801000002084200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F01000001B042005C05000000040000000200000000420079010000019842001F0100000070420008010000003042000A070000001743727970746F6772617068696320416C676F726974686D0042000B05000000040000000400000000420008010000003042000A070000001443727970746F67726170686963204C656E6774680000000042000B020000000400000800000000004200650100000088420008010000004842000A07000000044E616D650000000042000B01000000304200550700000017707269766174652D6B65792D6C6162656C2D616C672D380042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B0200000004000000010000000042006E0100000088420008010000004842000A07000000044E616D650000000042000B010000003042005507000000167075626C69632D6B65792D6C6162656C2D616C672D38000042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B02000000040000000200000000
+[2m2026-11-19T12:56:10.658304Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.658313Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.658321Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.700362Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.700380Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 160 bytes from the KMIP server
+[2m2026-11-19T12:56:10.700384Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 160 bytes from the KMIP server
+[2m2026-11-19T12:56:10.700397Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 168 bytes from the server: 42007B01000000A042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000004842005C0500000004000000020000000042007F0500000004000000000000000042007C01000000204200660700000001340000000000000042006F07000000013300000000000000
+[2m2026-11-19T12:56:10.700461Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.700472Z[0m [35mTRACE[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Creating KeyPair object
+[2m2026-11-19T12:56:10.700477Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.700486Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 136 bytes to the server: 42007801000000804200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F010000002842005C05000000040000000A00000000420079010000001042009407000000013300000000000000
+[2m2026-11-19T12:56:10.700518Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.700521Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.700524Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.702093Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.702108Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 512 bytes from the KMIP server
+[2m2026-11-19T12:56:10.702112Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 512 bytes from the KMIP server
+[2m2026-11-19T12:56:10.702126Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 520 bytes from the server: 42007B010000020042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F01000001A842005C05000000040000000A0000000042007F0500000004000000000000000042007C0100000180420057050000000400000003000000004200940700000001330000000000000042006D01000001584200400100000150420042050000000400000003000000004200450100000118420043080000010E3082010A0282010100C98E4DE29C3B8457DB2A606739AF06FE60CF5D106C59FF775C6FD3337433C0080900661352D4E6EE66637BB83548449868C693EBA5F8DA48B718D9DFAC05F124FB9382D28E010664722CE416FFBBB62AC2B56FA0A7854473B5321BF88A562274D23864BEE5284A9D909C6E269FBFCB3F9FF43B440ED9CDA6471B569D775222FDC1B14315DCD0556F8DD418A8FD07B35F0B99DE21E2162A69C447F3B13D6A05A600785960D8E1A682ECB8BFD4D8BDC975C624446A5A66443E9F197530A0E250DDFBB6846A6A130134256846E1A63124C2A63D93587FEA525A3E9C67377BE1142A3941A165F34492F7B9CF832D7885978F67F084FCA9AC91D5B4C047BC5FCC4EE5020301000100004200280500000004000000040000000042002A02000000040000080000000000
+[2m2026-11-19T12:56:10.702214Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.702220Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Cryptographic Algorithm: Some(RSA)
+[2m2026-11-19T12:56:10.702223Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Cryptographic Length: Some(2048)
+[2m2026-11-19T12:56:10.702226Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Key Format Type: PKCS1
+[2m2026-11-19T12:56:10.702229Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Key Compression Type: None
+[2m2026-11-19T12:56:10.702236Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Key bytes as hex: 3082010A0282010100C98E4DE29C3B8457DB2A606739AF06FE60CF5D106C59FF775C6FD3337433C0080900661352D4E6EE66637BB83548449868C693EBA5F8DA48B718D9DFAC05F124FB9382D28E010664722CE416FFBBB62AC2B56FA0A7854473B5321BF88A562274D23864BEE5284A9D909C6E269FBFCB3F9FF43B440ED9CDA6471B569D775222FDC1B14315DCD0556F8DD418A8FD07B35F0B99DE21E2162A69C447F3B13D6A05A600785960D8E1A682ECB8BFD4D8BDC975C624446A5A66443E9F197530A0E250DDFBB6846A6A130134256846E1A63124C2A63D93587FEA525A3E9C67377BE1142A3941A165F34492F7B9CF832D7885978F67F084FCA9AC91D5B4C047BC5FCC4EE50203010001
+[2m2026-11-19T12:56:10.702265Z[0m [35mTRACE[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Activating key
+[2m2026-11-19T12:56:10.702270Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.702279Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 136 bytes to the server: 42007801000000804200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F010000002842005C05000000040000001200000000420079010000001042009407000000013400000000000000
+[2m2026-11-19T12:56:10.702307Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.702310Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.702313Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.703941Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.703954Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 144 bytes from the KMIP server
+[2m2026-11-19T12:56:10.703958Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 144 bytes from the KMIP server
+[2m2026-11-19T12:56:10.703965Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 152 bytes from the server: 42007B010000009042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000003842005C0500000004000000120000000042007F0500000004000000000000000042007C010000001042009407000000013400000000000000
+[2m2026-11-19T12:56:10.704013Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.704019Z[0m [35mTRACE[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Complete
+[2m2026-11-19T12:56:10.704032Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.704043Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 216 bytes to the server: 42007801000000D04200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000020000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F010000007842005C0500000004000000210000000042007901000000604200940700000001340000000000000042002B010000003042005F0500000004000000080000000042003805000000040000000600000000420028050000000400000004000000004200C2080000000C48656C6C6F20576F726C642100000000
+[2m2026-11-19T12:56:10.704069Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.704072Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.704075Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.726139Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.726153Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 408 bytes from the KMIP server
+[2m2026-11-19T12:56:10.726157Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 408 bytes from the KMIP server
+[2m2026-11-19T12:56:10.726169Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 416 bytes from the server: 42007B010000019842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000002000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000014042005C0500000004000000210000000042007F0500000004000000000000000042007C0100000118420094070000000134000000000000004200C308000001002227ADB1760298624010C437D9AAE47C855D82EB93D633E1D2CF67C92A60A546ED52D7B0ECE7011FD02E358211FE815352AF2AAC280B3490A1A6C0BCE4353F46DC3D37D577B7126AB2FDEC630107287DA813DC210112271B0CBC5C69B03F61EA92E71240567B6339B11182EBA8152534AE5618A05BD43C9ACE50F57055EC9E3514398A20341F779D0609D25FEF9A1FC7142D361138D40E04FA49795E3F8296BF086F06F9ECB9C7F21E9E86D63E90E78B13A076D75BBD834C633ACFAB27A60764B2A840E86C3E4AEA8DDE96C0653FA05556A1402F3D6AC22A01897E21875551C1886607A562FCDE6836D2A0F57D23458D412A08BFA1A3752AD59E2367CC22AA44
+[2m2026-11-19T12:56:10.726225Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.726231Z[0m [35mTRACE[0m [2mdomain_kmip::key_pair[0m[2m:[0m KMIP signing post-processing: Algorithm: 8, Signature Data: 2227ADB1760298624010C437D9AAE47C855D82EB93D633E1D2CF67C92A60A546ED52D7B0ECE7011FD02E358211FE815352AF2AAC280B3490A1A6C0BCE4353F46DC3D37D577B7126AB2FDEC630107287DA813DC210112271B0CBC5C69B03F61EA92E71240567B6339B11182EBA8152534AE5618A05BD43C9ACE50F57055EC9E3514398A20341F779D0609D25FEF9A1FC7142D361138D40E04FA49795E3F8296BF086F06F9ECB9C7F21E9E86D63E90E78B13A076D75BBD834C633ACFAB27A60764B2A840E86C3E4AEA8DDE96C0653FA05556A1402F3D6AC22A01897E21875551C1886607A562FCDE6836D2A0F57D23458D412A08BFA1A3752AD59E2367CC22AA44
+[2m2026-11-19T12:56:10.726280Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.726290Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 160 bytes to the server: 42007801000000984200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F010000004042005C05000000040000001300000000420079010000002842009407000000013300000000000000420081010000001042008205000000040000000600000000
+[2m2026-11-19T12:56:10.726318Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.726321Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.726324Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.727746Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.727760Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 232 bytes from the KMIP server
+[2m2026-11-19T12:56:10.727764Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 232 bytes from the KMIP server
+[2m2026-11-19T12:56:10.727772Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 240 bytes from the server: 42007B01000000E842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000009042005C0500000004000000130000000042007F0500000004000000010000000042007E05000000040000000B0000000042007D0700000054546865206F626A656374206973206E6F742061637469766520616E642063616E6E6F74206265207265766F6B6564207769746820726561736F6E206F74686572207468616E204B45595F434F4D50524F4D49534500000000
+[2m2026-11-19T12:56:10.727823Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.727850Z[0m [35mTRACE[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Generating KeyPair object
+[2m2026-11-19T12:56:10.727854Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.727874Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 528 bytes to the server: 42007801000002084200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F01000001B042005C05000000040000000200000000420079010000019842001F0100000070420008010000003042000A070000001743727970746F6772617068696320416C676F726974686D0042000B05000000040000000400000000420008010000003042000A070000001443727970746F67726170686963204C656E6774680000000042000B020000000400000400000000004200650100000088420008010000004842000A07000000044E616D650000000042000B01000000304200550700000018707269766174652D6B65792D6C6162656C2D616C672D313042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B0200000004000000010000000042006E0100000088420008010000004842000A07000000044E616D650000000042000B010000003042005507000000177075626C69632D6B65792D6C6162656C2D616C672D31300042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B02000000040000000200000000
+[2m2026-11-19T12:56:10.727913Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.727916Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.727919Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.733924Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.733938Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 160 bytes from the KMIP server
+[2m2026-11-19T12:56:10.733942Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 160 bytes from the KMIP server
+[2m2026-11-19T12:56:10.733949Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 168 bytes from the server: 42007B01000000A042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000004842005C0500000004000000020000000042007F0500000004000000000000000042007C01000000204200660700000001360000000000000042006F07000000013500000000000000
+[2m2026-11-19T12:56:10.734003Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.734010Z[0m [35mTRACE[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Creating KeyPair object
+[2m2026-11-19T12:56:10.734015Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.734023Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 136 bytes to the server: 42007801000000804200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F010000002842005C05000000040000000A00000000420079010000001042009407000000013500000000000000
+[2m2026-11-19T12:56:10.734047Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.734050Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.734053Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.735365Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.735374Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 384 bytes from the KMIP server
+[2m2026-11-19T12:56:10.735377Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 384 bytes from the KMIP server
+[2m2026-11-19T12:56:10.735393Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 392 bytes from the server: 42007B010000018042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000012842005C05000000040000000A0000000042007F0500000004000000000000000042007C0100000100420057050000000400000003000000004200940700000001350000000000000042006D01000000D842004001000000D0420042050000000400000003000000004200450100000098420043080000008C30818902818100C2EDDC476C09593951B805A0C3FE7986E3913BC69FCC43BFD356BCD3CDB9450F4A45A5900D84BFC345805967A01BE59F56A0F31474DCF7B443A2979BECFE6228B77D9396211A8300E460850823F477F0D4C17CF27CEFD2EE0087ADE74DA70B9E3859E8D7C681213CAB9DE6420F0FC79BC5007CE0511C5395F336749A1164513F0203010001000000004200280500000004000000040000000042002A02000000040000040000000000
+[2m2026-11-19T12:56:10.735464Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.735469Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Cryptographic Algorithm: Some(RSA)
+[2m2026-11-19T12:56:10.735472Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Cryptographic Length: Some(1024)
+[2m2026-11-19T12:56:10.735475Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Key Format Type: PKCS1
+[2m2026-11-19T12:56:10.735478Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Key Compression Type: None
+[2m2026-11-19T12:56:10.735480Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Key bytes as hex: 30818902818100C2EDDC476C09593951B805A0C3FE7986E3913BC69FCC43BFD356BCD3CDB9450F4A45A5900D84BFC345805967A01BE59F56A0F31474DCF7B443A2979BECFE6228B77D9396211A8300E460850823F477F0D4C17CF27CEFD2EE0087ADE74DA70B9E3859E8D7C681213CAB9DE6420F0FC79BC5007CE0511C5395F336749A1164513F0203010001
+[2m2026-11-19T12:56:10.735499Z[0m [35mTRACE[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Activating key
+[2m2026-11-19T12:56:10.735503Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.735513Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 136 bytes to the server: 42007801000000804200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F010000002842005C05000000040000001200000000420079010000001042009407000000013600000000000000
+[2m2026-11-19T12:56:10.735535Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.735538Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.735540Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.737051Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.737065Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 144 bytes from the KMIP server
+[2m2026-11-19T12:56:10.737068Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 144 bytes from the KMIP server
+[2m2026-11-19T12:56:10.737075Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 152 bytes from the server: 42007B010000009042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000003842005C0500000004000000120000000042007F0500000004000000000000000042007C010000001042009407000000013600000000000000
+[2m2026-11-19T12:56:10.737121Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.737126Z[0m [35mTRACE[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Complete
+[2m2026-11-19T12:56:10.737138Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.737148Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 216 bytes to the server: 42007801000000D04200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000020000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F010000007842005C0500000004000000210000000042007901000000604200940700000001360000000000000042002B010000003042005F0500000004000000080000000042003805000000040000000800000000420028050000000400000004000000004200C2080000000C48656C6C6F20576F726C642100000000
+[2m2026-11-19T12:56:10.737179Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.737182Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.737184Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.741622Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.741627Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 280 bytes from the KMIP server
+[2m2026-11-19T12:56:10.741630Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 280 bytes from the KMIP server
+[2m2026-11-19T12:56:10.741639Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 288 bytes from the server: 42007B010000011842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000002000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F01000000C042005C0500000004000000210000000042007F0500000004000000000000000042007C0100000098420094070000000136000000000000004200C308000000803AA9EA5C54748DEF5109D81C6F3CA27858FB4DF735ACC164D6003C7629B5247FBA9ACF7D820158DBD959F4AB075E9FB5E29D31A106D30ECEB43C65203D1A9B1F7336333EB22FAD5785D13BAB7298156BFD7B29475100DBFC7F6914A4D4DAB716C65AE48EDBD7955320E29AF4F9780793FB8120C6204B270730ECA1B85A8B1267
+[2m2026-11-19T12:56:10.741684Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.741689Z[0m [35mTRACE[0m [2mdomain_kmip::key_pair[0m[2m:[0m KMIP signing post-processing: Algorithm: 10, Signature Data: 3AA9EA5C54748DEF5109D81C6F3CA27858FB4DF735ACC164D6003C7629B5247FBA9ACF7D820158DBD959F4AB075E9FB5E29D31A106D30ECEB43C65203D1A9B1F7336333EB22FAD5785D13BAB7298156BFD7B29475100DBFC7F6914A4D4DAB716C65AE48EDBD7955320E29AF4F9780793FB8120C6204B270730ECA1B85A8B1267
+[2m2026-11-19T12:56:10.741727Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.741736Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 160 bytes to the server: 42007801000000984200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F010000004042005C05000000040000001300000000420079010000002842009407000000013500000000000000420081010000001042008205000000040000000600000000
+[2m2026-11-19T12:56:10.741759Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.741762Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.741766Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.742987Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.742992Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 232 bytes from the KMIP server
+[2m2026-11-19T12:56:10.742995Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 232 bytes from the KMIP server
+[2m2026-11-19T12:56:10.743003Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 240 bytes from the server: 42007B01000000E842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000009042005C0500000004000000130000000042007F0500000004000000010000000042007E05000000040000000B0000000042007D0700000054546865206F626A656374206973206E6F742061637469766520616E642063616E6E6F74206265207265766F6B6564207769746820726561736F6E206F74686572207468616E204B45595F434F4D50524F4D49534500000000
+[2m2026-11-19T12:56:10.743034Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.743050Z[0m [35mTRACE[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Generating KeyPair object
+[2m2026-11-19T12:56:10.743053Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.743070Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 528 bytes to the server: 42007801000002084200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F01000001B042005C05000000040000000200000000420079010000019842001F0100000070420008010000003042000A070000001743727970746F6772617068696320416C676F726974686D0042000B05000000040000000400000000420008010000003042000A070000001443727970746F67726170686963204C656E6774680000000042000B020000000400000800000000004200650100000088420008010000004842000A07000000044E616D650000000042000B01000000304200550700000018707269766174652D6B65792D6C6162656C2D616C672D313042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B0200000004000000010000000042006E0100000088420008010000004842000A07000000044E616D650000000042000B010000003042005507000000177075626C69632D6B65792D6C6162656C2D616C672D31300042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B02000000040000000200000000
+[2m2026-11-19T12:56:10.743099Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.743101Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.743104Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.771045Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.771066Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 160 bytes from the KMIP server
+[2m2026-11-19T12:56:10.771070Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 160 bytes from the KMIP server
+[2m2026-11-19T12:56:10.771078Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 168 bytes from the server: 42007B01000000A042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000004842005C0500000004000000020000000042007F0500000004000000000000000042007C01000000204200660700000001380000000000000042006F07000000013700000000000000
+[2m2026-11-19T12:56:10.771138Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.771145Z[0m [35mTRACE[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Creating KeyPair object
+[2m2026-11-19T12:56:10.771150Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.771158Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 136 bytes to the server: 42007801000000804200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F010000002842005C05000000040000000A00000000420079010000001042009407000000013700000000000000
+[2m2026-11-19T12:56:10.771182Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.771185Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.771188Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.772582Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.772597Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 512 bytes from the KMIP server
+[2m2026-11-19T12:56:10.772601Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 512 bytes from the KMIP server
+[2m2026-11-19T12:56:10.772615Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 520 bytes from the server: 42007B010000020042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F01000001A842005C05000000040000000A0000000042007F0500000004000000000000000042007C0100000180420057050000000400000003000000004200940700000001370000000000000042006D01000001584200400100000150420042050000000400000003000000004200450100000118420043080000010E3082010A0282010100C729FC2E2A410E037AE3E64223CDAF3E10773770A069CF09AC49AF4EFA839033B753FB1C075344FA8C4D53772DC9AFE02F463BE284EE36C5761EF4D27240ABCBF9B97D11FCE9321617015B194EF68C1AE3C3D581C3D5645CC905B94B9BE758D017E80E9AF4693462BE6E814FC4E32CE026BE0D50DBFDCE9BA74425EB3EF46D05E747725F15C5EE525F461F2A9EE7691864F4754AFED731BB5AE73F3D0BE1CDBCC011C04DFEE1DBA56ED7D3FE9DB0F1205A79586F01997EE1B71826875C6468BC7A94837C117EA09A008CA0C06383778E8006EEF906801FE37116F09A52B0C13493098A71F9EE245AB123DB592CD819CE4D1D4339BC99E9A0CE03153EB69E31FB020301000100004200280500000004000000040000000042002A02000000040000080000000000
+[2m2026-11-19T12:56:10.772698Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.772704Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Cryptographic Algorithm: Some(RSA)
+[2m2026-11-19T12:56:10.772707Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Cryptographic Length: Some(2048)
+[2m2026-11-19T12:56:10.772710Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Key Format Type: PKCS1
+[2m2026-11-19T12:56:10.772712Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Key Compression Type: None
+[2m2026-11-19T12:56:10.772715Z[0m [34mDEBUG[0m [2mdomain_kmip::public_key[0m[2m:[0m Key bytes as hex: 3082010A0282010100C729FC2E2A410E037AE3E64223CDAF3E10773770A069CF09AC49AF4EFA839033B753FB1C075344FA8C4D53772DC9AFE02F463BE284EE36C5761EF4D27240ABCBF9B97D11FCE9321617015B194EF68C1AE3C3D581C3D5645CC905B94B9BE758D017E80E9AF4693462BE6E814FC4E32CE026BE0D50DBFDCE9BA74425EB3EF46D05E747725F15C5EE525F461F2A9EE7691864F4754AFED731BB5AE73F3D0BE1CDBCC011C04DFEE1DBA56ED7D3FE9DB0F1205A79586F01997EE1B71826875C6468BC7A94837C117EA09A008CA0C06383778E8006EEF906801FE37116F09A52B0C13493098A71F9EE245AB123DB592CD819CE4D1D4339BC99E9A0CE03153EB69E31FB0203010001
+[2m2026-11-19T12:56:10.772740Z[0m [35mTRACE[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Activating key
+[2m2026-11-19T12:56:10.772744Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.772752Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 136 bytes to the server: 42007801000000804200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F010000002842005C05000000040000001200000000420079010000001042009407000000013800000000000000
+[2m2026-11-19T12:56:10.772785Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.772789Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.772792Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.774293Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.774307Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 144 bytes from the KMIP server
+[2m2026-11-19T12:56:10.774310Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 144 bytes from the KMIP server
+[2m2026-11-19T12:56:10.774317Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 152 bytes from the server: 42007B010000009042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000003842005C0500000004000000120000000042007F0500000004000000000000000042007C010000001042009407000000013800000000000000
+[2m2026-11-19T12:56:10.774362Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.774367Z[0m [35mTRACE[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Complete
+[2m2026-11-19T12:56:10.774379Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.774389Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 216 bytes to the server: 42007801000000D04200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000020000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F010000007842005C0500000004000000210000000042007901000000604200940700000001380000000000000042002B010000003042005F0500000004000000080000000042003805000000040000000800000000420028050000000400000004000000004200C2080000000C48656C6C6F20576F726C642100000000
+[2m2026-11-19T12:56:10.774422Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.774425Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.774428Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.796496Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.796510Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 408 bytes from the KMIP server
+[2m2026-11-19T12:56:10.796514Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 408 bytes from the KMIP server
+[2m2026-11-19T12:56:10.796526Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 416 bytes from the server: 42007B010000019842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000002000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000014042005C0500000004000000210000000042007F0500000004000000000000000042007C0100000118420094070000000138000000000000004200C30800000100B9C27E7DB572C1209BD2014F67176BCC17D0ED6F3CBEE84EA56F813244B148F5982E3B8BDD2AD20D49EDB5E825191C8E7B1994BF2FEEE79EDC61CA9B4723A220E6780F32962876DBAC584F9E4E42F1A9E51A015943BE33FC83F90AC7EFF53B71DD38B9736CDA4F8C9AB28C0F901655CDE3F9BFD6C19E2E566B79616B48FA9F89C53281286F3AD1874E6D763B6F5E260DEC2091538BA99FE39E7C7A48F877D18EC566F8569C5CD5D381D9EEBC52C83EED7404DFA15CCCBE3DD464FB87921DB48D57E80D6639EE7A15F7BF5D65A5AF61625B169797CDB7A1F5D4BEA9728EF391B05C7F6E82664EE873B951EE3846F3836A8E7F9A6E4B58DC0AC0E499EEFC9CCE79
+[2m2026-11-19T12:56:10.796581Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.796587Z[0m [35mTRACE[0m [2mdomain_kmip::key_pair[0m[2m:[0m KMIP signing post-processing: Algorithm: 10, Signature Data: B9C27E7DB572C1209BD2014F67176BCC17D0ED6F3CBEE84EA56F813244B148F5982E3B8BDD2AD20D49EDB5E825191C8E7B1994BF2FEEE79EDC61CA9B4723A220E6780F32962876DBAC584F9E4E42F1A9E51A015943BE33FC83F90AC7EFF53B71DD38B9736CDA4F8C9AB28C0F901655CDE3F9BFD6C19E2E566B79616B48FA9F89C53281286F3AD1874E6D763B6F5E260DEC2091538BA99FE39E7C7A48F877D18EC566F8569C5CD5D381D9EEBC52C83EED7404DFA15CCCBE3DD464FB87921DB48D57E80D6639EE7A15F7BF5D65A5AF61625B169797CDB7A1F5D4BEA9728EF391B05C7F6E82664EE873B951EE3846F3836A8E7F9A6E4B58DC0AC0E499EEFC9CCE79
+[2m2026-11-19T12:56:10.796633Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.796642Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 160 bytes to the server: 42007801000000984200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F010000004042005C05000000040000001300000000420079010000002842009407000000013700000000000000420081010000001042008205000000040000000600000000
+[2m2026-11-19T12:56:10.796668Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.796671Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.796674Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.798098Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.798112Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 232 bytes from the KMIP server
+[2m2026-11-19T12:56:10.798116Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 232 bytes from the KMIP server
+[2m2026-11-19T12:56:10.798124Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 240 bytes from the server: 42007B01000000E842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000009042005C0500000004000000130000000042007F0500000004000000010000000042007E05000000040000000B0000000042007D0700000054546865206F626A656374206973206E6F742061637469766520616E642063616E6E6F74206265207265766F6B6564207769746820726561736F6E206F74686572207468616E204B45595F434F4D50524F4D49534500000000
+[2m2026-11-19T12:56:10.798168Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.798191Z[0m [35mTRACE[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Generating KeyPair object
+[2m2026-11-19T12:56:10.798195Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.798213Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 528 bytes to the server: 42007801000002084200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F01000001B042005C05000000040000000200000000420079010000019842001F0100000070420008010000003042000A070000001743727970746F6772617068696320416C676F726974686D0042000B05000000040000000600000000420008010000003042000A070000001443727970746F67726170686963204C656E6774680000000042000B020000000400000100000000004200650100000088420008010000004842000A07000000044E616D650000000042000B01000000304200550700000018707269766174652D6B65792D6C6162656C2D616C672D313342005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B0200000004000000010000000042006E0100000088420008010000004842000A07000000044E616D650000000042000B010000003042005507000000177075626C69632D6B65792D6C6162656C2D616C672D31330042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B02000000040000000200000000
+[2m2026-11-19T12:56:10.798247Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.798250Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.798253Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.798950Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.798966Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 248 bytes from the KMIP server
+[2m2026-11-19T12:56:10.798970Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 248 bytes from the KMIP server
+[2m2026-11-19T12:56:10.798978Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 256 bytes from the server: 42007B01000000F842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F01000000A042005C0500000004000000020000000042007F0500000004000000010000000042007E0500000004000000070000000042007D07000000675468652063727970746F6772617068696320616C676F726974686D202843727970746F67726170686963416C676F726974686D2E454344534129206973206E6F74206120737570706F72746564206173796D6D6574726963206B657920616C676F726974686D2E00
+[2m2026-11-19T12:56:10.799020Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.799029Z[0m [34mDEBUG[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Failed to generate key pair: Operation CreateKeyPair failed: InvalidField: The cryptographic algorithm (CryptographicAlgorithm.ECDSA) is not a supported asymmetric key algorithm.. Retrying with an explicitly named elliptic curve.
+[2m2026-11-19T12:56:10.799037Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.799060Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 600 bytes to the server: 42007801000002504200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F01000001F842005C0500000004000000020000000042007901000001E042001F01000000B8420008010000003042000A070000001743727970746F6772617068696320416C676F726974686D0042000B05000000040000000600000000420008010000003042000A070000001443727970746F67726170686963204C656E6774680000000042000B02000000040000010000000000420008010000004042000A070000001F43727970746F6772617068696320446F6D61696E20506172616D65746572730042000B0100000010420075050000000400000007000000004200650100000088420008010000004842000A07000000044E616D650000000042000B01000000304200550700000018707269766174652D6B65792D6C6162656C2D616C672D313342005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B0200000004000000010000000042006E0100000088420008010000004842000A07000000044E616D650000000042000B010000003042005507000000177075626C69632D6B65792D6C6162656C2D616C672D31330042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B02000000040000000200000000
+[2m2026-11-19T12:56:10.799097Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.799100Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.799103Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.800220Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.800234Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 200 bytes from the KMIP server
+[2m2026-11-19T12:56:10.800238Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 200 bytes from the KMIP server
+[2m2026-11-19T12:56:10.800246Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 208 bytes from the server: 42007B01000000C842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000007042007F0500000004000000010000000042007E0500000004000000040000000042007D07000000444572726F722070617273696E672072657175657374206D6573736167652E2053656520736572766572206C6F677320666F72206D6F726520696E666F726D6174696F6E2E00000000
+[2m2026-11-19T12:56:10.800286Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.800304Z[0m [35mTRACE[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Generating KeyPair object
+[2m2026-11-19T12:56:10.800308Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.800326Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 528 bytes to the server: 42007801000002084200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F01000001B042005C05000000040000000200000000420079010000019842001F0100000070420008010000003042000A070000001743727970746F6772617068696320416C676F726974686D0042000B05000000040000000600000000420008010000003042000A070000001443727970746F67726170686963204C656E6774680000000042000B020000000400000180000000004200650100000088420008010000004842000A07000000044E616D650000000042000B01000000304200550700000018707269766174652D6B65792D6C6162656C2D616C672D313442005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B0200000004000000010000000042006E0100000088420008010000004842000A07000000044E616D650000000042000B010000003042005507000000177075626C69632D6B65792D6C6162656C2D616C672D31340042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B02000000040000000200000000
+[2m2026-11-19T12:56:10.800364Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.800367Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.800370Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.801055Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.801070Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 248 bytes from the KMIP server
+[2m2026-11-19T12:56:10.801074Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 248 bytes from the KMIP server
+[2m2026-11-19T12:56:10.801082Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 256 bytes from the server: 42007B01000000F842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F01000000A042005C0500000004000000020000000042007F0500000004000000010000000042007E0500000004000000070000000042007D07000000675468652063727970746F6772617068696320616C676F726974686D202843727970746F67726170686963416C676F726974686D2E454344534129206973206E6F74206120737570706F72746564206173796D6D6574726963206B657920616C676F726974686D2E00
+[2m2026-11-19T12:56:10.801124Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.801131Z[0m [34mDEBUG[0m [2mdomain_kmip[0m[2m:[0m KMIP key generation: Failed to generate key pair: Operation CreateKeyPair failed: InvalidField: The cryptographic algorithm (CryptographicAlgorithm.ECDSA) is not a supported asymmetric key algorithm.. Retrying with an explicitly named elliptic curve.
+[2m2026-11-19T12:56:10.801139Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.801158Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 600 bytes to the server: 42007801000002504200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F01000001F842005C0500000004000000020000000042007901000001E042001F01000000B8420008010000003042000A070000001743727970746F6772617068696320416C676F726974686D0042000B05000000040000000600000000420008010000003042000A070000001443727970746F67726170686963204C656E6774680000000042000B02000000040000018000000000420008010000004042000A070000001F43727970746F6772617068696320446F6D61696E20506172616D65746572730042000B010000001042007505000000040000000A000000004200650100000088420008010000004842000A07000000044E616D650000000042000B01000000304200550700000018707269766174652D6B65792D6C6162656C2D616C672D313442005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B0200000004000000010000000042006E0100000088420008010000004842000A07000000044E616D650000000042000B010000003042005507000000177075626C69632D6B65792D6C6162656C2D616C672D31340042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B02000000040000000200000000
+[2m2026-11-19T12:56:10.801194Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.801197Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.801200Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.801776Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.801796Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 200 bytes from the KMIP server
+[2m2026-11-19T12:56:10.801800Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 200 bytes from the KMIP server
+[2m2026-11-19T12:56:10.801808Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 208 bytes from the server: 42007B01000000C842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000007042007F0500000004000000010000000042007E0500000004000000040000000042007D07000000444572726F722070617273696E672072657175657374206D6573736167652E2053656520736572766572206C6F677320666F72206D6F726520696E666F726D6174696F6E2E00000000
+[2m2026-11-19T12:56:10.801852Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.801869Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Serializing request to KMIP wire bytes
+[2m2026-11-19T12:56:10.801879Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Writing 184 bytes to the server: 42007801000000B04200770100000048420069010000002042006A0200000004000000010000000042006B0200000004000000020000000042005002000000047FFFFFFF0000000042000D0200000004000000010000000042000F010000005842005C05000000040000001800000000420079010000004042007405000000040000000100000000420074050000000400000002000000004200740500000004000000030000000042007405000000040000000500000000
+[2m2026-11-19T12:56:10.801909Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m Waiting for a response from the server
+[2m2026-11-19T12:56:10.801912Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Awaiting KMIP server response
+[2m2026-11-19T12:56:10.801915Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.802524Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 8 bytes from the KMIP server
+[2m2026-11-19T12:56:10.802538Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Reading upto 456 bytes from the KMIP server
+[2m2026-11-19T12:56:10.802542Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Read 456 bytes from the KMIP server
+[2m2026-11-19T12:56:10.802555Z[0m [35mTRACE[0m [2mkmip_protocol::net::common::io[0m[2m:[0m Received 464 bytes from the server: 42007B01000001C842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000002000000004200920900000008000000006AFEF1EA42000D0200000004000000010000000042000F010000017042005C0500000004000000180000000042007F0500000004000000000000000042007C010000014842005C0500000004000000010000000042005C0500000004000000020000000042005C0500000004000000030000000042005C0500000004000000050000000042005C0500000004000000080000000042005C05000000040000000A0000000042005C05000000040000000B0000000042005C05000000040000000C0000000042005C0500000004000000120000000042005C0500000004000000130000000042005C0500000004000000140000000042005C0500000004000000180000000042005C05000000040000001E0000000042005C05000000040000001F0000000042005C0500000004000000200000000042005C0500000004000000210000000042005C0500000004000000220000000042005C0500000004000000230000000042009D070000001D50794B4D495020302E31312E3020536F66747761726520536572766572000000
+[2m2026-11-19T12:56:10.802616Z[0m [35mTRACE[0m [2mkmip_protocol::net::client[0m[2m:[0m KMIP server response received
+[2m2026-11-19T12:56:10.832804Z[0m [34mDEBUG[0m [2mrustls::common_state[0m[2m:[0m Sending warning alert CloseNotify
+[2m2026-11-19T12:56:10.832896Z[0m [34mDEBUG[0m [2mrustls::common_state[0m[2m:[0m Sending warning alert CloseNotify

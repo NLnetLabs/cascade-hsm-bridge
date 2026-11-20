@@ -27,13 +27,6 @@ const DEFAULT_CONCURRENCY: u32 = 8;
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
 pub struct HashableMechanismType(MechanismType);
 
-impl HashableMechanismType {
-    #[allow(unused)]
-    pub fn new(mechanism_type: MechanismType) -> Self {
-        Self(mechanism_type)
-    }
-}
-
 impl std::hash::Hash for HashableMechanismType {
     fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
         self.0.hash(state);
@@ -79,8 +72,6 @@ pub struct Pkcs11Pool {
     token_info: Arc<TokenInfo>,
 
     slot_info: Arc<SlotInfo>,
-
-    mechanisms: Arc<Mutex<HashMap<HashableMechanismType, MechanismInfo>>>,
 }
 
 impl Pkcs11Pool {
@@ -128,13 +119,7 @@ impl Pkcs11Pool {
 
         // Create the PKCS#11 connection pool using the established limits.
         info!("Chosen PKCS#11 connection pool limits: min={min_pool_size}, max={max_pool_size}");
-        let manager = Pkcs11ConnectionManager::new(
-            pkcs11.clone(),
-            slot,
-            token_info.clone(),
-            slot_info.clone(),
-            mechanisms.clone(),
-        );
+        let manager = Pkcs11ConnectionManager::new(pkcs11.clone(), slot, mechanisms);
         let pool = r2d2::Builder::new()
             .max_size(max_pool_size)
             .min_idle(Some(min_pool_size))
@@ -148,18 +133,7 @@ impl Pkcs11Pool {
             pool,
             token_info,
             slot_info,
-            mechanisms,
         })
-    }
-
-    #[allow(unused)]
-    pub fn pkcs11(&self) -> Pkcs11 {
-        self.pkcs11.clone()
-    }
-
-    #[allow(unused)]
-    pub fn slot(&self) -> Slot {
-        self.slot
     }
 
     pub fn user_pin_final_try(&self) -> Result<bool, Error> {
@@ -172,11 +146,6 @@ impl Pkcs11Pool {
 
     pub fn slot_info(&self) -> &SlotInfo {
         &self.slot_info
-    }
-
-    #[allow(unused)]
-    pub fn mechanisms(&self) -> &Mutex<HashMap<HashableMechanismType, MechanismInfo>> {
-        &self.mechanisms
     }
 }
 
@@ -374,12 +343,6 @@ pub struct Pkcs11ConnectionManager {
     /// The slot which connections to the HSM use.
     slot: Slot,
 
-    /// Information about the token to which this slot belongs.
-    token_info: Arc<TokenInfo>,
-
-    /// Information about the slot which this pool is for.
-    slot_info: Arc<SlotInfo>,
-
     // The set of algorithms (mechanisms in PKCS#11 speak) supported by this
     // "slot" as reported by the PKCS#11 C_GetMechanismList API.
     mechanisms: Arc<Mutex<HashMap<HashableMechanismType, MechanismInfo>>>,
@@ -389,32 +352,13 @@ impl Pkcs11ConnectionManager {
     pub fn new(
         pkcs11: Pkcs11,
         slot: Slot,
-        token_info: Arc<TokenInfo>,
-        slot_info: Arc<SlotInfo>,
         mechanisms: Arc<Mutex<HashMap<HashableMechanismType, MechanismInfo>>>,
     ) -> Self {
         Self {
             pkcs11,
             slot,
-            token_info,
-            slot_info,
             mechanisms,
         }
-    }
-
-    #[allow(unused)]
-    pub fn token_info(&self) -> &TokenInfo {
-        &self.token_info
-    }
-
-    #[allow(unused)]
-    pub fn slot_info(&self) -> &SlotInfo {
-        &self.slot_info
-    }
-
-    #[allow(unused)]
-    pub fn mechanisms(&self) -> &Mutex<HashMap<HashableMechanismType, MechanismInfo>> {
-        &self.mechanisms
     }
 }
 
@@ -440,12 +384,6 @@ pub struct PoolConnection {
     /// From <https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959689>
     handle_cache: HandleCache,
 
-    /// The PKCS#11 slot this session relates to.
-    slot_info: Arc<SlotInfo>,
-
-    /// The PKCS#11 token this session relates to.
-    token_info: Arc<TokenInfo>,
-
     /// Cached information about the algorithms supported by this token.
     mechanisms: Arc<Mutex<HashMap<HashableMechanismType, MechanismInfo>>>,
 }
@@ -453,15 +391,11 @@ pub struct PoolConnection {
 impl PoolConnection {
     pub fn new(
         session: Session,
-        slot_info: Arc<SlotInfo>,
-        token_info: Arc<TokenInfo>,
         mechanisms: Arc<Mutex<HashMap<HashableMechanismType, MechanismInfo>>>,
     ) -> Self {
         Self {
             session,
             handle_cache: HandleCache::new(100),
-            slot_info,
-            token_info,
             mechanisms,
         }
     }
@@ -487,16 +421,6 @@ impl PoolConnection {
         Ok(())
     }
 
-    #[allow(unused)]
-    pub fn slot_info(&self) -> &SlotInfo {
-        &self.slot_info
-    }
-
-    #[allow(unused)]
-    pub fn token_info(&self) -> &TokenInfo {
-        &self.token_info
-    }
-
     pub fn mechanisms(&self) -> &Mutex<HashMap<HashableMechanismType, MechanismInfo>> {
         &self.mechanisms
     }
@@ -509,12 +433,7 @@ impl ManageConnection for Pkcs11ConnectionManager {
 
     fn connect(&self) -> Result<Self::Connection, Self::Error> {
         let session = self.pkcs11.open_rw_session(self.slot)?;
-        Ok(PoolConnection::new(
-            session,
-            self.slot_info.clone(),
-            self.token_info.clone(),
-            self.mechanisms.clone(),
-        ))
+        Ok(PoolConnection::new(session, self.mechanisms.clone()))
     }
 
     fn is_valid(&self, conn: &mut PoolConnection) -> Result<(), Self::Error> {

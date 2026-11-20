@@ -70,6 +70,10 @@ pub struct Pkcs11Pool {
     /// The PKCS#11 'slot' this pool holds connections for.
     slot: Slot,
 
+    // TODO: This application is async, why am I using the sync (r2d2) pool
+    // instead of the async (bb8) pool? Or alternatively don't use a pool at
+    // all but instead have a fixed number of request handling worker threads
+    // each with their own PKCS#11 session.
     pool: r2d2::Pool<Pkcs11ConnectionManager>,
 
     token_info: Arc<TokenInfo>,

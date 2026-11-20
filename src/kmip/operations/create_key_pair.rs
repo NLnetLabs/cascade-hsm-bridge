@@ -143,7 +143,7 @@ pub fn op(
     let Some(mechanism) = mechanism else {
         return Err((
             ResultReason::FeatureNotSupported,
-            "Bridge cannot determine the key type to generatge from the given parameters"
+            "Bridge cannot determine the key type to generate from the given parameters"
                 .to_string(),
         ));
     };

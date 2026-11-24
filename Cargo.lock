@@ -468,7 +468,7 @@ dependencies = [
 [[package]]
 name = "domain-kmip"
 version = "0.0.2-dev"
-source = "git+https://github.com/NLnetLabs/domain-kmip.git?branch=use-kmip-protocol-from-crates-io#f5c6c27bc261ccaa68d876b80210bd9010678750"
+source = "git+https://github.com/NLnetLabs/domain-kmip.git#6902ee8ab91ec810cbd631c8832dad1827f23546"
 dependencies = [
  "bcder",
  "domain 0.12.3",

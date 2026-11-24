@@ -2,15 +2,12 @@
 // RwUser type, as we don't need the other user types, and because we always
 // respect CK_TOKEN_INFO ulMaxSessionCount.
 
-use std::collections::HashMap;
 use std::fmt::Display;
 use std::ops::Deref;
-use std::sync::{Arc, Mutex};
 use std::thread::available_parallelism;
 
 use cryptoki::context::{Function, Pkcs11};
 use cryptoki::error::RvError;
-use cryptoki::mechanism::{Mechanism, MechanismInfo, MechanismType};
 use cryptoki::session::{Session, SessionState, UserType};
 use cryptoki::slot::{Limit, Slot, SlotInfo, TokenInfo};
 use cryptoki::types::AuthPin;
@@ -19,39 +16,11 @@ use tracing::{debug, info, warn};
 
 use crate::client_request_handler::HandleCache;
 use crate::pkcs11::error::Error;
+use crate::pkcs11::mechanisms::AvailableMechanisms;
 
 pub type Pkcs11Connection = r2d2::PooledConnection<Pkcs11ConnectionManager>;
 
 const DEFAULT_CONCURRENCY: u32 = 8;
-
-#[derive(Copy, Clone, Debug, PartialEq, Eq)]
-pub struct HashableMechanismType(MechanismType);
-
-impl std::hash::Hash for HashableMechanismType {
-    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
-        self.0.hash(state);
-    }
-}
-
-impl std::ops::Deref for HashableMechanismType {
-    type Target = MechanismType;
-
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-
-impl From<MechanismType> for HashableMechanismType {
-    fn from(value: MechanismType) -> Self {
-        Self(value)
-    }
-}
-
-impl std::fmt::Display for HashableMechanismType {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        self.0.fmt(f)
-    }
-}
 
 #[derive(Clone)]
 pub struct Pkcs11Pool {
@@ -69,9 +38,9 @@ pub struct Pkcs11Pool {
     // each with their own PKCS#11 session.
     pool: r2d2::Pool<Pkcs11ConnectionManager>,
 
-    token_info: Arc<TokenInfo>,
+    token_info: TokenInfo,
 
-    slot_info: Arc<SlotInfo>,
+    slot_info: SlotInfo,
 }
 
 impl Pkcs11Pool {
@@ -98,24 +67,9 @@ impl Pkcs11Pool {
         Self::log_token_info_properties(&token_info);
 
         let slot_info = pkcs11.get_slot_info(slot)?;
-        let wanted_mechanisms = [
-            Mechanism::RsaPkcsKeyPairGen,
-            Mechanism::EccKeyPairGen,
-            Mechanism::EccEdwardsKeyPairGen,
-        ];
-        let mut found_mechanisms = HashMap::new();
 
-        for mechanism in wanted_mechanisms {
-            let mech_type = mechanism.mechanism_type();
-            if let Ok(mechanism_info) = pkcs11.get_mechanism_info(slot, mech_type) {
-                found_mechanisms.insert(mech_type.into(), mechanism_info);
-            }
-        }
-        Self::log_mechanisms(&found_mechanisms);
-
-        let token_info = Arc::new(token_info);
-        let slot_info = Arc::new(slot_info);
-        let mechanisms = Arc::new(Mutex::new(found_mechanisms));
+        let mechanisms = AvailableMechanisms::new(&pkcs11, slot);
+        Self::log_mechanisms(&mechanisms);
 
         // Create the PKCS#11 connection pool using the established limits.
         info!("Chosen PKCS#11 connection pool limits: min={min_pool_size}, max={max_pool_size}");
@@ -260,19 +214,13 @@ impl Pkcs11Pool {
         );
     }
 
-    fn log_mechanisms(mechanisms: &HashMap<HashableMechanismType, MechanismInfo>) {
-        let names = mechanisms
-            .keys()
-            .map(|&typ| (format!("{typ}"), typ))
-            .collect::<HashMap<String, HashableMechanismType>>();
+    fn log_mechanisms(mechanisms: &AvailableMechanisms) {
+        for mech_type in mechanisms.keys() {
+            let Some(mech_info) = mechanisms.get(mech_type) else {
+                continue;
+            };
 
-        let mut sorted_names = names.keys().map(ToOwned::to_owned).collect::<Vec<String>>();
-
-        sorted_names.sort_unstable();
-
-        for name in sorted_names {
-            let mech_typ = names.get(&name).unwrap();
-            let mech_info = mechanisms.get(mech_typ).unwrap();
+            let name = mech_type.to_string();
 
             let mut flags = vec![];
             if mech_info.hardware() {
@@ -345,15 +293,11 @@ pub struct Pkcs11ConnectionManager {
 
     // The set of algorithms (mechanisms in PKCS#11 speak) supported by this
     // "slot" as reported by the PKCS#11 C_GetMechanismList API.
-    mechanisms: Arc<Mutex<HashMap<HashableMechanismType, MechanismInfo>>>,
+    mechanisms: AvailableMechanisms,
 }
 
 impl Pkcs11ConnectionManager {
-    pub fn new(
-        pkcs11: Pkcs11,
-        slot: Slot,
-        mechanisms: Arc<Mutex<HashMap<HashableMechanismType, MechanismInfo>>>,
-    ) -> Self {
+    pub fn new(pkcs11: Pkcs11, slot: Slot, mechanisms: AvailableMechanisms) -> Self {
         Self {
             pkcs11,
             slot,
@@ -385,14 +329,11 @@ pub struct PoolConnection {
     handle_cache: HandleCache,
 
     /// Cached information about the algorithms supported by this token.
-    mechanisms: Arc<Mutex<HashMap<HashableMechanismType, MechanismInfo>>>,
+    mechanisms: AvailableMechanisms,
 }
 
 impl PoolConnection {
-    pub fn new(
-        session: Session,
-        mechanisms: Arc<Mutex<HashMap<HashableMechanismType, MechanismInfo>>>,
-    ) -> Self {
+    pub fn new(session: Session, mechanisms: AvailableMechanisms) -> Self {
         Self {
             session,
             handle_cache: HandleCache::new(100),
@@ -421,7 +362,7 @@ impl PoolConnection {
         Ok(())
     }
 
-    pub fn mechanisms(&self) -> &Mutex<HashMap<HashableMechanismType, MechanismInfo>> {
+    pub fn mechanisms(&self) -> &AvailableMechanisms {
         &self.mechanisms
     }
 }

@@ -149,9 +149,9 @@ pub fn op(
     };
 
     let mechanism_type = mechanism.mechanism_type();
-    let known_mechanisms = pkcs11conn.mechanisms().lock().unwrap();
+    let known_mechanisms = pkcs11conn.mechanisms();
 
-    let Some(found_mechanism) = known_mechanisms.get(&mechanism_type.into()) else {
+    let Some(found_mechanism) = known_mechanisms.get(&mechanism_type) else {
         return Err((
             ResultReason::FeatureNotSupported,
             format!("PKCS#11 module lacks support for mechanism {mechanism_type}"),
@@ -213,8 +213,6 @@ pub fn op(
             _ => { /* Nothing to do */ }
         }
     }
-
-    drop(known_mechanisms);
 
     // TODO: Detect sign mask in the above and push it as an attr.
 

@@ -374,7 +374,7 @@ impl ManageConnection for Pkcs11ConnectionManager {
 
     fn connect(&self) -> Result<Self::Connection, Self::Error> {
         let session = self.pkcs11.open_rw_session(self.slot)?;
-        Ok(PoolConnection::new(session, self.mechanisms.clone()))
+        Ok(PoolConnection::new(session, self.mechanisms))
     }
 
     fn is_valid(&self, conn: &mut PoolConnection) -> Result<(), Self::Error> {

@@ -176,7 +176,7 @@ dependencies = [
  "clap",
  "cryptoki",
  "daemonbase",
- "domain",
+ "domain 0.13.0",
  "hex",
  "kmip-protocol",
  "listenfd",
@@ -356,7 +356,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e29c87bcc36838764873fe444d395967f28ba57c0d661aaac2495ac84b9614e4"
 dependencies = [
  "clap",
- "jiff",
+ "jiff 0.2.39",
  "log",
  "nix",
  "serde",
@@ -442,11 +442,26 @@ dependencies = [
  "bytes",
  "domain-macros",
  "hashbrown",
- "jiff",
+ "jiff 0.2.39",
  "octseq",
  "openssl",
  "rand 0.10.3",
  "secrecy",
+ "serde",
+]
+
+[[package]]
+name = "domain"
+version = "0.13.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c4cf8d789687f7f45f3be4faf159ef01ce8f21410cc4302859406a03018ad190"
+dependencies = [
+ "bytes",
+ "hashbrown",
+ "jiff 1.0.3",
+ "octseq",
+ "openssl",
+ "rand 0.10.3",
  "serde",
 ]
 
@@ -456,7 +471,7 @@ version = "0.0.2-dev"
 source = "git+https://github.com/NLnetLabs/domain-kmip.git?branch=use-kmip-protocol-from-crates-io#f5c6c27bc261ccaa68d876b80210bd9010678750"
 dependencies = [
  "bcder",
- "domain",
+ "domain 0.12.3",
  "kmip-protocol",
  "maybe-async",
  "tracing",
@@ -780,14 +795,28 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3ac703058abac89e5c39b0b879dce2b6b14a4ba36600c7e7e3d0c60a6883ef3c"
 dependencies = [
  "defmt",
- "jiff-core",
- "jiff-static",
+ "jiff-core 0.1.2",
+ "jiff-static 0.2.39",
  "jiff-tzdb-platform",
  "log",
  "portable-atomic",
  "portable-atomic-util",
  "serde_core",
  "windows-link",
+]
+
+[[package]]
+name = "jiff"
+version = "1.0.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "107f2e89536b6818514025f6787b0d94d819e54fe3b40365275fc753de485b3f"
+dependencies = [
+ "jiff-core 1.0.2",
+ "jiff-static 1.0.3",
+ "log",
+ "portable-atomic",
+ "portable-atomic-util",
+ "serde_core",
 ]
 
 [[package]]
@@ -801,15 +830,36 @@ dependencies = [
 ]
 
 [[package]]
+name = "jiff-core"
+version = "1.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d44c923edf2bf456a982253f1a9ee1f6e89e421dffd0065d9b9a581da0def58f"
+dependencies = [
+ "log",
+]
+
+[[package]]
 name = "jiff-static"
 version = "0.2.39"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6dc32470c67eb7d0e9ccb74303fa925313dc04cecb1aa048beaa6f391e36a93d"
 dependencies = [
- "jiff-core",
+ "jiff-core 0.1.2",
  "proc-macro2",
  "quote",
  "syn 2.0.119",
+]
+
+[[package]]
+name = "jiff-static"
+version = "1.0.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4996f71e569e3a3e32b925c28ef8f0027dc30bb1d594b33eeda409eea185f5c8"
+dependencies = [
+ "jiff-core 1.0.2",
+ "proc-macro2",
+ "quote",
+ "syn 3.0.9",
 ]
 
 [[package]]
@@ -840,9 +890,9 @@ dependencies = [
 
 [[package]]
 name = "kmip-protocol"
-version = "0.5.1"
+version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "23be68beef44592c6eda0bdcc521b9dd015846ec10a3cc458bc4f4c97af894b5"
+checksum = "bae71aef93b047b6a79ab375f9fc084eb14aaa772a3dfc2988254850e1c5d5f4"
 dependencies = [
  "bb8",
  "bitflags 2.13.2",

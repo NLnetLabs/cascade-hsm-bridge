@@ -48,10 +48,6 @@ impl Pkcs11Pools {
 }
 
 pub fn init_pkcs11(cfg: &mut Config) -> Result<Pkcs11, Error> {
-    // Known incompatibility between the Cryptoki crate and the Fortanix DSM
-    // PKCS#11 module causes the call to `Pkcs11::new()` to log
-    // `C_GetInterface failed 54`. See:
-    //   https://github.com/parallaxsecond/rust-cryptoki/issues/374
     let pkcs11 = Pkcs11::new(&cfg.pkcs11.lib_path)?;
     pkcs11.initialize(CInitializeArgs::new(CInitializeFlags::OS_LOCKING_OK))?;
     for f in [

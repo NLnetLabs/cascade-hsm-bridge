@@ -114,7 +114,6 @@ fn get_public_key_details(
     // https://datatracker.ietf.org/doc/html/rfc3110#section-2. The
     // application implementing RFC 3110, i.e. Cascade, should do that, not
     // us.
-    debug!("Returned PKCS#11 attributes: {attrs:?}");
 
     // Parse the returned attribute data.
     for attr in attrs {

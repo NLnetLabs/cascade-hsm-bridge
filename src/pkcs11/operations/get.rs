@@ -83,15 +83,14 @@ fn get_public_key_details(
         if matches!(
             res,
             Err(cryptoki::error::Error::NotSupported) | Err(cryptoki::error::Error::InvalidValue)
-        ) && request_attrs.contains(&AttributeType::KeyGenMechanism)
-        {
+        ) {
             // Thales DPOD (Data Protection on Demand) returns InvalidValue
             // when getting attributes of an ECDSA key and requesting
             // CKA_KEY_GEN_MECHANISM. Also the Nitrokey NetHSM returns
             // NotSupported and we can also get the information we need from
             // the KeyType attribute. Retry without KeyGenMechanism attribute,
             debug!("C_GetAttributeValue failed, retrying without CKA_KEY_GEN_MECHANISM");
-            request_attrs.retain(|p| p != &AttributeType::KeyGenMechanism);
+            let _ = request_attrs.pop();
             continue;
         }
 

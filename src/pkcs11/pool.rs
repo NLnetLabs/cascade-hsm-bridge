@@ -24,9 +24,7 @@ const DEFAULT_CONCURRENCY: u32 = 8;
 #[derive(Clone)]
 pub struct Pkcs11Pool {
     pkcs11: Pkcs11,
-
     slot: Slot,
-
     // TODO: This application is async, why am I using the sync (r2d2) pool
     // instead of the async (bb8) pool? Or alternatively don't use a pool at
     // all but instead have a fixed number of request handling worker threads

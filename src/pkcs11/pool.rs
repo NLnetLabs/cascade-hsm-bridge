@@ -15,6 +15,7 @@ use tracing::{debug, info};
 
 use crate::client_request_handler::HandleCache;
 use crate::pkcs11::error::Error;
+use crate::pkcs11::quirks::Quirks;
 
 pub type Pkcs11Connection = r2d2::PooledConnection<Pkcs11ConnectionManager>;
 
@@ -54,9 +55,11 @@ impl Pkcs11Pool {
         let min_pool_size = 1;
         let max_pool_size = max_token_concurrency.min(max_os_concurrency);
 
+        let quirks = Quirks::new(&pkcs11.get_token_info(slot)?);
+
         // Create the PKCS#11 connection pool using the established limits.
         info!("Chosen PKCS#11 connection pool limits: min={min_pool_size}, max={max_pool_size}");
-        let manager = Pkcs11ConnectionManager::new(pkcs11.clone(), slot);
+        let manager = Pkcs11ConnectionManager::new(pkcs11.clone(), slot, quirks);
         let pool = r2d2::Builder::new()
             .max_size(max_pool_size)
             .min_idle(Some(min_pool_size))
@@ -106,24 +109,31 @@ impl Deref for Pkcs11Pool {
 pub struct Pkcs11ConnectionManager {
     pkcs11: Pkcs11,
     slot: Slot,
+    quirks: Quirks,
 }
 
 impl Pkcs11ConnectionManager {
-    pub fn new(pkcs11: Pkcs11, slot: Slot) -> Self {
-        Self { pkcs11, slot }
+    pub fn new(pkcs11: Pkcs11, slot: Slot, quirks: Quirks) -> Self {
+        Self {
+            pkcs11,
+            slot,
+            quirks,
+        }
     }
 }
 
 pub struct PoolConnection {
     session: Session,
     handle_cache: HandleCache,
+    quirks: Quirks,
 }
 
 impl PoolConnection {
-    pub fn new(session: Session, handle_cache: HandleCache) -> Self {
+    pub fn new(session: Session, handle_cache: HandleCache, quirks: Quirks) -> Self {
         Self {
             session,
             handle_cache,
+            quirks,
         }
     }
 
@@ -142,6 +152,10 @@ impl PoolConnection {
         }
         Ok(())
     }
+
+    pub fn quirks(&self) -> &Quirks {
+        &self.quirks
+    }
 }
 
 impl ManageConnection for Pkcs11ConnectionManager {
@@ -152,7 +166,7 @@ impl ManageConnection for Pkcs11ConnectionManager {
     fn connect(&self) -> Result<Self::Connection, Self::Error> {
         let session = self.pkcs11.open_rw_session(self.slot)?;
         let handle_cache = HandleCache::new(100);
-        Ok(PoolConnection::new(session, handle_cache))
+        Ok(PoolConnection::new(session, handle_cache, self.quirks))
     }
 
     fn is_valid(&self, conn: &mut PoolConnection) -> Result<(), Self::Error> {

@@ -3,4 +3,5 @@
 pub mod error;
 pub mod operations;
 pub mod pool;
+pub mod quirks;
 pub mod util;

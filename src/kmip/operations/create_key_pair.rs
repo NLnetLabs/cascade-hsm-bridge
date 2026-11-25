@@ -78,6 +78,9 @@ pub fn op(
                                 }
                                 _ => unreachable!(),
                             };
+
+                            let curve_oid = pkcs11conn.quirks().map_curve_oid(*alg, curve_oid);
+
                             pub_attrs.push(Attribute::EcParams(curve_oid));
                         }
 

@@ -8,7 +8,7 @@ use std::thread::available_parallelism;
 use cryptoki::context::{Function, Pkcs11};
 use cryptoki::error::RvError;
 use cryptoki::session::{Session, SessionState, UserType};
-use cryptoki::slot::{Limit, Slot, TokenInfo};
+use cryptoki::slot::{Limit, Slot};
 use cryptoki::types::AuthPin;
 use r2d2::ManageConnection;
 use tracing::{debug, info};

@@ -203,7 +203,7 @@ impl Display for Error {
                 };
                 write!(
                     f,
-                    "Bridge failed to invoke PKCS#11 function '{func}': {rv_error_code}"
+                    "Bridge failed to invoke PKCS#11 function '{func}': {rv_error_code}: {rv_error}"
                 )
             }
             Error::HsmFailure(e) => write!(f, "Bridge PKCS#11 Rust abstraction layer error: {e}"),

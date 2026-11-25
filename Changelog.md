@@ -14,7 +14,7 @@ Released yyyy-mm-dd.
 ### Acknowledgements
 -->
 
-## Release 0.2.0-beta2
+## 0.2.0-beta2
 
 Released 2026-11-06.
 
@@ -23,7 +23,7 @@ used to take bug fixes and follow changes in how mTLS settings are passed to
 `domain-kmip` by the `fulltest` crate.
 
 
-## Release 0.2.0-beta1
+## 0.2.0-beta1
 
 Released 2026-11-02.
 

@@ -29,6 +29,12 @@ pub const SECP256R1_OID: ConstOid = Oid(&[42, 134, 72, 206, 61, 3, 1, 7]);
 /// Identifies the P-384 curve for elliptic curve cryptography.
 pub const SECP384R1_OID: ConstOid = Oid(&[43, 129, 4, 0, 34]);
 
+/// [RFC 8410](https://www.rfc-editor.org/info/rfc8410/#section-3) `id-Ed25519`.
+pub const ED25519_OID: ConstOid = Oid(&[43, 101, 112]);
+
+/// [RFC 8410](https://www.rfc-editor.org/info/rfc8410/#section-3) `id-Ed448`.
+pub const ED448_OID: ConstOid = Oid(&[43, 101, 113]);
+
 pub fn get_public_key(
     pkcs11conn: Pkcs11Connection,
     id: &UniqueIdentifier,

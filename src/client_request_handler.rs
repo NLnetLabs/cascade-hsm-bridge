@@ -15,8 +15,8 @@ use tokio_rustls::server::TlsStream;
 use tracing::{debug, info, warn};
 
 use crate::kmip::operations::{
-    activate, create_key_pair, destroy, discover_versions, get, modify_attribute, query, revoke,
-    sign, unknown,
+    activate, create_key_pair, destroy, discover_versions, get, get_attributes, locate,
+    modify_attribute, query, revoke, sign, unknown,
 };
 use crate::kmip::util::mk_err_batch_item;
 use crate::pkcs11::util::Pkcs11Pools;
@@ -156,6 +156,8 @@ fn process_request(
                         Operation::Destroy => destroy::op(pkcs11conn, batch_item),
                         Operation::DiscoverVersions => discover_versions::op(batch_item),
                         Operation::Get => get::op(pkcs11conn, batch_item),
+                        Operation::GetAttributes => get_attributes::op(pkcs11conn, batch_item),
+                        Operation::Locate => locate::op(pkcs11conn, batch_item),
                         Operation::ModifyAttribute => modify_attribute::op(pkcs11conn, batch_item),
                         Operation::Sign => sign::op(pkcs11conn, batch_item),
                         Operation::Revoke => revoke::op(pkcs11conn, batch_item),

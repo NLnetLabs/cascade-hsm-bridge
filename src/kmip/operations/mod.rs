@@ -3,6 +3,8 @@ pub mod create_key_pair;
 pub mod destroy;
 pub mod discover_versions;
 pub mod get;
+pub mod get_attributes;
+pub mod locate;
 pub mod modify_attribute;
 pub mod query;
 pub mod revoke;

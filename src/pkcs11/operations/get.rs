@@ -69,6 +69,14 @@ fn get_public_key_details(
         AttributeType::EcPoint, // For ECDSA keys, DER encoded
     ];
 
+    // Try and handle the case where requesting the KeyGenMechanism attribute
+    // causes the entire call to get_attributes() to fail, by retryig without
+    // that attribute. We don't know anything about the type of key the given
+    // key_handle represents so we can't currently request only the correct
+    // attributes here.
+    //
+    // See: https://github.com/parallaxsecond/rust-cryptoki/issues/386 which
+    // might be relevant.
     let attrs = loop {
         let res = pkcs11conn
             .session()

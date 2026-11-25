@@ -171,7 +171,11 @@ fn process_request(
             "Processed batch item operation {} from client {peer_addr} in {}us: {}",
             batch_item.operation(),
             start.elapsed().as_micros(),
-            if res.is_ok() { "Succeeded" } else { "Failed" },
+            if let Err(err) = &res {
+                format!("Failed (reason: {}, msg: {})", err.0, err.1)
+            } else {
+                "Succeeded".to_string()
+            },
         );
 
         let res_batch_item = match res {

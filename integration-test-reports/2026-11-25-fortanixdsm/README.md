@@ -20,6 +20,6 @@ This test was run using unreleased versions of NLnet Labs code, specifically:
   - https://github.com/NLnetLabs/kmip-protocol/pull/114
   - https://github.com/NLnetLabs/kmip-protocol/pull/115
 
-It differs to the 2026-11-18 test run against Fortanix DSM only in that the
+It differs to the 2026-11-19 test run against Fortanix DSM only in that the
 Fortanix DSM web UI was used to remove left behind keys and so this test run
 didn't collide with pre-existing keys.

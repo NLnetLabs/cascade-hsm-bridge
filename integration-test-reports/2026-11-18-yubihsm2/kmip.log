@@ -1,0 +1,1922 @@
+Raw KMIP:
+42007801000000C04200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000010000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000001842005C05000000040000001E000000004200790100000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000001 (1)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x00001E (30 = Discover Versions)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+
+
+
+Raw KMIP:
+42007A01000000F842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000001000000004200920900000008000000006AFE1A9042000D0200000004000000010000000042000F01000000A042005C05000000040000001E0000000042007F0500000004000000000000000042007C0100000078420069010000002042006A0200000004000000010000000042006B02000000040000000200000000420069010000002042006A0200000004000000010000000042006B02000000040000000100000000420069010000002042006A0200000004000000010000000042006B02000000040000000000000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000001 (1)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A90
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x00001E (30 = Discover Versions)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+        Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+        Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000002 (2)
+      Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+        Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+        Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+        Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+        Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+
+
+
+Raw KMIP:
+42007801000002584200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F01000001B042005C05000000040000000200000000420079010000019842001F0100000070420008010000003042000A070000001743727970746F6772617068696320416C676F726974686D0042000B05000000040000000400000000420008010000003042000A070000001443727970746F67726170686963204C656E6774680000000042000B020000000400000400000000004200650100000088420008010000004842000A07000000044E616D650000000042000B01000000304200550700000017707269766174652D6B65792D6C6162656C2D616C672D380042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B0200000004000000010000000042006E0100000088420008010000004842000A07000000044E616D650000000042000B010000003042005507000000167075626C69632D6B65792D6C6162656C2D616C672D38000042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B02000000040000000200000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000002 (2 = Create Key Pair)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Common Template-Attribute (0x42001F), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Algorithm"
+          Tag: Attribute Value (0x42000B), Type: Enumeration (0x05), Data: 0x000004 (4 = RSA)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Length"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000400 (1024)
+      Tag: Private Key Template-Attribute (0x420065), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Name"
+          Tag: Attribute Value (0x42000B), Type: Structure (0x01), Data:
+            Tag: Name Value (0x420055), Type: TextString (0x07), Data: "private-key-label-alg-8"
+            Tag: Name Type (0x420054), Type: Enumeration (0x05), Data: 0x000001 (1 = Uninterpreted Text String)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Usage Mask"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000001 (1 = Sign)
+      Tag: Public Key Template-Attribute (0x42006E), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Name"
+          Tag: Attribute Value (0x42000B), Type: Structure (0x01), Data:
+            Tag: Name Value (0x420055), Type: TextString (0x07), Data: "public-key-label-alg-8"
+            Tag: Name Type (0x420054), Type: Enumeration (0x05), Data: 0x000001 (1 = Uninterpreted Text String)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Usage Mask"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000002 (2 = Verify)
+
+
+
+Raw KMIP:
+42007A01000000E842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9042000D0200000004000000010000000042000F010000009042007F0500000004000000010000000042007E0500000004000000080000000042007D0700000065504B4353233131206D6F64756C65206C61636B7320737570706F727420666F722074686520726571756573746564206B65792073697A653A203230343820286D696E29203C3D2031303234202872657175657374656429203C3D203430393620286D617829000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A90
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000001 (1 = Operation Failed)
+    Tag: Result Reason (0x42007E), Type: Enumeration (0x05), Data: 0x000008 (8 = Feature Not Supported)
+    Tag: Result Message (0x42007D), Type: TextString (0x07), Data: "PKCS#11 module lacks support for the requested key size: 2048 (min) <= 1024 (requested) <= 4096 (max)"
+
+
+
+Raw KMIP:
+42007801000002584200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F01000001B042005C05000000040000000200000000420079010000019842001F0100000070420008010000003042000A070000001743727970746F6772617068696320416C676F726974686D0042000B05000000040000000400000000420008010000003042000A070000001443727970746F67726170686963204C656E6774680000000042000B020000000400000800000000004200650100000088420008010000004842000A07000000044E616D650000000042000B01000000304200550700000017707269766174652D6B65792D6C6162656C2D616C672D380042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B0200000004000000010000000042006E0100000088420008010000004842000A07000000044E616D650000000042000B010000003042005507000000167075626C69632D6B65792D6C6162656C2D616C672D38000042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B02000000040000000200000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000002 (2 = Create Key Pair)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Common Template-Attribute (0x42001F), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Algorithm"
+          Tag: Attribute Value (0x42000B), Type: Enumeration (0x05), Data: 0x000004 (4 = RSA)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Length"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000800 (2048)
+      Tag: Private Key Template-Attribute (0x420065), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Name"
+          Tag: Attribute Value (0x42000B), Type: Structure (0x01), Data:
+            Tag: Name Value (0x420055), Type: TextString (0x07), Data: "private-key-label-alg-8"
+            Tag: Name Type (0x420054), Type: Enumeration (0x05), Data: 0x000001 (1 = Uninterpreted Text String)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Usage Mask"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000001 (1 = Sign)
+      Tag: Public Key Template-Attribute (0x42006E), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Name"
+          Tag: Attribute Value (0x42000B), Type: Structure (0x01), Data:
+            Tag: Name Value (0x420055), Type: TextString (0x07), Data: "public-key-label-alg-8"
+            Tag: Name Type (0x420054), Type: Enumeration (0x05), Data: 0x000001 (1 = Uninterpreted Text String)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Usage Mask"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000002 (2 = Verify)
+
+
+
+Raw KMIP:
+42007A01000000F042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9442000D0200000004000000010000000042000F010000009842005C0500000004000000020000000042007F0500000004000000000000000042007C0100000070420094070000002D343137304434344346384430433543353232453836333145443536353543313038393234373836355F70726976000000420094070000002C343137304434344346384430433543353232453836333145443536353543313038393234373836355F70756200000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A94
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000002 (2 = Create Key Pair)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "4170D44CF8D0C5C522E8631ED5655C1089247865_priv"
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "4170D44CF8D0C5C522E8631ED5655C1089247865_pub"
+
+
+
+Raw KMIP:
+42007801000000F84200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000005042005C05000000040000000A000000004200790100000038420094070000002C343137304434344346384430433543353232453836333145443536353543313038393234373836355F70756200000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x00000A (10 = Get)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "4170D44CF8D0C5C522E8631ED5655C1089247865_pub"
+
+
+
+Raw KMIP:
+42007A010000023042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9442000D0200000004000000010000000042000F01000001D842005C05000000040000000A0000000042007F0500000004000000000000000042007C01000001B042005705000000040000000300000000420094070000002C343137304434344346384430433543353232453836333145443536353543313038393234373836355F7075620000000042006D0100000160420040010000015842004205000000040000000B00000000420045010000012042004301000001184200520400000100BCCEAA49FB38CFAF1EB8EFA51E0959B5910CEAACC2A743A33C859BF20C2C1CDA2EC9ABD6C2E3DA179EF93956DAA3D9AA90C97B2137B26BF47F27353129339FA4E9CD317D7F8DD4377B01FED41C6FBD2CFD5910A6B3F04FF6BE63AD4DF8E6166D0610217974DCB2ADA60FD355B57D161C026034B5A4DB2D143C240B4D7E4EC9900BED72F09551BA94692D36CC1809D4BEF181FE452E01F0354F67638D7449331C5D8EC776EEB13377CAB9AA89C136E9081F5CCFE343C40AFDC7BDBABAE83A89BDB4EA3FD104E156002EBC50D8F704D67552D31F01BAF04E05E2CF5F96AC5E4DEDD8C2DA04881C1AF3DD080948384014F15B9458DBC6ABB2D7B30FE0D424D9FB8B42006C040000000800000000000100014200280500000004000000040000000042002A02000000040000080000000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A94
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x00000A (10 = Get)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Object Type (0x420057), Type: Enumeration (0x05), Data: 0x000003 (3 = Public Key)
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "4170D44CF8D0C5C522E8631ED5655C1089247865_pub"
+      Tag: Public Key (0x42006D), Type: Structure (0x01), Data:
+        Tag: Key Block (0x420040), Type: Structure (0x01), Data:
+          Tag: Key Format Type (0x420042), Type: Enumeration (0x05), Data: 0x00000B (11 = Transparent RSA Public Key)
+          Tag: Key Value (0x420045), Type: Structure (0x01), Data:
+            Tag: Key Material (0x420043), Type: Structure (0x01), Data:
+              Tag: Modulus (0x420052), Type: BigInteger (0x04), Data: BCCEAA49FB38CFAF1EB8EFA51E0959B5910CEAACC2A743A33C859BF20C2C1CDA2EC9ABD6C2E3DA179EF93956DAA3D9AA90C97B2137B26BF47F27353129339FA4E9CD317D7F8DD4377B01FED41C6FBD2CFD5910A6B3F04FF6BE63AD4DF8E6166D0610217974DCB2ADA60FD355B57D161C026034B5A4DB2D143C240B4D7E4EC9900BED72F09551BA94692D36CC1809D4BEF181FE452E01F0354F67638D7449331C5D8EC776EEB13377CAB9AA89C136E9081F5CCFE343C40AFDC7BDBABAE83A89BDB4EA3FD104E156002EBC50D8F704D67552D31F01BAF04E05E2CF5F96AC5E4DEDD8C2DA04881C1AF3DD080948384014F15B9458DBC6ABB2D7B30FE0D424D9FB8B
+              Tag: Public Exponent (0x42006C), Type: BigInteger (0x04), Data: 0000000000010001
+          Tag: Cryptographic Algorithm (0x420028), Type: Enumeration (0x05), Data: 0x000004 (4 = RSA)
+          Tag: Cryptographic Length (0x42002A), Type: Integer (0x02), Data: 0x000800 (2048)
+
+
+
+Raw KMIP:
+42007801000000F84200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000005042005C050000000400000012000000004200790100000038420094070000002D343137304434344346384430433543353232453836333145443536353543313038393234373836355F70726976000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000012 (18 = Activate)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "4170D44CF8D0C5C522E8631ED5655C1089247865_priv"
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9442000D0200000004000000010000000042000F010000006042005C0500000004000000120000000042007F0500000004000000000000000042007C0100000038420094070000002D343137304434344346384430433543353232453836333145443536353543313038393234373836355F70726976000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A94
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000012 (18 = Activate)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "4170D44CF8D0C5C522E8631ED5655C1089247865_priv"
+
+
+
+Raw KMIP:
+42007801000001484200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000020000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F01000000A042005C050000000400000021000000004200790100000088420094070000002D343137304434344346384430433543353232453836333145443536353543313038393234373836355F7072697600000042002B010000003042005F0500000004000000080000000042003805000000040000000600000000420028050000000400000004000000004200C2080000000C48656C6C6F20576F726C642100000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000002 (2)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000021 (33 = Sign)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "4170D44CF8D0C5C522E8631ED5655C1089247865_priv"
+      Tag: Cryptographic Parameters (0x42002B), Type: Structure (0x01), Data:
+        Tag: Padding Method (0x42005F), Type: Enumeration (0x05), Data: 0x000008 (8 = ??)
+        Tag: Hashing Algorithm (0x420038), Type: Enumeration (0x05), Data: 0x000006 (6 = ??)
+        Tag: Cryptographic Algorithm (0x420028), Type: Enumeration (0x05), Data: 0x000004 (4 = RSA)
+      Tag: Data (0x4200C2), Type: ByteString (0x08), Data: 48656C6C6F20576F726C6421
+
+
+
+Raw KMIP:
+42007A01000001C042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000002000000004200920900000008000000006AFE1A9442000D0200000004000000010000000042000F010000016842005C0500000004000000210000000042007F0500000004000000000000000042007C0100000140420094070000002D343137304434344346384430433543353232453836333145443536353543313038393234373836355F707269760000004200C308000001001956B082A23B0EFFBD203A76CE62DFD379266BAC18722744F3DFAEEC1EA4C02197688F8BBAF5DC18093C15AD51879DCABCB7E731E13759EECCBAFE0C5BE1A4F82565D88FA711E063CC9F7D99AC7B79257E2945AE90A33DAD798A7A5503C11249B81B0154C83BC3ADE37CA627082309BD811BF8794A2DB70E0AC0F64169774B863615FEB7F9360856084E7705D8F85CEC72ABFD26282BDED4C4981DE5195CB9BC7CC1D7552D6758491D8A8E2B08D2793EB2B02AC9D432EE115E911F556B30ADEA935886ED396FE8EFAFCDFD7AB511E1C7E278B8C79019B24F66F9F9661F64B7B45A1AB0E0F6D3BC08727A1A21108C202338409E7F2A11384F94C4774766FE87A9
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000002 (2)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A94
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000021 (33 = Sign)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "4170D44CF8D0C5C522E8631ED5655C1089247865_priv"
+      Tag: Signature Data (0x4200C3), Type: ByteString (0x08), Data: 1956B082A23B0EFFBD203A76CE62DFD379266BAC18722744F3DFAEEC1EA4C02197688F8BBAF5DC18093C15AD51879DCABCB7E731E13759EECCBAFE0C5BE1A4F82565D88FA711E063CC9F7D99AC7B79257E2945AE90A33DAD798A7A5503C11249B81B0154C83BC3ADE37CA627082309BD811BF8794A2DB70E0AC0F64169774B863615FEB7F9360856084E7705D8F85CEC72ABFD26282BDED4C4981DE5195CB9BC7CC1D7552D6758491D8A8E2B08D2793EB2B02AC9D432EE115E911F556B30ADEA935886ED396FE8EFAFCDFD7AB511E1C7E278B8C79019B24F66F9F9661F64B7B45A1AB0E0F6D3BC08727A1A21108C202338409E7F2A11384F94C4774766FE87A9
+
+
+
+Raw KMIP:
+42007801000001104200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000006842005C050000000400000013000000004200790100000050420094070000002C343137304434344346384430433543353232453836333145443536353543313038393234373836355F70756200000000420081010000001042008205000000040000000600000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000013 (19 = Revoke)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "4170D44CF8D0C5C522E8631ED5655C1089247865_pub"
+      Tag: Revocation Reason (0x420081), Type: Structure (0x01), Data:
+        Tag: Revocation Reason Code (0x420082), Type: Enumeration (0x05), Data: 0x000006 (6 = ??)
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9442000D0200000004000000010000000042000F010000006042005C0500000004000000130000000042007F0500000004000000000000000042007C0100000038420094070000002C343137304434344346384430433543353232453836333145443536353543313038393234373836355F70756200000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A94
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000013 (19 = Revoke)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "4170D44CF8D0C5C522E8631ED5655C1089247865_pub"
+
+
+
+Raw KMIP:
+42007801000000F84200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000005042005C050000000400000014000000004200790100000038420094070000002C343137304434344346384430433543353232453836333145443536353543313038393234373836355F70756200000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000014 (20 = Destroy)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "4170D44CF8D0C5C522E8631ED5655C1089247865_pub"
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9442000D0200000004000000010000000042000F010000006042005C0500000004000000140000000042007F0500000004000000000000000042007C0100000038420094070000002C343137304434344346384430433543353232453836333145443536353543313038393234373836355F70756200000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A94
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000014 (20 = Destroy)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "4170D44CF8D0C5C522E8631ED5655C1089247865_pub"
+
+
+
+Raw KMIP:
+42007801000001104200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000006842005C050000000400000013000000004200790100000050420094070000002D343137304434344346384430433543353232453836333145443536353543313038393234373836355F70726976000000420081010000001042008205000000040000000600000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000013 (19 = Revoke)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "4170D44CF8D0C5C522E8631ED5655C1089247865_priv"
+      Tag: Revocation Reason (0x420081), Type: Structure (0x01), Data:
+        Tag: Revocation Reason Code (0x420082), Type: Enumeration (0x05), Data: 0x000006 (6 = ??)
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9442000D0200000004000000010000000042000F010000006042005C0500000004000000130000000042007F0500000004000000000000000042007C0100000038420094070000002D343137304434344346384430433543353232453836333145443536353543313038393234373836355F70726976000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A94
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000013 (19 = Revoke)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "4170D44CF8D0C5C522E8631ED5655C1089247865_priv"
+
+
+
+Raw KMIP:
+42007801000000F84200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000005042005C050000000400000014000000004200790100000038420094070000002D343137304434344346384430433543353232453836333145443536353543313038393234373836355F70726976000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000014 (20 = Destroy)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "4170D44CF8D0C5C522E8631ED5655C1089247865_priv"
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9442000D0200000004000000010000000042000F010000006042005C0500000004000000140000000042007F0500000004000000000000000042007C0100000038420094070000002D343137304434344346384430433543353232453836333145443536353543313038393234373836355F70726976000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A94
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000014 (20 = Destroy)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "4170D44CF8D0C5C522E8631ED5655C1089247865_priv"
+
+
+
+Raw KMIP:
+42007801000002584200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F01000001B042005C05000000040000000200000000420079010000019842001F0100000070420008010000003042000A070000001743727970746F6772617068696320416C676F726974686D0042000B05000000040000000400000000420008010000003042000A070000001443727970746F67726170686963204C656E6774680000000042000B020000000400000400000000004200650100000088420008010000004842000A07000000044E616D650000000042000B01000000304200550700000018707269766174652D6B65792D6C6162656C2D616C672D313042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B0200000004000000010000000042006E0100000088420008010000004842000A07000000044E616D650000000042000B010000003042005507000000177075626C69632D6B65792D6C6162656C2D616C672D31300042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B02000000040000000200000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000002 (2 = Create Key Pair)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Common Template-Attribute (0x42001F), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Algorithm"
+          Tag: Attribute Value (0x42000B), Type: Enumeration (0x05), Data: 0x000004 (4 = RSA)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Length"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000400 (1024)
+      Tag: Private Key Template-Attribute (0x420065), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Name"
+          Tag: Attribute Value (0x42000B), Type: Structure (0x01), Data:
+            Tag: Name Value (0x420055), Type: TextString (0x07), Data: "private-key-label-alg-10"
+            Tag: Name Type (0x420054), Type: Enumeration (0x05), Data: 0x000001 (1 = Uninterpreted Text String)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Usage Mask"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000001 (1 = Sign)
+      Tag: Public Key Template-Attribute (0x42006E), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Name"
+          Tag: Attribute Value (0x42000B), Type: Structure (0x01), Data:
+            Tag: Name Value (0x420055), Type: TextString (0x07), Data: "public-key-label-alg-10"
+            Tag: Name Type (0x420054), Type: Enumeration (0x05), Data: 0x000001 (1 = Uninterpreted Text String)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Usage Mask"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000002 (2 = Verify)
+
+
+
+Raw KMIP:
+42007A01000000E842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9442000D0200000004000000010000000042000F010000009042007F0500000004000000010000000042007E0500000004000000080000000042007D0700000065504B4353233131206D6F64756C65206C61636B7320737570706F727420666F722074686520726571756573746564206B65792073697A653A203230343820286D696E29203C3D2031303234202872657175657374656429203C3D203430393620286D617829000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A94
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000001 (1 = Operation Failed)
+    Tag: Result Reason (0x42007E), Type: Enumeration (0x05), Data: 0x000008 (8 = Feature Not Supported)
+    Tag: Result Message (0x42007D), Type: TextString (0x07), Data: "PKCS#11 module lacks support for the requested key size: 2048 (min) <= 1024 (requested) <= 4096 (max)"
+
+
+
+Raw KMIP:
+42007801000002584200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F01000001B042005C05000000040000000200000000420079010000019842001F0100000070420008010000003042000A070000001743727970746F6772617068696320416C676F726974686D0042000B05000000040000000400000000420008010000003042000A070000001443727970746F67726170686963204C656E6774680000000042000B020000000400000800000000004200650100000088420008010000004842000A07000000044E616D650000000042000B01000000304200550700000018707269766174652D6B65792D6C6162656C2D616C672D313042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B0200000004000000010000000042006E0100000088420008010000004842000A07000000044E616D650000000042000B010000003042005507000000177075626C69632D6B65792D6C6162656C2D616C672D31300042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B02000000040000000200000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000002 (2 = Create Key Pair)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Common Template-Attribute (0x42001F), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Algorithm"
+          Tag: Attribute Value (0x42000B), Type: Enumeration (0x05), Data: 0x000004 (4 = RSA)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Length"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000800 (2048)
+      Tag: Private Key Template-Attribute (0x420065), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Name"
+          Tag: Attribute Value (0x42000B), Type: Structure (0x01), Data:
+            Tag: Name Value (0x420055), Type: TextString (0x07), Data: "private-key-label-alg-10"
+            Tag: Name Type (0x420054), Type: Enumeration (0x05), Data: 0x000001 (1 = Uninterpreted Text String)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Usage Mask"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000001 (1 = Sign)
+      Tag: Public Key Template-Attribute (0x42006E), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Name"
+          Tag: Attribute Value (0x42000B), Type: Structure (0x01), Data:
+            Tag: Name Value (0x420055), Type: TextString (0x07), Data: "public-key-label-alg-10"
+            Tag: Name Type (0x420054), Type: Enumeration (0x05), Data: 0x000001 (1 = Uninterpreted Text String)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Usage Mask"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000002 (2 = Verify)
+
+
+
+Raw KMIP:
+42007A01000000F042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9C42000D0200000004000000010000000042000F010000009842005C0500000004000000020000000042007F0500000004000000000000000042007C0100000070420094070000002D353838454142464134333142304444373944423141343234434343423637444137383239343230395F70726976000000420094070000002C353838454142464134333142304444373944423141343234434343423637444137383239343230395F70756200000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9C
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000002 (2 = Create Key Pair)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "588EABFA431B0DD79DB1A424CCCB67DA78294209_priv"
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "588EABFA431B0DD79DB1A424CCCB67DA78294209_pub"
+
+
+
+Raw KMIP:
+42007801000000F84200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000005042005C05000000040000000A000000004200790100000038420094070000002C353838454142464134333142304444373944423141343234434343423637444137383239343230395F70756200000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x00000A (10 = Get)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "588EABFA431B0DD79DB1A424CCCB67DA78294209_pub"
+
+
+
+Raw KMIP:
+42007A010000023042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9C42000D0200000004000000010000000042000F01000001D842005C05000000040000000A0000000042007F0500000004000000000000000042007C01000001B042005705000000040000000300000000420094070000002C353838454142464134333142304444373944423141343234434343423637444137383239343230395F7075620000000042006D0100000160420040010000015842004205000000040000000B00000000420045010000012042004301000001184200520400000100DA840313D1C5EB0D537466426EB8B57A7A627F702A08F92EE35F79EA0E35208DBF2049F5BD29EE40CD51CCF8991BF71D682F98280F5669593A0D657756EDBE1947BCA649B3654CC97885706FF6B87EC47203BBAB12E2D38DEAEAA6991925211F83292C059E839E6A8C44FAF9C247B7C78961678986AF8121763A60F31DA27FB97737E4DA31DE64E058BF5B08748E94D14A7A6292F23D2E587C6E53ED0FAB18CAC5AC25DC824BCA88C4223F948E4D3B62B48F1487423C71BA6335B1384A9442E641037BE0DB7D5758D4DFBFBFC3B36C26C8D0212913FDC0FDC24CC70BC8A55C8EFF92DD653A3927C45D8C374209395EE4ED01629E13CB17770823BCA71FF3D49542006C040000000800000000000100014200280500000004000000040000000042002A02000000040000080000000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9C
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x00000A (10 = Get)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Object Type (0x420057), Type: Enumeration (0x05), Data: 0x000003 (3 = Public Key)
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "588EABFA431B0DD79DB1A424CCCB67DA78294209_pub"
+      Tag: Public Key (0x42006D), Type: Structure (0x01), Data:
+        Tag: Key Block (0x420040), Type: Structure (0x01), Data:
+          Tag: Key Format Type (0x420042), Type: Enumeration (0x05), Data: 0x00000B (11 = Transparent RSA Public Key)
+          Tag: Key Value (0x420045), Type: Structure (0x01), Data:
+            Tag: Key Material (0x420043), Type: Structure (0x01), Data:
+              Tag: Modulus (0x420052), Type: BigInteger (0x04), Data: DA840313D1C5EB0D537466426EB8B57A7A627F702A08F92EE35F79EA0E35208DBF2049F5BD29EE40CD51CCF8991BF71D682F98280F5669593A0D657756EDBE1947BCA649B3654CC97885706FF6B87EC47203BBAB12E2D38DEAEAA6991925211F83292C059E839E6A8C44FAF9C247B7C78961678986AF8121763A60F31DA27FB97737E4DA31DE64E058BF5B08748E94D14A7A6292F23D2E587C6E53ED0FAB18CAC5AC25DC824BCA88C4223F948E4D3B62B48F1487423C71BA6335B1384A9442E641037BE0DB7D5758D4DFBFBFC3B36C26C8D0212913FDC0FDC24CC70BC8A55C8EFF92DD653A3927C45D8C374209395EE4ED01629E13CB17770823BCA71FF3D495
+              Tag: Public Exponent (0x42006C), Type: BigInteger (0x04), Data: 0000000000010001
+          Tag: Cryptographic Algorithm (0x420028), Type: Enumeration (0x05), Data: 0x000004 (4 = RSA)
+          Tag: Cryptographic Length (0x42002A), Type: Integer (0x02), Data: 0x000800 (2048)
+
+
+
+Raw KMIP:
+42007801000000F84200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000005042005C050000000400000012000000004200790100000038420094070000002D353838454142464134333142304444373944423141343234434343423637444137383239343230395F70726976000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000012 (18 = Activate)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "588EABFA431B0DD79DB1A424CCCB67DA78294209_priv"
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9C42000D0200000004000000010000000042000F010000006042005C0500000004000000120000000042007F0500000004000000000000000042007C0100000038420094070000002D353838454142464134333142304444373944423141343234434343423637444137383239343230395F70726976000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9C
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000012 (18 = Activate)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "588EABFA431B0DD79DB1A424CCCB67DA78294209_priv"
+
+
+
+Raw KMIP:
+42007801000001484200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000020000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F01000000A042005C050000000400000021000000004200790100000088420094070000002D353838454142464134333142304444373944423141343234434343423637444137383239343230395F7072697600000042002B010000003042005F0500000004000000080000000042003805000000040000000800000000420028050000000400000004000000004200C2080000000C48656C6C6F20576F726C642100000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000002 (2)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000021 (33 = Sign)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "588EABFA431B0DD79DB1A424CCCB67DA78294209_priv"
+      Tag: Cryptographic Parameters (0x42002B), Type: Structure (0x01), Data:
+        Tag: Padding Method (0x42005F), Type: Enumeration (0x05), Data: 0x000008 (8 = ??)
+        Tag: Hashing Algorithm (0x420038), Type: Enumeration (0x05), Data: 0x000008 (8 = ??)
+        Tag: Cryptographic Algorithm (0x420028), Type: Enumeration (0x05), Data: 0x000004 (4 = RSA)
+      Tag: Data (0x4200C2), Type: ByteString (0x08), Data: 48656C6C6F20576F726C6421
+
+
+
+Raw KMIP:
+42007A01000001C042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000002000000004200920900000008000000006AFE1A9C42000D0200000004000000010000000042000F010000016842005C0500000004000000210000000042007F0500000004000000000000000042007C0100000140420094070000002D353838454142464134333142304444373944423141343234434343423637444137383239343230395F707269760000004200C308000001006E3224F1C78D0145B4285B771D73FDD02BDE1CA70C19F06740604461CE02A5A4820BDA3EC8711149191BEF72E9F3843FC97804FDE99B9F45D81FB77550D1D59EE4CFE79B70DE93511DCA388769C2C873A074FDA7CF4D1A4D08CD19DA8D018C1795CB136826BD551C8E54A08E5E18FDE3EE211184A418F32AE84FDA669E6CEC0D6F1E8491F4B0478C8CC0E624CBC71772269364DF26C5AB9634BB90D8F2E7125F48117232849EE70B5078D2A8E5C6BCABF6EB11D06DD885D7A3DA09A33445E6E718C5B87A1CE7D9EBEE777F2D9FB88A0A7C46B50E46DA1E770D67D9ACB7539A83CF7217C57AC8C884DFBF821EF5D5076E5AA5BE8B209B53CE6342DDAFB35174AC
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000002 (2)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9C
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000021 (33 = Sign)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "588EABFA431B0DD79DB1A424CCCB67DA78294209_priv"
+      Tag: Signature Data (0x4200C3), Type: ByteString (0x08), Data: 6E3224F1C78D0145B4285B771D73FDD02BDE1CA70C19F06740604461CE02A5A4820BDA3EC8711149191BEF72E9F3843FC97804FDE99B9F45D81FB77550D1D59EE4CFE79B70DE93511DCA388769C2C873A074FDA7CF4D1A4D08CD19DA8D018C1795CB136826BD551C8E54A08E5E18FDE3EE211184A418F32AE84FDA669E6CEC0D6F1E8491F4B0478C8CC0E624CBC71772269364DF26C5AB9634BB90D8F2E7125F48117232849EE70B5078D2A8E5C6BCABF6EB11D06DD885D7A3DA09A33445E6E718C5B87A1CE7D9EBEE777F2D9FB88A0A7C46B50E46DA1E770D67D9ACB7539A83CF7217C57AC8C884DFBF821EF5D5076E5AA5BE8B209B53CE6342DDAFB35174AC
+
+
+
+Raw KMIP:
+42007801000001104200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000006842005C050000000400000013000000004200790100000050420094070000002C353838454142464134333142304444373944423141343234434343423637444137383239343230395F70756200000000420081010000001042008205000000040000000600000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000013 (19 = Revoke)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "588EABFA431B0DD79DB1A424CCCB67DA78294209_pub"
+      Tag: Revocation Reason (0x420081), Type: Structure (0x01), Data:
+        Tag: Revocation Reason Code (0x420082), Type: Enumeration (0x05), Data: 0x000006 (6 = ??)
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9C42000D0200000004000000010000000042000F010000006042005C0500000004000000130000000042007F0500000004000000000000000042007C0100000038420094070000002C353838454142464134333142304444373944423141343234434343423637444137383239343230395F70756200000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9C
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000013 (19 = Revoke)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "588EABFA431B0DD79DB1A424CCCB67DA78294209_pub"
+
+
+
+Raw KMIP:
+42007801000000F84200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000005042005C050000000400000014000000004200790100000038420094070000002C353838454142464134333142304444373944423141343234434343423637444137383239343230395F70756200000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000014 (20 = Destroy)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "588EABFA431B0DD79DB1A424CCCB67DA78294209_pub"
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9C42000D0200000004000000010000000042000F010000006042005C0500000004000000140000000042007F0500000004000000000000000042007C0100000038420094070000002C353838454142464134333142304444373944423141343234434343423637444137383239343230395F70756200000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9C
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000014 (20 = Destroy)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "588EABFA431B0DD79DB1A424CCCB67DA78294209_pub"
+
+
+
+Raw KMIP:
+42007801000001104200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000006842005C050000000400000013000000004200790100000050420094070000002D353838454142464134333142304444373944423141343234434343423637444137383239343230395F70726976000000420081010000001042008205000000040000000600000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000013 (19 = Revoke)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "588EABFA431B0DD79DB1A424CCCB67DA78294209_priv"
+      Tag: Revocation Reason (0x420081), Type: Structure (0x01), Data:
+        Tag: Revocation Reason Code (0x420082), Type: Enumeration (0x05), Data: 0x000006 (6 = ??)
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9C42000D0200000004000000010000000042000F010000006042005C0500000004000000130000000042007F0500000004000000000000000042007C0100000038420094070000002D353838454142464134333142304444373944423141343234434343423637444137383239343230395F70726976000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9C
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000013 (19 = Revoke)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "588EABFA431B0DD79DB1A424CCCB67DA78294209_priv"
+
+
+
+Raw KMIP:
+42007801000000F84200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000005042005C050000000400000014000000004200790100000038420094070000002D353838454142464134333142304444373944423141343234434343423637444137383239343230395F70726976000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000014 (20 = Destroy)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "588EABFA431B0DD79DB1A424CCCB67DA78294209_priv"
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9C42000D0200000004000000010000000042000F010000006042005C0500000004000000140000000042007F0500000004000000000000000042007C0100000038420094070000002D353838454142464134333142304444373944423141343234434343423637444137383239343230395F70726976000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9C
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000014 (20 = Destroy)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "588EABFA431B0DD79DB1A424CCCB67DA78294209_priv"
+
+
+
+Raw KMIP:
+42007801000002584200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F01000001B042005C05000000040000000200000000420079010000019842001F0100000070420008010000003042000A070000001743727970746F6772617068696320416C676F726974686D0042000B05000000040000000600000000420008010000003042000A070000001443727970746F67726170686963204C656E6774680000000042000B020000000400000100000000004200650100000088420008010000004842000A07000000044E616D650000000042000B01000000304200550700000018707269766174652D6B65792D6C6162656C2D616C672D313342005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B0200000004000000010000000042006E0100000088420008010000004842000A07000000044E616D650000000042000B010000003042005507000000177075626C69632D6B65792D6C6162656C2D616C672D31330042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B02000000040000000200000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000002 (2 = Create Key Pair)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Common Template-Attribute (0x42001F), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Algorithm"
+          Tag: Attribute Value (0x42000B), Type: Enumeration (0x05), Data: 0x000006 (6 = ECDSA)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Length"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000100 (256)
+      Tag: Private Key Template-Attribute (0x420065), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Name"
+          Tag: Attribute Value (0x42000B), Type: Structure (0x01), Data:
+            Tag: Name Value (0x420055), Type: TextString (0x07), Data: "private-key-label-alg-13"
+            Tag: Name Type (0x420054), Type: Enumeration (0x05), Data: 0x000001 (1 = Uninterpreted Text String)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Usage Mask"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000001 (1 = Sign)
+      Tag: Public Key Template-Attribute (0x42006E), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Name"
+          Tag: Attribute Value (0x42000B), Type: Structure (0x01), Data:
+            Tag: Name Value (0x420055), Type: TextString (0x07), Data: "public-key-label-alg-13"
+            Tag: Name Type (0x420054), Type: Enumeration (0x05), Data: 0x000001 (1 = Uninterpreted Text String)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Usage Mask"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000002 (2 = Verify)
+
+
+
+Raw KMIP:
+42007A01000000F042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9D42000D0200000004000000010000000042000F010000009842005C0500000004000000020000000042007F0500000004000000000000000042007C0100000070420094070000002D413245324344323134363946443441383838333546424337464246333338443345383244344531315F70726976000000420094070000002C413245324344323134363946443441383838333546424337464246333338443345383244344531315F70756200000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9D
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000002 (2 = Create Key Pair)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "A2E2CD21469FD4A88835FBC7FBF338D3E82D4E11_priv"
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "A2E2CD21469FD4A88835FBC7FBF338D3E82D4E11_pub"
+
+
+
+Raw KMIP:
+42007801000000F84200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000005042005C05000000040000000A000000004200790100000038420094070000002C413245324344323134363946443441383838333546424337464246333338443345383244344531315F70756200000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x00000A (10 = Get)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "A2E2CD21469FD4A88835FBC7FBF338D3E82D4E11_pub"
+
+
+
+Raw KMIP:
+42007A010000016842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9D42000D0200000004000000010000000042000F010000011042005C05000000040000000A0000000042007F0500000004000000000000000042007C01000000E842005705000000040000000300000000420094070000002C413245324344323134363946443441383838333546424337464246333338443345383244344531315F7075620000000042006D01000000984200400100000090420042050000000400000005000000004200450100000068420043080000005B3059301306072A8648CE3D020106082A8648CE3D030107034200042D92163892EFFBC87ED125ACCC623528D8DF9FC8D39F729981F35B88549DF75BB11DE4A02598FE579F17F4A203CFC46148C94BDB23FBCDF6A17F00562204F308000000000042002805000000040000000600000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9D
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x00000A (10 = Get)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Object Type (0x420057), Type: Enumeration (0x05), Data: 0x000003 (3 = Public Key)
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "A2E2CD21469FD4A88835FBC7FBF338D3E82D4E11_pub"
+      Tag: Public Key (0x42006D), Type: Structure (0x01), Data:
+        Tag: Key Block (0x420040), Type: Structure (0x01), Data:
+          Tag: Key Format Type (0x420042), Type: Enumeration (0x05), Data: 0x000005 (5 = X.509)
+          Tag: Key Value (0x420045), Type: Structure (0x01), Data:
+            Tag: Key Material (0x420043), Type: ByteString (0x08), Data: 3059301306072A8648CE3D020106082A8648CE3D030107034200042D92163892EFFBC87ED125ACCC623528D8DF9FC8D39F729981F35B88549DF75BB11DE4A02598FE579F17F4A203CFC46148C94BDB23FBCDF6A17F00562204F308
+          Tag: Cryptographic Algorithm (0x420028), Type: Enumeration (0x05), Data: 0x000006 (6 = ECDSA)
+
+
+
+Raw KMIP:
+42007801000000F84200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000005042005C050000000400000012000000004200790100000038420094070000002D413245324344323134363946443441383838333546424337464246333338443345383244344531315F70726976000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000012 (18 = Activate)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "A2E2CD21469FD4A88835FBC7FBF338D3E82D4E11_priv"
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9D42000D0200000004000000010000000042000F010000006042005C0500000004000000120000000042007F0500000004000000000000000042007C0100000038420094070000002D413245324344323134363946443441383838333546424337464246333338443345383244344531315F70726976000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9D
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000012 (18 = Activate)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "A2E2CD21469FD4A88835FBC7FBF338D3E82D4E11_priv"
+
+
+
+Raw KMIP:
+42007801000001384200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000020000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000009042005C050000000400000021000000004200790100000078420094070000002D413245324344323134363946443441383838333546424337464246333338443345383244344531315F7072697600000042002B010000002042003805000000040000000600000000420028050000000400000006000000004200C2080000000C48656C6C6F20576F726C642100000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000002 (2)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000021 (33 = Sign)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "A2E2CD21469FD4A88835FBC7FBF338D3E82D4E11_priv"
+      Tag: Cryptographic Parameters (0x42002B), Type: Structure (0x01), Data:
+        Tag: Hashing Algorithm (0x420038), Type: Enumeration (0x05), Data: 0x000006 (6 = ??)
+        Tag: Cryptographic Algorithm (0x420028), Type: Enumeration (0x05), Data: 0x000006 (6 = ECDSA)
+      Tag: Data (0x4200C2), Type: ByteString (0x08), Data: 48656C6C6F20576F726C6421
+
+
+
+Raw KMIP:
+42007A010000010842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000002000000004200920900000008000000006AFE1A9D42000D0200000004000000010000000042000F01000000B042005C0500000004000000210000000042007F0500000004000000000000000042007C0100000088420094070000002D413245324344323134363946443441383838333546424337464246333338443345383244344531315F707269760000004200C3080000004830460221009302E174759A7C5B25F5AABF52E3A8BA5BCDE5A8D400C8660B65DB6832F47378022100E944418E675CE256B7C68D5EB489E818E625AC6E687889E3A0501C6ABF5F0671
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000002 (2)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9D
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000021 (33 = Sign)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "A2E2CD21469FD4A88835FBC7FBF338D3E82D4E11_priv"
+      Tag: Signature Data (0x4200C3), Type: ByteString (0x08), Data: 30460221009302E174759A7C5B25F5AABF52E3A8BA5BCDE5A8D400C8660B65DB6832F47378022100E944418E675CE256B7C68D5EB489E818E625AC6E687889E3A0501C6ABF5F0671
+
+
+
+Raw KMIP:
+42007801000001104200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000006842005C050000000400000013000000004200790100000050420094070000002C413245324344323134363946443441383838333546424337464246333338443345383244344531315F70756200000000420081010000001042008205000000040000000600000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000013 (19 = Revoke)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "A2E2CD21469FD4A88835FBC7FBF338D3E82D4E11_pub"
+      Tag: Revocation Reason (0x420081), Type: Structure (0x01), Data:
+        Tag: Revocation Reason Code (0x420082), Type: Enumeration (0x05), Data: 0x000006 (6 = ??)
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9D42000D0200000004000000010000000042000F010000006042005C0500000004000000130000000042007F0500000004000000000000000042007C0100000038420094070000002C413245324344323134363946443441383838333546424337464246333338443345383244344531315F70756200000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9D
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000013 (19 = Revoke)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "A2E2CD21469FD4A88835FBC7FBF338D3E82D4E11_pub"
+
+
+
+Raw KMIP:
+42007801000000F84200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000005042005C050000000400000014000000004200790100000038420094070000002C413245324344323134363946443441383838333546424337464246333338443345383244344531315F70756200000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000014 (20 = Destroy)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "A2E2CD21469FD4A88835FBC7FBF338D3E82D4E11_pub"
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9D42000D0200000004000000010000000042000F010000006042005C0500000004000000140000000042007F0500000004000000000000000042007C0100000038420094070000002C413245324344323134363946443441383838333546424337464246333338443345383244344531315F70756200000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9D
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000014 (20 = Destroy)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "A2E2CD21469FD4A88835FBC7FBF338D3E82D4E11_pub"
+
+
+
+Raw KMIP:
+42007801000001104200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000006842005C050000000400000013000000004200790100000050420094070000002D413245324344323134363946443441383838333546424337464246333338443345383244344531315F70726976000000420081010000001042008205000000040000000600000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000013 (19 = Revoke)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "A2E2CD21469FD4A88835FBC7FBF338D3E82D4E11_priv"
+      Tag: Revocation Reason (0x420081), Type: Structure (0x01), Data:
+        Tag: Revocation Reason Code (0x420082), Type: Enumeration (0x05), Data: 0x000006 (6 = ??)
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9D42000D0200000004000000010000000042000F010000006042005C0500000004000000130000000042007F0500000004000000000000000042007C0100000038420094070000002D413245324344323134363946443441383838333546424337464246333338443345383244344531315F70726976000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9D
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000013 (19 = Revoke)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "A2E2CD21469FD4A88835FBC7FBF338D3E82D4E11_priv"
+
+
+
+Raw KMIP:
+42007801000000F84200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000005042005C050000000400000014000000004200790100000038420094070000002D413245324344323134363946443441383838333546424337464246333338443345383244344531315F70726976000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000014 (20 = Destroy)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "A2E2CD21469FD4A88835FBC7FBF338D3E82D4E11_priv"
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9D42000D0200000004000000010000000042000F010000006042005C0500000004000000140000000042007F0500000004000000000000000042007C0100000038420094070000002D413245324344323134363946443441383838333546424337464246333338443345383244344531315F70726976000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9D
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000014 (20 = Destroy)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "A2E2CD21469FD4A88835FBC7FBF338D3E82D4E11_priv"
+
+
+
+Raw KMIP:
+42007801000002584200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F01000001B042005C05000000040000000200000000420079010000019842001F0100000070420008010000003042000A070000001743727970746F6772617068696320416C676F726974686D0042000B05000000040000000600000000420008010000003042000A070000001443727970746F67726170686963204C656E6774680000000042000B020000000400000180000000004200650100000088420008010000004842000A07000000044E616D650000000042000B01000000304200550700000018707269766174652D6B65792D6C6162656C2D616C672D313442005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B0200000004000000010000000042006E0100000088420008010000004842000A07000000044E616D650000000042000B010000003042005507000000177075626C69632D6B65792D6C6162656C2D616C672D31340042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B02000000040000000200000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000002 (2 = Create Key Pair)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Common Template-Attribute (0x42001F), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Algorithm"
+          Tag: Attribute Value (0x42000B), Type: Enumeration (0x05), Data: 0x000006 (6 = ECDSA)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Length"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000180 (384)
+      Tag: Private Key Template-Attribute (0x420065), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Name"
+          Tag: Attribute Value (0x42000B), Type: Structure (0x01), Data:
+            Tag: Name Value (0x420055), Type: TextString (0x07), Data: "private-key-label-alg-14"
+            Tag: Name Type (0x420054), Type: Enumeration (0x05), Data: 0x000001 (1 = Uninterpreted Text String)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Usage Mask"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000001 (1 = Sign)
+      Tag: Public Key Template-Attribute (0x42006E), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Name"
+          Tag: Attribute Value (0x42000B), Type: Structure (0x01), Data:
+            Tag: Name Value (0x420055), Type: TextString (0x07), Data: "public-key-label-alg-14"
+            Tag: Name Type (0x420054), Type: Enumeration (0x05), Data: 0x000001 (1 = Uninterpreted Text String)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Usage Mask"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000002 (2 = Verify)
+
+
+
+Raw KMIP:
+42007A01000000F042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9D42000D0200000004000000010000000042000F010000009842005C0500000004000000020000000042007F0500000004000000000000000042007C0100000070420094070000002D323042463036364530354646394138384234334542454233463946463237443837463733313543375F70726976000000420094070000002C323042463036364530354646394138384234334542454233463946463237443837463733313543375F70756200000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9D
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000002 (2 = Create Key Pair)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "20BF066E05FF9A88B43EBEB3F9FF27D87F7315C7_priv"
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "20BF066E05FF9A88B43EBEB3F9FF27D87F7315C7_pub"
+
+
+
+Raw KMIP:
+42007801000000F84200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000005042005C05000000040000000A000000004200790100000038420094070000002C323042463036364530354646394138384234334542454233463946463237443837463733313543375F70756200000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x00000A (10 = Get)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "20BF066E05FF9A88B43EBEB3F9FF27D87F7315C7_pub"
+
+
+
+Raw KMIP:
+42007A010000018042007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9D42000D0200000004000000010000000042000F010000012842005C05000000040000000A0000000042007F0500000004000000000000000042007C010000010042005705000000040000000300000000420094070000002C323042463036364530354646394138384234334542454233463946463237443837463733313543375F7075620000000042006D01000000B042004001000000A842004205000000040000000500000000420045010000008042004308000000783076301006072A8648CE3D020106052B8104002203620004DA59C7FAE31B9E5E1F0F1107580E02787BBF8B5E511F62D2BBA4EB99F1A7AD790C3F5C9DB9E79DA0E2F98C3582298250D2C28EF34C71D3E4415D6FB167887937127E3CDFF6365DABF0706CB74375E19D4A444A3632E980C526320E9FC4116AA542002805000000040000000600000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9D
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x00000A (10 = Get)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Object Type (0x420057), Type: Enumeration (0x05), Data: 0x000003 (3 = Public Key)
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "20BF066E05FF9A88B43EBEB3F9FF27D87F7315C7_pub"
+      Tag: Public Key (0x42006D), Type: Structure (0x01), Data:
+        Tag: Key Block (0x420040), Type: Structure (0x01), Data:
+          Tag: Key Format Type (0x420042), Type: Enumeration (0x05), Data: 0x000005 (5 = X.509)
+          Tag: Key Value (0x420045), Type: Structure (0x01), Data:
+            Tag: Key Material (0x420043), Type: ByteString (0x08), Data: 3076301006072A8648CE3D020106052B8104002203620004DA59C7FAE31B9E5E1F0F1107580E02787BBF8B5E511F62D2BBA4EB99F1A7AD790C3F5C9DB9E79DA0E2F98C3582298250D2C28EF34C71D3E4415D6FB167887937127E3CDFF6365DABF0706CB74375E19D4A444A3632E980C526320E9FC4116AA5
+          Tag: Cryptographic Algorithm (0x420028), Type: Enumeration (0x05), Data: 0x000006 (6 = ECDSA)
+
+
+
+Raw KMIP:
+42007801000000F84200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000005042005C050000000400000012000000004200790100000038420094070000002D323042463036364530354646394138384234334542454233463946463237443837463733313543375F70726976000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000012 (18 = Activate)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "20BF066E05FF9A88B43EBEB3F9FF27D87F7315C7_priv"
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9D42000D0200000004000000010000000042000F010000006042005C0500000004000000120000000042007F0500000004000000000000000042007C0100000038420094070000002D323042463036364530354646394138384234334542454233463946463237443837463733313543375F70726976000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9D
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000012 (18 = Activate)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "20BF066E05FF9A88B43EBEB3F9FF27D87F7315C7_priv"
+
+
+
+Raw KMIP:
+42007801000001384200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000020000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000009042005C050000000400000021000000004200790100000078420094070000002D323042463036364530354646394138384234334542454233463946463237443837463733313543375F7072697600000042002B010000002042003805000000040000000700000000420028050000000400000006000000004200C2080000000C48656C6C6F20576F726C642100000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000002 (2)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000021 (33 = Sign)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "20BF066E05FF9A88B43EBEB3F9FF27D87F7315C7_priv"
+      Tag: Cryptographic Parameters (0x42002B), Type: Structure (0x01), Data:
+        Tag: Hashing Algorithm (0x420038), Type: Enumeration (0x05), Data: 0x000007 (7 = ??)
+        Tag: Cryptographic Algorithm (0x420028), Type: Enumeration (0x05), Data: 0x000006 (6 = ECDSA)
+      Tag: Data (0x4200C2), Type: ByteString (0x08), Data: 48656C6C6F20576F726C6421
+
+
+
+Raw KMIP:
+42007A010000012842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000002000000004200920900000008000000006AFE1A9D42000D0200000004000000010000000042000F01000000D042005C0500000004000000210000000042007F0500000004000000000000000042007C01000000A8420094070000002D323042463036364530354646394138384234334542454233463946463237443837463733313543375F707269760000004200C30800000066306402306091D71992B740C263706B082DB3861C9A48D752C063E1CC55149360878FD3E8EEEAA9D8049F982A880759BC26F3409202306B533E1C912AF4E90AA56E2CBB9DED0C5C4E48F56BD9BE8FDEFB9A58F2F2708B5A13BC48FEFD32C55EAE46D2BF292B560000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000002 (2)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9D
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000021 (33 = Sign)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "20BF066E05FF9A88B43EBEB3F9FF27D87F7315C7_priv"
+      Tag: Signature Data (0x4200C3), Type: ByteString (0x08), Data: 306402306091D71992B740C263706B082DB3861C9A48D752C063E1CC55149360878FD3E8EEEAA9D8049F982A880759BC26F3409202306B533E1C912AF4E90AA56E2CBB9DED0C5C4E48F56BD9BE8FDEFB9A58F2F2708B5A13BC48FEFD32C55EAE46D2BF292B56
+
+
+
+Raw KMIP:
+42007801000001104200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000006842005C050000000400000013000000004200790100000050420094070000002C323042463036364530354646394138384234334542454233463946463237443837463733313543375F70756200000000420081010000001042008205000000040000000600000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000013 (19 = Revoke)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "20BF066E05FF9A88B43EBEB3F9FF27D87F7315C7_pub"
+      Tag: Revocation Reason (0x420081), Type: Structure (0x01), Data:
+        Tag: Revocation Reason Code (0x420082), Type: Enumeration (0x05), Data: 0x000006 (6 = ??)
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9D42000D0200000004000000010000000042000F010000006042005C0500000004000000130000000042007F0500000004000000000000000042007C0100000038420094070000002C323042463036364530354646394138384234334542454233463946463237443837463733313543375F70756200000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9D
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000013 (19 = Revoke)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "20BF066E05FF9A88B43EBEB3F9FF27D87F7315C7_pub"
+
+
+
+Raw KMIP:
+42007801000000F84200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000005042005C050000000400000014000000004200790100000038420094070000002C323042463036364530354646394138384234334542454233463946463237443837463733313543375F70756200000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000014 (20 = Destroy)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "20BF066E05FF9A88B43EBEB3F9FF27D87F7315C7_pub"
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9D42000D0200000004000000010000000042000F010000006042005C0500000004000000140000000042007F0500000004000000000000000042007C0100000038420094070000002C323042463036364530354646394138384234334542454233463946463237443837463733313543375F70756200000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9D
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000014 (20 = Destroy)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "20BF066E05FF9A88B43EBEB3F9FF27D87F7315C7_pub"
+
+
+
+Raw KMIP:
+42007801000001104200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000006842005C050000000400000013000000004200790100000050420094070000002D323042463036364530354646394138384234334542454233463946463237443837463733313543375F70726976000000420081010000001042008205000000040000000600000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000013 (19 = Revoke)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "20BF066E05FF9A88B43EBEB3F9FF27D87F7315C7_priv"
+      Tag: Revocation Reason (0x420081), Type: Structure (0x01), Data:
+        Tag: Revocation Reason Code (0x420082), Type: Enumeration (0x05), Data: 0x000006 (6 = ??)
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9D42000D0200000004000000010000000042000F010000006042005C0500000004000000130000000042007F0500000004000000000000000042007C0100000038420094070000002D323042463036364530354646394138384234334542454233463946463237443837463733313543375F70726976000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9D
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000013 (19 = Revoke)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "20BF066E05FF9A88B43EBEB3F9FF27D87F7315C7_priv"
+
+
+
+Raw KMIP:
+42007801000000F84200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000005042005C050000000400000014000000004200790100000038420094070000002D323042463036364530354646394138384234334542454233463946463237443837463733313543375F70726976000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000014 (20 = Destroy)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "20BF066E05FF9A88B43EBEB3F9FF27D87F7315C7_priv"
+
+
+
+Raw KMIP:
+42007A01000000B842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9D42000D0200000004000000010000000042000F010000006042005C0500000004000000140000000042007F0500000004000000000000000042007C0100000038420094070000002D323042463036364530354646394138384234334542454233463946463237443837463733313543375F70726976000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9D
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000014 (20 = Destroy)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Unique Identifier (0x420094), Type: TextString (0x07), Data: "20BF066E05FF9A88B43EBEB3F9FF27D87F7315C7_priv"
+
+
+
+Raw KMIP:
+42007801000001004200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000020000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F010000005842005C05000000040000001800000000420079010000004042007405000000040000000100000000420074050000000400000002000000004200740500000004000000030000000042007405000000040000000500000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000002 (2)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000018 (24 = Query)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Query Function (0x420074), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+      Tag: Query Function (0x420074), Type: Enumeration (0x05), Data: 0x000002 (2 = ??)
+      Tag: Query Function (0x420074), Type: Enumeration (0x05), Data: 0x000003 (3 = ??)
+      Tag: Query Function (0x420074), Type: Enumeration (0x05), Data: 0x000005 (5 = ??)
+
+
+
+Raw KMIP:
+42007A010000020842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000002000000004200920900000008000000006AFE1A9D42000D0200000004000000010000000042000F01000001B042005C0500000004000000180000000042007F0500000004000000000000000042007C010000018842005C0500000004000000120000000042005C0500000004000000020000000042005C0500000004000000140000000042005C05000000040000001E0000000042005C05000000040000000A0000000042005C0500000004000000180000000042005C05000000040000000E0000000042005C0500000004000000130000000042005C05000000040000002100000000420057050000000400000003000000004200570500000004000000040000000042009D0700000087636173636164652D68736D2D62726964676520302E322E302D62657461332D646576207573696E6720504B435323313120746F6B656E2077697468206C6162656C205975626948534D20696E20736C6F74205975626948534D20436F6E6E6563746F72203132372E302E302E3120766961206C69627261727920706B637331312D7370792E736F0042008801000000004200A401000000384200A5070000002F436173636164652D48534D2D4272696467652045643434382F3235353139204B4D495020312E7820537570706F727400
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000002 (2)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9D
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000018 (24 = Query)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000000 (0 = Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data:
+      Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000012 (18 = Activate)
+      Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000002 (2 = Create Key Pair)
+      Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000014 (20 = Destroy)
+      Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x00001E (30 = Discover Versions)
+      Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x00000A (10 = Get)
+      Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000018 (24 = Query)
+      Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x00000E (14 = Modify Attribute)
+      Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000013 (19 = Revoke)
+      Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000021 (33 = Sign)
+      Tag: Object Type (0x420057), Type: Enumeration (0x05), Data: 0x000003 (3 = Public Key)
+      Tag: Object Type (0x420057), Type: Enumeration (0x05), Data: 0x000004 (4 = Private Key)
+      Tag: Vendor Identification (0x42009D), Type: TextString (0x07), Data: "cascade-hsm-bridge 0.2.0-beta3-dev using PKCS#11 token with label YubiHSM in slot YubiHSM Connector 127.0.0.1 via library pkcs11-spy.so"
+      Tag: Server Information (0x420088), Type: Structure (0x01), Data:
+      Tag: Extension Information (0x4200A4), Type: Structure (0x01), Data:
+        Tag: Extension Name (0x4200A5), Type: TextString (0x07), Data: "Cascade-HSM-Bridge Ed448/25519 KMIP 1.x Support"
+
+
+
+Raw KMIP:
+42007801000002584200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F01000001B042005C05000000040000000200000000420079010000019842001F0100000070420008010000003042000A070000001743727970746F6772617068696320416C676F726974686D0042000B05000000040000003800000000420008010000003042000A070000001443727970746F67726170686963204C656E6774680000000042000B0200000004000001C8000000004200650100000088420008010000004842000A07000000044E616D650000000042000B01000000304200550700000018707269766174652D6B65792D6C6162656C2D616C672D313642005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B0200000004000000010000000042006E0100000088420008010000004842000A07000000044E616D650000000042000B010000003042005507000000177075626C69632D6B65792D6C6162656C2D616C672D31360042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B02000000040000000200000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000002 (2 = Create Key Pair)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Common Template-Attribute (0x42001F), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Algorithm"
+          Tag: Attribute Value (0x42000B), Type: Enumeration (0x05), Data: 0x000038 (56 = ??)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Length"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x0001C8 (456)
+      Tag: Private Key Template-Attribute (0x420065), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Name"
+          Tag: Attribute Value (0x42000B), Type: Structure (0x01), Data:
+            Tag: Name Value (0x420055), Type: TextString (0x07), Data: "private-key-label-alg-16"
+            Tag: Name Type (0x420054), Type: Enumeration (0x05), Data: 0x000001 (1 = Uninterpreted Text String)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Usage Mask"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000001 (1 = Sign)
+      Tag: Public Key Template-Attribute (0x42006E), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Name"
+          Tag: Attribute Value (0x42000B), Type: Structure (0x01), Data:
+            Tag: Name Value (0x420055), Type: TextString (0x07), Data: "public-key-label-alg-16"
+            Tag: Name Type (0x420054), Type: Enumeration (0x05), Data: 0x000001 (1 = Uninterpreted Text String)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Usage Mask"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000002 (2 = Verify)
+
+
+
+Raw KMIP:
+42007A01000000F842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9D42000D0200000004000000010000000042000F01000000A042007F0500000004000000010000000042007E05000000040000000A0000000042007D07000000724661696C656420746F20637265617465206B657920706169723A20427269646765206661696C656420746F20696E766F6B6520504B43532331312066756E6374696F6E202746756E6374696F6E3A3A47656E65726174654B657950616972273A2043757276654E6F74537570706F72746564000000000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9D
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000001 (1 = Operation Failed)
+    Tag: Result Reason (0x42007E), Type: Enumeration (0x05), Data: 0x00000A (10 = Cryptographic Failure)
+    Tag: Result Message (0x42007D), Type: TextString (0x07), Data: "Failed to create key pair: Bridge failed to invoke PKCS#11 function 'Function::GenerateKeyPair': CurveNotSupported"
+
+
+
+Raw KMIP:
+42007801000002584200770100000098420069010000002042006A0200000004000000010000000042006B0200000004000000000000000042005002000000047FFFFFFF0000000042000C01000000484200230100000040420024050000000400000001000000004200250100000028420099070000000130000000000000004200A1070000000C3030303170617373776F72640000000042000D0200000004000000010000000042000F01000001B042005C05000000040000000200000000420079010000019842001F0100000070420008010000003042000A070000001743727970746F6772617068696320416C676F726974686D0042000B05000000040000003700000000420008010000003042000A070000001443727970746F67726170686963204C656E6774680000000042000B020000000400000100000000004200650100000088420008010000004842000A07000000044E616D650000000042000B01000000304200550700000018707269766174652D6B65792D6C6162656C2D616C672D313542005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B0200000004000000010000000042006E0100000088420008010000004842000A07000000044E616D650000000042000B010000003042005507000000177075626C69632D6B65792D6C6162656C2D616C672D31350042005405000000040000000100000000420008010000003042000A070000001843727970746F67726170686963205573616765204D61736B42000B02000000040000000200000000
+
+Rendered:
+Tag: Request Message (0x420078), Type: Structure (0x01), Data:
+  Tag: Request Header (0x420077), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Maximum Response Size (0x420050), Type: Integer (0x02), Data: 0x7FFFFFFF (2147483647)
+    Tag: Authentication (0x42000C), Type: Structure (0x01), Data:
+      Tag: Credential (0x420023), Type: Structure (0x01), Data:
+        Tag: Credential Type (0x420024), Type: Enumeration (0x05), Data: 0x000001 (1 = ??)
+        Tag: Credential Value (0x420025), Type: Structure (0x01), Data:
+          Tag: Username (0x420099), Type: TextString (0x07), Data: "0"
+          Tag: Password (0x4200A1), Type: TextString (0x07), Data: "0001password"
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x000002 (2 = Create Key Pair)
+    Tag: Request Payload (0x420079), Type: Structure (0x01), Data:
+      Tag: Common Template-Attribute (0x42001F), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Algorithm"
+          Tag: Attribute Value (0x42000B), Type: Enumeration (0x05), Data: 0x000037 (55 = ??)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Length"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000100 (256)
+      Tag: Private Key Template-Attribute (0x420065), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Name"
+          Tag: Attribute Value (0x42000B), Type: Structure (0x01), Data:
+            Tag: Name Value (0x420055), Type: TextString (0x07), Data: "private-key-label-alg-15"
+            Tag: Name Type (0x420054), Type: Enumeration (0x05), Data: 0x000001 (1 = Uninterpreted Text String)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Usage Mask"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000001 (1 = Sign)
+      Tag: Public Key Template-Attribute (0x42006E), Type: Structure (0x01), Data:
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Name"
+          Tag: Attribute Value (0x42000B), Type: Structure (0x01), Data:
+            Tag: Name Value (0x420055), Type: TextString (0x07), Data: "public-key-label-alg-15"
+            Tag: Name Type (0x420054), Type: Enumeration (0x05), Data: 0x000001 (1 = Uninterpreted Text String)
+        Tag: Attribute (0x420008), Type: Structure (0x01), Data:
+          Tag: Attribute Name (0x42000A), Type: TextString (0x07), Data: "Cryptographic Usage Mask"
+          Tag: Attribute Value (0x42000B), Type: Integer (0x02), Data: 0x000002 (2 = Verify)
+
+
+
+Raw KMIP:
+42007A01000000F842007A0100000048420069010000002042006A0200000004000000010000000042006B020000000400000000000000004200920900000008000000006AFE1A9D42000D0200000004000000010000000042000F01000000A042007F0500000004000000010000000042007E05000000040000000A0000000042007D07000000724661696C656420746F20637265617465206B657920706169723A20427269646765206661696C656420746F20696E766F6B6520504B43532331312066756E6374696F6E202746756E6374696F6E3A3A47656E65726174654B657950616972273A2043757276654E6F74537570706F72746564000000000000
+
+Rendered:
+Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data:
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data:
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x000000 (0)
+    Tag: Time Stamp (0x420092), Type: DateTime (0x09), Data: 0x6AFE1A9D
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data:
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x000001 (1 = Operation Failed)
+    Tag: Result Reason (0x42007E), Type: Enumeration (0x05), Data: 0x00000A (10 = Cryptographic Failure)
+    Tag: Result Message (0x42007D), Type: TextString (0x07), Data: "Failed to create key pair: Bridge failed to invoke PKCS#11 function 'Function::GenerateKeyPair': CurveNotSupported"
+
+
+

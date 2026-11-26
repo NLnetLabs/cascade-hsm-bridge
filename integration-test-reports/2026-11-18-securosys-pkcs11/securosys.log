@@ -1,0 +1,1810 @@
+6 -  - Primus API PKCS#11 v2.8.2
+6 -  - Log configuration - File: '/tmp/report/securosys.log'
+6 -  - Log configuration - Log level: '7'
+6 -  - Log configuration - Timestamp: 'disabled'
+6 -  - Log configuration - Process ID: 'disabled'
+6 -  - Log configuration - Function: 'disabled'
+6 -  - Log configuration - Functioncalls: 'disabled'
+6 -  - Log configuration - Filename: 'disabled'
+6 -  - Log configuration - Linenumber: 'disabled'
+7 -  - found </tmp/.tmphUxBPD/securosys.conf> defined in SECUROSYS_PKCS11_CONF
+7 -  - found </etc/primus/.secrets.cfg>
+6 -  - HSM configuration - Parsing: '/tmp/.tmphUxBPD/securosys.conf'
+6 -  - Primus configuration - wait_delay: '250'
+6 -  - Primus configuration - wait_max_tries: '5'
+6 -  - Primus configuration - connect_on_init: 'enabled'
+6 -  - Primus configuration - unique_label: 'disabled'
+6 -  - Primus configuration - cache_refresh_interval: '0'
+6 -  - HSM configuration 'hsm0'
+6 -  - No priority defined for HSM 'hsm0'. Take default value (0).
+6 -  - HSM configuration - URL: 'grimsel.securosys.ch'
+6 -  - HSM configuration - Port: '2410'
+6 -  - HSM configuration - Priority: 0
+6 -  - Partition configuration 'slot0'
+6 -  - Partition configuration - Slot: '0'
+6 -  - Partition configuration - User: 'PRIMUSDEV417'
+6 -  - Partition configuration - Client: 'cascade.nlnetlabs.nl'
+7 -  - Shuffle list of HSMs in the cluster.
+7 -  - Sort list of HSMs in the cluster by priority.
+6 -  - Using OS locking
+7 -  - CONNECT_ON_INIT = 1
+7 -  - Initialize slot 0.
+6 -  - Selected HSM 'hsm0'
+6 -  - Connecting to HSM 'hsm0' (slot: 0)
+7 -  - Starting receive worker
+7 -  - Starting send worker
+7 -  - enqueing packet: 42
+7 -  - Waiting for answer: 42, cmd 4101
+6 -  - Created receiver thread
+6 -  - Created sender thread
+7 -  - Received: 42, cmd 4101
+7 -  - calling setvalue 
+7 -  - Received: 42, cmd 4101
+6 -  - rv: CKR_OK
+7 -  - clientId<cascade.nlnetlabs.nl@f62ed6e11b296cd4e9bbcd8a5c327fc6e634730c818368c996672c129a2fbbcc>
+7 -  - enqueing packet: 43
+7 -  - Waiting for answer: 43, cmd 4105
+7 -  - Received: 43, cmd 4105
+7 -  - calling setvalue 
+7 -  - Received: 43, cmd 4105
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 44
+7 -  - Waiting for answer: 44, cmd 4098
+7 -  - Received: 44, cmd 4098
+7 -  - calling setvalue 
+7 -  - Received: 44, cmd 4098
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 45
+7 -  - Waiting for answer: 45, cmd 4103
+6 -  - Line encryption enabled
+7 -  - Received: 45, cmd 4103
+7 -  - calling setvalue 
+7 -  - Received: 45, cmd 4103
+6 -  - rv: CKR_OK
+6 -  - Connected to HSM 'hsm0' (slot: 0)
+5 -  - rv: CKR_OK
+6 -  - Line encryption enabled
+5 -  - rv: CKR_OK
+6 -  - Created ping thread
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 46
+7 -  - Waiting for answer: 46, cmd 4099
+7 -  - bytes: 84/84
+7 -  - tries: 0/5
+7 -  - Received: 46, cmd 4099
+7 -  - calling setvalue 
+7 -  - Received: 46, cmd 4099
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 47
+7 -  - Waiting for answer: 47, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 47, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 47, cmd 90
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 48
+7 -  - Waiting for answer: 48, cmd 4099
+7 -  - bytes: 84/84
+7 -  - tries: 0/5
+7 -  - Received: 48, cmd 4099
+7 -  - calling setvalue 
+7 -  - Received: 48, cmd 4099
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 49
+7 -  - Waiting for answer: 49, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 49, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 49, cmd 90
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 50
+7 -  - Waiting for answer: 50, cmd 4099
+7 -  - bytes: 84/84
+7 -  - tries: 0/5
+7 -  - Received: 50, cmd 4099
+7 -  - calling setvalue 
+7 -  - Received: 50, cmd 4099
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 51
+7 -  - Waiting for answer: 51, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 51, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 51, cmd 90
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 52
+7 -  - Waiting for answer: 52, cmd 4099
+7 -  - bytes: 84/84
+7 -  - tries: 0/5
+7 -  - Received: 52, cmd 4099
+7 -  - calling setvalue 
+7 -  - Received: 52, cmd 4099
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 53
+7 -  - Waiting for answer: 53, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 53, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 53, cmd 90
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 54
+7 -  - Waiting for answer: 54, cmd 4099
+7 -  - bytes: 84/84
+7 -  - tries: 0/5
+7 -  - Received: 54, cmd 4099
+7 -  - calling setvalue 
+7 -  - Received: 54, cmd 4099
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 55
+7 -  - Waiting for answer: 55, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 55, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 55, cmd 90
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 56
+7 -  - Waiting for answer: 56, cmd 4099
+7 -  - bytes: 84/84
+7 -  - tries: 0/5
+7 -  - Received: 56, cmd 4099
+7 -  - calling setvalue 
+7 -  - Received: 56, cmd 4099
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 57
+7 -  - Waiting for answer: 57, cmd 4099
+7 -  - bytes: 84/84
+7 -  - tries: 0/5
+7 -  - Received: 57, cmd 4099
+7 -  - calling setvalue 
+7 -  - Received: 57, cmd 4099
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 58
+7 -  - Waiting for answer: 58, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 58, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 58, cmd 90
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 59
+7 -  - Waiting for answer: 59, cmd 4106
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 59, cmd 4106
+7 -  - calling setvalue 
+7 -  - Received: 59, cmd 4106
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 60
+7 -  - Waiting for answer: 60, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 60, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 60, cmd 90
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 61
+7 -  - Waiting for answer: 61, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 61, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 61, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 62
+7 -  - Waiting for answer: 62, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 62, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 62, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 63
+7 -  - Waiting for answer: 63, cmd 243
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 63, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 63, cmd 243
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 64
+7 -  - Waiting for answer: 64, cmd 9
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 64, cmd 9
+7 -  - calling setvalue 
+7 -  - Received: 64, cmd 9
+7 -  - getNextData: no data
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 65
+7 -  - Waiting for answer: 65, cmd 17
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 65, cmd 17
+7 -  - calling setvalue 
+7 -  - Received: 65, cmd 17
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 66
+7 -  - Waiting for answer: 66, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 66, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 66, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 67
+7 -  - Waiting for answer: 67, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 67, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 67, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 68
+7 -  - Waiting for answer: 68, cmd 243
+7 -  - bytes: 216/216
+7 -  - tries: 0/5
+7 -  - Received: 68, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 68, cmd 243
+7 -  - idLabel = <private-key-label-alg-8>
+7 -  - idLabel = <public-key-label-alg-8>
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - get attribute for 'public-key-label-alg-8' type 2
+7 -  - enqueing packet: 69
+7 -  - Waiting for answer: 69, cmd 100
+7 -  - bytes: 188/188
+7 -  - tries: 0/5
+7 -  - Received: 69, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 69, cmd 100
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 70
+7 -  - Waiting for answer: 70, cmd 99
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 70, cmd 99
+7 -  - calling setvalue 
+7 -  - Received: 70, cmd 99
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 71
+7 -  - Waiting for answer: 71, cmd 100
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 71, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 71, cmd 100
+6 -  - rv: CKR_OK
+3 -  - rv: CKR_ATTRIBUTE_TYPE_INVALID
+7 -  - get attribute for 'public-key-label-alg-8' type 2
+7 -  - enqueing packet: 72
+7 -  - Waiting for answer: 72, cmd 100
+7 -  - bytes: 188/188
+7 -  - tries: 0/5
+7 -  - Received: 72, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 72, cmd 100
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 73
+7 -  - Waiting for answer: 73, cmd 100
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 73, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 73, cmd 100
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 74
+7 -  - Waiting for answer: 74, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 74, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 74, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 75
+7 -  - Waiting for answer: 75, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 75, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 75, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 76
+7 -  - Waiting for answer: 76, cmd 243
+7 -  - bytes: 216/216
+7 -  - tries: 0/5
+7 -  - Received: 76, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 76, cmd 243
+7 -  - idLabel = <private-key-label-alg-8>
+7 -  - idLabel = <public-key-label-alg-8>
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 77
+7 -  - Waiting for answer: 77, cmd 4
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 77, cmd 4
+7 -  - calling setvalue 
+7 -  - Received: 77, cmd 4
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 78
+7 -  - Waiting for answer: 78, cmd 4
+7 -  - bytes: 188/188
+7 -  - tries: 0/5
+7 -  - Received: 78, cmd 4
+7 -  - calling setvalue 
+7 -  - Received: 78, cmd 4
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - destroy token object for 'public-key-label-alg-8' type 2
+7 -  - enqueing packet: 79
+7 -  - Waiting for answer: 79, cmd 18
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 79, cmd 18
+7 -  - calling setvalue 
+7 -  - Received: 79, cmd 18
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - destroy token object for 'private-key-label-alg-8' type 3
+7 -  - enqueing packet: 80
+7 -  - Waiting for answer: 80, cmd 18
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 80, cmd 18
+7 -  - calling setvalue 
+7 -  - Received: 80, cmd 18
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 81
+7 -  - Waiting for answer: 81, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 81, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 81, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 82
+7 -  - Waiting for answer: 82, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 82, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 82, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 83
+7 -  - Waiting for answer: 83, cmd 243
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 83, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 83, cmd 243
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 84
+7 -  - Waiting for answer: 84, cmd 9
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 84, cmd 9
+7 -  - calling setvalue 
+7 -  - Received: 84, cmd 9
+7 -  - getNextData: no data
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 85
+7 -  - Waiting for answer: 85, cmd 17
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 85, cmd 17
+7 -  - calling setvalue 
+7 -  - Received: 85, cmd 17
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 86
+7 -  - Waiting for answer: 86, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 86, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 86, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 87
+7 -  - Waiting for answer: 87, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 87, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 87, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 88
+7 -  - Waiting for answer: 88, cmd 243
+7 -  - bytes: 216/216
+7 -  - tries: 0/5
+7 -  - Received: 88, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 88, cmd 243
+7 -  - idLabel = <public-key-label-alg-8>
+7 -  - idLabel = <private-key-label-alg-8>
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - get attribute for 'public-key-label-alg-8' type 2
+7 -  - enqueing packet: 89
+7 -  - Waiting for answer: 89, cmd 100
+7 -  - bytes: 316/316
+7 -  - tries: 0/5
+7 -  - Received: 89, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 89, cmd 100
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 90
+7 -  - Waiting for answer: 90, cmd 99
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 90, cmd 99
+7 -  - calling setvalue 
+7 -  - Received: 90, cmd 99
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 91
+7 -  - Waiting for answer: 91, cmd 100
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 91, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 91, cmd 100
+6 -  - rv: CKR_OK
+3 -  - rv: CKR_ATTRIBUTE_TYPE_INVALID
+7 -  - get attribute for 'public-key-label-alg-8' type 2
+7 -  - enqueing packet: 92
+7 -  - Waiting for answer: 92, cmd 100
+7 -  - bytes: 316/316
+7 -  - tries: 0/5
+7 -  - Received: 92, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 92, cmd 100
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 93
+7 -  - Waiting for answer: 93, cmd 100
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 93, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 93, cmd 100
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 94
+7 -  - Waiting for answer: 94, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 94, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 94, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 95
+7 -  - Waiting for answer: 95, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 95, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 95, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 96
+7 -  - Waiting for answer: 96, cmd 243
+7 -  - bytes: 216/216
+7 -  - tries: 0/5
+7 -  - Received: 96, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 96, cmd 243
+7 -  - idLabel = <public-key-label-alg-8>
+7 -  - idLabel = <private-key-label-alg-8>
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 97
+7 -  - Waiting for answer: 97, cmd 4
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 97, cmd 4
+7 -  - calling setvalue 
+7 -  - Received: 97, cmd 4
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 98
+7 -  - Waiting for answer: 98, cmd 4
+7 -  - bytes: 316/316
+7 -  - tries: 0/5
+7 -  - Received: 98, cmd 4
+7 -  - calling setvalue 
+7 -  - Received: 98, cmd 4
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - destroy token object for 'public-key-label-alg-8' type 2
+7 -  - enqueing packet: 99
+7 -  - Waiting for answer: 99, cmd 18
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 99, cmd 18
+7 -  - calling setvalue 
+7 -  - Received: 99, cmd 18
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - destroy token object for 'private-key-label-alg-8' type 3
+7 -  - enqueing packet: 100
+7 -  - Waiting for answer: 100, cmd 18
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 100, cmd 18
+7 -  - calling setvalue 
+7 -  - Received: 100, cmd 18
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 101
+7 -  - Waiting for answer: 101, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 101, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 101, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 102
+7 -  - Waiting for answer: 102, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 102, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 102, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 103
+7 -  - Waiting for answer: 103, cmd 243
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 103, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 103, cmd 243
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 104
+7 -  - Waiting for answer: 104, cmd 9
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 104, cmd 9
+7 -  - calling setvalue 
+7 -  - Received: 104, cmd 9
+7 -  - getNextData: no data
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 105
+7 -  - Waiting for answer: 105, cmd 17
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 105, cmd 17
+7 -  - calling setvalue 
+7 -  - Received: 105, cmd 17
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 106
+7 -  - Waiting for answer: 106, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 106, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 106, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 107
+7 -  - Waiting for answer: 107, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 107, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 107, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 108
+7 -  - Waiting for answer: 108, cmd 243
+7 -  - bytes: 216/216
+7 -  - tries: 0/5
+7 -  - Received: 108, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 108, cmd 243
+7 -  - idLabel = <private-key-label-alg-10>
+7 -  - idLabel = <public-key-label-alg-10>
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - get attribute for 'public-key-label-alg-10' type 2
+7 -  - enqueing packet: 109
+7 -  - Waiting for answer: 109, cmd 100
+7 -  - bytes: 188/188
+7 -  - tries: 0/5
+7 -  - Received: 109, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 109, cmd 100
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 110
+7 -  - Waiting for answer: 110, cmd 99
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 110, cmd 99
+7 -  - calling setvalue 
+7 -  - Received: 110, cmd 99
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 111
+7 -  - Waiting for answer: 111, cmd 100
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 111, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 111, cmd 100
+6 -  - rv: CKR_OK
+3 -  - rv: CKR_ATTRIBUTE_TYPE_INVALID
+7 -  - get attribute for 'public-key-label-alg-10' type 2
+7 -  - enqueing packet: 112
+7 -  - Waiting for answer: 112, cmd 100
+7 -  - bytes: 188/188
+7 -  - tries: 0/5
+7 -  - Received: 112, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 112, cmd 100
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 113
+7 -  - Waiting for answer: 113, cmd 100
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 113, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 113, cmd 100
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 114
+7 -  - Waiting for answer: 114, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 114, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 114, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 115
+7 -  - Waiting for answer: 115, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 115, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 115, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 116
+7 -  - Waiting for answer: 116, cmd 243
+7 -  - bytes: 216/216
+7 -  - tries: 0/5
+7 -  - Received: 116, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 116, cmd 243
+7 -  - idLabel = <private-key-label-alg-10>
+7 -  - idLabel = <public-key-label-alg-10>
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 117
+7 -  - Waiting for answer: 117, cmd 4
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 117, cmd 4
+7 -  - calling setvalue 
+7 -  - Received: 117, cmd 4
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 118
+7 -  - Waiting for answer: 118, cmd 4
+7 -  - bytes: 188/188
+7 -  - tries: 0/5
+7 -  - Received: 118, cmd 4
+7 -  - calling setvalue 
+7 -  - Received: 118, cmd 4
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - destroy token object for 'public-key-label-alg-10' type 2
+7 -  - enqueing packet: 119
+7 -  - Waiting for answer: 119, cmd 18
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 119, cmd 18
+7 -  - calling setvalue 
+7 -  - Received: 119, cmd 18
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - destroy token object for 'private-key-label-alg-10' type 3
+7 -  - enqueing packet: 120
+7 -  - Waiting for answer: 120, cmd 18
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 120, cmd 18
+7 -  - calling setvalue 
+7 -  - Received: 120, cmd 18
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 121
+7 -  - Waiting for answer: 121, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 121, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 121, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 122
+7 -  - Waiting for answer: 122, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 122, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 122, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 123
+7 -  - Waiting for answer: 123, cmd 243
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 123, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 123, cmd 243
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 124
+7 -  - Waiting for answer: 124, cmd 9
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 124, cmd 9
+7 -  - calling setvalue 
+7 -  - Received: 124, cmd 9
+7 -  - getNextData: no data
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 125
+7 -  - Waiting for answer: 125, cmd 17
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 125, cmd 17
+7 -  - calling setvalue 
+7 -  - Received: 125, cmd 17
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 126
+7 -  - Waiting for answer: 126, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 126, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 126, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 127
+7 -  - Waiting for answer: 127, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 127, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 127, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 128
+7 -  - Waiting for answer: 128, cmd 243
+7 -  - bytes: 216/216
+7 -  - tries: 0/5
+7 -  - Received: 128, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 128, cmd 243
+7 -  - idLabel = <public-key-label-alg-10>
+7 -  - idLabel = <private-key-label-alg-10>
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - get attribute for 'public-key-label-alg-10' type 2
+7 -  - enqueing packet: 129
+7 -  - Waiting for answer: 129, cmd 100
+7 -  - bytes: 316/316
+7 -  - tries: 0/5
+7 -  - Received: 129, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 129, cmd 100
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 130
+7 -  - Waiting for answer: 130, cmd 99
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 130, cmd 99
+7 -  - calling setvalue 
+7 -  - Received: 130, cmd 99
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 131
+7 -  - Waiting for answer: 131, cmd 100
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 131, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 131, cmd 100
+6 -  - rv: CKR_OK
+3 -  - rv: CKR_ATTRIBUTE_TYPE_INVALID
+7 -  - get attribute for 'public-key-label-alg-10' type 2
+7 -  - enqueing packet: 132
+7 -  - Waiting for answer: 132, cmd 100
+7 -  - bytes: 316/316
+7 -  - tries: 0/5
+7 -  - Received: 132, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 132, cmd 100
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 133
+7 -  - Waiting for answer: 133, cmd 100
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 133, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 133, cmd 100
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 134
+7 -  - Waiting for answer: 134, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 134, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 134, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 135
+7 -  - Waiting for answer: 135, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 135, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 135, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 136
+7 -  - Waiting for answer: 136, cmd 243
+7 -  - bytes: 216/216
+7 -  - tries: 0/5
+7 -  - Received: 136, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 136, cmd 243
+7 -  - idLabel = <public-key-label-alg-10>
+7 -  - idLabel = <private-key-label-alg-10>
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 137
+7 -  - Waiting for answer: 137, cmd 4
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 137, cmd 4
+7 -  - calling setvalue 
+7 -  - Received: 137, cmd 4
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 138
+7 -  - Waiting for answer: 138, cmd 4
+7 -  - bytes: 316/316
+7 -  - tries: 0/5
+7 -  - Received: 138, cmd 4
+7 -  - calling setvalue 
+7 -  - Received: 138, cmd 4
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - destroy token object for 'public-key-label-alg-10' type 2
+7 -  - enqueing packet: 139
+7 -  - Waiting for answer: 139, cmd 18
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 139, cmd 18
+7 -  - calling setvalue 
+7 -  - Received: 139, cmd 18
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - destroy token object for 'private-key-label-alg-10' type 3
+7 -  - enqueing packet: 140
+7 -  - Waiting for answer: 140, cmd 18
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 140, cmd 18
+7 -  - calling setvalue 
+7 -  - Received: 140, cmd 18
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 141
+7 -  - Waiting for answer: 141, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 141, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 141, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 142
+7 -  - Waiting for answer: 142, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 142, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 142, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 143
+7 -  - Waiting for answer: 143, cmd 243
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 143, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 143, cmd 243
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 144
+7 -  - Waiting for answer: 144, cmd 79
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 144, cmd 79
+7 -  - calling setvalue 
+7 -  - Received: 144, cmd 79
+7 -  - getNextData: no data
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 145
+7 -  - Waiting for answer: 145, cmd 17
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 145, cmd 17
+7 -  - calling setvalue 
+7 -  - Received: 145, cmd 17
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 146
+7 -  - Waiting for answer: 146, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 146, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 146, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 147
+7 -  - Waiting for answer: 147, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 147, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 147, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 148
+7 -  - Waiting for answer: 148, cmd 243
+7 -  - bytes: 216/216
+7 -  - tries: 0/5
+7 -  - Received: 148, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 148, cmd 243
+7 -  - idLabel = <public-key-label-alg-13>
+7 -  - idLabel = <private-key-label-alg-13>
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - get attribute for 'public-key-label-alg-13' type 2
+7 -  - enqueing packet: 149
+7 -  - Waiting for answer: 149, cmd 100
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - status:CKR_ATTRIBUTE_TYPE_INVALID (0x00000012)
+7 -  - Received: 149, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 149, cmd 100
+3 -  - rv: CKR_ATTRIBUTE_TYPE_INVALID
+7 -  - enqueing packet: 150
+7 -  - Waiting for answer: 150, cmd 99
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 150, cmd 99
+7 -  - calling setvalue 
+7 -  - Received: 150, cmd 99
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 151
+7 -  - Waiting for answer: 151, cmd 100
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - status:CKR_ATTRIBUTE_TYPE_INVALID (0x00000012)
+7 -  - Received: 151, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 151, cmd 100
+3 -  - rv: CKR_ATTRIBUTE_TYPE_INVALID
+7 -  - enqueing packet: 152
+7 -  - Waiting for answer: 152, cmd 80
+7 -  - bytes: 500/500
+7 -  - tries: 0/5
+7 -  - Received: 152, cmd 80
+7 -  - calling setvalue 
+7 -  - Received: 152, cmd 80
+6 -  - rv: CKR_OK
+3 -  - rv: CKR_ATTRIBUTE_TYPE_INVALID
+7 -  - get attribute for 'public-key-label-alg-13' type 2
+7 -  - enqueing packet: 153
+7 -  - Waiting for answer: 153, cmd 80
+7 -  - bytes: 500/500
+7 -  - tries: 0/5
+7 -  - Received: 153, cmd 80
+7 -  - calling setvalue 
+7 -  - Received: 153, cmd 80
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 154
+7 -  - Waiting for answer: 154, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 154, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 154, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 155
+7 -  - Waiting for answer: 155, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 155, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 155, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 156
+7 -  - Waiting for answer: 156, cmd 243
+7 -  - bytes: 216/216
+7 -  - tries: 0/5
+7 -  - Received: 156, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 156, cmd 243
+7 -  - idLabel = <public-key-label-alg-13>
+7 -  - idLabel = <private-key-label-alg-13>
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 157
+7 -  - Waiting for answer: 157, cmd 4
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 157, cmd 4
+7 -  - calling setvalue 
+7 -  - Received: 157, cmd 4
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 158
+7 -  - Waiting for answer: 158, cmd 4
+7 -  - bytes: 124/124
+7 -  - tries: 0/5
+7 -  - Received: 158, cmd 4
+7 -  - calling setvalue 
+7 -  - Received: 158, cmd 4
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - destroy token object for 'public-key-label-alg-13' type 2
+7 -  - enqueing packet: 159
+7 -  - Waiting for answer: 159, cmd 18
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 159, cmd 18
+7 -  - calling setvalue 
+7 -  - Received: 159, cmd 18
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - destroy token object for 'private-key-label-alg-13' type 3
+7 -  - enqueing packet: 160
+7 -  - Waiting for answer: 160, cmd 18
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 160, cmd 18
+7 -  - calling setvalue 
+7 -  - Received: 160, cmd 18
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 161
+7 -  - Waiting for answer: 161, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 161, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 161, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 162
+7 -  - Waiting for answer: 162, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 162, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 162, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 163
+7 -  - Waiting for answer: 163, cmd 243
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 163, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 163, cmd 243
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 164
+7 -  - Waiting for answer: 164, cmd 79
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 164, cmd 79
+7 -  - calling setvalue 
+7 -  - Received: 164, cmd 79
+7 -  - getNextData: no data
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 165
+7 -  - Waiting for answer: 165, cmd 17
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 165, cmd 17
+7 -  - calling setvalue 
+7 -  - Received: 165, cmd 17
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 166
+7 -  - Waiting for answer: 166, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 166, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 166, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 167
+7 -  - Waiting for answer: 167, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 167, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 167, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 168
+7 -  - Waiting for answer: 168, cmd 243
+7 -  - bytes: 216/216
+7 -  - tries: 0/5
+7 -  - Received: 168, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 168, cmd 243
+7 -  - idLabel = <public-key-label-alg-14>
+7 -  - idLabel = <private-key-label-alg-14>
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - get attribute for 'public-key-label-alg-14' type 2
+7 -  - enqueing packet: 169
+7 -  - Waiting for answer: 169, cmd 100
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - status:CKR_ATTRIBUTE_TYPE_INVALID (0x00000012)
+7 -  - Received: 169, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 169, cmd 100
+3 -  - rv: CKR_ATTRIBUTE_TYPE_INVALID
+7 -  - enqueing packet: 170
+7 -  - Waiting for answer: 170, cmd 99
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 170, cmd 99
+7 -  - calling setvalue 
+7 -  - Received: 170, cmd 99
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 171
+7 -  - Waiting for answer: 171, cmd 100
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - status:CKR_ATTRIBUTE_TYPE_INVALID (0x00000012)
+7 -  - Received: 171, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 171, cmd 100
+3 -  - rv: CKR_ATTRIBUTE_TYPE_INVALID
+7 -  - enqueing packet: 172
+7 -  - Waiting for answer: 172, cmd 80
+7 -  - bytes: 656/656
+7 -  - tries: 0/5
+7 -  - Received: 172, cmd 80
+7 -  - calling setvalue 
+7 -  - Received: 172, cmd 80
+6 -  - rv: CKR_OK
+3 -  - rv: CKR_ATTRIBUTE_TYPE_INVALID
+7 -  - get attribute for 'public-key-label-alg-14' type 2
+7 -  - enqueing packet: 173
+7 -  - Waiting for answer: 173, cmd 80
+7 -  - bytes: 656/656
+7 -  - tries: 0/5
+7 -  - Received: 173, cmd 80
+7 -  - calling setvalue 
+7 -  - Received: 173, cmd 80
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 174
+7 -  - Waiting for answer: 174, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 174, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 174, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 175
+7 -  - Waiting for answer: 175, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 175, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 175, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 176
+7 -  - Waiting for answer: 176, cmd 243
+7 -  - bytes: 216/216
+7 -  - tries: 0/5
+7 -  - Received: 176, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 176, cmd 243
+7 -  - idLabel = <public-key-label-alg-14>
+7 -  - idLabel = <private-key-label-alg-14>
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 177
+7 -  - Waiting for answer: 177, cmd 4
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 177, cmd 4
+7 -  - calling setvalue 
+7 -  - Received: 177, cmd 4
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 178
+7 -  - Waiting for answer: 178, cmd 4
+7 -  - bytes: 156/156
+7 -  - tries: 0/5
+7 -  - Received: 178, cmd 4
+7 -  - calling setvalue 
+7 -  - Received: 178, cmd 4
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - destroy token object for 'public-key-label-alg-14' type 2
+7 -  - enqueing packet: 179
+7 -  - Waiting for answer: 179, cmd 18
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 179, cmd 18
+7 -  - calling setvalue 
+7 -  - Received: 179, cmd 18
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - destroy token object for 'private-key-label-alg-14' type 3
+7 -  - enqueing packet: 180
+7 -  - Waiting for answer: 180, cmd 18
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 180, cmd 18
+7 -  - calling setvalue 
+7 -  - Received: 180, cmd 18
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 181
+7 -  - Waiting for answer: 181, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 181, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 181, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 182
+7 -  - Waiting for answer: 182, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 182, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 182, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 183
+7 -  - Waiting for answer: 183, cmd 243
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 183, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 183, cmd 243
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 184
+7 -  - Waiting for answer: 184, cmd 107
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 184, cmd 107
+7 -  - calling setvalue 
+7 -  - Received: 184, cmd 107
+7 -  - getNextData: no data
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 185
+7 -  - Waiting for answer: 185, cmd 17
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 185, cmd 17
+7 -  - calling setvalue 
+7 -  - Received: 185, cmd 17
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 186
+7 -  - Waiting for answer: 186, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 186, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 186, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 187
+7 -  - Waiting for answer: 187, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 187, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 187, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 188
+7 -  - Waiting for answer: 188, cmd 243
+7 -  - bytes: 216/216
+7 -  - tries: 0/5
+7 -  - Received: 188, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 188, cmd 243
+7 -  - idLabel = <private-key-label-alg-16>
+7 -  - idLabel = <public-key-label-alg-16>
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - get attribute for 'public-key-label-alg-16' type 2
+7 -  - enqueing packet: 189
+7 -  - Waiting for answer: 189, cmd 100
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - status:CKR_ATTRIBUTE_TYPE_INVALID (0x00000012)
+7 -  - Received: 189, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 189, cmd 100
+3 -  - rv: CKR_ATTRIBUTE_TYPE_INVALID
+7 -  - enqueing packet: 190
+7 -  - Waiting for answer: 190, cmd 99
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 190, cmd 99
+7 -  - calling setvalue 
+7 -  - Received: 190, cmd 99
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 191
+7 -  - Waiting for answer: 191, cmd 100
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - status:CKR_ATTRIBUTE_TYPE_INVALID (0x00000012)
+7 -  - Received: 191, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 191, cmd 100
+3 -  - rv: CKR_ATTRIBUTE_TYPE_INVALID
+7 -  - enqueing packet: 192
+7 -  - Waiting for answer: 192, cmd 108
+7 -  - bytes: 132/132
+7 -  - tries: 0/5
+7 -  - Received: 192, cmd 108
+7 -  - calling setvalue 
+7 -  - Received: 192, cmd 108
+6 -  - rv: CKR_OK
+3 -  - rv: CKR_ATTRIBUTE_TYPE_INVALID
+7 -  - get attribute for 'public-key-label-alg-16' type 2
+7 -  - enqueing packet: 193
+7 -  - Waiting for answer: 193, cmd 108
+7 -  - bytes: 132/132
+7 -  - tries: 0/5
+7 -  - Received: 193, cmd 108
+7 -  - calling setvalue 
+7 -  - Received: 193, cmd 108
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 194
+7 -  - Waiting for answer: 194, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 194, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 194, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 195
+7 -  - Waiting for answer: 195, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 195, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 195, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 196
+7 -  - Waiting for answer: 196, cmd 243
+7 -  - bytes: 140/140
+7 -  - tries: 0/5
+7 -  - Received: 196, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 196, cmd 243
+7 -  - idLabel = <public-key-label-alg-16>
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - failed to allocate memory
+7 -  - enqueing packet: 197
+7 -  - failed to allocate memory
+7 -  - Waiting for answer: 197, cmd 4
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 197, cmd 4
+7 -  - calling setvalue 
+7 -  - Received: 197, cmd 4
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - failed to allocate memory
+7 -  - enqueing packet: 198
+7 -  - failed to allocate memory
+7 -  - Waiting for answer: 198, cmd 4
+7 -  - bytes: 176/176
+7 -  - tries: 0/5
+7 -  - Received: 198, cmd 4
+7 -  - calling setvalue 
+7 -  - Received: 198, cmd 4
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - destroy token object for 'public-key-label-alg-16' type 2
+7 -  - enqueing packet: 199
+7 -  - Waiting for answer: 199, cmd 18
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 199, cmd 18
+7 -  - calling setvalue 
+7 -  - Received: 199, cmd 18
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - destroy token object for 'private-key-label-alg-16' type 3
+7 -  - enqueing packet: 200
+7 -  - Waiting for answer: 200, cmd 18
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 200, cmd 18
+7 -  - calling setvalue 
+7 -  - Received: 200, cmd 18
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 201
+7 -  - Waiting for answer: 201, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 201, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 201, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 202
+7 -  - Waiting for answer: 202, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 202, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 202, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 203
+7 -  - Waiting for answer: 203, cmd 243
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 203, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 203, cmd 243
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 204
+7 -  - Waiting for answer: 204, cmd 107
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 204, cmd 107
+7 -  - calling setvalue 
+7 -  - Received: 204, cmd 107
+7 -  - getNextData: no data
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 205
+7 -  - Waiting for answer: 205, cmd 17
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 205, cmd 17
+7 -  - calling setvalue 
+7 -  - Received: 205, cmd 17
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 206
+7 -  - Waiting for answer: 206, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 206, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 206, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 207
+7 -  - Waiting for answer: 207, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 207, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 207, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 208
+7 -  - Waiting for answer: 208, cmd 243
+7 -  - bytes: 216/216
+7 -  - tries: 0/5
+7 -  - Received: 208, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 208, cmd 243
+7 -  - idLabel = <private-key-label-alg-15>
+7 -  - idLabel = <public-key-label-alg-15>
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - get attribute for 'public-key-label-alg-15' type 2
+7 -  - enqueing packet: 209
+7 -  - Waiting for answer: 209, cmd 100
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - status:CKR_ATTRIBUTE_TYPE_INVALID (0x00000012)
+7 -  - Received: 209, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 209, cmd 100
+3 -  - rv: CKR_ATTRIBUTE_TYPE_INVALID
+7 -  - enqueing packet: 210
+7 -  - Waiting for answer: 210, cmd 99
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 210, cmd 99
+7 -  - calling setvalue 
+7 -  - Received: 210, cmd 99
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 211
+7 -  - Waiting for answer: 211, cmd 100
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - status:CKR_ATTRIBUTE_TYPE_INVALID (0x00000012)
+7 -  - Received: 211, cmd 100
+7 -  - calling setvalue 
+7 -  - Received: 211, cmd 100
+3 -  - rv: CKR_ATTRIBUTE_TYPE_INVALID
+7 -  - enqueing packet: 212
+7 -  - Waiting for answer: 212, cmd 108
+7 -  - bytes: 104/104
+7 -  - tries: 0/5
+7 -  - Received: 212, cmd 108
+7 -  - calling setvalue 
+7 -  - Received: 212, cmd 108
+6 -  - rv: CKR_OK
+3 -  - rv: CKR_ATTRIBUTE_TYPE_INVALID
+7 -  - get attribute for 'public-key-label-alg-15' type 2
+7 -  - enqueing packet: 213
+7 -  - Waiting for answer: 213, cmd 108
+7 -  - bytes: 104/104
+7 -  - tries: 0/5
+7 -  - Received: 213, cmd 108
+7 -  - calling setvalue 
+7 -  - Received: 213, cmd 108
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 214
+7 -  - Waiting for answer: 214, cmd 90
+7 -  - bytes: 120/120
+7 -  - tries: 0/5
+7 -  - Received: 214, cmd 90
+7 -  - calling setvalue 
+7 -  - Received: 214, cmd 90
+3 -  - rv: CKR_BUFFER_TOO_SMALL
+7 -  - enqueing packet: 215
+7 -  - Waiting for answer: 215, cmd 239
+7 -  - bytes: 56/56
+7 -  - tries: 0/5
+7 -  - Received: 215, cmd 239
+7 -  - calling setvalue 
+7 -  - Received: 215, cmd 239
+6 -  - rv: CKR_OK
+7 -  - enqueing packet: 216
+7 -  - Waiting for answer: 216, cmd 243
+7 -  - bytes: 216/216
+7 -  - tries: 0/5
+7 -  - Received: 216, cmd 243
+7 -  - calling setvalue 
+7 -  - Received: 216, cmd 243
+7 -  - idLabel = <private-key-label-alg-15>
+7 -  - idLabel = <public-key-label-alg-15>
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 217
+7 -  - Waiting for answer: 217, cmd 4
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 217, cmd 4
+7 -  - calling setvalue 
+7 -  - Received: 217, cmd 4
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - enqueing packet: 218
+7 -  - Waiting for answer: 218, cmd 4
+7 -  - bytes: 124/124
+7 -  - tries: 0/5
+7 -  - Received: 218, cmd 4
+7 -  - calling setvalue 
+7 -  - Received: 218, cmd 4
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - destroy token object for 'public-key-label-alg-15' type 2
+7 -  - enqueing packet: 219
+7 -  - Waiting for answer: 219, cmd 18
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 219, cmd 18
+7 -  - calling setvalue 
+7 -  - Received: 219, cmd 18
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+5 -  - rv: CKR_OK
+7 -  - destroy token object for 'private-key-label-alg-15' type 3
+7 -  - enqueing packet: 220
+7 -  - Waiting for answer: 220, cmd 18
+7 -  - bytes: 64/64
+7 -  - tries: 0/5
+7 -  - Received: 220, cmd 18
+7 -  - calling setvalue 
+7 -  - Received: 220, cmd 18
+6 -  - rv: CKR_OK
+5 -  - rv: CKR_OK

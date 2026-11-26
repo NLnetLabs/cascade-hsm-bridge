@@ -1,0 +1,218 @@
+pub mod fortanix;
+pub mod kryoptic;
+pub mod nethsm;
+pub mod pkcs11spy;
+pub mod pykmip;
+pub mod securosys;
+pub mod softhsm2;
+pub mod thales;
+pub mod yubihsm2;
+
+pub use fortanix::FortanixDSM;
+pub use kryoptic::Kryoptic;
+pub use nethsm::Nethsm;
+pub use pkcs11spy::Pkcs11Spy;
+pub use pykmip::Pykmip;
+pub use securosys::Securosys;
+pub use softhsm2::Softhsm2;
+pub use thales::ThalesDPOD;
+pub use yubihsm2::Yubihsm2;
+
+use std::{collections::HashMap, ffi::OsStr, io, net::SocketAddr, path::PathBuf};
+
+use domain_kmip::dep::kmip_protocol::net::{TlsClientAuth, TlsServerAuth};
+use tempfile::TempDir;
+
+use crate::common::args::Args;
+
+//------------ Hsm -----------------------------------------------------------
+
+pub trait Hsm {
+    // Some for PKCS#11 based HSMs. All HSMs should offer PKCS#11.
+    fn lib_path(&self) -> Option<&OsStr>;
+
+    fn env_vars(&self) -> &HashMap<&'static str, String>;
+
+    fn username(&self) -> Option<&str>;
+
+    fn password(&self) -> Option<&str>;
+
+    /// Override the current directory used by Cascade-HSM-Bridge.
+    fn current_dir(&self) -> Option<PathBuf> {
+        None
+    }
+
+    // Setings for KMIP based HSMs. Not all HSMs offer KMIP.
+    fn address(&self) -> Option<SocketAddr> {
+        None
+    }
+
+    fn tls_client_auth(&self) -> Option<TlsClientAuth> {
+        None
+    }
+
+    fn tls_server_auth(&self) -> TlsServerAuth {
+        TlsServerAuth::None
+    }
+
+    fn tls_server_name(&self) -> Option<String> {
+        None
+    }
+}
+
+//------------ Hsms ----------------------------------------------------------
+
+pub enum Hsms {
+    Fortanix(FortanixDSM),
+    Kryoptic(Kryoptic),
+    Nethsm(Nethsm),
+    Pykmip(Pykmip),
+    Securosys(Securosys),
+    Softhsm2(Softhsm2),
+    Thales(ThalesDPOD),
+    Yubihsm2(Yubihsm2),
+}
+
+impl std::fmt::Display for Hsms {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Hsms::Fortanix(_) => f.write_str("Fortanix"),
+            Hsms::Kryoptic(_) => f.write_str("Kryoptic"),
+            Hsms::Nethsm(_) => f.write_str("Nethsm"),
+            Hsms::Pykmip(_) => f.write_str("Pykmip"),
+            Hsms::Securosys(_) => f.write_str("Securosys"),
+            Hsms::Softhsm2(_) => f.write_str("Softhsm2"),
+            Hsms::Thales(_) => f.write_str("Thales"),
+            Hsms::Yubihsm2(_) => f.write_str("Yubihsm2"),
+        }
+    }
+}
+
+impl Hsms {
+    pub fn pkcs11spyify(self, temp_dir: &TempDir, args: &Args) -> io::Result<Pkcs11Spy> {
+        if args.pkcs11spy() {
+            Pkcs11Spy::wrap(self, &temp_dir, &args)
+        } else {
+            Pkcs11Spy::skip(self)
+        }
+    }
+}
+
+impl Hsm for Hsms {
+    fn lib_path(&self) -> Option<&OsStr> {
+        match self {
+            Hsms::Fortanix(hsm) => hsm.lib_path(),
+            Hsms::Kryoptic(hsm) => hsm.lib_path(),
+            Hsms::Nethsm(hsm) => hsm.lib_path(),
+            Hsms::Pykmip(hsm) => hsm.lib_path(),
+            Hsms::Securosys(hsm) => hsm.lib_path(),
+            Hsms::Softhsm2(hsm) => hsm.lib_path(),
+            Hsms::Thales(hsm) => hsm.lib_path(),
+            Hsms::Yubihsm2(hsm) => hsm.lib_path(),
+        }
+    }
+
+    fn env_vars(&self) -> &HashMap<&'static str, String> {
+        match self {
+            Hsms::Fortanix(hsm) => hsm.env_vars(),
+            Hsms::Kryoptic(hsm) => hsm.env_vars(),
+            Hsms::Nethsm(hsm) => hsm.env_vars(),
+            Hsms::Pykmip(hsm) => hsm.env_vars(),
+            Hsms::Securosys(hsm) => hsm.env_vars(),
+            Hsms::Softhsm2(hsm) => hsm.env_vars(),
+            Hsms::Thales(hsm) => hsm.env_vars(),
+            Hsms::Yubihsm2(hsm) => hsm.env_vars(),
+        }
+    }
+
+    fn username(&self) -> Option<&str> {
+        match self {
+            Hsms::Fortanix(hsm) => hsm.username(),
+            Hsms::Kryoptic(hsm) => hsm.username(),
+            Hsms::Nethsm(hsm) => hsm.username(),
+            Hsms::Pykmip(hsm) => hsm.username(),
+            Hsms::Securosys(hsm) => hsm.username(),
+            Hsms::Softhsm2(hsm) => hsm.username(),
+            Hsms::Thales(hsm) => hsm.username(),
+            Hsms::Yubihsm2(hsm) => hsm.username(),
+        }
+    }
+
+    fn password(&self) -> Option<&str> {
+        match self {
+            Hsms::Fortanix(hsm) => hsm.password(),
+            Hsms::Kryoptic(hsm) => hsm.password(),
+            Hsms::Nethsm(hsm) => hsm.password(),
+            Hsms::Pykmip(hsm) => hsm.password(),
+            Hsms::Securosys(hsm) => hsm.password(),
+            Hsms::Softhsm2(hsm) => hsm.password(),
+            Hsms::Thales(hsm) => hsm.password(),
+            Hsms::Yubihsm2(hsm) => hsm.password(),
+        }
+    }
+
+    fn current_dir(&self) -> Option<PathBuf> {
+        match self {
+            Hsms::Fortanix(hsm) => hsm.current_dir(),
+            Hsms::Kryoptic(hsm) => hsm.current_dir(),
+            Hsms::Nethsm(hsm) => hsm.current_dir(),
+            Hsms::Pykmip(hsm) => hsm.current_dir(),
+            Hsms::Securosys(hsm) => hsm.current_dir(),
+            Hsms::Softhsm2(hsm) => hsm.current_dir(),
+            Hsms::Thales(hsm) => hsm.current_dir(),
+            Hsms::Yubihsm2(hsm) => hsm.current_dir(),
+        }
+    }
+
+    fn address(&self) -> Option<SocketAddr> {
+        match self {
+            Hsms::Fortanix(hsm) => hsm.address(),
+            Hsms::Kryoptic(hsm) => hsm.address(),
+            Hsms::Nethsm(hsm) => hsm.address(),
+            Hsms::Pykmip(hsm) => hsm.address(),
+            Hsms::Securosys(hsm) => hsm.address(),
+            Hsms::Softhsm2(hsm) => hsm.address(),
+            Hsms::Thales(hsm) => hsm.address(),
+            Hsms::Yubihsm2(hsm) => hsm.address(),
+        }
+    }
+
+    fn tls_client_auth(&self) -> Option<TlsClientAuth> {
+        match self {
+            Hsms::Fortanix(hsm) => hsm.tls_client_auth(),
+            Hsms::Kryoptic(hsm) => hsm.tls_client_auth(),
+            Hsms::Nethsm(hsm) => hsm.tls_client_auth(),
+            Hsms::Pykmip(hsm) => hsm.tls_client_auth(),
+            Hsms::Securosys(hsm) => hsm.tls_client_auth(),
+            Hsms::Softhsm2(hsm) => hsm.tls_client_auth(),
+            Hsms::Thales(hsm) => hsm.tls_client_auth(),
+            Hsms::Yubihsm2(hsm) => hsm.tls_client_auth(),
+        }
+    }
+
+    fn tls_server_auth(&self) -> TlsServerAuth {
+        match self {
+            Hsms::Fortanix(hsm) => hsm.tls_server_auth(),
+            Hsms::Kryoptic(hsm) => hsm.tls_server_auth(),
+            Hsms::Nethsm(hsm) => hsm.tls_server_auth(),
+            Hsms::Pykmip(hsm) => hsm.tls_server_auth(),
+            Hsms::Securosys(hsm) => hsm.tls_server_auth(),
+            Hsms::Softhsm2(hsm) => hsm.tls_server_auth(),
+            Hsms::Thales(hsm) => hsm.tls_server_auth(),
+            Hsms::Yubihsm2(hsm) => hsm.tls_server_auth(),
+        }
+    }
+
+    fn tls_server_name(&self) -> Option<String> {
+        match self {
+            Hsms::Fortanix(hsm) => hsm.tls_server_name(),
+            Hsms::Kryoptic(hsm) => hsm.tls_server_name(),
+            Hsms::Nethsm(hsm) => hsm.tls_server_name(),
+            Hsms::Pykmip(hsm) => hsm.tls_server_name(),
+            Hsms::Securosys(hsm) => hsm.tls_server_name(),
+            Hsms::Softhsm2(hsm) => hsm.tls_server_name(),
+            Hsms::Thales(hsm) => hsm.tls_server_name(),
+            Hsms::Yubihsm2(hsm) => hsm.tls_server_name(),
+        }
+    }
+}

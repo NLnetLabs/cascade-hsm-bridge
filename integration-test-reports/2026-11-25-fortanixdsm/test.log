@@ -1,0 +1,18 @@
+KMIP server supports versions: 3.0,1.4,1.3,1.2,1.1,1.0
+test_keygen_signing(RsaSha256 { bits: 1024 })...Note: Ignoring ItemNotFound error while attempting to destroy the private key as this is a known issue with Fortanix
+ok
+test_keygen_signing(RsaSha256 { bits: 2048 })...Note: Ignoring ItemNotFound error while attempting to destroy the private key as this is a known issue with Fortanix
+ok
+test_keygen_signing(RsaSha512 { bits: 1024 })...Note: Ignoring ItemNotFound error while attempting to destroy the private key as this is a known issue with Fortanix
+ok
+test_keygen_signing(RsaSha512 { bits: 2048 })...Note: Ignoring ItemNotFound error while attempting to destroy the private key as this is a known issue with Fortanix
+ok
+test_keygen_signing(EcdsaP256Sha256)...err: generate: a problem occurred while communicating with the KMIP server: Generated key pair could not be located: a problem occurred while communicating with the KMIP server: a problem occurred while communicating with the KMIP server: Unsupported public key format type for 13: Raw (alg=Some("ECDSA"), len=Some(0))
+test_keygen_signing(EcdsaP384Sha384)...Note: Ignoring ItemNotFound error while attempting to destroy the private key as this is a known issue with Fortanix
+ok
+test_keygen_signing(Ed448)...err: generate: algorithm not supported
+test_keygen_signing(Ed25519)...err: generate: algorithm not supported
+
+thread 'main' (1500876) panicked at crates/fulltest/tests/full.rs:223:9:
+3/8 algorithms failed: ECDSAP256SHA256, ED448, ED25519
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

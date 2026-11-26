@@ -1,0 +1,13 @@
+KMIP server supports versions: 3.0,2.1,2.0,1.4,1.3,1.2,1.1,1.0
+test_keygen_signing(RsaSha256 { bits: 1024 })...ok
+test_keygen_signing(RsaSha256 { bits: 2048 })...ok
+test_keygen_signing(RsaSha512 { bits: 1024 })...ok
+test_keygen_signing(RsaSha512 { bits: 2048 })...ok
+test_keygen_signing(EcdsaP256Sha256)...ok
+test_keygen_signing(EcdsaP384Sha384)...ok
+test_keygen_signing(Ed448)...err: generate: algorithm not supported
+test_keygen_signing(Ed25519)...err: generate: algorithm not supported
+
+thread 'main' (542168) panicked at crates/fulltest/tests/full.rs:223:9:
+2/8 algorithms failed: ED448, ED25519
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

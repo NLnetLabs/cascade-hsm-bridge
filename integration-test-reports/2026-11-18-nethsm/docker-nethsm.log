@@ -1,0 +1,328 @@
+Starting etcd on 127.0.0.1.
+Starting keyfender.unix
+[etcd] {"level":"warn","ts":"2026-11-18T16:30:34.040572Z","caller":"embed/config.go:1207","msg":"Running http and grpc server on single port. This is not recommended for production."}
+[etcd] {"level":"warn","ts":"2026-11-18T16:30:34.040629Z","caller":"embed/config.go:1318","msg":"it isn't recommended to use default name, please set a value for --name. Note that etcd might run into issue when multiple members have the same default name","name":"default"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.040637Z","caller":"etcdmain/etcd.go:64","msg":"Running: ","args":["etcd","--listen-client-urls","http://127.0.0.1:2379","--advertise-client-urls","http://127.0.0.1:2379","--data-dir","/data","--host-whitelist","127.0.0.1","--max-txn-ops","512"]}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.040723Z","caller":"etcdmain/etcd.go:124","msg":"Initialize and start etcd server","data-dir":"/data","dir-type":"empty"}
++-----------------------------------------------------+
+| Starting NetHSM S-Keyfender - version 5.1 (2482cca) |
++-----------------------------------------------------+
+[etcd] {"level":"warn","ts":"2026-11-18T16:30:34.040732Z","caller":"embed/config.go:1207","msg":"Running http and grpc server on single port. This is not recommended for production."}
+[etcd] {"level":"warn","ts":"2026-11-18T16:30:34.040737Z","caller":"embed/config.go:1318","msg":"it isn't recommended to use default name, please set a value for --name. Note that etcd might run into issue when multiple members have the same default name","name":"default"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.040745Z","caller":"embed/etcd.go:138","msg":"configuring peer listeners","listen-peer-urls":["http://localhost:2380"]}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.041348Z","caller":"embed/etcd.go:146","msg":"configuring client listeners","listen-client-urls":["http://127.0.0.1:2379"]}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.041419Z","caller":"embed/etcd.go:323","msg":"starting an etcd server","etcd-version":"3.6.16","git-sha":"0b065e6","go-version":"go1.26.10","go-os":"linux","go-arch":"amd64","max-cpu-set":32,"max-cpu-available":32,"member-initialized":false,"name":"default","data-dir":"/data","wal-dir":"","wal-dir-dedicated":"","member-dir":"/data/member","force-new-cluster":false,"heartbeat-interval":"100ms","election-timeout":"1s","initial-election-tick-advance":true,"snapshot-count":10000,"max-wals":5,"max-snapshots":5,"snapshot-catchup-entries":5000,"initial-advertise-peer-urls":["http://localhost:2380"],"listen-peer-urls":["http://localhost:2380"],"advertise-client-urls":["http://127.0.0.1:2379"],"listen-client-urls":["http://127.0.0.1:2379"],"listen-metrics-urls":[],"experimental-local-address":"","cors":["*"],"host-whitelist":["127.0.0.1"],"initial-cluster":"default=http://localhost:2380","initial-cluster-state":"new","initial-cluster-token":"etcd-cluster","quota-backend-bytes":2147483648,"max-request-bytes":1572864,"max-concurrent-streams":4294967295,"pre-vote":true,"feature-gates":"","initial-corrupt-check":false,"corrupt-check-time-interval":"0s","compact-check-time-interval":"1m0s","auto-compaction-mode":"periodic","auto-compaction-retention":"0s","auto-compaction-interval":"0s","discovery-url":"","discovery-proxy":"","discovery-token":"","discovery-endpoints":"","discovery-dial-timeout":"2s","discovery-request-timeout":"5s","discovery-keepalive-time":"2s","discovery-keepalive-timeout":"6s","discovery-insecure-transport":true,"discovery-insecure-skip-tls-verify":false,"discovery-cert":"","discovery-key":"","discovery-cacert":"","discovery-user":"","downgrade-check-interval":"5s","max-learners":1,"v2-deprecation":"write-only"}
+[etcd] {"level":"warn","ts":"2026-11-18T16:30:34.041448Z","caller":"fileutil/fileutil.go:56","msg":"check file permission","error":"directory \"/data\" exist, but the permission is \"drwxr-xr-x\". The recommended permission is \"-rwx------\" to prevent possible unprivileged access to the data"}
+2026-11-18T16:30:34-00:00: [INFO] [tcpip-stack-socket] Dual IPv4 and IPv6 socket stack: connect
+2026-11-18T16:30:34-00:00: [WARNING] [keyfender] Communication to the platform has been disabled with '--no-platform'. This is not meant for production. Skipping to send PLATFORM-DATA, replying with the empty string.
+2026-11-18T16:30:34-00:00: [INFO] [keyfender] setting up initial network
+2026-11-18T16:30:34-00:00: [ERROR] [keyfender] reconfigure_network: error while establishing connection: no S-Net
+2026-11-18T16:30:34-00:00: [INFO] [etcd_store] heartbeat loop started
+2026-11-18T16:30:34-00:00: [INFO] [etcd_store] connecting to etcd...
+2026-11-18T16:30:34-00:00: [INFO] [etcd_store] TCP connection to etcd established
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.041697Z","logger":"bbolt","caller":"backend/backend.go:203","msg":"Opening db file (/data/member/snap/db) with mode -rw------- and with options: {Timeout: 0s, NoGrowSync: false, NoFreelistSync: true, PreLoadFreelist: false, FreelistType: hashmap, ReadOnly: false, MmapFlags: 8000, InitialMmapSize: 10737418240, PageSize: 0, NoSync: false, OpenFile: 0x0, Mlock: false, Logger: 0x1be6a771e0a0}"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.046657Z","logger":"bbolt","caller":"bbolt@v1.4.3/db.go:322","msg":"Opening bbolt db (/data/member/snap/db) successfully"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.046681Z","caller":"storage/backend.go:80","msg":"opened backend db","path":"/data/member/snap/db","took":"5.028239ms"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.046697Z","caller":"etcdserver/bootstrap.go:220","msg":"restore consistentIndex","index":0}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.046706Z","caller":"etcdserver/bootstrap.go:94","msg":"bootstrapping cluster"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.046728Z","caller":"etcdserver/bootstrap.go:101","msg":"bootstrapping storage"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.056351Z","caller":"etcdserver/bootstrap.go:109","msg":"bootstrapping raft"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.056382Z","caller":"etcdserver/bootstrap.go:499","msg":"starting local member","local-member-id":"8e9e05c52164694d","cluster-id":"cdf818194e3a8c32"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.056392Z","caller":"etcdserver/server.go:312","msg":"bootstrap successfully"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.056420Z","logger":"raft","caller":"v3@v3.6.0/raft.go:1981","msg":"8e9e05c52164694d switched to configuration voters=()"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.056455Z","logger":"raft","caller":"v3@v3.6.0/raft.go:897","msg":"8e9e05c52164694d became follower at term 0"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.056462Z","logger":"raft","caller":"v3@v3.6.0/raft.go:493","msg":"newRaft 8e9e05c52164694d [peers: [], term: 0, commit: 0, applied: 0, lastindex: 0, lastterm: 0]"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.056469Z","logger":"raft","caller":"v3@v3.6.0/raft.go:897","msg":"8e9e05c52164694d became follower at term 1"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.056487Z","logger":"raft","caller":"v3@v3.6.0/raft.go:1981","msg":"8e9e05c52164694d switched to configuration voters=(10276657743932975437)"}
+[etcd] {"level":"warn","ts":"2026-11-18T16:30:34.070970Z","caller":"auth/store.go:1137","msg":"simple token is not cryptographically signed"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.081143Z","caller":"mvcc/kvstore.go:418","msg":"kvstore restored","current-rev":1}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.100434Z","caller":"storage/quota.go:93","msg":"enabled backend quota with default value","quota-name":"v3-applier","quota-size-bytes":2147483648,"quota-size":"2.1 GB"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.100455Z","caller":"etcdserver/server.go:598","msg":"starting etcd server","local-member-id":"8e9e05c52164694d","local-server-version":"3.6.16","cluster-version":"to_be_decided"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.100532Z","caller":"etcdserver/server.go:483","msg":"started as single-node; fast-forwarding election ticks","local-member-id":"8e9e05c52164694d","forward-ticks":9,"forward-duration":"900ms","election-ticks":10,"election-timeout":"1s"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.100573Z","caller":"fileutil/purge.go:49","msg":"started to purge file","dir":"/data/member/snap","suffix":"snap.db","max":5,"interval":"30s"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.100589Z","caller":"fileutil/purge.go:49","msg":"started to purge file","dir":"/data/member/snap","suffix":"snap","max":5,"interval":"30s"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.100592Z","caller":"fileutil/purge.go:49","msg":"started to purge file","dir":"/data/member/wal","suffix":"wal","max":5,"interval":"30s"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.100614Z","caller":"embed/etcd.go:640","msg":"serving peer traffic","address":"127.0.0.1:2380"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.100614Z","caller":"embed/etcd.go:292","msg":"now serving peer/client/metrics","local-member-id":"8e9e05c52164694d","initial-advertise-peer-urls":["http://localhost:2380"],"listen-peer-urls":["http://localhost:2380"],"advertise-client-urls":["http://127.0.0.1:2379"],"listen-client-urls":["http://127.0.0.1:2379"],"listen-metrics-urls":[]}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.100629Z","caller":"embed/etcd.go:611","msg":"cmux::serve","address":"127.0.0.1:2380"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.100739Z","logger":"raft","caller":"v3@v3.6.0/raft.go:1981","msg":"8e9e05c52164694d switched to configuration voters=(10276657743932975437)"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.100841Z","caller":"membership/cluster.go:424","msg":"added member","cluster-id":"cdf818194e3a8c32","local-member-id":"8e9e05c52164694d","added-peer-id":"8e9e05c52164694d","added-peer-peer-urls":["http://localhost:2380"],"added-peer-is-learner":false}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.256730Z","logger":"raft","caller":"v3@v3.6.0/raft.go:988","msg":"8e9e05c52164694d is starting a new election at term 1"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.256777Z","logger":"raft","caller":"v3@v3.6.0/raft.go:930","msg":"8e9e05c52164694d became pre-candidate at term 1"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.256807Z","logger":"raft","caller":"v3@v3.6.0/raft.go:1077","msg":"8e9e05c52164694d received MsgPreVoteResp from 8e9e05c52164694d at term 1"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.256817Z","logger":"raft","caller":"v3@v3.6.0/raft.go:1693","msg":"8e9e05c52164694d has received 1 MsgPreVoteResp votes and 0 vote rejections"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.256826Z","logger":"raft","caller":"v3@v3.6.0/raft.go:912","msg":"8e9e05c52164694d became candidate at term 2"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.261748Z","logger":"raft","caller":"v3@v3.6.0/raft.go:1077","msg":"8e9e05c52164694d received MsgVoteResp from 8e9e05c52164694d at term 2"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.261758Z","logger":"raft","caller":"v3@v3.6.0/raft.go:1693","msg":"8e9e05c52164694d has received 1 MsgVoteResp votes and 0 vote rejections"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.261768Z","logger":"raft","caller":"v3@v3.6.0/raft.go:970","msg":"8e9e05c52164694d became leader at term 2"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.261771Z","logger":"raft","caller":"v3@v3.6.0/node.go:370","msg":"raft.node: 8e9e05c52164694d elected leader 8e9e05c52164694d at term 2"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.266663Z","caller":"etcdserver/server.go:1834","msg":"published local member to cluster through raft","local-member-id":"8e9e05c52164694d","local-member-attributes":"{Name:default ClientURLs:[http://127.0.0.1:2379]}","cluster-id":"cdf818194e3a8c32","publish-timeout":"7s"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.266704Z","caller":"etcdserver/server.go:2434","msg":"setting up initial cluster version using v3 API","cluster-version":"3.6"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.266736Z","caller":"embed/serve.go:139","msg":"ready to serve client requests"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.266845Z","caller":"etcdmain/main.go:44","msg":"notifying init daemon"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.266858Z","caller":"etcdmain/main.go:50","msg":"successfully notified init daemon"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.267044Z","caller":"v3rpc/health.go:63","msg":"grpc service status changed","service":"","status":"SERVING"}
+2026-11-18T16:30:34-00:00: [INFO] [etcd_store] HTTP/2 connection to etcd established
+2026-11-18T16:30:34-00:00: [INFO] [etcd_store] watch stream (re)started. replaying 0 watchers...
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.267668Z","caller":"embed/serve.go:222","msg":"serving client traffic insecurely; this is strongly discouraged!","traffic":"grpc+http","address":"127.0.0.1:2379"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.272111Z","caller":"membership/cluster.go:689","msg":"set initial cluster version","cluster-id":"cdf818194e3a8c32","local-member-id":"8e9e05c52164694d","cluster-version":"3.6"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.272147Z","caller":"api/capability.go:76","msg":"enabled capabilities for version","cluster-version":"3.6"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.272163Z","caller":"etcdserver/server.go:2454","msg":"cluster version is updated","cluster-version":"3.6"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.272173Z","caller":"version/monitor.go:116","msg":"cluster version differs from storage version.","cluster-version":"3.6.0","storage-version":"3.5.0"}
+2026-11-18T16:30:34-00:00:  [hsm] connected to store
+2026-11-18T16:30:34-00:00: [WARNING] [hsm] error Cannot find the key /local/0000000000/config/ip-config while retrieving IP, using and storing default
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.272205Z","caller":"schema/migration.go:65","msg":"updated storage version","new-storage-version":"3.6.0"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.582847Z","logger":"raft","caller":"v3@v3.6.0/raft.go:1981","msg":"8e9e05c52164694d switched to configuration voters=(10276657743932975437)"}
+[etcd] {"level":"info","ts":"2026-11-18T16:30:34.582900Z","caller":"membership/cluster.go:648","msg":"updated member","cluster-id":"cdf818194e3a8c32","local-member-id":"8e9e05c52164694d","updated-remote-peer-id":"8e9e05c52164694d","updated-remote-peer-urls":["https://192.168.1.1:2380"],"updated-remote-peer-is-learner":false}
+2026-11-18T16:30:34-00:00: [INFO] [application] etcd peer urls updated!
+2026-11-18T16:30:34-00:00: [ERROR] [keyfender] reconfigure_network: error while establishing connection: no S-Net
+2026-11-18T16:30:34-00:00: [INFO] [keyfender] listening on 8080/TCP for HTTP
+2026-11-18T16:30:34-00:00: [INFO] [keyfender] listening on 8443/TCP for HTTPS
+2026-11-18T16:30:49-00:00: [INFO] [http.access] [1] request GET /api/v1/health/state
+2026-11-18T16:30:49-00:00: [INFO] [http.access] [2] response 200 response time 115us
+2026-11-18T16:30:49-00:00: [INFO] [http.access] [3] request POST /api/v1/provision
+2026-11-18T16:30:49-00:00: [INFO] [etcd_store] [4] new watch request sent
+2026-11-18T16:30:49-00:00: [INFO] [etcd_store] [5] new watch request sent
+2026-11-18T16:30:49-00:00: [INFO] [etcd_store] [6] new watch request sent
+2026-11-18T16:30:49-00:00: [INFO] [etcd_store] [7] watch 0 created
+2026-11-18T16:30:49-00:00: [INFO] [etcd_store] [8] watch 1 created
+2026-11-18T16:30:49-00:00: [INFO] [etcd_store] [9] watch 2 created
+2026-11-18T16:30:50-00:00: [INFO] [etcd_store] [10] shutting down connection
+2026-11-18T16:30:50-00:00: [WARNING] [keyfender] [11] Communication to the platform has been disabled with '--no-platform'. This is not meant for production. Skipping to send SET-LOCAL-CONFIG, replying with the empty string.
+2026-11-18T16:30:50-00:00: [INFO] [etcd_store] [12] connecting to etcd...
+2026-11-18T16:30:50-00:00: [INFO] [etcd_store] [13] TCP connection to etcd established
+2026-11-18T16:30:50-00:00: [INFO] [etcd_store] [14] HTTP/2 connection to etcd established
+2026-11-18T16:30:50-00:00: [INFO] [etcd_store] [15] watch stream (re)started. replaying 3 watchers...
+2026-11-18T16:30:50-00:00: [INFO] [etcd_store] [16] new watch request sent
+2026-11-18T16:30:50-00:00: [INFO] [etcd_store] [17] new watch request sent
+2026-11-18T16:30:50-00:00: [INFO] [etcd_store] [18] new watch request sent
+2026-11-18T16:30:50-00:00: [INFO] [etcd_store] [19] watch 0 created
+2026-11-18T16:30:50-00:00: [INFO] [etcd_store] [20] watch 1 created
+2026-11-18T16:30:50-00:00: [INFO] [etcd_store] [21] watch 2 created
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [22] response 204 response time 737ms
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [23] request PUT /api/v1/config/unattended-boot
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [24] response 204 response time 132ms
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [25] request PUT /api/v1/users/opuser
+2026-11-18T16:30:50-00:00: [INFO] [hsm.user] [26] added Nitrokey Operator (opuser): R-Operator
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [27] response 201 response time 130ms
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [28] request PUT /api/v1/users/opadmin
+2026-11-18T16:30:50-00:00: [INFO] [hsm.user] [29] added Nitrokey Admin (opadmin): R-Administrator
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [30] response 201 response time 128ms
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [31] request GET /api/v1/health/state
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [32] response 200 response time 108us
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [33] request GET /api/v1/info
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [34] response 200 response time 79.915us
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [35] request GET /api/v1/system/info
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [36] response 200 response time 507us
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [37] request GET /api/v1/info
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [38] response 200 response time 56.331us
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [39] request GET /api/v1/system/info
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [40] response 200 response time 70.137us
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [41] request GET /api/v1/info
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [42] response 200 response time 55.995us
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [43] request GET /api/v1/system/info
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [44] response 200 response time 67.012us
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [45] request GET /api/v1/info
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [46] response 200 response time 48.261us
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [47] request GET /api/v1/system/info
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [48] response 200 response time 58.201us
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [49] request GET /api/v1/info
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [50] response 200 response time 106us
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [51] request GET /api/v1/health/state
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [52] response 200 response time 31.687us
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [53] request GET /api/v1/keys/0---09F875AC1143F6FB1437918294B8D23D0C013207
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [54] response 404 response time 352us
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [55] request POST /api/v1/keys/generate
+2026-11-18T16:30:50-00:00: [INFO] [hsm.key] [56] created (0---09F875AC1143F6FB1437918294B8D23D0C013207)
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [57] response 201 response time 87.139ms
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [58] request GET /api/v1/keys/0---09F875AC1143F6FB1437918294B8D23D0C013207
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [59] response 200 response time 45.217ms
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [60] request POST /api/v1/keys/0---09F875AC1143F6FB1437918294B8D23D0C013207/sign
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [61] response 200 response time 230us
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [62] request DELETE /api/v1/keys/0---09F875AC1143F6FB1437918294B8D23D0C013207
+2026-11-18T16:30:50-00:00: [INFO] [hsm.key] [63] removed (0---09F875AC1143F6FB1437918294B8D23D0C013207)
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [64] response 204 response time 84.448ms
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [65] request GET /api/v1/keys/0---621219544057F49DAF6855E4C87CB4DAF444AA4D
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [66] response 404 response time 39.037ms
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [67] request POST /api/v1/keys/generate
+2026-11-18T16:30:50-00:00: [INFO] [hsm.key] [68] created (0---621219544057F49DAF6855E4C87CB4DAF444AA4D)
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [69] response 201 response time 87.286ms
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [70] request GET /api/v1/keys/0---621219544057F49DAF6855E4C87CB4DAF444AA4D
+2026-11-18T16:30:50-00:00: [INFO] [http.access] [71] response 200 response time 40.456ms
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [72] request POST /api/v1/keys/0---621219544057F49DAF6855E4C87CB4DAF444AA4D/sign
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [73] response 200 response time 803us
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [74] request DELETE /api/v1/keys/0---621219544057F49DAF6855E4C87CB4DAF444AA4D
+2026-11-18T16:30:51-00:00: [INFO] [hsm.key] [75] removed (0---621219544057F49DAF6855E4C87CB4DAF444AA4D)
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [76] response 204 response time 86.465ms
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [77] request GET /api/v1/keys/0---1E951C3CB073AC47CF990A5CF579C3B97B4592A0
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [78] response 404 response time 39.361ms
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [79] request POST /api/v1/keys/generate
+2026-11-18T16:30:51-00:00: [INFO] [hsm.key] [80] created (0---1E951C3CB073AC47CF990A5CF579C3B97B4592A0)
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [81] response 201 response time 94.676ms
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [82] request GET /api/v1/keys/0---1E951C3CB073AC47CF990A5CF579C3B97B4592A0
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [83] response 200 response time 42.021ms
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [84] request POST /api/v1/keys/0---1E951C3CB073AC47CF990A5CF579C3B97B4592A0/sign
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [85] response 200 response time 331us
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [86] request DELETE /api/v1/keys/0---1E951C3CB073AC47CF990A5CF579C3B97B4592A0
+2026-11-18T16:30:51-00:00: [INFO] [hsm.key] [87] removed (0---1E951C3CB073AC47CF990A5CF579C3B97B4592A0)
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [88] response 204 response time 86.435ms
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [89] request GET /api/v1/keys/0---397653693E7BA1F94FE7F049A18CF2CBD465E9CD
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [90] response 404 response time 39.655ms
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [91] request POST /api/v1/keys/generate
+2026-11-18T16:30:51-00:00: [INFO] [hsm.key] [92] created (0---397653693E7BA1F94FE7F049A18CF2CBD465E9CD)
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [93] response 201 response time 87.270ms
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [94] request GET /api/v1/keys/0---397653693E7BA1F94FE7F049A18CF2CBD465E9CD
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [95] response 200 response time 40.511ms
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [96] request POST /api/v1/keys/0---397653693E7BA1F94FE7F049A18CF2CBD465E9CD/sign
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [97] response 200 response time 1.380ms
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [98] request DELETE /api/v1/keys/0---397653693E7BA1F94FE7F049A18CF2CBD465E9CD
+2026-11-18T16:30:51-00:00: [INFO] [hsm.key] [99] removed (0---397653693E7BA1F94FE7F049A18CF2CBD465E9CD)
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [100] response 204 response time 85.319ms
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [101] request GET /api/v1/keys/0---B352C2795375B2D7ED8A22750B6B483D401AFD03
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [102] response 404 response time 39.582ms
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [103] request POST /api/v1/keys/generate
+2026-11-18T16:30:51-00:00: [INFO] [hsm.key] [104] created (0---B352C2795375B2D7ED8A22750B6B483D401AFD03)
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [105] response 201 response time 94.260ms
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [106] request GET /api/v1/keys/0---B352C2795375B2D7ED8A22750B6B483D401AFD03
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [107] response 200 response time 41.503ms
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [108] request POST /api/v1/keys/0---B352C2795375B2D7ED8A22750B6B483D401AFD03/sign
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [109] response 200 response time 148us
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [110] request DELETE /api/v1/keys/0---B352C2795375B2D7ED8A22750B6B483D401AFD03
+2026-11-18T16:30:51-00:00: [INFO] [hsm.key] [111] removed (0---B352C2795375B2D7ED8A22750B6B483D401AFD03)
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [112] response 204 response time 88.390ms
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [113] request GET /api/v1/keys/0---66A30C48D706259DC36DAF313CC66043BF24AEB4
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [114] response 404 response time 39.232ms
+2026-11-18T16:30:51-00:00: [INFO] [http.access] [115] request POST /api/v1/keys/generate
+2026-11-18T16:30:52-00:00: [INFO] [hsm.key] [116] created (0---66A30C48D706259DC36DAF313CC66043BF24AEB4)
+2026-11-18T16:30:52-00:00: [INFO] [http.access] [117] response 201 response time 86.823ms
+2026-11-18T16:30:52-00:00: [INFO] [http.access] [118] request GET /api/v1/keys/0---66A30C48D706259DC36DAF313CC66043BF24AEB4
+2026-11-18T16:30:52-00:00: [INFO] [http.access] [119] response 200 response time 40.183ms
+2026-11-18T16:30:52-00:00: [INFO] [http.access] [120] request POST /api/v1/keys/0---66A30C48D706259DC36DAF313CC66043BF24AEB4/sign
+2026-11-18T16:30:52-00:00: [INFO] [http.access] [121] response 200 response time 451us
+2026-11-18T16:30:52-00:00: [INFO] [http.access] [122] request DELETE /api/v1/keys/0---66A30C48D706259DC36DAF313CC66043BF24AEB4
+2026-11-18T16:30:52-00:00: [INFO] [hsm.key] [123] removed (0---66A30C48D706259DC36DAF313CC66043BF24AEB4)
+2026-11-18T16:30:52-00:00: [INFO] [http.access] [124] response 204 response time 85.814ms
+2026-11-18T16:30:52-00:00: [INFO] [http.access] [125] request GET /api/v1/keys/0---4A995FD9DD3B2191BCA4FBDFB918B948B5FE7C5D
+2026-11-18T16:30:52-00:00: [INFO] [http.access] [126] response 404 response time 38.912ms
+2026-11-18T16:30:52-00:00: [INFO] [http.access] [127] request GET /api/v1/keys/0---0BC29EF0EF574C40F9DE89CD77BCAEBE75629ED3
+2026-11-18T16:30:52-00:00: [INFO] [http.access] [128] response 404 response time 39.369ms
+2026-11-18T16:30:52-00:00: [INFO] [http.access] [129] request POST /api/v1/keys/generate
+2026-11-18T16:30:52-00:00: [INFO] [hsm.key] [130] created (0---0BC29EF0EF574C40F9DE89CD77BCAEBE75629ED3)
+2026-11-18T16:30:52-00:00: [INFO] [http.access] [131] response 201 response time 94.716ms
+2026-11-18T16:30:52-00:00: [INFO] [http.access] [132] request GET /api/v1/keys/0---0BC29EF0EF574C40F9DE89CD77BCAEBE75629ED3
+2026-11-18T16:30:52-00:00: [INFO] [http.access] [133] response 200 response time 40.485ms
+2026-11-18T16:30:52-00:00: [INFO] [http.access] [134] request POST /api/v1/keys/0---0BC29EF0EF574C40F9DE89CD77BCAEBE75629ED3/sign
+2026-11-18T16:30:52-00:00: [INFO] [http.access] [135] response 200 response time 226us
+2026-11-18T16:30:52-00:00: [INFO] [http.access] [136] request DELETE /api/v1/keys/0---0BC29EF0EF574C40F9DE89CD77BCAEBE75629ED3
+2026-11-18T16:30:52-00:00: [INFO] [hsm.key] [137] removed (0---0BC29EF0EF574C40F9DE89CD77BCAEBE75629ED3)
+2026-11-18T16:30:52-00:00: [INFO] [http.access] [138] response 204 response time 85.982ms
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [139] request GET /api/v1/health/state
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [140] response 200 response time 252us
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [141] request GET /api/v1/health/state
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [142] response 200 response time 77.031us
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [143] request GET /api/v1/info
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [144] response 200 response time 87.425us
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [145] request GET /api/v1/system/info
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [146] response 200 response time 531us
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [147] request GET /api/v1/info
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [148] response 200 response time 60.812us
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [149] request GET /api/v1/system/info
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [150] response 200 response time 72.610us
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [151] request GET /api/v1/info
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [152] response 200 response time 64.298us
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [153] request GET /api/v1/system/info
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [154] response 200 response time 73.436us
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [155] request GET /api/v1/info
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [156] response 200 response time 52.837us
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [157] request GET /api/v1/system/info
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [158] response 200 response time 630us
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [159] request GET /api/v1/info
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [160] response 200 response time 53.429us
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [161] request GET /api/v1/health/state
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [162] response 200 response time 52.761us
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [163] request GET /api/v1/keys/0---01FE02C3E8A9B55CED9E094E39711CDCACBE1672
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [164] response 404 response time 76.438ms
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [165] request POST /api/v1/keys/generate
+2026-11-18T16:32:30-00:00: [INFO] [hsm.key] [166] created (0---01FE02C3E8A9B55CED9E094E39711CDCACBE1672)
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [167] response 201 response time 87.512ms
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [168] request GET /api/v1/keys/0---01FE02C3E8A9B55CED9E094E39711CDCACBE1672
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [169] response 200 response time 40.531ms
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [170] request POST /api/v1/keys/0---01FE02C3E8A9B55CED9E094E39711CDCACBE1672/sign
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [171] response 200 response time 352us
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [172] request DELETE /api/v1/keys/0---01FE02C3E8A9B55CED9E094E39711CDCACBE1672
+2026-11-18T16:32:30-00:00: [INFO] [hsm.key] [173] removed (0---01FE02C3E8A9B55CED9E094E39711CDCACBE1672)
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [174] response 204 response time 96.553ms
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [175] request GET /api/v1/keys/0---06E283816291D542AE2A203DD053FDE5C99FD9B9
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [176] response 404 response time 39.258ms
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [177] request POST /api/v1/keys/generate
+2026-11-18T16:32:30-00:00: [INFO] [hsm.key] [178] created (0---06E283816291D542AE2A203DD053FDE5C99FD9B9)
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [179] response 201 response time 86.329ms
+2026-11-18T16:32:30-00:00: [INFO] [http.access] [180] request GET /api/v1/keys/0---06E283816291D542AE2A203DD053FDE5C99FD9B9
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [181] response 200 response time 46.334ms
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [182] request POST /api/v1/keys/0---06E283816291D542AE2A203DD053FDE5C99FD9B9/sign
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [183] response 200 response time 1.449ms
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [184] request DELETE /api/v1/keys/0---06E283816291D542AE2A203DD053FDE5C99FD9B9
+2026-11-18T16:32:31-00:00: [INFO] [hsm.key] [185] removed (0---06E283816291D542AE2A203DD053FDE5C99FD9B9)
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [186] response 204 response time 85.375ms
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [187] request GET /api/v1/keys/0---542561975A9EFC9FB5E1A53C0255746AFD03CC05
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [188] response 404 response time 39.508ms
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [189] request POST /api/v1/keys/generate
+2026-11-18T16:32:31-00:00: [INFO] [hsm.key] [190] created (0---542561975A9EFC9FB5E1A53C0255746AFD03CC05)
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [191] response 201 response time 87.564ms
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [192] request GET /api/v1/keys/0---542561975A9EFC9FB5E1A53C0255746AFD03CC05
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [193] response 200 response time 40.407ms
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [194] request POST /api/v1/keys/0---542561975A9EFC9FB5E1A53C0255746AFD03CC05/sign
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [195] response 200 response time 338us
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [196] request DELETE /api/v1/keys/0---542561975A9EFC9FB5E1A53C0255746AFD03CC05
+2026-11-18T16:32:31-00:00: [INFO] [hsm.key] [197] removed (0---542561975A9EFC9FB5E1A53C0255746AFD03CC05)
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [198] response 204 response time 85.692ms
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [199] request GET /api/v1/keys/0---E81599F990A72F88B55E4A50D452FEC1D549CC8B
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [200] response 404 response time 39.475ms
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [201] request POST /api/v1/keys/generate
+2026-11-18T16:32:31-00:00: [INFO] [hsm.key] [202] created (0---E81599F990A72F88B55E4A50D452FEC1D549CC8B)
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [203] response 201 response time 87.627ms
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [204] request GET /api/v1/keys/0---E81599F990A72F88B55E4A50D452FEC1D549CC8B
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [205] response 200 response time 47.471ms
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [206] request POST /api/v1/keys/0---E81599F990A72F88B55E4A50D452FEC1D549CC8B/sign
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [207] response 200 response time 670us
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [208] request DELETE /api/v1/keys/0---E81599F990A72F88B55E4A50D452FEC1D549CC8B
+2026-11-18T16:32:31-00:00: [INFO] [hsm.key] [209] removed (0---E81599F990A72F88B55E4A50D452FEC1D549CC8B)
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [210] response 204 response time 86.202ms
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [211] request GET /api/v1/keys/0---9DA0F1A31E78527B0F76B09BE987F1E3FFC22A3B
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [212] response 404 response time 39.574ms
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [213] request POST /api/v1/keys/generate
+2026-11-18T16:32:31-00:00: [INFO] [hsm.key] [214] created (0---9DA0F1A31E78527B0F76B09BE987F1E3FFC22A3B)
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [215] response 201 response time 87.661ms
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [216] request GET /api/v1/keys/0---9DA0F1A31E78527B0F76B09BE987F1E3FFC22A3B
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [217] response 200 response time 40.451ms
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [218] request POST /api/v1/keys/0---9DA0F1A31E78527B0F76B09BE987F1E3FFC22A3B/sign
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [219] response 200 response time 321us
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [220] request DELETE /api/v1/keys/0---9DA0F1A31E78527B0F76B09BE987F1E3FFC22A3B
+2026-11-18T16:32:31-00:00: [INFO] [hsm.key] [221] removed (0---9DA0F1A31E78527B0F76B09BE987F1E3FFC22A3B)
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [222] response 204 response time 86.868ms
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [223] request GET /api/v1/keys/0---95FD8B178BF6843C4B5CA5ECD14C020F92480DE8
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [224] response 404 response time 39.770ms
+2026-11-18T16:32:31-00:00: [INFO] [http.access] [225] request POST /api/v1/keys/generate
+2026-11-18T16:32:32-00:00: [INFO] [hsm.key] [226] created (0---95FD8B178BF6843C4B5CA5ECD14C020F92480DE8)
+2026-11-18T16:32:32-00:00: [INFO] [http.access] [227] response 201 response time 88.154ms
+2026-11-18T16:32:32-00:00: [INFO] [http.access] [228] request GET /api/v1/keys/0---95FD8B178BF6843C4B5CA5ECD14C020F92480DE8
+2026-11-18T16:32:32-00:00: [INFO] [http.access] [229] response 200 response time 47.718ms
+2026-11-18T16:32:32-00:00: [INFO] [http.access] [230] request POST /api/v1/keys/0---95FD8B178BF6843C4B5CA5ECD14C020F92480DE8/sign
+2026-11-18T16:32:32-00:00: [INFO] [http.access] [231] response 200 response time 246us
+2026-11-18T16:32:32-00:00: [INFO] [http.access] [232] request DELETE /api/v1/keys/0---95FD8B178BF6843C4B5CA5ECD14C020F92480DE8
+2026-11-18T16:32:32-00:00: [INFO] [hsm.key] [233] removed (0---95FD8B178BF6843C4B5CA5ECD14C020F92480DE8)
+2026-11-18T16:32:32-00:00: [INFO] [http.access] [234] response 204 response time 86.587ms
+2026-11-18T16:32:32-00:00: [INFO] [http.access] [235] request GET /api/v1/keys/0---1ED3B7CFB43CC82946D104059C92654812FADA48
+2026-11-18T16:32:32-00:00: [INFO] [http.access] [236] response 404 response time 38.810ms
+2026-11-18T16:32:32-00:00: [INFO] [http.access] [237] request GET /api/v1/keys/0---2E3B59A05569EA5249213302A9C54955313F45A8
+2026-11-18T16:32:32-00:00: [INFO] [http.access] [238] response 404 response time 39.376ms
+2026-11-18T16:32:32-00:00: [INFO] [http.access] [239] request POST /api/v1/keys/generate
+2026-11-18T16:32:32-00:00: [INFO] [hsm.key] [240] created (0---2E3B59A05569EA5249213302A9C54955313F45A8)
+2026-11-18T16:32:32-00:00: [INFO] [http.access] [241] response 201 response time 88.868ms
+2026-11-18T16:32:32-00:00: [INFO] [http.access] [242] request GET /api/v1/keys/0---2E3B59A05569EA5249213302A9C54955313F45A8
+2026-11-18T16:32:32-00:00: [INFO] [http.access] [243] response 200 response time 40.196ms
+2026-11-18T16:32:32-00:00: [INFO] [http.access] [244] request POST /api/v1/keys/0---2E3B59A05569EA5249213302A9C54955313F45A8/sign
+2026-11-18T16:32:32-00:00: [INFO] [http.access] [245] response 200 response time 101us
+2026-11-18T16:32:32-00:00: [INFO] [http.access] [246] request DELETE /api/v1/keys/0---2E3B59A05569EA5249213302A9C54955313F45A8
+2026-11-18T16:32:32-00:00: [INFO] [hsm.key] [247] removed (0---2E3B59A05569EA5249213302A9C54955313F45A8)
+2026-11-18T16:32:32-00:00: [INFO] [http.access] [248] response 204 response time 85.834ms

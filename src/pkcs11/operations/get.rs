@@ -69,6 +69,14 @@ fn get_public_key_details(
         AttributeType::EcPoint, // For ECDSA keys, DER encoded
     ];
 
+    // Try and handle the case where requesting the KeyGenMechanism attribute
+    // causes the entire call to get_attributes() to fail, by retryig without
+    // that attribute. We don't know anything about the type of key the given
+    // key_handle represents so we can't currently request only the correct
+    // attributes here.
+    //
+    // See: https://github.com/parallaxsecond/rust-cryptoki/issues/386 which
+    // might be relevant.
     let attrs = loop {
         let res = pkcs11conn
             .session()
@@ -77,14 +85,15 @@ fn get_public_key_details(
         if matches!(
             res,
             Err(cryptoki::error::Error::NotSupported) | Err(cryptoki::error::Error::InvalidValue)
-        ) {
+        ) && request_attrs.contains(&AttributeType::KeyGenMechanism)
+        {
             // Thales DPOD (Data Protection on Demand) returns InvalidValue
             // when getting attributes of an ECDSA key and requesting
             // CKA_KEY_GEN_MECHANISM. Also the Nitrokey NetHSM returns
             // NotSupported and we can also get the information we need from
             // the KeyType attribute. Retry without KeyGenMechanism attribute,
             debug!("C_GetAttributeValue failed, retrying without CKA_KEY_GEN_MECHANISM");
-            let _ = request_attrs.pop();
+            request_attrs.retain(|p| p != &AttributeType::KeyGenMechanism);
             continue;
         }
 
@@ -113,7 +122,6 @@ fn get_public_key_details(
     // https://datatracker.ietf.org/doc/html/rfc3110#section-2. The
     // application implementing RFC 3110, i.e. Cascade, should do that, not
     // us.
-    debug!("Returned PKCS#11 attributes: {attrs:?}");
 
     // Parse the returned attribute data.
     for attr in attrs {

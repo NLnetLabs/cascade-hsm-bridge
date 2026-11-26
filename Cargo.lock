@@ -176,7 +176,7 @@ dependencies = [
  "clap",
  "cryptoki",
  "daemonbase",
- "domain 0.13.0",
+ "domain",
  "hex",
  "kmip-protocol",
  "listenfd",
@@ -435,23 +435,6 @@ dependencies = [
 
 [[package]]
 name = "domain"
-version = "0.12.3"
-source = "git+https://github.com/NLnetLabs/domain?rev=f4ca391#f4ca391238d5d80eeaafc140f38ecdf4488903e5"
-dependencies = [
- "bumpalo",
- "bytes",
- "domain-macros",
- "hashbrown",
- "jiff 0.2.39",
- "octseq",
- "openssl",
- "rand 0.10.3",
- "secrecy",
- "serde",
-]
-
-[[package]]
-name = "domain"
 version = "0.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c4cf8d789687f7f45f3be4faf159ef01ce8f21410cc4302859406a03018ad190"
@@ -462,31 +445,24 @@ dependencies = [
  "octseq",
  "openssl",
  "rand 0.10.3",
+ "secrecy",
  "serde",
 ]
 
 [[package]]
 name = "domain-kmip"
-version = "0.0.2-dev"
-source = "git+https://github.com/NLnetLabs/domain-kmip.git#6902ee8ab91ec810cbd631c8832dad1827f23546"
+version = "0.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "480589b924672e2f32255be8faeff84307a85078b49dfb2e4c81011697a48b73"
 dependencies = [
  "bcder",
- "domain 0.12.3",
+ "domain",
  "kmip-protocol",
  "maybe-async",
+ "scheduled-thread-pool",
  "tracing",
  "url",
  "uuid",
-]
-
-[[package]]
-name = "domain-macros"
-version = "0.12.3"
-source = "git+https://github.com/NLnetLabs/domain?rev=f4ca391#f4ca391238d5d80eeaafc140f38ecdf4488903e5"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 2.0.119",
 ]
 
 [[package]]

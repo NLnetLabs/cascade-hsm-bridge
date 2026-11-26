@@ -1,6 +1,7 @@
 // TODO: Cache PKCS#11 object handles by key IDs? OpenDNSSEC keeps the object
 // handle in memory.
 pub mod error;
+pub mod mechanisms;
 pub mod operations;
 pub mod pool;
 pub mod util;

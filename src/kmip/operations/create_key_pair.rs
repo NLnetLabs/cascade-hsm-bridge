@@ -62,7 +62,7 @@ pub fn op(
                             mechanism = Some(Mechanism::EccEdwardsKeyPairGen);
 
                             // These OID byte values used below were taken
-                            // from OpenDNSSEC code. They are the BER encoded
+                            // from OpenDNSSEC code. They are the DER encoded
                             // equivalents of the dotted OID values:
                             //
                             // 1.3.101.112 - id-Ed25519 from RFC 8410
@@ -143,16 +143,36 @@ pub fn op(
     let Some(mechanism) = mechanism else {
         return Err((
             ResultReason::FeatureNotSupported,
-            "Only ECDSA and RSA key types can be generated".to_string(),
+            "Bridge cannot determine the key type to generate from the given parameters"
+                .to_string(),
+        ));
+    };
+
+    let mechanism_type = mechanism.mechanism_type();
+    let known_mechanisms = pkcs11conn.mechanisms();
+
+    let Some(found_mechanism) = known_mechanisms.get(&mechanism_type) else {
+        return Err((
+            ResultReason::FeatureNotSupported,
+            format!("PKCS#11 module lacks support for mechanism {mechanism_type}"),
         ));
     };
 
     if let Some(crypto_len) = crypto_len {
         match mechanism {
             Mechanism::RsaPkcsKeyPairGen => {
-                pub_attrs.push(Attribute::ModulusBits(
-                    (crypto_len as usize).try_into().unwrap(),
-                ));
+                let crypto_len = crypto_len as usize;
+                let min = found_mechanism.min_key_size();
+                let max = found_mechanism.max_key_size();
+                if crypto_len < min || crypto_len > max {
+                    return Err((
+                        ResultReason::FeatureNotSupported,
+                        format!(
+                            "PKCS#11 module lacks support for the requested key size: {min} (min) <= {crypto_len} (requested) <= {max} (max)"
+                        ),
+                    ));
+                }
+                pub_attrs.push(Attribute::ModulusBits(crypto_len.try_into().unwrap()));
             }
             Mechanism::EccKeyPairGen => {
                 // The elliptic curve OID byte values below match those used

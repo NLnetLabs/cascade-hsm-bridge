@@ -196,16 +196,12 @@ pub fn get_cached_handle_for_key(
     Ok(res)
 }
 
-pub fn get_pkcs11_info(pkcs11pool: &Pkcs11Pool, cfg: &Config) -> Result<String, Error> {
-    let pkcs11 = pkcs11pool.pkcs11();
-    let slot = pkcs11pool.slot();
-    let token_info = pkcs11.get_token_info(slot)?;
-    let slot_info = pkcs11.get_slot_info(slot)?;
+pub fn get_pkcs11_info(pool: &Pkcs11Pool, cfg: &Config) -> Result<String, Error> {
     let lib_name = cfg.pkcs11.lib_path.file_name().unwrap();
     Ok(format!(
         "PKCS#11 token with label {} in slot {} via library {}",
-        token_info.label(),
-        slot_info.slot_description(),
+        pool.token_info().label(),
+        pool.slot_info().slot_description(),
         lib_name.display()
     ))
 }
